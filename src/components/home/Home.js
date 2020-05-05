@@ -82,7 +82,6 @@ const onChangeInput = (event) => {
     console.log(event)
 }
 const FormContact = ({ title, content, align = "center" }) => {
-    const inputRef = useRef()
     const [inputValue, SetValue] = useState('enter your email')
 
     return (
@@ -94,23 +93,10 @@ const FormContact = ({ title, content, align = "center" }) => {
                 <Heading subtitle>
                     {content}
                 </Heading>
+                <label>Votre Email</label>
                 <input type="text"
-                    ref={inputRef}
                     defaultValue={inputValue}
                     onChange={(event) => SetValue(event.target.value)} />
-                <Input
-                    ref={inputRef}
-                    defaultValue={inputValue}
-                    placeholder={inputValue} />
-                <Field>
-                    <Label>Name</Label>
-                    <Control>
-                        <Input
-                            ref={inputRef}
-                            defaultValue={inputValue}
-                            placeholder={inputValue} />
-                    </Control>
-                </Field>
                 <Field>
                     <Label>Subject</Label>
                     <Control>
