@@ -80,7 +80,7 @@
     "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
-    "start": "parcel ./src/index.html --open node_modules/.bin/nodemon ./index.js",
+    "start": "node_modules/.bin/nodemon ./index.js",
     "wp": "webpack-dev-server --open --config webpack.dev.js",
     "prod": "webpack --config webpack.prod.js",
     "build": "react-scripts build",
