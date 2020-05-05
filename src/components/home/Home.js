@@ -56,7 +56,7 @@ const SectionContainer = ({ srcImage, color, size, title, content, position, ali
                                                     <FontAwesomeIcon icon="hands-helping" size="6x" />
                                                 </Icon>
                                             }
-                                            <Heading style={{ "textAlign": align }} className="title--large" weight="bold" spaced={true} size={1}>
+                                            <Heading style={{ "textAlign": align }} className="title--large is-size-2-mobile" weight="bold" spaced={true} size={1}>
                                                 {title}
                                             </Heading>
                                             <Heading subtitle>
@@ -93,33 +93,47 @@ const FormContact = ({ title, content, align = "center" }) => {
                 <Heading subtitle>
                     {content}
                 </Heading>
-                <label>Votre Email</label>
-                <input type="text"
-                    defaultValue={inputValue}
-                    onChange={(event) => SetValue(event.target.value)} />
-                <Field>
-                    <Label>Subject</Label>
-                    <Control>
-                        <Select>
-                            <option>Developpement de site </option>
-                            <option>Audit de sécurité</option>
-                        </Select>
-                    </Control>
-                </Field>
-
-                <Field>
-                    <Label>Message</Label>
-                    <Control>
-                        <Textarea placeholder="Textarea" />
-                    </Control>
-                </Field>
-                <Field kind="group">
-                    <Control>
-                        <Button type="primary">Submit</Button>
-                    </Control>
-                </Field>
+                <div className="field">
+                    <label className="label">Votre email</label>
+                    <div className="control">
+                        <input onChange={(event) => SetValue(event.target.value)}
+                            className="input"
+                            type="text"
+                            placeholder="Email" />
+                    </div>
+                </div>
+                <div className="field">
+                    <label className="label">L'objet de la demande</label>
+                    <div className="control">
+                        <div className="select">
+                            <select>
+                                <option>Développement web</option>
+                                <option>Sécurité web</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div className="field">
+                    <label className="label">Message</label>
+                    <div className="control">
+                        <textarea className="textarea" placeholder="Textarea"></textarea>
+                    </div>
+                </div>
+                <div className="field">
+                    <div className="control">
+                        <label className="checkbox">
+                            <input type="checkbox" />
+                                I agree to the <a href="#">terms and conditions</a>
+                        </label>
+                    </div>
+                </div>
+                <div className="field is-grouped">
+                    <div className="control">
+                        <button className="button is-link">Submit</button>
+                    </div>
+                </div>
             </form>
-        </div>
+        </div >
     );
 }
 
@@ -253,21 +267,37 @@ const ColumnsGeneric2 = () => {
 }
 
 const NavBarGeneric = () => {
+    const [displayNav, setDisplayNav] = useState(false)
+
+    let styleDisplay
+
+    if (displayNav) {
+        styleDisplay = {
+            display: "block"
+        }
+    } else {
+        styleDisplay = {}
+    }
+
+    console.log(styleDisplay)
+
     return (
         <div>
-            <Navbar style={{ padding: "20px 40px" }} transparent={true} fixed="top">
+            <Navbar color="twitter" style={{ padding: "20px 40px" }} transparent={false} fixed="top">
                 <Navbar.Brand>
                     <Navbar.Item renderAs="a" href="#">
                         <img src={CONSTANT['logo']} alt="first digital" />
                     </Navbar.Item>
-                    <Navbar.Burger />
+                    <Navbar.Burger onClick={() => {
+                        setDisplayNav(val => !val)
+                    }} />
                 </Navbar.Brand>
-                <Navbar.Menu >
+                <Navbar.Menu style={styleDisplay}>
                     <Navbar.Container position="start">
-                        <Navbar.Item style={{ color: "#fff", fontWeight: "bold" }} href="#">
+                        <Navbar.Item style={{ fontWeight: "bold" }} href="#">
                             Développement Web
                         </Navbar.Item>
-                        <Navbar.Item style={{ color: "#fff", fontWeight: "bold" }} href="#">
+                        <Navbar.Item style={{ fontWeight: "bold" }} href="#">
                             Securité Digital
                         </Navbar.Item>
                     </Navbar.Container>
@@ -397,7 +427,7 @@ const SecondBlock = () => {
 const HomeElement = () => {
     return (
         <Home
-            children={[<SecondBlock />, <FirstBlock />]}
+            children={[<SecondBlock />]}
         />
     )
 }

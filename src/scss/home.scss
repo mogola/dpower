@@ -12,6 +12,7 @@ $pink-invert: #fff;
 // Add a serif family
 $family-serif: "Merriweather", "Georgia", serif;
 $fontAwesome: "Font Awesome 5 free";
+$tablet: 769px !default
 
 .icon {
     &.fas {
@@ -22,6 +23,7 @@ $fontAwesome: "Font Awesome 5 free";
 .fa, .fab, .fad, .fal, .far, .fas{
     font-family: $fontAwesome !important;
 }
+
 // 3. Set the derived variables
 // Use the new pink as the primary color
 
@@ -45,8 +47,14 @@ html .navbar {
     }
     &-item {
         font-size: 1.3rem;
+    }
+    &-brand {
         img {
-            max-height: 5rem;
+            max-height: initial !important;
+            width: 55% !important;
+            @media screen and (max-width: $tablet - 1px){
+                width: 30% !important;
+            }
         }
     }
 }
@@ -55,7 +63,7 @@ html {
     .title {
         &--large {
             text-transform: uppercase;
-            font-size:4.2rem !important;
+            font-size:4.2rem;
         }
     }
 

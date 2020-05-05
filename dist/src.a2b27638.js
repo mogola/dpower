@@ -51081,18 +51081,52 @@ var FormContact = function FormContact(_ref2) {
     size: 1
   }, title), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Heading, {
     subtitle: true
-  }, content), /*#__PURE__*/_react.default.createElement("label", null, "Votre Email"), /*#__PURE__*/_react.default.createElement("input", {
-    type: "text",
-    defaultValue: inputValue,
+  }, content), /*#__PURE__*/_react.default.createElement("div", {
+    class: "field"
+  }, /*#__PURE__*/_react.default.createElement("label", {
+    class: "label"
+  }, "Votre email"), /*#__PURE__*/_react.default.createElement("div", {
+    class: "control"
+  }, /*#__PURE__*/_react.default.createElement("input", {
     onChange: function onChange(event) {
       return SetValue(event.target.value);
-    }
-  }), /*#__PURE__*/_react.default.createElement(Field, null, /*#__PURE__*/_react.default.createElement(Label, null, "Subject"), /*#__PURE__*/_react.default.createElement(Control, null, /*#__PURE__*/_react.default.createElement(Select, null, /*#__PURE__*/_react.default.createElement("option", null, "Developpement de site "), /*#__PURE__*/_react.default.createElement("option", null, "Audit de s\xE9curit\xE9")))), /*#__PURE__*/_react.default.createElement(Field, null, /*#__PURE__*/_react.default.createElement(Label, null, "Message"), /*#__PURE__*/_react.default.createElement(Control, null, /*#__PURE__*/_react.default.createElement(Textarea, {
+    },
+    className: "input",
+    type: "text",
+    placeholder: "Email"
+  }))), /*#__PURE__*/_react.default.createElement("div", {
+    class: "field"
+  }, /*#__PURE__*/_react.default.createElement("label", {
+    class: "label"
+  }, "L'objet de la demande"), /*#__PURE__*/_react.default.createElement("div", {
+    class: "control"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    class: "select"
+  }, /*#__PURE__*/_react.default.createElement("select", null, /*#__PURE__*/_react.default.createElement("option", null, "D\xE9veloppement web"), /*#__PURE__*/_react.default.createElement("option", null, "S\xE9curit\xE9 web"))))), /*#__PURE__*/_react.default.createElement("div", {
+    class: "field"
+  }, /*#__PURE__*/_react.default.createElement("label", {
+    class: "label"
+  }, "Message"), /*#__PURE__*/_react.default.createElement("div", {
+    class: "control"
+  }, /*#__PURE__*/_react.default.createElement("textarea", {
+    class: "textarea",
     placeholder: "Textarea"
-  }))), /*#__PURE__*/_react.default.createElement(Field, {
-    kind: "group"
-  }, /*#__PURE__*/_react.default.createElement(Control, null, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Button, {
-    type: "primary"
+  }))), /*#__PURE__*/_react.default.createElement("div", {
+    class: "field"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    class: "control"
+  }, /*#__PURE__*/_react.default.createElement("label", {
+    class: "checkbox"
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    type: "checkbox"
+  }), "I agree to the ", /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, "terms and conditions")))), /*#__PURE__*/_react.default.createElement("div", {
+    class: "field is-grouped"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    class: "control"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    class: "button is-link"
   }, "Submit")))));
 };
 
