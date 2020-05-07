@@ -29,6 +29,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import PropTypes from 'prop-types'
 
+//animation global
+import Zoom from 'react-reveal/Zoom'
+import Fade from 'react-reveal/Fade'
+import Slide from 'react-reveal/Slide'
+
 library.add(fab, faBrain, faCoffee, faGrin, faTrophy, faHeart, faGrinStars, faHandsHelping)
 
 console.log('logo', CONSTANT, LOGO, ressources);
@@ -45,29 +50,89 @@ const SectionContainer = ({ srcImage, color, size, title, content, position, ali
                             <Columns centered={true} style={{ alignItems: "center" }}>
                                 {position == 0 &&
                                     <Columns.Column>
-                                        <Image src={srcImage} width="" className="imageW" />
+                                        <Fade top big>
+                                            <Image src={srcImage} width="" className="imageW" />
+                                        </Fade>
                                     </Columns.Column>
                                 }
                                 <Columns.Column>
-                                    <div className="txtAss">
-                                        <Section style={{ "textAlign": align }} size="large">
-                                            {icon &&
-                                                <Icon size="large" className="i-home" color="black">
-                                                    <FontAwesomeIcon icon="hands-helping" size="6x" />
-                                                </Icon>
-                                            }
-                                            <Heading style={{ "textAlign": align }} className="title--large is-size-2-mobile" weight="bold" spaced={true} size={1}>
-                                                {title}
-                                            </Heading>
-                                            <Heading subtitle>
-                                                {content}
-                                            </Heading>
-                                        </Section>
-                                    </div>
+                                    <Fade top>
+                                        <div className="txtAss">
+                                            <Section style={{ "textAlign": align }} size="large">
+                                                <div>
+                                                    {icon &&
+                                                        <Icon size="large" className="i-home" color="black">
+                                                            <FontAwesomeIcon icon="hands-helping" size="6x" />
+                                                        </Icon>
+                                                    }
+                                                    <Heading style={{ "textAlign": align }} className="title--large is-size-3-mobile" weight="bold" spaced={true} size={1}>
+                                                        {title}
+                                                    </Heading>
+                                                    <Heading subtitle>
+                                                        {content}
+                                                    </Heading>
+                                                </div>
+                                            </Section>
+                                        </div>
+                                    </Fade>
                                 </Columns.Column>
                                 {position == 1 &&
                                     <Columns.Column>
-                                        <Image src={srcImage} width="" className="imageW" />
+                                        <Fade top big>
+                                            <Image src={srcImage} width="" className="imageW" />
+                                        </Fade>
+                                    </Columns.Column>
+                                }
+                            </Columns>
+                        </Container>
+                    </Hero.Body>
+                </Hero>
+            </Section>
+        </div>
+    );
+}
+
+const SectionContainerSingle = ({ srcImage, color, size, title, content, position, align = "left", icon = false }) => {
+    return (
+        <div>
+            <Section size={size} style={{ padding: 0 }}>
+                <Hero color={color} gradient>
+                    <Hero.Body>
+                        <Container>
+                            <Columns centered={true} style={{ alignItems: "center" }}>
+                                {position == 0 &&
+                                    <Columns.Column>
+                                        <Fade top big>
+                                            <Image src={srcImage} width="" className="imageW" />
+                                        </Fade>
+                                    </Columns.Column>
+                                }
+                                <Columns.Column>
+                                    <Fade top>
+                                        <div className="txtAss">
+                                            <Section style={{ "textAlign": align }} size="large">
+                                                <div>
+                                                    {icon &&
+                                                        <Icon size="large" className="i-home" color="black">
+                                                            <FontAwesomeIcon icon="hands-helping" size="6x" />
+                                                        </Icon>
+                                                    }
+                                                    <Heading style={{ "textAlign": align }} className="title--large is-size-3-mobile" weight="bold" spaced={true} size={1}>
+                                                        {title}
+                                                    </Heading>
+                                                    <Heading subtitle>
+                                                        {content}
+                                                    </Heading>
+                                                </div>
+                                            </Section>
+                                        </div>
+                                    </Fade>
+                                </Columns.Column>
+                                {position == 1 &&
+                                    <Columns.Column>
+                                        <Fade top big>
+                                            <Image src={srcImage} width="" className="imageW" />
+                                        </Fade>
                                     </Columns.Column>
                                 }
                             </Columns>
@@ -85,55 +150,57 @@ const FormContact = ({ title, content, align = "center" }) => {
     const [inputValue, SetValue] = useState('enter your email')
 
     return (
-        <div>
-            <form>
-                <Heading style={{ "textAlign": align }} className="title--large" weight="bold" spaced={true} size={1}>
-                    {title}
-                </Heading>
-                <Heading subtitle>
-                    {content}
-                </Heading>
-                <div className="field">
-                    <label className="label">Votre email</label>
-                    <div className="control">
-                        <input onChange={(event) => SetValue(event.target.value)}
-                            className="input"
-                            type="text"
-                            placeholder="Email" />
-                    </div>
-                </div>
-                <div className="field">
-                    <label className="label">L'objet de la demande</label>
-                    <div className="control">
-                        <div className="select">
-                            <select>
-                                <option>Développement web</option>
-                                <option>Sécurité web</option>
-                            </select>
+        <Fade right>
+            <div>
+                <form>
+                    <Heading style={{ "textAlign": align }} className="title--large" weight="bold" spaced={true} size={1}>
+                        {title}
+                    </Heading>
+                    <Heading subtitle>
+                        {content}
+                    </Heading>
+                    <div className="field">
+                        <label className="label">Votre email</label>
+                        <div className="control">
+                            <input onChange={(event) => SetValue(event.target.value)}
+                                className="input"
+                                type="text"
+                                placeholder="Email" />
                         </div>
                     </div>
-                </div>
-                <div className="field">
-                    <label className="label">Message</label>
-                    <div className="control">
-                        <textarea className="textarea" placeholder="Textarea"></textarea>
+                    <div className="field">
+                        <label className="label">L'objet de la demande</label>
+                        <div className="control">
+                            <div className="select">
+                                <select>
+                                    <option>Développement web</option>
+                                    <option>Sécurité web</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div className="field">
-                    <div className="control">
-                        <label className="checkbox">
-                            <input type="checkbox" />
+                    <div className="field">
+                        <label className="label">Message</label>
+                        <div className="control">
+                            <textarea className="textarea" placeholder="Textarea"></textarea>
+                        </div>
+                    </div>
+                    <div className="field">
+                        <div className="control">
+                            <label className="checkbox">
+                                <input type="checkbox" />
                                 I agree to the <a href="#">terms and conditions</a>
-                        </label>
+                            </label>
+                        </div>
                     </div>
-                </div>
-                <div className="field is-grouped">
-                    <div className="control">
-                        <button className="button is-link">Submit</button>
+                    <div className="field is-grouped">
+                        <div className="control">
+                            <button className="button is-link">Submit</button>
+                        </div>
                     </div>
-                </div>
-            </form>
-        </div >
+                </form>
+            </div>
+        </Fade>
     );
 }
 
@@ -206,31 +273,41 @@ const ContainerGeneric = () => {
     return (
         <Section className="neutral" size="medium">
             <Container style={{ textAlign: "center" }}>
-                <Heading style={{ marginBottom: 50 }} size={1} className="upper-home" renderAs="p">Notre vision avec 5 règles simples</Heading>
+                <Heading style={{ marginBottom: 50 }} size={1} className="upper-home is-size-3-mobile" renderAs="p">Notre vision avec 5 règles simples</Heading>
                 <Columns centered={true} style={{ paddingTop: 50, alignItems: "center" }}>
                     <Columns.Column size={4}>
-                        <Icon size="large" className="i-home" color="twitter"><FontAwesomeIcon icon="brain" size="6x" /></Icon>
-                        <Heading className="upper-home upper-home-margin" size={5} renderAs="h2">Travailler dur</Heading>
+                        <Slide top>
+                            <Icon size="large" className="i-home" color="twitter"><FontAwesomeIcon icon="brain" size="6x" /></Icon>
+                            <Heading className="upper-home upper-home-margin" size={5} renderAs="h2">Travailler dur</Heading>
+                        </Slide>
                     </Columns.Column>
                     <Columns.Column size={4}>
-                        <Icon size="large" className="i-home" color="twitter"><FontAwesomeIcon icon="grin" size="6x" /></Icon>
-                        <Heading className="upper-home upper-home-margin" size={5} renderAs="h2">être cool</Heading>
+                        <Slide top>
+                            <Icon size="large" className="i-home" color="twitter"><FontAwesomeIcon icon="grin" size="6x" /></Icon>
+                            <Heading className="upper-home upper-home-margin" size={5} renderAs="h2">être cool</Heading>
+                        </Slide>
                     </Columns.Column>
                     <Columns.Column size={4}>
-                        <Icon size="large" className="i-home" color="twitter"><FontAwesomeIcon icon="trophy" size="6x" /></Icon>
-                        <Heading className="upper-home upper-home-margin" size={5} renderAs="h2">Voir Grand</Heading>
+                        <Slide top>
+                            <Icon size="large" className="i-home" color="twitter"><FontAwesomeIcon icon="trophy" size="6x" /></Icon>
+                            <Heading className="upper-home upper-home-margin" size={5} renderAs="h2">Voir Grand</Heading>
+                        </Slide>
                     </Columns.Column>
                     <Columns.Column size={4}>
-                        <Icon size="large" className="i-home" color="twitter">
-                            <FontAwesomeIcon icon="heart" size="6x" />
-                        </Icon>
-                        <Heading className="upper-home upper-home-margin" size={5} renderAs="h2">Aimer le Digital</Heading>
+                        <Slide top>
+                            <Icon size="large" className="i-home" color="twitter">
+                                <FontAwesomeIcon icon="heart" size="6x" />
+                            </Icon>
+                            <Heading className="upper-home upper-home-margin" size={5} renderAs="h2">Aimer le Digital</Heading>
+                        </Slide>
                     </Columns.Column>
                     <Columns.Column size={4}>
-                        <Icon size="large" className="i-home" color="twitter">
-                            <FontAwesomeIcon icon="grin-stars" size="6x" />
-                        </Icon>
-                        <Heading className="upper-home upper-home-margin" size={5} renderAs="h2">S'amuser</Heading>
+                        <Slide top>
+                            <Icon size="large" className="i-home" color="twitter">
+                                <FontAwesomeIcon icon="grin-stars" size="6x" />
+                            </Icon>
+                            <Heading className="upper-home upper-home-margin" size={5} renderAs="h2">S'amuser</Heading>
+                        </Slide>
                     </Columns.Column>
                 </Columns>
             </Container>
@@ -242,11 +319,13 @@ const ColumnsGeneric = ({ title, element }) => {
     return (
         <Section className="neutral" size="medium">
             <Container style={{ textAlign: "center" }}>
-                <Heading style={{ marginBottom: 50 }} size={1} className="upper-home" renderAs="p">{title}</Heading>
+                <Heading style={{ marginBottom: 50 }} size={1} className="upper-home is-size-3-mobile" renderAs="p">{title}</Heading>
                 <Columns centered={true} style={{ paddingTop: 50, alignItems: "center" }}>
                     {element.map((el, i) => (
                         <Columns.Column size={3} key={i} style={{ padding: 30 }}>
-                            <Image src={el} width="170" />
+                            <Slide top>
+                                <Image src={el} width="170" />
+                            </Slide>
                         </Columns.Column>
                     ))}
                 </Columns>
@@ -286,7 +365,9 @@ const NavBarGeneric = () => {
             <Navbar color="twitter" style={{ padding: "20px 40px" }} transparent={false} fixed="top">
                 <Navbar.Brand>
                     <Navbar.Item renderAs="a" href="#">
-                        <img src={CONSTANT['logo']} alt="first digital" />
+                        <Zoom>
+                            <img src={CONSTANT['logo']} alt="first digital" />
+                        </Zoom>
                     </Navbar.Item>
                     <Navbar.Burger onClick={() => {
                         setDisplayNav(val => !val)
@@ -308,7 +389,7 @@ const NavBarGeneric = () => {
 }
 const FooterContainer = () => {
     return (
-        <Hero>
+        <Hero color="white">
             <Hero.Footer>
                 <Footer>
                     <Container>
@@ -412,12 +493,12 @@ const SecondBlock = () => {
             />
             <SectionContainerRight />
             <ColumnsGeneric title="Ils nous ont fait confiance" element={LOGO} />
-            <SectionContainer
+            <SectionContainerSingle
                 color="white"
                 size="medium"
-                title={ressources.home3['title']}
+                title={"Une équipe de professionnel à votre service, chez firstDigital votre safisfaction est notre priorité !"}
                 align="center"
-                icon={true}
+                icon={false}
             />
             <FooterContainer />
         </div>
@@ -433,7 +514,7 @@ const HomeElement = () => {
 }
 
 Hero.propTypes = {
-    color: PropTypes.string.isRequired
+    color: PropTypes.string
 }
 
 Icon.propTypes = {
