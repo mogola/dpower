@@ -22,6 +22,31 @@ const ressources = {
         "content": "Nous serons à votre disposition"
     }
 }
+
+const ICON = [
+    {
+        'text': 'Travailler dur',
+        'nameicon': 'brain'
+    },
+    {
+        'text': 'Être cool',
+        'nameicon': 'grin'
+    },
+    {
+        'text': 'Voir Grand',
+        'nameicon': 'trophy'
+    },
+    {
+        'text': 'Aimer le digital',
+        'nameicon': 'heart'
+    },
+    {
+        'text': 'S\'amuser',
+        'nameicon': 'grin-stars'
+    }
+
+]
+
 const LOGO = [
     path + "digital-power-i.png",
     path + "samsung.png",
@@ -36,8 +61,25 @@ const CONSTANT = {
     "web2": path + "application_block_3.png",
     "web5": path + "application_block_5.png"
 }
+
+const NAV = [
+    {
+        "text": "Développement Web",
+        "link": "/"
+    },
+    {
+        "text": "Sécurité Web",
+        "link": "/"
+    },
+    {
+        "text": "Contact",
+        "link": "/"
+    }
+]
 export {
     CONSTANT,
     LOGO,
-    ressources
+    ressources,
+    ICON,
+    NAV
 }

@@ -35,6 +35,13 @@ html .navbar-brand img {
     html .navbar-brand img {
       width: 30% !important; } }
 
+@media screen and (max-width: 768px) {
+  html .navbar-menu {
+    display: block !important;
+    width: 100%;
+    padding: 20px 40px;
+    position: absolute; } }
+
 html .title--large {
   text-transform: uppercase;
   font-size: 4.2rem; }

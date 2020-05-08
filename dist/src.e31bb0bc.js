@@ -30783,7 +30783,67 @@ function reducer(state, action) {
       throw new Error();
   }
 }
-},{}],"../node_modules/react-is/cjs/react-is.development.js":[function(require,module,exports) {
+},{}],"../node_modules/@babel/runtime/helpers/extends.js":[function(require,module,exports) {
+function _extends() {
+  module.exports = _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+module.exports = _extends;
+},{}],"../node_modules/@babel/runtime/helpers/objectWithoutPropertiesLoose.js":[function(require,module,exports) {
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+module.exports = _objectWithoutPropertiesLoose;
+},{}],"../node_modules/@babel/runtime/helpers/objectWithoutProperties.js":[function(require,module,exports) {
+var objectWithoutPropertiesLoose = require("./objectWithoutPropertiesLoose");
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+  var target = objectWithoutPropertiesLoose(source, excluded);
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
+module.exports = _objectWithoutProperties;
+},{"./objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/objectWithoutPropertiesLoose.js"}],"../node_modules/react-is/cjs/react-is.development.js":[function(require,module,exports) {
 /** @license React v16.8.6
  * react-is.development.js
  *
@@ -31695,7 +31755,80 @@ if ("development" !== 'production') {
   // http://fb.me/prop-types-in-prod
   module.exports = require('./factoryWithThrowingShims')();
 }
-},{"react-is":"../node_modules/react-is/index.js","./factoryWithTypeCheckers":"../node_modules/prop-types/factoryWithTypeCheckers.js"}],"../node_modules/react-bulma-components/dist/index.js":[function(require,module,exports) {
+},{"react-is":"../node_modules/react-is/index.js","./factoryWithTypeCheckers":"../node_modules/prop-types/factoryWithTypeCheckers.js"}],"../node_modules/react-reveal/globals.js":[function(require,module,exports) {
+"use strict";function insertRule(e){try{return sheet.insertRule(e,sheet.cssRules.length)}catch(e){console.warn("react-reveal - animation failed")}}function cascade(e,n,t,o,r){var s=Math.log(o),i=Math.log(r),a=(i-s)/(t-n);return Math.exp(s+a*(e-n))}function animation(e){if(!sheet)return"";var n="@keyframes "+(name+counter)+"{"+e+"}",t=effectMap[e];return t?""+name+t:(sheet.insertRule(n,sheet.cssRules.length),effectMap[e]=counter,""+name+counter++)}function hideAll(){globalHide||(exports.globalHide=globalHide=!0,window.removeEventListener("scroll",hideAll,!0),insertRule("."+namespace+" { opacity: 0; }"),window.removeEventListener("orientationchange",hideAll,!0),window.document.removeEventListener("visibilitychange",hideAll))}function config(e){var n=e.ssrFadeout;exports.fadeOutEnabled=fadeOutEnabled=n}Object.defineProperty(exports,"__esModule",{value:!0}),exports.insertRule=insertRule,exports.cascade=cascade,exports.animation=animation,exports.hideAll=hideAll,exports.default=config;var namespace=exports.namespace="react-reveal",defaults=exports.defaults={duration:1e3,delay:0,count:1},ssr=exports.ssr=!0,observerMode=exports.observerMode=!1,raf=exports.raf=function(e){return window.setTimeout(e,66)},disableSsr=exports.disableSsr=function(){return exports.ssr=ssr=!1},fadeOutEnabled=exports.fadeOutEnabled=!1,ssrFadeout=exports.ssrFadeout=function(){var e=arguments.length>0&&void 0!==arguments[0]&&arguments[0];return exports.fadeOutEnabled=fadeOutEnabled=e},globalHide=exports.globalHide=!1,ie10=exports.ie10=!1,collapseend=exports.collapseend=void 0,counter=1,effectMap={},sheet=!1,name=namespace+"-"+Math.floor(1e15*Math.random())+"-";if("undefined"!=typeof window&&"nodejs"!==window.name&&window.document&&"undefined"!=typeof navigator){exports.observerMode=observerMode="IntersectionObserver"in window&&"IntersectionObserverEntry"in window&&"intersectionRatio"in window.IntersectionObserverEntry.prototype&&/\{\s*\[native code\]\s*\}/.test(""+IntersectionObserver),exports.raf=raf=window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||raf,exports.ssr=ssr=window.document.querySelectorAll("div[data-reactroot]").length>0,-1!==navigator.appVersion.indexOf("MSIE 10")&&(exports.ie10=ie10=!0),ssr&&"performance"in window&&"timing"in window.performance&&"domContentLoadedEventEnd"in window.performance.timing&&window.performance.timing.domLoading&&Date.now()-window.performance.timing.domLoading<300&&(exports.ssr=ssr=!1),ssr&&window.setTimeout(disableSsr,1500),observerMode||(exports.collapseend=collapseend=document.createEvent("Event"),collapseend.initEvent("collapseend",!0,!0));var element=document.createElement("style");document.head.appendChild(element),element.sheet&&element.sheet.cssRules&&element.sheet.insertRule&&(sheet=element.sheet,window.addEventListener("scroll",hideAll,!0),window.addEventListener("orientationchange",hideAll,!0),window.document.addEventListener("visibilitychange",hideAll))}
+},{}],"../node_modules/react-reveal/RevealBase.js":[function(require,module,exports) {
+"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}function _defineProperty(e,t,i){return t in e?Object.defineProperty(e,t,{value:i,enumerable:!0,configurable:!0,writable:!0}):e[t]=i,e}function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _possibleConstructorReturn(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function _inherits(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(exports,"__esModule",{value:!0});var _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},_slicedToArray=function(){function e(e,t){var i=[],s=!0,o=!1,n=void 0;try{for(var r,a=e[Symbol.iterator]();!(s=(r=a.next()).done)&&(i.push(r.value),!t||i.length!==t);s=!0);}catch(e){o=!0,n=e}finally{try{!s&&a.return&&a.return()}finally{if(o)throw n}}return i}return function(t,i){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,i);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_extends=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var i=arguments[t];for(var s in i)Object.prototype.hasOwnProperty.call(i,s)&&(e[s]=i[s])}return e},_createClass=function(){function e(e,t){for(var i=0;i<t.length;i++){var s=t[i];s.enumerable=s.enumerable||!1,s.configurable=!0,"value"in s&&(s.writable=!0),Object.defineProperty(e,s.key,s)}}return function(t,i,s){return i&&e(t.prototype,i),s&&e(t,s),t}}(),_react=require("react"),_react2=_interopRequireDefault(_react),_propTypes=require("prop-types"),_globals=require("./globals"),inOut=(0,_propTypes.shape)({make:_propTypes.func,duration:_propTypes.number.isRequired,delay:_propTypes.number.isRequired,forever:_propTypes.bool,count:_propTypes.number.isRequired,style:_propTypes.object.isRequired,reverse:_propTypes.bool}),propTypes={collapse:_propTypes.bool,collapseEl:_propTypes.element,cascade:_propTypes.bool,wait:_propTypes.number,force:_propTypes.bool,disabled:_propTypes.bool,appear:_propTypes.bool,enter:_propTypes.bool,exit:_propTypes.bool,fraction:_propTypes.number,refProp:_propTypes.string,innerRef:_propTypes.func,onReveal:_propTypes.func,unmountOnExit:_propTypes.bool,mountOnEnter:_propTypes.bool,inEffect:inOut.isRequired,outEffect:(0,_propTypes.oneOfType)([inOut,(0,_propTypes.oneOf)([!1])]).isRequired,ssrReveal:_propTypes.bool,collapseOnly:_propTypes.bool,ssrFadeout:_propTypes.bool},defaultProps={fraction:.2,refProp:"ref"},contextTypes={transitionGroup:_propTypes.object},RevealBase=function(e){function t(e,i){_classCallCheck(this,t);var s=_possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e,i));return s.isOn=void 0===e.when||!!e.when,s.state={collapse:e.collapse?t.getInitialCollapseStyle(e):void 0,style:{opacity:s.isOn&&!e.ssrReveal||!e.outEffect?void 0:0}},s.savedChild=!1,s.isShown=!1,_globals.observerMode?s.handleObserve=s.handleObserve.bind(s):(s.revealHandler=s.makeHandler(s.reveal),s.resizeHandler=s.makeHandler(s.resize)),s.saveRef=s.saveRef.bind(s),s}return _inherits(t,e),_createClass(t,[{key:"saveRef",value:function(e){this.childRef&&this.childRef(e),this.props.innerRef&&this.props.innerRef(e),this.el!==e&&(this.el=e&&"offsetHeight"in e?e:void 0,this.observe(this.props,!0))}},{key:"invisible",value:function(){this&&this.el&&(this.savedChild=!1,this.isShown||(this.setState({hasExited:!0,collapse:this.props.collapse?_extends({},this.state.collapse,{visibility:"hidden"}):null,style:{opacity:0}}),!_globals.observerMode&&this.props.collapse&&window.document.dispatchEvent(_globals.collapseend)))}},{key:"animationEnd",value:function(e,t,i){var s=this,o=i.forever,n=i.count,r=i.delay,a=i.duration;if(!o){var l=function(){s&&s.el&&(s.animationEndTimeout=void 0,e.call(s))};this.animationEndTimeout=window.setTimeout(l,r+(a+(t?a:0)*n))}}},{key:"getDimensionValue",value:function(){return this.el.offsetHeight+parseInt(window.getComputedStyle(this.el,null).getPropertyValue("margin-top"),10)+parseInt(window.getComputedStyle(this.el,null).getPropertyValue("margin-bottom"),10)}},{key:"collapse",value:function(e,t,i){var s=i.duration+(t.cascade?i.duration:0),o=this.isOn?this.getDimensionValue():0,n=void 0,r=void 0;if(t.collapseOnly)n=i.duration/3,r=i.delay;else{var a=s>>2,l=a>>1;n=a,r=i.delay+(this.isOn?0:s-a-l),e.style.animationDuration=s-a+(this.isOn?l:-l)+"ms",e.style.animationDelay=i.delay+(this.isOn?a-l:0)+"ms"}return e.collapse={height:o,transition:"height "+n+"ms ease "+r+"ms",overflow:t.collapseOnly?"hidden":void 0},e}},{key:"animate",value:function(e){if(this&&this.el&&(this.unlisten(),this.isShown!==this.isOn)){this.isShown=this.isOn;var t=!this.isOn&&e.outEffect,i=e[t?"outEffect":"inEffect"],s="style"in i&&i.style.animationName||void 0,o=void 0;e.collapseOnly?o={hasAppeared:!0,hasExited:!1,style:{opacity:1}}:((e.outEffect||this.isOn)&&i.make&&(s=i.make),o={hasAppeared:!0,hasExited:!1,collapse:void 0,style:_extends({},i.style,{animationDuration:i.duration+"ms",animationDelay:i.delay+"ms",animationIterationCount:i.forever?"infinite":i.count,opacity:1,animationName:s}),className:i.className}),this.setState(e.collapse?this.collapse(o,e,i):o),t?(this.savedChild=_react2.default.cloneElement(this.getChild()),this.animationEnd(this.invisible,e.cascade,i)):this.savedChild=!1,this.onReveal(e)}}},{key:"onReveal",value:function(e){e.onReveal&&this.isOn&&(this.onRevealTimeout&&(this.onRevealTimeout=window.clearTimeout(this.onRevealTimeout)),e.wait?this.onRevealTimeout=window.setTimeout(e.onReveal,e.wait):e.onReveal())}},{key:"componentWillUnmount",value:function(){this.unlisten(),_globals.ssr&&(0,_globals.disableSsr)()}},{key:"handleObserve",value:function(e,t){_slicedToArray(e,1)[0].intersectionRatio>0&&(t.disconnect(),this.observer=null,this.reveal(this.props,!0))}},{key:"observe",value:function(e){var t=arguments.length>1&&void 0!==arguments[1]&&arguments[1];if(this.el&&_globals.observerMode){if(this.observer){if(!t)return;this.observer.disconnect()}else if(t)return;this.observer=new IntersectionObserver(this.handleObserve,{threshold:e.fraction}),this.observer.observe(this.el)}}},{key:"reveal",value:function(e){var t=this,i=arguments.length>1&&void 0!==arguments[1]&&arguments[1];_globals.globalHide||(0,_globals.hideAll)(),this&&this.el&&(e||(e=this.props),_globals.ssr&&(0,_globals.disableSsr)(),this.isOn&&this.isShown&&void 0!==e.spy?(this.isShown=!1,this.setState({style:{}}),window.setTimeout(function(){return t.reveal(e)},200)):i||this.inViewport(e)||e.force?this.animate(e):_globals.observerMode?this.observe(e):this.listen())}},{key:"componentDidMount",value:function(){var e=this;if(this.el&&!this.props.disabled){this.props.collapseOnly||("make"in this.props.inEffect&&this.props.inEffect.make(!1,this.props),void 0!==this.props.when&&this.props.outEffect&&"make"in this.props.outEffect&&this.props.outEffect.make(!0,this.props));var i=this.context.transitionGroup,s=i&&!i.isMounting?!("enter"in this.props&&!1===this.props.enter):this.props.appear;return this.isOn&&((void 0!==this.props.when||void 0!==this.props.spy)&&!s||_globals.ssr&&!_globals.fadeOutEnabled&&!this.props.ssrFadeout&&this.props.outEffect&&!this.props.ssrReveal&&t.getTop(this.el)<window.pageYOffset+window.innerHeight)?(this.isShown=!0,this.setState({hasAppeared:!0,collapse:this.props.collapse?{height:this.getDimensionValue()}:this.state.collapse,style:{opacity:1}}),void this.onReveal(this.props)):_globals.ssr&&(_globals.fadeOutEnabled||this.props.ssrFadeout)&&this.props.outEffect&&t.getTop(this.el)<window.pageYOffset+window.innerHeight?(this.setState({style:{opacity:0,transition:"opacity 1000ms 1000ms"}}),void window.setTimeout(function(){return e.reveal(e.props,!0)},2e3)):void(this.isOn&&(this.props.force?this.animate(this.props):this.reveal(this.props)))}}},{key:"cascade",value:function(e){var t=this,i=void 0;i="string"==typeof e?e.split("").map(function(e,t){return _react2.default.createElement("span",{key:t,style:{display:"inline-block",whiteSpace:"pre"}},e)}):_react2.default.Children.toArray(e);var s=this.props[this.isOn||!this.props.outEffect?"inEffect":"outEffect"],o=s.duration,n=s.reverse,r=i.length,a=2*o;this.props.collapse&&(a=parseInt(this.state.style.animationDuration,10),o=a/2);var l=n?r:0;return i=i.map(function(e){return"object"===(void 0===e?"undefined":_typeof(e))&&e?_react2.default.cloneElement(e,{style:_extends({},e.props.style,t.state.style,{animationDuration:Math.round((0,_globals.cascade)(n?l--:l++,0,r,o,a))+"ms"})}):e})}},{key:"componentWillReceiveProps",value:function(e){if(void 0!==e.when&&(this.isOn=!!e.when),e.fraction!==this.props.fraction&&this.observe(e,!0),!this.isOn&&e.onExited&&"exit"in e&&!1===e.exit)return void e.onExited();e.disabled||(e.collapse&&!this.props.collapse&&(this.setState({style:{},collapse:t.getInitialCollapseStyle(e)}),this.isShown=!1),e.when===this.props.when&&e.spy===this.props.spy||this.reveal(e),this.onRevealTimeout&&!this.isOn&&(this.onRevealTimeout=window.clearTimeout(this.onRevealTimeout)))}},{key:"getChild",value:function(){if(this.savedChild&&!this.props.disabled)return this.savedChild;if("object"===_typeof(this.props.children)){var e=_react2.default.Children.only(this.props.children);return"type"in e&&"string"==typeof e.type||"ref"!==this.props.refProp?e:_react2.default.createElement("div",null,e)}return _react2.default.createElement("div",null,this.props.children)}},{key:"render",value:function(){var e=void 0;e=this.state.hasAppeared?!this.props.unmountOnExit||!this.state.hasExited||this.isOn:!this.props.mountOnEnter||this.isOn;var t=this.getChild();"function"==typeof t.ref&&(this.childRef=t.ref);var i=!1,s=t.props,o=s.style,n=s.className,r=s.children,a=this.props.disabled?n:(this.props.outEffect?_globals.namespace:"")+(this.state.className?" "+this.state.className:"")+(n?" "+n:"")||void 0,l=void 0;"function"==typeof this.state.style.animationName&&(this.state.style.animationName=this.state.style.animationName(!this.isOn,this.props)),this.props.cascade&&!this.props.disabled&&r&&this.state.style.animationName?(i=this.cascade(r),l=_extends({},o,{opacity:1})):l=this.props.disabled?o:_extends({},o,this.state.style);var p=_extends({},this.props.props,_defineProperty({className:a,style:l},this.props.refProp,this.saveRef)),h=_react2.default.cloneElement(t,p,e?i||r:void 0);return void 0!==this.props.collapse?this.props.collapseEl?_react2.default.cloneElement(this.props.collapseEl,{style:_extends({},this.props.collapseEl.style,this.props.disabled?void 0:this.state.collapse),children:h}):_react2.default.createElement("div",{style:this.props.disabled?void 0:this.state.collapse,children:h}):h}},{key:"makeHandler",value:function(e){var t=this,i=function(){e.call(t,t.props),t.ticking=!1};return function(){t.ticking||((0,_globals.raf)(i),t.ticking=!0)}}},{key:"inViewport",value:function(e){if(!this.el||window.document.hidden)return!1;var i=this.el.offsetHeight,s=window.pageYOffset-t.getTop(this.el),o=Math.min(i,window.innerHeight)*(_globals.globalHide?e.fraction:0);return s>o-window.innerHeight&&s<i-o}},{key:"resize",value:function(e){this&&this.el&&this.isOn&&this.inViewport(e)&&(this.unlisten(),this.isShown=this.isOn,this.setState({hasExited:!this.isOn,hasAppeared:!0,collapse:void 0,style:{opacity:this.isOn||!e.outEffect?1:0}}),this.onReveal(e))}},{key:"listen",value:function(){_globals.observerMode||this.isListener||(this.isListener=!0,window.addEventListener("scroll",this.revealHandler,{passive:!0}),window.addEventListener("orientationchange",this.revealHandler,{passive:!0}),window.document.addEventListener("visibilitychange",this.revealHandler,{passive:!0}),window.document.addEventListener("collapseend",this.revealHandler,{passive:!0}),window.addEventListener("resize",this.resizeHandler,{passive:!0}))}},{key:"unlisten",value:function(){!_globals.observerMode&&this.isListener&&(window.removeEventListener("scroll",this.revealHandler,{passive:!0}),window.removeEventListener("orientationchange",this.revealHandler,{passive:!0}),window.document.removeEventListener("visibilitychange",this.revealHandler,{passive:!0}),window.document.removeEventListener("collapseend",this.revealHandler,{passive:!0}),window.removeEventListener("resize",this.resizeHandler,{passive:!0}),this.isListener=!1),this.onRevealTimeout&&(this.onRevealTimeout=window.clearTimeout(this.onRevealTimeout)),this.animationEndTimeout&&(this.animationEndTimeout=window.clearTimeout(this.animationEndTimeout))}}],[{key:"getInitialCollapseStyle",value:function(e){return{height:0,visibility:e.when?void 0:"hidden"}}},{key:"getTop",value:function(e){for(;void 0===e.offsetTop;)e=e.parentNode;for(var t=e.offsetTop;e.offsetParent;t+=e.offsetTop)e=e.offsetParent;return t}}]),t}(_react2.default.Component);RevealBase.propTypes=propTypes,RevealBase.defaultProps=defaultProps,RevealBase.contextTypes=contextTypes,RevealBase.displayName="RevealBase",exports.default=RevealBase,module.exports=exports.default;
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","./globals":"../node_modules/react-reveal/globals.js"}],"../node_modules/react-reveal/wrap.js":[function(require,module,exports) {
+"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}function wrap(e,t,a,r){return"in"in e&&(e.when=e.in),_react2.default.Children.count(r)<2?_react2.default.createElement(_RevealBase2.default,_extends({},e,{inEffect:t,outEffect:a,children:r})):(r=_react2.default.Children.map(r,function(r){return _react2.default.createElement(_RevealBase2.default,_extends({},e,{inEffect:t,outEffect:a,children:r}))}),"Fragment"in _react2.default?_react2.default.createElement(_react2.default.Fragment,null,r):_react2.default.createElement("span",null,r))}Object.defineProperty(exports,"__esModule",{value:!0});var _extends=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var a=arguments[t];for(var r in a)Object.prototype.hasOwnProperty.call(a,r)&&(e[r]=a[r])}return e};exports.default=wrap;var _react=require("react"),_react2=_interopRequireDefault(_react),_RevealBase=require("./RevealBase"),_RevealBase2=_interopRequireDefault(_RevealBase);module.exports=exports.default;
+},{"react":"../node_modules/react/index.js","./RevealBase":"../node_modules/react-reveal/RevealBase.js"}],"../node_modules/react-reveal/Zoom.js":[function(require,module,exports) {
+"use strict";function _interopRequireDefault(o){return o&&o.__esModule?o:{default:o}}function _objectWithoutProperties(o,e){var r={};for(var t in o)e.indexOf(t)>=0||Object.prototype.hasOwnProperty.call(o,t)&&(r[t]=o[t]);return r}function make(o,e){var r=e.left,t=e.right,p=e.up,n=e.down,a=e.top,i=e.bottom,l=e.mirror,u=e.opposite,s=(r?1:0)|(t?2:0)|(a||n?4:0)|(i||p?8:0)|(l?16:0)|(u?32:0)|(o?64:0);if(lookup.hasOwnProperty(s))return lookup[s];if(!l!=!(o&&u)){var d=[t,r,i,a,n,p];r=d[0],t=d[1],a=d[2],i=d[3],p=d[4],n=d[5]}var f=r||t,c=a||i||p||n,m=f||c,y=void 0,b=void 0,_=void 0,v=void 0,T=void 0;return m?o?(b=f?(r?"":"-")+"42px":"0",_=c?(n||a?"-":"")+"60px":"0",v=f?(t?"":"-")+"2000px":"0",T=c?(p||i?"":"-")+"2000px":"0",y="40% {\n          opacity: 1;\n          transform: scale3d(.475, .475, .475) translate3d("+b+", "+_+", 0);\n        }\n        to {\n          opacity: 0;\n          transform: scale(.1) translate3d("+v+", "+T+", 0);\n          transform-origin: "+(c?"center bottom":(r?"left":"right")+" center")+";\n        }"):(b=f?(r?"-":"")+"1000px":"0",_=c?(n||a?"-":"")+"1000px":"0",v=f?(t?"-":"")+"10px":"0",T=c?(p||i?"-":"")+"60px":"0",y="from {\n          opacity: 0;\n          transform: scale3d(.1, .1, .1) translate3d("+b+", "+_+", 0);\n          animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);\n        }\n        60% {\n          opacity: 1;\n          transform: scale3d(.475, .475, .475) translate3d("+v+", "+T+", 0);\n          animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);\n        }"):y=(o?"to":"from")+" {opacity: 0; transform: scale3d(.1, .1, .1);} "+(o?"from":"to")+" { opacity: 1; transform: none;}",lookup[s]=(0,_globals.animation)(y),lookup[s]}function Zoom(){var o=arguments.length>0&&void 0!==arguments[0]?arguments[0]:_globals.defaults,e=o.children,r=(o.out,o.forever),t=o.timeout,p=o.duration,n=void 0===p?_globals.defaults.duration:p,a=o.delay,i=void 0===a?_globals.defaults.delay:a,l=o.count,u=void 0===l?_globals.defaults.count:l,s=_objectWithoutProperties(o,["children","out","forever","timeout","duration","delay","count"]),d={make:make,duration:void 0===t?n:t,delay:i,forever:r,count:u,style:{animationFillMode:"both"},reverse:s.left};return(0,_wrap2.default)(s,d,d,e)}Object.defineProperty(exports,"__esModule",{value:!0});var _propTypes=require("prop-types"),_wrap=require("./wrap"),_wrap2=_interopRequireDefault(_wrap),_globals=require("./globals"),propTypes={out:_propTypes.bool,left:_propTypes.bool,right:_propTypes.bool,top:_propTypes.bool,bottom:_propTypes.bool,mirror:_propTypes.bool,opposite:_propTypes.bool,duration:_propTypes.number,timeout:_propTypes.number,delay:_propTypes.number,count:_propTypes.number,forever:_propTypes.bool},lookup={};Zoom.propTypes=propTypes,exports.default=Zoom,module.exports=exports.default;
+},{"prop-types":"../node_modules/prop-types/index.js","./wrap":"../node_modules/react-reveal/wrap.js","./globals":"../node_modules/react-reveal/globals.js"}],"../node_modules/react-reveal/Fade.js":[function(require,module,exports) {
+"use strict";function _interopRequireDefault(o){return o&&o.__esModule?o:{default:o}}function _objectWithoutProperties(o,e){var r={};for(var t in o)e.indexOf(t)>=0||Object.prototype.hasOwnProperty.call(o,t)&&(r[t]=o[t]);return r}function make(o,e){var r=e.distance,t=e.left,p=e.right,a=e.up,l=e.down,i=e.top,u=e.bottom,n=e.big,s=e.mirror,d=e.opposite,_=(r?r.toString():0)+((t?1:0)|(p?2:0)|(i||l?4:0)|(u||a?8:0)|(s?16:0)|(d?32:0)|(o?64:0)|(n?128:0));if(lookup.hasOwnProperty(_))return lookup[_];var f=t||p||a||l||i||u,y=void 0,b=void 0;if(f){if(!s!=!(o&&d)){var v=[p,t,u,i,l,a];t=v[0],p=v[1],i=v[2],u=v[3],a=v[4],l=v[5]}var c=r||(n?"2000px":"100%");y=t?"-"+c:p?c:"0",b=l||i?"-"+c:a||u?c:"0"}return lookup[_]=(0,_globals.animation)((o?"to":"from")+" {opacity: 0;"+(f?" transform: translate3d("+y+", "+b+", 0);":"")+"}\n     "+(o?"from":"to")+" {opacity: 1;transform: none;} "),lookup[_]}function Fade(){var o=arguments.length>0&&void 0!==arguments[0]?arguments[0]:_globals.defaults,e=arguments.length>1&&void 0!==arguments[1]&&arguments[1],r=o.children,t=(o.out,o.forever),p=o.timeout,a=o.duration,l=void 0===a?_globals.defaults.duration:a,i=o.delay,u=void 0===i?_globals.defaults.delay:i,n=o.count,s=void 0===n?_globals.defaults.count:n,d=_objectWithoutProperties(o,["children","out","forever","timeout","duration","delay","count"]),_={make:make,duration:void 0===p?l:p,delay:u,forever:t,count:s,style:{animationFillMode:"both"},reverse:d.left};return e?(0,_wrap2.default)(d,_,_,r):_}Object.defineProperty(exports,"__esModule",{value:!0});var _propTypes=require("prop-types"),_globals=require("./globals"),_wrap=require("./wrap"),_wrap2=_interopRequireDefault(_wrap),propTypes={out:_propTypes.bool,left:_propTypes.bool,right:_propTypes.bool,top:_propTypes.bool,bottom:_propTypes.bool,big:_propTypes.bool,mirror:_propTypes.bool,opposite:_propTypes.bool,duration:_propTypes.number,timeout:_propTypes.number,distance:_propTypes.string,delay:_propTypes.number,count:_propTypes.number,forever:_propTypes.bool},lookup={};Fade.propTypes=propTypes,exports.default=Fade,module.exports=exports.default;
+},{"prop-types":"../node_modules/prop-types/index.js","./globals":"../node_modules/react-reveal/globals.js","./wrap":"../node_modules/react-reveal/wrap.js"}],"../node_modules/react-reveal/Slide.js":[function(require,module,exports) {
+"use strict";function _interopRequireDefault(o){return o&&o.__esModule?o:{default:o}}function _objectWithoutProperties(o,e){var r={};for(var t in o)e.indexOf(t)>=0||Object.prototype.hasOwnProperty.call(o,t)&&(r[t]=o[t]);return r}function make(o,e){var r=e.left,t=e.right,p=e.up,l=e.down,u=e.top,a=e.bottom,i=e.big,n=e.mirror,s=e.opposite,d=(r?1:0)|(t?2:0)|(u||l?4:0)|(a||p?8:0)|(n?16:0)|(s?32:0)|(o?64:0)|(i?128:0);if(lookup.hasOwnProperty(d))return lookup[d];var _=r||t||p||l||u||a,f=void 0,b=void 0;if(_){if(!n!=!(o&&s)){var y=[t,r,a,u,l,p];r=y[0],t=y[1],u=y[2],a=y[3],p=y[4],l=y[5]}var m=i?"2000px":"100%";f=r?"-"+m:t?m:"0",b=l||u?"-"+m:p||a?m:"0"}return lookup[d]=(0,_globals.animation)((o?"to":"from")+" {"+(_?" transform: translate3d("+f+", "+b+", 0);":"")+"}\n     "+(o?"from":"to")+" {transform: none;} "),lookup[d]}function Slide(){var o=arguments.length>0&&void 0!==arguments[0]?arguments[0]:_globals.defaults,e=o.children,r=(o.out,o.forever),t=o.timeout,p=o.duration,l=void 0===p?_globals.defaults.duration:p,u=o.delay,a=void 0===u?_globals.defaults.delay:u,i=o.count,n=void 0===i?_globals.defaults.count:i,s=_objectWithoutProperties(o,["children","out","forever","timeout","duration","delay","count"]),d={make:make,duration:void 0===t?l:t,delay:a,forever:r,count:n,style:{animationFillMode:"both"},reverse:s.left};return(0,_wrap2.default)(s,d,d,e)}Object.defineProperty(exports,"__esModule",{value:!0});var _propTypes=require("prop-types"),_wrap=require("./wrap"),_wrap2=_interopRequireDefault(_wrap),_globals=require("./globals"),propTypes={out:_propTypes.bool,left:_propTypes.bool,right:_propTypes.bool,top:_propTypes.bool,bottom:_propTypes.bool,big:_propTypes.bool,mirror:_propTypes.bool,opposite:_propTypes.bool,duration:_propTypes.number,timeout:_propTypes.number,delay:_propTypes.number,count:_propTypes.number,forever:_propTypes.bool},lookup={};Slide.propTypes=propTypes,exports.default=Slide,module.exports=exports.default;
+},{"prop-types":"../node_modules/prop-types/index.js","./wrap":"../node_modules/react-reveal/wrap.js","./globals":"../node_modules/react-reveal/globals.js"}],"../node_modules/react-reveal/Bounce.js":[function(require,module,exports) {
+"use strict";function _interopRequireDefault(o){return o&&o.__esModule?o:{default:o}}function _objectWithoutProperties(o,n){var r={};for(var t in o)n.indexOf(t)>=0||Object.prototype.hasOwnProperty.call(o,t)&&(r[t]=o[t]);return r}function make(o,n){var r=n.left,t=n.right,e=n.up,a=n.down,p=n.top,i=n.bottom,s=n.mirror,l=n.opposite,u=(r?1:0)|(t?2:0)|(p||a?4:0)|(i||e?8:0)|(s?16:0)|(l?32:0)|(o?64:0);if(lookup.hasOwnProperty(u))return lookup[u];if(!s!=!(o&&l)){var d=[t,r,i,p,a,e];r=d[0],t=d[1],p=d[2],i=d[3],e=d[4],a=d[5]}var f=r||t,c=p||i||e||a,m=f||c,y=void 0,v=void 0,_=void 0,b=void 0,x=void 0,T=void 0,g=void 0,h=void 0,k=void 0,w=void 0,q=void 0,O=void 0,P=void 0,j=void 0;return o?(b=f?(t?"-":"")+"20px":0,x=c?(e||i?"":"-")+"10px":"0",T=(a||p?"":"-")+"20px",P=f?(r?"-":"")+"2000px":"0",j=c?(a||p?"-":"")+"2000px":"0"):(v=f?(r?"-":"")+"3000px":"0",_=c?(a||p?"-":"")+"3000px":"0",g=f?(t?"-":"")+"25px":"0",h=c?(e||i?"-":"")+"25px":"0",k=f?(r?"-":"")+"10px":"0",w=c?(a||p?"-":"")+"10px":"0",q=f?(t?"-":"")+"5px":"0",O=c?(e||i?"-":"")+"5px":"0"),y=m?o?"\n        20% {\n          transform: translate3d("+b+", "+x+", 0);\n          }\n        "+(c?"40%, 45% {\n            opacity: 1;\n            transform: translate3d(0, "+T+", 0);\n          }":"")+"\n          to {\n            opacity: 0;\n            transform: translate3d("+P+", "+j+", 0);\n        }\n      ":"from, 60%, 75%, 90%, to {\n        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);\n      }\n      from {\n        opacity: 0;\n        transform: translate3d("+v+", "+_+", 0);\n      }\n      60% {\n        opacity: 1;\n        transform: translate3d("+g+", "+h+", 0);\n      }\n      75% {\n        transform: translate3d("+k+", "+w+", 0);\n      }\n      90% {\n        transform: translate3d("+q+", "+O+", 0);\n      }\n      to {\n        transform: none;\n      }":o?"20% {\n          transform: scale3d(.9, .9, .9);\n        }\n        50%, 55% {\n          opacity: 1;\n          transform: scale3d(1.1, 1.1, 1.1);\n        }\n        to {\n          opacity: 0;\n          transform: scale3d(.3, .3, .3);\n      }":"from, 20%, 40%, 60%, 80%, to {\n        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);\n      }\n      0% {\n        opacity: 0;\n        transform: scale3d(.3, .3, .3);\n      }\n      20% {\n        transform: scale3d(1.1, 1.1, 1.1);\n      }\n      40% {\n        transform: scale3d(.9, .9, .9);\n      }\n      60% {\n        opacity: 1;\n        transform: scale3d(1.03, 1.03, 1.03);\n      }\n      80% {\n        transform: scale3d(.97, .97, .97);\n      }\n      to {\n        opacity: 1;\n        transform: scale3d(1, 1, 1);\n      }",lookup[u]=(0,_globals.animation)(y),lookup[u]}function Bounce(){var o=arguments.length>0&&void 0!==arguments[0]?arguments[0]:_globals.defaults,n=o.children,r=(o.out,o.forever),t=o.timeout,e=o.duration,a=void 0===e?_globals.defaults.duration:e,p=o.delay,i=void 0===p?_globals.defaults.delay:p,s=o.count,l=void 0===s?_globals.defaults.count:s,u=_objectWithoutProperties(o,["children","out","forever","timeout","duration","delay","count"]),d={make:make,duration:void 0===t?a:t,delay:i,forever:r,count:l,style:{animationFillMode:"both"},reverse:u.left};return(0,_wrap2.default)(u,d,d,n)}Object.defineProperty(exports,"__esModule",{value:!0});var _propTypes=require("prop-types"),_wrap=require("./wrap"),_wrap2=_interopRequireDefault(_wrap),_globals=require("./globals"),propTypes={out:_propTypes.bool,left:_propTypes.bool,right:_propTypes.bool,top:_propTypes.bool,bottom:_propTypes.bool,mirror:_propTypes.bool,opposite:_propTypes.bool,duration:_propTypes.number,timeout:_propTypes.number,delay:_propTypes.number,count:_propTypes.number,forever:_propTypes.bool},lookup={};Bounce.propTypes=propTypes,exports.default=Bounce,module.exports=exports.default;
+},{"prop-types":"../node_modules/prop-types/index.js","./wrap":"../node_modules/react-reveal/wrap.js","./globals":"../node_modules/react-reveal/globals.js"}],"components/AnimationTypeWrapper.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Zoom = _interopRequireDefault(require("react-reveal/Zoom"));
+
+var _Fade = _interopRequireDefault(require("react-reveal/Fade"));
+
+var _Slide = _interopRequireDefault(require("react-reveal/Slide"));
+
+var _Bounce = _interopRequireDefault(require("react-reveal/Bounce"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//animation global
+var AnimationTypeWrapper = function AnimationTypeWrapper(_ref) {
+  var type = _ref.type,
+      children = _ref.children,
+      rest = (0, _objectWithoutProperties2.default)(_ref, ["type", "children"]);
+  var content;
+
+  switch (type) {
+    case 'Zoom':
+      console.log('zoom');
+      content = /*#__PURE__*/_react.default.createElement(_Zoom.default, rest, children);
+      break;
+
+    case 'Slide':
+      console.log('Slide');
+      content = /*#__PURE__*/_react.default.createElement(_Slide.default, rest, children);
+      break;
+
+    case 'Fade':
+      console.log('Fade');
+      content = /*#__PURE__*/_react.default.createElement(_Fade.default, rest, children);
+      break;
+
+    case 'Bounce':
+      console.log('Bounce');
+      content = /*#__PURE__*/_react.default.createElement(_Bounce.default, rest, children);
+      break;
+
+    default:
+      content = /*#__PURE__*/_react.default.createElement("div", null, children);
+  }
+
+  return /*#__PURE__*/_react.default.createElement("div", null, content);
+};
+
+var _default = AnimationTypeWrapper;
+exports.default = _default;
+},{"@babel/runtime/helpers/objectWithoutProperties":"../node_modules/@babel/runtime/helpers/objectWithoutProperties.js","react":"../node_modules/react/index.js","react-reveal/Zoom":"../node_modules/react-reveal/Zoom.js","react-reveal/Fade":"../node_modules/react-reveal/Fade.js","react-reveal/Slide":"../node_modules/react-reveal/Slide.js","react-reveal/Bounce":"../node_modules/react-reveal/Bounce.js"}],"../node_modules/react-bulma-components/dist/index.js":[function(require,module,exports) {
 var define;
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -37934,48 +38067,7 @@ panel_Panel.defaultProps = panel_objectSpread({}, modifiers.defaultProps, {
 /******/ ]);
 });
 
-},{"prop-types":"../node_modules/prop-types/index.js","react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js"}],"constants.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.ressources = exports.LOGO = exports.CONSTANT = void 0;
-var path = './../images/';
-var ressources = {
-  "home1": {
-    "title": "Raconter votre experience digital",
-    "content": "De la strategie de haut niveau et la pensée creative à l\'éxecution et aux performances parfaites en pixels nous nous effondrons pour ajouter de la valeur à votre marque.Nous pensons grand, donnons vie à des idées, concevons des expériences et racontons des histoires qui rendent les utlisateurs heureux."
-  },
-  "home2": {
-    "title": "Conseil, agence, entièrement numérique",
-    "content": "Nous résolvons les défis numériques et créons des expériences client mémorables grâce à la conception, l\'ingénierie et l\'optimisation de produits"
-  },
-  "home3": {
-    "title": "Nous croyons à la collaboration et à la co-création",
-    "content": ""
-  },
-  "home4": {
-    "title": "Execution",
-    "content": "Nous sommes tout aussi enthousiastes à l\'idée de voir grand que de transformer des idées en lignes de codes, de beaux designs, des flux dynamiques et des histoires sociales"
-  },
-  "contact": {
-    "title": "Contact",
-    "content": "Nous serons à votre disposition"
-  }
-};
-exports.ressources = ressources;
-var LOGO = [path + "digital-power-i.png", path + "samsung.png", path + "digital-power-i.png", path + "samsung.png"];
-exports.LOGO = LOGO;
-var CONSTANT = {
-  "logo": path + "first-digital-white.png",
-  "web0": path + "application_block_2.png",
-  "web1": path + "application_block_1.png",
-  "web2": path + "application_block_3.png",
-  "web5": path + "application_block_5.png"
-};
-exports.CONSTANT = CONSTANT;
-},{}],"../node_modules/@fortawesome/fontawesome-svg-core/index.es.js":[function(require,module,exports) {
+},{"prop-types":"../node_modules/prop-types/index.js","react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js"}],"../node_modules/@fortawesome/fontawesome-svg-core/index.es.js":[function(require,module,exports) {
 var global = arguments[3];
 "use strict";
 
@@ -50949,19 +51041,227 @@ FontAwesomeIcon.defaultProps = {
   swapOpacity: false
 };
 var convertCurry = convert.bind(null, _react.default.createElement);
-},{"@fortawesome/fontawesome-svg-core":"../node_modules/@fortawesome/fontawesome-svg-core/index.es.js","prop-types":"../node_modules/prop-types/index.js","react":"../node_modules/react/index.js"}],"../node_modules/react-reveal/globals.js":[function(require,module,exports) {
-"use strict";function insertRule(e){try{return sheet.insertRule(e,sheet.cssRules.length)}catch(e){console.warn("react-reveal - animation failed")}}function cascade(e,n,t,o,r){var s=Math.log(o),i=Math.log(r),a=(i-s)/(t-n);return Math.exp(s+a*(e-n))}function animation(e){if(!sheet)return"";var n="@keyframes "+(name+counter)+"{"+e+"}",t=effectMap[e];return t?""+name+t:(sheet.insertRule(n,sheet.cssRules.length),effectMap[e]=counter,""+name+counter++)}function hideAll(){globalHide||(exports.globalHide=globalHide=!0,window.removeEventListener("scroll",hideAll,!0),insertRule("."+namespace+" { opacity: 0; }"),window.removeEventListener("orientationchange",hideAll,!0),window.document.removeEventListener("visibilitychange",hideAll))}function config(e){var n=e.ssrFadeout;exports.fadeOutEnabled=fadeOutEnabled=n}Object.defineProperty(exports,"__esModule",{value:!0}),exports.insertRule=insertRule,exports.cascade=cascade,exports.animation=animation,exports.hideAll=hideAll,exports.default=config;var namespace=exports.namespace="react-reveal",defaults=exports.defaults={duration:1e3,delay:0,count:1},ssr=exports.ssr=!0,observerMode=exports.observerMode=!1,raf=exports.raf=function(e){return window.setTimeout(e,66)},disableSsr=exports.disableSsr=function(){return exports.ssr=ssr=!1},fadeOutEnabled=exports.fadeOutEnabled=!1,ssrFadeout=exports.ssrFadeout=function(){var e=arguments.length>0&&void 0!==arguments[0]&&arguments[0];return exports.fadeOutEnabled=fadeOutEnabled=e},globalHide=exports.globalHide=!1,ie10=exports.ie10=!1,collapseend=exports.collapseend=void 0,counter=1,effectMap={},sheet=!1,name=namespace+"-"+Math.floor(1e15*Math.random())+"-";if("undefined"!=typeof window&&"nodejs"!==window.name&&window.document&&"undefined"!=typeof navigator){exports.observerMode=observerMode="IntersectionObserver"in window&&"IntersectionObserverEntry"in window&&"intersectionRatio"in window.IntersectionObserverEntry.prototype&&/\{\s*\[native code\]\s*\}/.test(""+IntersectionObserver),exports.raf=raf=window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||raf,exports.ssr=ssr=window.document.querySelectorAll("div[data-reactroot]").length>0,-1!==navigator.appVersion.indexOf("MSIE 10")&&(exports.ie10=ie10=!0),ssr&&"performance"in window&&"timing"in window.performance&&"domContentLoadedEventEnd"in window.performance.timing&&window.performance.timing.domLoading&&Date.now()-window.performance.timing.domLoading<300&&(exports.ssr=ssr=!1),ssr&&window.setTimeout(disableSsr,1500),observerMode||(exports.collapseend=collapseend=document.createEvent("Event"),collapseend.initEvent("collapseend",!0,!0));var element=document.createElement("style");document.head.appendChild(element),element.sheet&&element.sheet.cssRules&&element.sheet.insertRule&&(sheet=element.sheet,window.addEventListener("scroll",hideAll,!0),window.addEventListener("orientationchange",hideAll,!0),window.document.addEventListener("visibilitychange",hideAll))}
-},{}],"../node_modules/react-reveal/RevealBase.js":[function(require,module,exports) {
-"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}function _defineProperty(e,t,i){return t in e?Object.defineProperty(e,t,{value:i,enumerable:!0,configurable:!0,writable:!0}):e[t]=i,e}function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _possibleConstructorReturn(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function _inherits(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(exports,"__esModule",{value:!0});var _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},_slicedToArray=function(){function e(e,t){var i=[],s=!0,o=!1,n=void 0;try{for(var r,a=e[Symbol.iterator]();!(s=(r=a.next()).done)&&(i.push(r.value),!t||i.length!==t);s=!0);}catch(e){o=!0,n=e}finally{try{!s&&a.return&&a.return()}finally{if(o)throw n}}return i}return function(t,i){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,i);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_extends=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var i=arguments[t];for(var s in i)Object.prototype.hasOwnProperty.call(i,s)&&(e[s]=i[s])}return e},_createClass=function(){function e(e,t){for(var i=0;i<t.length;i++){var s=t[i];s.enumerable=s.enumerable||!1,s.configurable=!0,"value"in s&&(s.writable=!0),Object.defineProperty(e,s.key,s)}}return function(t,i,s){return i&&e(t.prototype,i),s&&e(t,s),t}}(),_react=require("react"),_react2=_interopRequireDefault(_react),_propTypes=require("prop-types"),_globals=require("./globals"),inOut=(0,_propTypes.shape)({make:_propTypes.func,duration:_propTypes.number.isRequired,delay:_propTypes.number.isRequired,forever:_propTypes.bool,count:_propTypes.number.isRequired,style:_propTypes.object.isRequired,reverse:_propTypes.bool}),propTypes={collapse:_propTypes.bool,collapseEl:_propTypes.element,cascade:_propTypes.bool,wait:_propTypes.number,force:_propTypes.bool,disabled:_propTypes.bool,appear:_propTypes.bool,enter:_propTypes.bool,exit:_propTypes.bool,fraction:_propTypes.number,refProp:_propTypes.string,innerRef:_propTypes.func,onReveal:_propTypes.func,unmountOnExit:_propTypes.bool,mountOnEnter:_propTypes.bool,inEffect:inOut.isRequired,outEffect:(0,_propTypes.oneOfType)([inOut,(0,_propTypes.oneOf)([!1])]).isRequired,ssrReveal:_propTypes.bool,collapseOnly:_propTypes.bool,ssrFadeout:_propTypes.bool},defaultProps={fraction:.2,refProp:"ref"},contextTypes={transitionGroup:_propTypes.object},RevealBase=function(e){function t(e,i){_classCallCheck(this,t);var s=_possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e,i));return s.isOn=void 0===e.when||!!e.when,s.state={collapse:e.collapse?t.getInitialCollapseStyle(e):void 0,style:{opacity:s.isOn&&!e.ssrReveal||!e.outEffect?void 0:0}},s.savedChild=!1,s.isShown=!1,_globals.observerMode?s.handleObserve=s.handleObserve.bind(s):(s.revealHandler=s.makeHandler(s.reveal),s.resizeHandler=s.makeHandler(s.resize)),s.saveRef=s.saveRef.bind(s),s}return _inherits(t,e),_createClass(t,[{key:"saveRef",value:function(e){this.childRef&&this.childRef(e),this.props.innerRef&&this.props.innerRef(e),this.el!==e&&(this.el=e&&"offsetHeight"in e?e:void 0,this.observe(this.props,!0))}},{key:"invisible",value:function(){this&&this.el&&(this.savedChild=!1,this.isShown||(this.setState({hasExited:!0,collapse:this.props.collapse?_extends({},this.state.collapse,{visibility:"hidden"}):null,style:{opacity:0}}),!_globals.observerMode&&this.props.collapse&&window.document.dispatchEvent(_globals.collapseend)))}},{key:"animationEnd",value:function(e,t,i){var s=this,o=i.forever,n=i.count,r=i.delay,a=i.duration;if(!o){var l=function(){s&&s.el&&(s.animationEndTimeout=void 0,e.call(s))};this.animationEndTimeout=window.setTimeout(l,r+(a+(t?a:0)*n))}}},{key:"getDimensionValue",value:function(){return this.el.offsetHeight+parseInt(window.getComputedStyle(this.el,null).getPropertyValue("margin-top"),10)+parseInt(window.getComputedStyle(this.el,null).getPropertyValue("margin-bottom"),10)}},{key:"collapse",value:function(e,t,i){var s=i.duration+(t.cascade?i.duration:0),o=this.isOn?this.getDimensionValue():0,n=void 0,r=void 0;if(t.collapseOnly)n=i.duration/3,r=i.delay;else{var a=s>>2,l=a>>1;n=a,r=i.delay+(this.isOn?0:s-a-l),e.style.animationDuration=s-a+(this.isOn?l:-l)+"ms",e.style.animationDelay=i.delay+(this.isOn?a-l:0)+"ms"}return e.collapse={height:o,transition:"height "+n+"ms ease "+r+"ms",overflow:t.collapseOnly?"hidden":void 0},e}},{key:"animate",value:function(e){if(this&&this.el&&(this.unlisten(),this.isShown!==this.isOn)){this.isShown=this.isOn;var t=!this.isOn&&e.outEffect,i=e[t?"outEffect":"inEffect"],s="style"in i&&i.style.animationName||void 0,o=void 0;e.collapseOnly?o={hasAppeared:!0,hasExited:!1,style:{opacity:1}}:((e.outEffect||this.isOn)&&i.make&&(s=i.make),o={hasAppeared:!0,hasExited:!1,collapse:void 0,style:_extends({},i.style,{animationDuration:i.duration+"ms",animationDelay:i.delay+"ms",animationIterationCount:i.forever?"infinite":i.count,opacity:1,animationName:s}),className:i.className}),this.setState(e.collapse?this.collapse(o,e,i):o),t?(this.savedChild=_react2.default.cloneElement(this.getChild()),this.animationEnd(this.invisible,e.cascade,i)):this.savedChild=!1,this.onReveal(e)}}},{key:"onReveal",value:function(e){e.onReveal&&this.isOn&&(this.onRevealTimeout&&(this.onRevealTimeout=window.clearTimeout(this.onRevealTimeout)),e.wait?this.onRevealTimeout=window.setTimeout(e.onReveal,e.wait):e.onReveal())}},{key:"componentWillUnmount",value:function(){this.unlisten(),_globals.ssr&&(0,_globals.disableSsr)()}},{key:"handleObserve",value:function(e,t){_slicedToArray(e,1)[0].intersectionRatio>0&&(t.disconnect(),this.observer=null,this.reveal(this.props,!0))}},{key:"observe",value:function(e){var t=arguments.length>1&&void 0!==arguments[1]&&arguments[1];if(this.el&&_globals.observerMode){if(this.observer){if(!t)return;this.observer.disconnect()}else if(t)return;this.observer=new IntersectionObserver(this.handleObserve,{threshold:e.fraction}),this.observer.observe(this.el)}}},{key:"reveal",value:function(e){var t=this,i=arguments.length>1&&void 0!==arguments[1]&&arguments[1];_globals.globalHide||(0,_globals.hideAll)(),this&&this.el&&(e||(e=this.props),_globals.ssr&&(0,_globals.disableSsr)(),this.isOn&&this.isShown&&void 0!==e.spy?(this.isShown=!1,this.setState({style:{}}),window.setTimeout(function(){return t.reveal(e)},200)):i||this.inViewport(e)||e.force?this.animate(e):_globals.observerMode?this.observe(e):this.listen())}},{key:"componentDidMount",value:function(){var e=this;if(this.el&&!this.props.disabled){this.props.collapseOnly||("make"in this.props.inEffect&&this.props.inEffect.make(!1,this.props),void 0!==this.props.when&&this.props.outEffect&&"make"in this.props.outEffect&&this.props.outEffect.make(!0,this.props));var i=this.context.transitionGroup,s=i&&!i.isMounting?!("enter"in this.props&&!1===this.props.enter):this.props.appear;return this.isOn&&((void 0!==this.props.when||void 0!==this.props.spy)&&!s||_globals.ssr&&!_globals.fadeOutEnabled&&!this.props.ssrFadeout&&this.props.outEffect&&!this.props.ssrReveal&&t.getTop(this.el)<window.pageYOffset+window.innerHeight)?(this.isShown=!0,this.setState({hasAppeared:!0,collapse:this.props.collapse?{height:this.getDimensionValue()}:this.state.collapse,style:{opacity:1}}),void this.onReveal(this.props)):_globals.ssr&&(_globals.fadeOutEnabled||this.props.ssrFadeout)&&this.props.outEffect&&t.getTop(this.el)<window.pageYOffset+window.innerHeight?(this.setState({style:{opacity:0,transition:"opacity 1000ms 1000ms"}}),void window.setTimeout(function(){return e.reveal(e.props,!0)},2e3)):void(this.isOn&&(this.props.force?this.animate(this.props):this.reveal(this.props)))}}},{key:"cascade",value:function(e){var t=this,i=void 0;i="string"==typeof e?e.split("").map(function(e,t){return _react2.default.createElement("span",{key:t,style:{display:"inline-block",whiteSpace:"pre"}},e)}):_react2.default.Children.toArray(e);var s=this.props[this.isOn||!this.props.outEffect?"inEffect":"outEffect"],o=s.duration,n=s.reverse,r=i.length,a=2*o;this.props.collapse&&(a=parseInt(this.state.style.animationDuration,10),o=a/2);var l=n?r:0;return i=i.map(function(e){return"object"===(void 0===e?"undefined":_typeof(e))&&e?_react2.default.cloneElement(e,{style:_extends({},e.props.style,t.state.style,{animationDuration:Math.round((0,_globals.cascade)(n?l--:l++,0,r,o,a))+"ms"})}):e})}},{key:"componentWillReceiveProps",value:function(e){if(void 0!==e.when&&(this.isOn=!!e.when),e.fraction!==this.props.fraction&&this.observe(e,!0),!this.isOn&&e.onExited&&"exit"in e&&!1===e.exit)return void e.onExited();e.disabled||(e.collapse&&!this.props.collapse&&(this.setState({style:{},collapse:t.getInitialCollapseStyle(e)}),this.isShown=!1),e.when===this.props.when&&e.spy===this.props.spy||this.reveal(e),this.onRevealTimeout&&!this.isOn&&(this.onRevealTimeout=window.clearTimeout(this.onRevealTimeout)))}},{key:"getChild",value:function(){if(this.savedChild&&!this.props.disabled)return this.savedChild;if("object"===_typeof(this.props.children)){var e=_react2.default.Children.only(this.props.children);return"type"in e&&"string"==typeof e.type||"ref"!==this.props.refProp?e:_react2.default.createElement("div",null,e)}return _react2.default.createElement("div",null,this.props.children)}},{key:"render",value:function(){var e=void 0;e=this.state.hasAppeared?!this.props.unmountOnExit||!this.state.hasExited||this.isOn:!this.props.mountOnEnter||this.isOn;var t=this.getChild();"function"==typeof t.ref&&(this.childRef=t.ref);var i=!1,s=t.props,o=s.style,n=s.className,r=s.children,a=this.props.disabled?n:(this.props.outEffect?_globals.namespace:"")+(this.state.className?" "+this.state.className:"")+(n?" "+n:"")||void 0,l=void 0;"function"==typeof this.state.style.animationName&&(this.state.style.animationName=this.state.style.animationName(!this.isOn,this.props)),this.props.cascade&&!this.props.disabled&&r&&this.state.style.animationName?(i=this.cascade(r),l=_extends({},o,{opacity:1})):l=this.props.disabled?o:_extends({},o,this.state.style);var p=_extends({},this.props.props,_defineProperty({className:a,style:l},this.props.refProp,this.saveRef)),h=_react2.default.cloneElement(t,p,e?i||r:void 0);return void 0!==this.props.collapse?this.props.collapseEl?_react2.default.cloneElement(this.props.collapseEl,{style:_extends({},this.props.collapseEl.style,this.props.disabled?void 0:this.state.collapse),children:h}):_react2.default.createElement("div",{style:this.props.disabled?void 0:this.state.collapse,children:h}):h}},{key:"makeHandler",value:function(e){var t=this,i=function(){e.call(t,t.props),t.ticking=!1};return function(){t.ticking||((0,_globals.raf)(i),t.ticking=!0)}}},{key:"inViewport",value:function(e){if(!this.el||window.document.hidden)return!1;var i=this.el.offsetHeight,s=window.pageYOffset-t.getTop(this.el),o=Math.min(i,window.innerHeight)*(_globals.globalHide?e.fraction:0);return s>o-window.innerHeight&&s<i-o}},{key:"resize",value:function(e){this&&this.el&&this.isOn&&this.inViewport(e)&&(this.unlisten(),this.isShown=this.isOn,this.setState({hasExited:!this.isOn,hasAppeared:!0,collapse:void 0,style:{opacity:this.isOn||!e.outEffect?1:0}}),this.onReveal(e))}},{key:"listen",value:function(){_globals.observerMode||this.isListener||(this.isListener=!0,window.addEventListener("scroll",this.revealHandler,{passive:!0}),window.addEventListener("orientationchange",this.revealHandler,{passive:!0}),window.document.addEventListener("visibilitychange",this.revealHandler,{passive:!0}),window.document.addEventListener("collapseend",this.revealHandler,{passive:!0}),window.addEventListener("resize",this.resizeHandler,{passive:!0}))}},{key:"unlisten",value:function(){!_globals.observerMode&&this.isListener&&(window.removeEventListener("scroll",this.revealHandler,{passive:!0}),window.removeEventListener("orientationchange",this.revealHandler,{passive:!0}),window.document.removeEventListener("visibilitychange",this.revealHandler,{passive:!0}),window.document.removeEventListener("collapseend",this.revealHandler,{passive:!0}),window.removeEventListener("resize",this.resizeHandler,{passive:!0}),this.isListener=!1),this.onRevealTimeout&&(this.onRevealTimeout=window.clearTimeout(this.onRevealTimeout)),this.animationEndTimeout&&(this.animationEndTimeout=window.clearTimeout(this.animationEndTimeout))}}],[{key:"getInitialCollapseStyle",value:function(e){return{height:0,visibility:e.when?void 0:"hidden"}}},{key:"getTop",value:function(e){for(;void 0===e.offsetTop;)e=e.parentNode;for(var t=e.offsetTop;e.offsetParent;t+=e.offsetTop)e=e.offsetParent;return t}}]),t}(_react2.default.Component);RevealBase.propTypes=propTypes,RevealBase.defaultProps=defaultProps,RevealBase.contextTypes=contextTypes,RevealBase.displayName="RevealBase",exports.default=RevealBase,module.exports=exports.default;
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","./globals":"../node_modules/react-reveal/globals.js"}],"../node_modules/react-reveal/wrap.js":[function(require,module,exports) {
-"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}function wrap(e,t,a,r){return"in"in e&&(e.when=e.in),_react2.default.Children.count(r)<2?_react2.default.createElement(_RevealBase2.default,_extends({},e,{inEffect:t,outEffect:a,children:r})):(r=_react2.default.Children.map(r,function(r){return _react2.default.createElement(_RevealBase2.default,_extends({},e,{inEffect:t,outEffect:a,children:r}))}),"Fragment"in _react2.default?_react2.default.createElement(_react2.default.Fragment,null,r):_react2.default.createElement("span",null,r))}Object.defineProperty(exports,"__esModule",{value:!0});var _extends=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var a=arguments[t];for(var r in a)Object.prototype.hasOwnProperty.call(a,r)&&(e[r]=a[r])}return e};exports.default=wrap;var _react=require("react"),_react2=_interopRequireDefault(_react),_RevealBase=require("./RevealBase"),_RevealBase2=_interopRequireDefault(_RevealBase);module.exports=exports.default;
-},{"react":"../node_modules/react/index.js","./RevealBase":"../node_modules/react-reveal/RevealBase.js"}],"../node_modules/react-reveal/Zoom.js":[function(require,module,exports) {
-"use strict";function _interopRequireDefault(o){return o&&o.__esModule?o:{default:o}}function _objectWithoutProperties(o,e){var r={};for(var t in o)e.indexOf(t)>=0||Object.prototype.hasOwnProperty.call(o,t)&&(r[t]=o[t]);return r}function make(o,e){var r=e.left,t=e.right,p=e.up,n=e.down,a=e.top,i=e.bottom,l=e.mirror,u=e.opposite,s=(r?1:0)|(t?2:0)|(a||n?4:0)|(i||p?8:0)|(l?16:0)|(u?32:0)|(o?64:0);if(lookup.hasOwnProperty(s))return lookup[s];if(!l!=!(o&&u)){var d=[t,r,i,a,n,p];r=d[0],t=d[1],a=d[2],i=d[3],p=d[4],n=d[5]}var f=r||t,c=a||i||p||n,m=f||c,y=void 0,b=void 0,_=void 0,v=void 0,T=void 0;return m?o?(b=f?(r?"":"-")+"42px":"0",_=c?(n||a?"-":"")+"60px":"0",v=f?(t?"":"-")+"2000px":"0",T=c?(p||i?"":"-")+"2000px":"0",y="40% {\n          opacity: 1;\n          transform: scale3d(.475, .475, .475) translate3d("+b+", "+_+", 0);\n        }\n        to {\n          opacity: 0;\n          transform: scale(.1) translate3d("+v+", "+T+", 0);\n          transform-origin: "+(c?"center bottom":(r?"left":"right")+" center")+";\n        }"):(b=f?(r?"-":"")+"1000px":"0",_=c?(n||a?"-":"")+"1000px":"0",v=f?(t?"-":"")+"10px":"0",T=c?(p||i?"-":"")+"60px":"0",y="from {\n          opacity: 0;\n          transform: scale3d(.1, .1, .1) translate3d("+b+", "+_+", 0);\n          animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);\n        }\n        60% {\n          opacity: 1;\n          transform: scale3d(.475, .475, .475) translate3d("+v+", "+T+", 0);\n          animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);\n        }"):y=(o?"to":"from")+" {opacity: 0; transform: scale3d(.1, .1, .1);} "+(o?"from":"to")+" { opacity: 1; transform: none;}",lookup[s]=(0,_globals.animation)(y),lookup[s]}function Zoom(){var o=arguments.length>0&&void 0!==arguments[0]?arguments[0]:_globals.defaults,e=o.children,r=(o.out,o.forever),t=o.timeout,p=o.duration,n=void 0===p?_globals.defaults.duration:p,a=o.delay,i=void 0===a?_globals.defaults.delay:a,l=o.count,u=void 0===l?_globals.defaults.count:l,s=_objectWithoutProperties(o,["children","out","forever","timeout","duration","delay","count"]),d={make:make,duration:void 0===t?n:t,delay:i,forever:r,count:u,style:{animationFillMode:"both"},reverse:s.left};return(0,_wrap2.default)(s,d,d,e)}Object.defineProperty(exports,"__esModule",{value:!0});var _propTypes=require("prop-types"),_wrap=require("./wrap"),_wrap2=_interopRequireDefault(_wrap),_globals=require("./globals"),propTypes={out:_propTypes.bool,left:_propTypes.bool,right:_propTypes.bool,top:_propTypes.bool,bottom:_propTypes.bool,mirror:_propTypes.bool,opposite:_propTypes.bool,duration:_propTypes.number,timeout:_propTypes.number,delay:_propTypes.number,count:_propTypes.number,forever:_propTypes.bool},lookup={};Zoom.propTypes=propTypes,exports.default=Zoom,module.exports=exports.default;
-},{"prop-types":"../node_modules/prop-types/index.js","./wrap":"../node_modules/react-reveal/wrap.js","./globals":"../node_modules/react-reveal/globals.js"}],"../node_modules/react-reveal/Fade.js":[function(require,module,exports) {
-"use strict";function _interopRequireDefault(o){return o&&o.__esModule?o:{default:o}}function _objectWithoutProperties(o,e){var r={};for(var t in o)e.indexOf(t)>=0||Object.prototype.hasOwnProperty.call(o,t)&&(r[t]=o[t]);return r}function make(o,e){var r=e.distance,t=e.left,p=e.right,a=e.up,l=e.down,i=e.top,u=e.bottom,n=e.big,s=e.mirror,d=e.opposite,_=(r?r.toString():0)+((t?1:0)|(p?2:0)|(i||l?4:0)|(u||a?8:0)|(s?16:0)|(d?32:0)|(o?64:0)|(n?128:0));if(lookup.hasOwnProperty(_))return lookup[_];var f=t||p||a||l||i||u,y=void 0,b=void 0;if(f){if(!s!=!(o&&d)){var v=[p,t,u,i,l,a];t=v[0],p=v[1],i=v[2],u=v[3],a=v[4],l=v[5]}var c=r||(n?"2000px":"100%");y=t?"-"+c:p?c:"0",b=l||i?"-"+c:a||u?c:"0"}return lookup[_]=(0,_globals.animation)((o?"to":"from")+" {opacity: 0;"+(f?" transform: translate3d("+y+", "+b+", 0);":"")+"}\n     "+(o?"from":"to")+" {opacity: 1;transform: none;} "),lookup[_]}function Fade(){var o=arguments.length>0&&void 0!==arguments[0]?arguments[0]:_globals.defaults,e=arguments.length>1&&void 0!==arguments[1]&&arguments[1],r=o.children,t=(o.out,o.forever),p=o.timeout,a=o.duration,l=void 0===a?_globals.defaults.duration:a,i=o.delay,u=void 0===i?_globals.defaults.delay:i,n=o.count,s=void 0===n?_globals.defaults.count:n,d=_objectWithoutProperties(o,["children","out","forever","timeout","duration","delay","count"]),_={make:make,duration:void 0===p?l:p,delay:u,forever:t,count:s,style:{animationFillMode:"both"},reverse:d.left};return e?(0,_wrap2.default)(d,_,_,r):_}Object.defineProperty(exports,"__esModule",{value:!0});var _propTypes=require("prop-types"),_globals=require("./globals"),_wrap=require("./wrap"),_wrap2=_interopRequireDefault(_wrap),propTypes={out:_propTypes.bool,left:_propTypes.bool,right:_propTypes.bool,top:_propTypes.bool,bottom:_propTypes.bool,big:_propTypes.bool,mirror:_propTypes.bool,opposite:_propTypes.bool,duration:_propTypes.number,timeout:_propTypes.number,distance:_propTypes.string,delay:_propTypes.number,count:_propTypes.number,forever:_propTypes.bool},lookup={};Fade.propTypes=propTypes,exports.default=Fade,module.exports=exports.default;
-},{"prop-types":"../node_modules/prop-types/index.js","./globals":"../node_modules/react-reveal/globals.js","./wrap":"../node_modules/react-reveal/wrap.js"}],"../node_modules/react-reveal/Slide.js":[function(require,module,exports) {
-"use strict";function _interopRequireDefault(o){return o&&o.__esModule?o:{default:o}}function _objectWithoutProperties(o,e){var r={};for(var t in o)e.indexOf(t)>=0||Object.prototype.hasOwnProperty.call(o,t)&&(r[t]=o[t]);return r}function make(o,e){var r=e.left,t=e.right,p=e.up,l=e.down,u=e.top,a=e.bottom,i=e.big,n=e.mirror,s=e.opposite,d=(r?1:0)|(t?2:0)|(u||l?4:0)|(a||p?8:0)|(n?16:0)|(s?32:0)|(o?64:0)|(i?128:0);if(lookup.hasOwnProperty(d))return lookup[d];var _=r||t||p||l||u||a,f=void 0,b=void 0;if(_){if(!n!=!(o&&s)){var y=[t,r,a,u,l,p];r=y[0],t=y[1],u=y[2],a=y[3],p=y[4],l=y[5]}var m=i?"2000px":"100%";f=r?"-"+m:t?m:"0",b=l||u?"-"+m:p||a?m:"0"}return lookup[d]=(0,_globals.animation)((o?"to":"from")+" {"+(_?" transform: translate3d("+f+", "+b+", 0);":"")+"}\n     "+(o?"from":"to")+" {transform: none;} "),lookup[d]}function Slide(){var o=arguments.length>0&&void 0!==arguments[0]?arguments[0]:_globals.defaults,e=o.children,r=(o.out,o.forever),t=o.timeout,p=o.duration,l=void 0===p?_globals.defaults.duration:p,u=o.delay,a=void 0===u?_globals.defaults.delay:u,i=o.count,n=void 0===i?_globals.defaults.count:i,s=_objectWithoutProperties(o,["children","out","forever","timeout","duration","delay","count"]),d={make:make,duration:void 0===t?l:t,delay:a,forever:r,count:n,style:{animationFillMode:"both"},reverse:s.left};return(0,_wrap2.default)(s,d,d,e)}Object.defineProperty(exports,"__esModule",{value:!0});var _propTypes=require("prop-types"),_wrap=require("./wrap"),_wrap2=_interopRequireDefault(_wrap),_globals=require("./globals"),propTypes={out:_propTypes.bool,left:_propTypes.bool,right:_propTypes.bool,top:_propTypes.bool,bottom:_propTypes.bool,big:_propTypes.bool,mirror:_propTypes.bool,opposite:_propTypes.bool,duration:_propTypes.number,timeout:_propTypes.number,delay:_propTypes.number,count:_propTypes.number,forever:_propTypes.bool},lookup={};Slide.propTypes=propTypes,exports.default=Slide,module.exports=exports.default;
-},{"prop-types":"../node_modules/prop-types/index.js","./wrap":"../node_modules/react-reveal/wrap.js","./globals":"../node_modules/react-reveal/globals.js"}],"components/home/Home.js":[function(require,module,exports) {
+},{"@fortawesome/fontawesome-svg-core":"../node_modules/@fortawesome/fontawesome-svg-core/index.es.js","prop-types":"../node_modules/prop-types/index.js","react":"../node_modules/react/index.js"}],"components/SectionContainer.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _AnimationTypeWrapper = _interopRequireDefault(require("./AnimationTypeWrapper"));
+
+var _reactBulmaComponents = require("react-bulma-components");
+
+var _fontawesomeSvgCore = require("@fortawesome/fontawesome-svg-core");
+
+var _freeBrandsSvgIcons = require("@fortawesome/free-brands-svg-icons");
+
+var _freeSolidSvgIcons = require("@fortawesome/free-solid-svg-icons");
+
+var _reactFontawesome = require("@fortawesome/react-fontawesome");
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_fontawesomeSvgCore.library.add(_freeBrandsSvgIcons.fab, _freeSolidSvgIcons.faBrain, _freeSolidSvgIcons.faCoffee, _freeSolidSvgIcons.faGrin, _freeSolidSvgIcons.faTrophy, _freeSolidSvgIcons.faHeart, _freeSolidSvgIcons.faGrinStars, _freeSolidSvgIcons.faHandsHelping); //content Global
+
+
+var SectionContainer = function SectionContainer(_ref) {
+  var srcImage = _ref.srcImage,
+      color = _ref.color,
+      size = _ref.size,
+      title = _ref.title,
+      content = _ref.content,
+      position = _ref.position,
+      _ref$align = _ref.align,
+      align = _ref$align === void 0 ? "left" : _ref$align,
+      _ref$icon = _ref.icon,
+      icon = _ref$icon === void 0 ? false : _ref$icon,
+      _ref$typeAnimation = _ref.typeAnimation,
+      typeAnimation = _ref$typeAnimation === void 0 ? "Slide" : _ref$typeAnimation,
+      _ref$typeAnimationCon = _ref.typeAnimationContent,
+      typeAnimationContent = _ref$typeAnimationCon === void 0 ? "Zoom" : _ref$typeAnimationCon;
+
+  var ContentInfo = function ContentInfo() {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      className: "txtAss"
+    }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Section, {
+      style: {
+        "textAlign": align
+      },
+      size: "large"
+    }, /*#__PURE__*/_react.default.createElement("div", null, icon && /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Icon, {
+      size: "large",
+      className: "i-home",
+      color: "black"
+    }, /*#__PURE__*/_react.default.createElement(_reactFontawesome.FontAwesomeIcon, {
+      icon: "hands-helping",
+      size: "6x"
+    })), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Heading, {
+      style: {
+        "textAlign": align
+      },
+      className: "title--large is-size-3-mobile",
+      weight: "bold",
+      spaced: true,
+      size: 1
+    }, title), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Heading, {
+      subtitle: true
+    }, content))));
+  };
+
+  var ContentImage = function ContentImage(_ref2) {
+    var direction = _ref2.direction,
+        rest = (0, _objectWithoutProperties2.default)(_ref2, ["direction"]);
+    return /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, null, /*#__PURE__*/_react.default.createElement(_AnimationTypeWrapper.default, (0, _extends2.default)({
+      type: typeAnimation
+    }, rest, {
+      children: /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Image, {
+        src: srcImage,
+        width: "",
+        className: "imageW"
+      })
+    })));
+  };
+
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Section, {
+    size: size,
+    style: {
+      padding: 0
+    }
+  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Hero, {
+    color: color,
+    gradient: true
+  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Hero.Body, null, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Container, null, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns, {
+    centered: true,
+    style: {
+      alignItems: "center"
+    }
+  }, position == 0 && /*#__PURE__*/_react.default.createElement(ContentImage, {
+    left: true
+  }), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, null, position == 0 && /*#__PURE__*/_react.default.createElement(_AnimationTypeWrapper.default, {
+    type: typeAnimationContent,
+    children: /*#__PURE__*/_react.default.createElement(ContentInfo, null)
+  }), position !== 0 && /*#__PURE__*/_react.default.createElement(_AnimationTypeWrapper.default, {
+    type: typeAnimationContent,
+    children: /*#__PURE__*/_react.default.createElement(ContentInfo, null)
+  })), position == 1 && /*#__PURE__*/_react.default.createElement(ContentImage, {
+    right: true
+  })))))));
+}; // proptype to delete error message on console
+
+
+_reactBulmaComponents.Hero.propTypes = {
+  color: _propTypes.default.string
+};
+_reactBulmaComponents.Icon.propTypes = {
+  color: _propTypes.default.string.isRequired
+};
+var _default = SectionContainer;
+exports.default = _default;
+},{"@babel/runtime/helpers/extends":"../node_modules/@babel/runtime/helpers/extends.js","@babel/runtime/helpers/objectWithoutProperties":"../node_modules/@babel/runtime/helpers/objectWithoutProperties.js","react":"../node_modules/react/index.js","./AnimationTypeWrapper":"components/AnimationTypeWrapper.js","react-bulma-components":"../node_modules/react-bulma-components/dist/index.js","@fortawesome/fontawesome-svg-core":"../node_modules/@fortawesome/fontawesome-svg-core/index.es.js","@fortawesome/free-brands-svg-icons":"../node_modules/@fortawesome/free-brands-svg-icons/index.es.js","@fortawesome/free-solid-svg-icons":"../node_modules/@fortawesome/free-solid-svg-icons/index.es.js","@fortawesome/react-fontawesome":"../node_modules/@fortawesome/react-fontawesome/index.es.js","prop-types":"../node_modules/prop-types/index.js"}],"components/SectionContainerForm.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactBulmaComponents = require("react-bulma-components");
+
+var _fontawesomeSvgCore = require("@fortawesome/fontawesome-svg-core");
+
+var _freeBrandsSvgIcons = require("@fortawesome/free-brands-svg-icons");
+
+var _freeSolidSvgIcons = require("@fortawesome/free-solid-svg-icons");
+
+var _reactFontawesome = require("@fortawesome/react-fontawesome");
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _Zoom = _interopRequireDefault(require("react-reveal/Zoom"));
+
+var _Fade = _interopRequireDefault(require("react-reveal/Fade"));
+
+var _Slide = _interopRequireDefault(require("react-reveal/Slide"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+//animation global
+_fontawesomeSvgCore.library.add(_freeBrandsSvgIcons.fab, _freeSolidSvgIcons.faBrain, _freeSolidSvgIcons.faCoffee, _freeSolidSvgIcons.faGrin, _freeSolidSvgIcons.faTrophy, _freeSolidSvgIcons.faHeart, _freeSolidSvgIcons.faGrinStars, _freeSolidSvgIcons.faHandsHelping);
+
+var onChangeInput = function onChangeInput(event) {
+  console.log(event);
+};
+
+var SectionContainerForm = function SectionContainerForm(_ref) {
+  var children = _ref.children,
+      srcImage = _ref.srcImage,
+      color = _ref.color,
+      size = _ref.size,
+      position = _ref.position,
+      _ref$align = _ref.align,
+      align = _ref$align === void 0 ? "left" : _ref$align,
+      _ref$icon = _ref.icon,
+      icon = _ref$icon === void 0 ? false : _ref$icon;
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Section, {
+    size: size,
+    style: {
+      padding: 0
+    }
+  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Hero, {
+    color: color,
+    gradient: true
+  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Hero.Body, null, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Container, null, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns, {
+    centered: true,
+    style: {
+      alignItems: "center"
+    }
+  }, position == 0 && /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, null, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Image, {
+    src: srcImage,
+    width: "",
+    className: "imageW"
+  })), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "txtAss"
+  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Section, {
+    style: {
+      "textAlign": align
+    },
+    size: "large"
+  }, children.map(function (component, i) {
+    return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, {
+      key: i
+    }, component);
+  })))), position == 1 && /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, null, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Image, {
+    src: srcImage,
+    width: "",
+    className: "imageW"
+  }))))))));
+};
+
+_reactBulmaComponents.Hero.propTypes = {
+  color: _propTypes.default.string
+};
+_reactBulmaComponents.Icon.propTypes = {
+  color: _propTypes.default.string.isRequired
+};
+var _default = SectionContainerForm;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","react-bulma-components":"../node_modules/react-bulma-components/dist/index.js","@fortawesome/fontawesome-svg-core":"../node_modules/@fortawesome/fontawesome-svg-core/index.es.js","@fortawesome/free-brands-svg-icons":"../node_modules/@fortawesome/free-brands-svg-icons/index.es.js","@fortawesome/free-solid-svg-icons":"../node_modules/@fortawesome/free-solid-svg-icons/index.es.js","@fortawesome/react-fontawesome":"../node_modules/@fortawesome/react-fontawesome/index.es.js","prop-types":"../node_modules/prop-types/index.js","react-reveal/Zoom":"../node_modules/react-reveal/Zoom.js","react-reveal/Fade":"../node_modules/react-reveal/Fade.js","react-reveal/Slide":"../node_modules/react-reveal/Slide.js"}],"components/FormContact.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -50973,11 +51273,7 @@ var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/sli
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _useReducer3 = _interopRequireWildcard(require("./../../reducer/useReducer"));
-
 var _reactBulmaComponents = require("react-bulma-components");
-
-var _constants = require("./../../constants");
 
 var _fontawesomeSvgCore = require("@fortawesome/fontawesome-svg-core");
 
@@ -51004,161 +51300,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //animation global
 _fontawesomeSvgCore.library.add(_freeBrandsSvgIcons.fab, _freeSolidSvgIcons.faBrain, _freeSolidSvgIcons.faCoffee, _freeSolidSvgIcons.faGrin, _freeSolidSvgIcons.faTrophy, _freeSolidSvgIcons.faHeart, _freeSolidSvgIcons.faGrinStars, _freeSolidSvgIcons.faHandsHelping);
 
-console.log('logo', _constants.CONSTANT, _constants.LOGO, _constants.ressources);
-var Input = _reactBulmaComponents.Form.Input,
-    Field = _reactBulmaComponents.Form.Field,
-    Control = _reactBulmaComponents.Form.Control,
-    Label = _reactBulmaComponents.Form.Label,
-    Help = _reactBulmaComponents.Form.Help,
-    InputFile = _reactBulmaComponents.Form.InputFile,
-    Select = _reactBulmaComponents.Form.Select,
-    CheckboxControlled = _reactBulmaComponents.Form.CheckboxControlled,
-    Textarea = _reactBulmaComponents.Form.Textarea,
-    RadioGroup = _reactBulmaComponents.Form.RadioGroup;
-
-var SectionContainer = function SectionContainer(_ref) {
-  var srcImage = _ref.srcImage,
-      color = _ref.color,
-      size = _ref.size,
-      title = _ref.title,
-      content = _ref.content,
-      position = _ref.position,
-      _ref$align = _ref.align,
-      align = _ref$align === void 0 ? "left" : _ref$align,
-      _ref$icon = _ref.icon,
-      icon = _ref$icon === void 0 ? false : _ref$icon;
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Section, {
-    size: size,
-    style: {
-      padding: 0
-    }
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Hero, {
-    color: color,
-    gradient: true
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Hero.Body, null, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Container, null, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns, {
-    centered: true,
-    style: {
-      alignItems: "center"
-    }
-  }, position == 0 && /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, null, /*#__PURE__*/_react.default.createElement(_Fade.default, {
-    top: true,
-    big: true
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Image, {
-    src: srcImage,
-    width: "",
-    className: "imageW"
-  }))), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, null, /*#__PURE__*/_react.default.createElement(_Fade.default, {
-    top: true
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "txtAss"
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Section, {
-    style: {
-      "textAlign": align
-    },
-    size: "large"
-  }, /*#__PURE__*/_react.default.createElement("div", null, icon && /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Icon, {
-    size: "large",
-    className: "i-home",
-    color: "black"
-  }, /*#__PURE__*/_react.default.createElement(_reactFontawesome.FontAwesomeIcon, {
-    icon: "hands-helping",
-    size: "6x"
-  })), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Heading, {
-    style: {
-      "textAlign": align
-    },
-    className: "title--large is-size-3-mobile",
-    weight: "bold",
-    spaced: true,
-    size: 1
-  }, title), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Heading, {
-    subtitle: true
-  }, content)))))), position == 1 && /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, null, /*#__PURE__*/_react.default.createElement(_Fade.default, {
-    top: true,
-    big: true
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Image, {
-    src: srcImage,
-    width: "",
-    className: "imageW"
-  })))))))));
-};
-
-var SectionContainerSingle = function SectionContainerSingle(_ref2) {
-  var srcImage = _ref2.srcImage,
-      color = _ref2.color,
-      size = _ref2.size,
-      title = _ref2.title,
-      content = _ref2.content,
-      position = _ref2.position,
-      _ref2$align = _ref2.align,
-      align = _ref2$align === void 0 ? "left" : _ref2$align,
-      _ref2$icon = _ref2.icon,
-      icon = _ref2$icon === void 0 ? false : _ref2$icon;
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Section, {
-    size: size,
-    style: {
-      padding: 0
-    }
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Hero, {
-    color: color,
-    gradient: true
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Hero.Body, null, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Container, null, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns, {
-    centered: true,
-    style: {
-      alignItems: "center"
-    }
-  }, position == 0 && /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, null, /*#__PURE__*/_react.default.createElement(_Fade.default, {
-    top: true,
-    big: true
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Image, {
-    src: srcImage,
-    width: "",
-    className: "imageW"
-  }))), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, null, /*#__PURE__*/_react.default.createElement(_Fade.default, {
-    top: true
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "txtAss"
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Section, {
-    style: {
-      "textAlign": align
-    },
-    size: "large"
-  }, /*#__PURE__*/_react.default.createElement("div", null, icon && /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Icon, {
-    size: "large",
-    className: "i-home",
-    color: "black"
-  }, /*#__PURE__*/_react.default.createElement(_reactFontawesome.FontAwesomeIcon, {
-    icon: "hands-helping",
-    size: "6x"
-  })), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Heading, {
-    style: {
-      "textAlign": align
-    },
-    className: "title--large is-size-3-mobile",
-    weight: "bold",
-    spaced: true,
-    size: 1
-  }, title), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Heading, {
-    subtitle: true
-  }, content)))))), position == 1 && /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, null, /*#__PURE__*/_react.default.createElement(_Fade.default, {
-    top: true,
-    big: true
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Image, {
-    src: srcImage,
-    width: "",
-    className: "imageW"
-  })))))))));
-};
-
 var onChangeInput = function onChangeInput(event) {
   console.log(event);
 };
 
-var FormContact = function FormContact(_ref3) {
-  var title = _ref3.title,
-      content = _ref3.content,
-      _ref3$align = _ref3.align,
-      align = _ref3$align === void 0 ? "center" : _ref3$align;
+var FormContact = function FormContact(_ref) {
+  var title = _ref.title,
+      content = _ref.content,
+      _ref$align = _ref.align,
+      align = _ref$align === void 0 ? "center" : _ref$align;
 
   var _useState = (0, _react.useState)('enter your email'),
       _useState2 = (0, _slicedToArray2.default)(_useState, 2),
@@ -51226,92 +51376,138 @@ var FormContact = function FormContact(_ref3) {
   }, "Submit"))))));
 };
 
-var SectionContainerForm = function SectionContainerForm(_ref4) {
-  var children = _ref4.children,
-      srcImage = _ref4.srcImage,
-      color = _ref4.color,
-      size = _ref4.size,
-      position = _ref4.position,
-      _ref4$align = _ref4.align,
-      align = _ref4$align === void 0 ? "left" : _ref4$align,
-      _ref4$icon = _ref4.icon,
-      icon = _ref4$icon === void 0 ? false : _ref4$icon;
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Section, {
-    size: size,
-    style: {
-      padding: 0
-    }
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Hero, {
-    color: color,
-    gradient: true
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Hero.Body, null, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Container, null, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns, {
-    centered: true,
-    style: {
-      alignItems: "center"
-    }
-  }, position == 0 && /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, null, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Image, {
-    src: srcImage,
-    width: "",
-    className: "imageW"
-  })), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, null, /*#__PURE__*/_react.default.createElement("div", {
-    className: "txtAss"
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Section, {
-    style: {
-      "textAlign": align
-    },
-    size: "large"
-  }, children.map(function (component, i) {
-    return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, {
-      key: i
-    }, component);
-  })))), position == 1 && /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, null, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Image, {
-    src: srcImage,
-    width: "",
-    className: "imageW"
-  }))))))));
+_reactBulmaComponents.Hero.propTypes = {
+  color: _propTypes.default.string
 };
+_reactBulmaComponents.Icon.propTypes = {
+  color: _propTypes.default.string.isRequired
+};
+FormContact.propTypes = {
+  defaultValue: _propTypes.default.string
+};
+var _default = FormContact;
+exports.default = _default;
+},{"@babel/runtime/helpers/slicedToArray":"../node_modules/@babel/runtime/helpers/slicedToArray.js","react":"../node_modules/react/index.js","react-bulma-components":"../node_modules/react-bulma-components/dist/index.js","@fortawesome/fontawesome-svg-core":"../node_modules/@fortawesome/fontawesome-svg-core/index.es.js","@fortawesome/free-brands-svg-icons":"../node_modules/@fortawesome/free-brands-svg-icons/index.es.js","@fortawesome/free-solid-svg-icons":"../node_modules/@fortawesome/free-solid-svg-icons/index.es.js","@fortawesome/react-fontawesome":"../node_modules/@fortawesome/react-fontawesome/index.es.js","prop-types":"../node_modules/prop-types/index.js","react-reveal/Zoom":"../node_modules/react-reveal/Zoom.js","react-reveal/Fade":"../node_modules/react-reveal/Fade.js","react-reveal/Slide":"../node_modules/react-reveal/Slide.js"}],"constants.js":[function(require,module,exports) {
+"use strict";
 
-var SectionContainerRight = function SectionContainerRight() {
-  return /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Section, {
-    size: "medium",
-    style: {
-      padding: 0
-    }
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Hero, {
-    color: "twitter",
-    gradient: true
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Hero.Body, {
-    style: {
-      padding: 0,
-      margin: 0
-    }
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Container, {
-    breakpoint: "fullhd",
-    fluid: true,
-    style: {
-      padding: 40,
-      margin: 0
-    }
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns, {
-    gapless: true,
-    centered: true,
-    style: {
-      alignItems: "center"
-    }
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, null, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Image, {
-    src: _constants.CONSTANT['web2'],
-    width: "500",
-    className: "imageW"
-  })), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, null, /*#__PURE__*/_react.default.createElement("div", {
-    className: "txtAd"
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Heading, null, "Section"), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Heading, {
-    subtitle: true
-  }, "A simple container to divide your page into ", /*#__PURE__*/_react.default.createElement("strong", null, "sections"), ", like the one you are currently reading"), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Button, {
-    color: "primary"
-  }, "Bulma button"))))))));
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.NAV = exports.ICON = exports.ressources = exports.LOGO = exports.CONSTANT = void 0;
+var path = './../images/';
+var ressources = {
+  "home1": {
+    "title": "Raconter votre experience digital",
+    "content": "De la strategie de haut niveau et la pensée creative à l\'éxecution et aux performances parfaites en pixels nous nous effondrons pour ajouter de la valeur à votre marque.Nous pensons grand, donnons vie à des idées, concevons des expériences et racontons des histoires qui rendent les utlisateurs heureux."
+  },
+  "home2": {
+    "title": "Conseil, agence, entièrement numérique",
+    "content": "Nous résolvons les défis numériques et créons des expériences client mémorables grâce à la conception, l\'ingénierie et l\'optimisation de produits"
+  },
+  "home3": {
+    "title": "Nous croyons à la collaboration et à la co-création",
+    "content": ""
+  },
+  "home4": {
+    "title": "Execution",
+    "content": "Nous sommes tout aussi enthousiastes à l\'idée de voir grand que de transformer des idées en lignes de codes, de beaux designs, des flux dynamiques et des histoires sociales"
+  },
+  "contact": {
+    "title": "Contact",
+    "content": "Nous serons à votre disposition"
+  }
+};
+exports.ressources = ressources;
+var ICON = [{
+  'text': 'Travailler dur',
+  'nameicon': 'brain'
+}, {
+  'text': 'Être cool',
+  'nameicon': 'grin'
+}, {
+  'text': 'Voir Grand',
+  'nameicon': 'trophy'
+}, {
+  'text': 'Aimer le digital',
+  'nameicon': 'heart'
+}, {
+  'text': 'S\'amuser',
+  'nameicon': 'grin-stars'
+}];
+exports.ICON = ICON;
+var LOGO = [path + "digital-power-i.png", path + "samsung.png", path + "digital-power-i.png", path + "samsung.png"];
+exports.LOGO = LOGO;
+var CONSTANT = {
+  "logo": path + "first-digital-white.png",
+  "web0": path + "application_block_2.png",
+  "web1": path + "application_block_1.png",
+  "web2": path + "application_block_3.png",
+  "web5": path + "application_block_5.png"
+};
+exports.CONSTANT = CONSTANT;
+var NAV = [{
+  "text": "Développement Web",
+  "link": "/"
+}, {
+  "text": "Sécurité Web",
+  "link": "/"
+}, {
+  "text": "Contact",
+  "link": "/"
+}];
+exports.NAV = NAV;
+},{}],"components/ContainerGeneric.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _AnimationTypeWrapper = _interopRequireDefault(require("./AnimationTypeWrapper"));
+
+var _reactBulmaComponents = require("react-bulma-components");
+
+var _constants = require("./../constants");
+
+var _fontawesomeSvgCore = require("@fortawesome/fontawesome-svg-core");
+
+var _freeBrandsSvgIcons = require("@fortawesome/free-brands-svg-icons");
+
+var _freeSolidSvgIcons = require("@fortawesome/free-solid-svg-icons");
+
+var _reactFontawesome = require("@fortawesome/react-fontawesome");
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_fontawesomeSvgCore.library.add(_freeBrandsSvgIcons.fab, _freeSolidSvgIcons.faBrain, _freeSolidSvgIcons.faCoffee, _freeSolidSvgIcons.faGrin, _freeSolidSvgIcons.faTrophy, _freeSolidSvgIcons.faHeart, _freeSolidSvgIcons.faGrinStars, _freeSolidSvgIcons.faHandsHelping);
+
+var ContentGeneric = function ContentGeneric(_ref) {
+  var childrenIcon = _ref.childrenIcon,
+      classes = _ref.classes,
+      _ref$size = _ref.size,
+      size = _ref$size === void 0 ? 'large' : _ref$size,
+      iconName = _ref.iconName,
+      color = _ref.color,
+      sizeIcon = _ref.sizeIcon,
+      text = _ref.text;
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Icon, {
+    size: size,
+    className: "i-home ".concat(iconName),
+    color: color
+  }, childrenIcon), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Heading, {
+    className: classes,
+    size: 5,
+    renderAs: "h2"
+  }, text));
 };
 
 var ContainerGeneric = function ContainerGeneric() {
+  //brain , sizeIcon = 6x, classes = upper-home upper-home-margin, color = twitter'
   return /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Section, {
     className: "neutral",
     size: "medium"
@@ -51332,87 +51528,51 @@ var ContainerGeneric = function ContainerGeneric() {
       paddingTop: 50,
       alignItems: "center"
     }
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, {
-    size: 4
-  }, /*#__PURE__*/_react.default.createElement(_Slide.default, {
-    top: true
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Icon, {
-    size: "large",
-    className: "i-home",
-    color: "twitter"
-  }, /*#__PURE__*/_react.default.createElement(_reactFontawesome.FontAwesomeIcon, {
-    icon: "brain",
-    size: "6x"
-  })), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Heading, {
-    className: "upper-home upper-home-margin",
-    size: 5,
-    renderAs: "h2"
-  }, "Travailler dur"))), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, {
-    size: 4
-  }, /*#__PURE__*/_react.default.createElement(_Slide.default, {
-    top: true
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Icon, {
-    size: "large",
-    className: "i-home",
-    color: "twitter"
-  }, /*#__PURE__*/_react.default.createElement(_reactFontawesome.FontAwesomeIcon, {
-    icon: "grin",
-    size: "6x"
-  })), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Heading, {
-    className: "upper-home upper-home-margin",
-    size: 5,
-    renderAs: "h2"
-  }, "\xEAtre cool"))), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, {
-    size: 4
-  }, /*#__PURE__*/_react.default.createElement(_Slide.default, {
-    top: true
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Icon, {
-    size: "large",
-    className: "i-home",
-    color: "twitter"
-  }, /*#__PURE__*/_react.default.createElement(_reactFontawesome.FontAwesomeIcon, {
-    icon: "trophy",
-    size: "6x"
-  })), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Heading, {
-    className: "upper-home upper-home-margin",
-    size: 5,
-    renderAs: "h2"
-  }, "Voir Grand"))), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, {
-    size: 4
-  }, /*#__PURE__*/_react.default.createElement(_Slide.default, {
-    top: true
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Icon, {
-    size: "large",
-    className: "i-home",
-    color: "twitter"
-  }, /*#__PURE__*/_react.default.createElement(_reactFontawesome.FontAwesomeIcon, {
-    icon: "heart",
-    size: "6x"
-  })), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Heading, {
-    className: "upper-home upper-home-margin",
-    size: 5,
-    renderAs: "h2"
-  }, "Aimer le Digital"))), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, {
-    size: 4
-  }, /*#__PURE__*/_react.default.createElement(_Slide.default, {
-    top: true
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Icon, {
-    size: "large",
-    className: "i-home",
-    color: "twitter"
-  }, /*#__PURE__*/_react.default.createElement(_reactFontawesome.FontAwesomeIcon, {
-    icon: "grin-stars",
-    size: "6x"
-  })), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Heading, {
-    className: "upper-home upper-home-margin",
-    size: 5,
-    renderAs: "h2"
-  }, "S'amuser"))))));
+  }, _constants.ICON.map(function (ico, i) {
+    return /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, {
+      size: 4,
+      key: i
+    }, /*#__PURE__*/_react.default.createElement(_AnimationTypeWrapper.default, {
+      type: "Slide",
+      top: true,
+      children: /*#__PURE__*/_react.default.createElement(ContentGeneric, {
+        color: "twitter",
+        text: ico.text,
+        childrenIcon: /*#__PURE__*/_react.default.createElement(_reactFontawesome.FontAwesomeIcon, {
+          icon: ico.nameicon,
+          size: "6x"
+        }),
+        classes: "upper-home upper-home-margin "
+      })
+    }));
+  }))));
 };
 
-var ColumnsGeneric = function ColumnsGeneric(_ref5) {
-  var title = _ref5.title,
-      element = _ref5.element;
+_reactBulmaComponents.Icon.propTypes = {
+  color: _propTypes.default.string.isRequired
+};
+var _default = ContainerGeneric;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./AnimationTypeWrapper":"components/AnimationTypeWrapper.js","react-bulma-components":"../node_modules/react-bulma-components/dist/index.js","./../constants":"constants.js","@fortawesome/fontawesome-svg-core":"../node_modules/@fortawesome/fontawesome-svg-core/index.es.js","@fortawesome/free-brands-svg-icons":"../node_modules/@fortawesome/free-brands-svg-icons/index.es.js","@fortawesome/free-solid-svg-icons":"../node_modules/@fortawesome/free-solid-svg-icons/index.es.js","@fortawesome/react-fontawesome":"../node_modules/@fortawesome/react-fontawesome/index.es.js","prop-types":"../node_modules/prop-types/index.js"}],"components/ColumnsGeneric.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactBulmaComponents = require("react-bulma-components");
+
+var _Slide = _interopRequireDefault(require("react-reveal/Slide"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//animation global
+var ColumnsGeneric = function ColumnsGeneric(_ref) {
+  var title = _ref.title,
+      element = _ref.element;
   return /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Section, {
     className: "neutral",
     size: "medium"
@@ -51449,72 +51609,133 @@ var ColumnsGeneric = function ColumnsGeneric(_ref5) {
   }))));
 };
 
-var ColumnsGeneric2 = function ColumnsGeneric2() {
-  return /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns, null, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, null, /*#__PURE__*/_react.default.createElement("p", {
-    className: "bd-notification is-success"
-  }, "First Column"), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Image, {
-    src: "http://bulma.io/images/placeholders/640x480.png",
-    size: "3by2"
-  })), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, null, /*#__PURE__*/_react.default.createElement("p", {
-    className: "bd-notification is-info"
-  }, "Second Column"), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Image, {
-    src: "http://bulma.io/images/placeholders/640x480.png",
-    size: "3by2"
-  })));
-};
+var _default = ColumnsGeneric;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","react-bulma-components":"../node_modules/react-bulma-components/dist/index.js","react-reveal/Slide":"../node_modules/react-reveal/Slide.js"}],"components/NavBar.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _AnimationTypeWrapper = _interopRequireDefault(require("./AnimationTypeWrapper"));
+
+var _reactBulmaComponents = require("react-bulma-components");
+
+var _constants = require("./../constants");
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var NavBarGeneric = function NavBarGeneric() {
+  var _useState = (0, _react.useState)(false),
+      _useState2 = (0, _slicedToArray2.default)(_useState, 2),
+      displayNav = _useState2[0],
+      setDisplayNav = _useState2[1];
+
   var _useState3 = (0, _react.useState)(false),
       _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
-      displayNav = _useState4[0],
-      setDisplayNav = _useState4[1];
+      animNav = _useState4[0],
+      setAnimNav = _useState4[1];
 
-  var styleDisplay;
+  var styleDisplay, booleanAnimation;
 
   if (displayNav) {
     styleDisplay = {
       display: "block"
     };
+    booleanAnimation = true;
   } else {
     styleDisplay = {};
+    booleanAnimation = false;
   }
 
-  console.log(styleDisplay);
+  var WrapperLinkMenu = function WrapperLinkMenu() {
+    return /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Navbar.Menu, {
+      style: styleDisplay
+    }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Navbar.Container, {
+      position: "start"
+    }, _constants.NAV.map(function (itemNav, i) {
+      return /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Navbar.Item, {
+        style: {
+          fontWeight: "bold"
+        },
+        key: i,
+        href: "#"
+      }, itemNav.text);
+    })));
+  };
+
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Navbar, {
     color: "twitter",
     style: {
-      padding: "20px 40px"
+      padding: "20px 0"
     },
     transparent: false,
     fixed: "top"
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Navbar.Brand, null, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Navbar.Item, {
+  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Navbar.Brand, {
+    style: {
+      paddingLeft: 40
+    }
+  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Navbar.Item, {
     renderAs: "a",
     href: "#"
-  }, /*#__PURE__*/_react.default.createElement(_Zoom.default, null, /*#__PURE__*/_react.default.createElement("img", {
-    src: _constants.CONSTANT['logo'],
-    alt: "first digital"
-  }))), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Navbar.Burger, {
+  }, /*#__PURE__*/_react.default.createElement(_AnimationTypeWrapper.default, {
+    type: "Zoom",
+    children: /*#__PURE__*/_react.default.createElement("img", {
+      src: _constants.CONSTANT['logo'],
+      alt: "first digital"
+    })
+  })), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Navbar.Burger, {
+    style: {
+      marginRight: 40
+    },
     onClick: function onClick() {
       setDisplayNav(function (val) {
         return !val;
       });
     }
-  })), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Navbar.Menu, {
-    style: styleDisplay
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Navbar.Container, {
-    position: "start"
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Navbar.Item, {
-    style: {
-      fontWeight: "bold"
-    },
-    href: "#"
-  }, "D\xE9veloppement Web"), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Navbar.Item, {
-    style: {
-      fontWeight: "bold"
-    },
-    href: "#"
-  }, "Securit\xE9 Digital")))));
+  })), /*#__PURE__*/_react.default.createElement(_AnimationTypeWrapper.default, {
+    type: "Bounce",
+    opposite: true,
+    right: true,
+    when: booleanAnimation,
+    children: /*#__PURE__*/_react.default.createElement(WrapperLinkMenu, null)
+  })));
 };
+
+_reactBulmaComponents.Navbar.propTypes = {
+  color: _propTypes.default.string
+};
+var _default = NavBarGeneric;
+exports.default = _default;
+},{"@babel/runtime/helpers/slicedToArray":"../node_modules/@babel/runtime/helpers/slicedToArray.js","react":"../node_modules/react/index.js","./AnimationTypeWrapper":"components/AnimationTypeWrapper.js","react-bulma-components":"../node_modules/react-bulma-components/dist/index.js","./../constants":"constants.js","prop-types":"../node_modules/prop-types/index.js"}],"components/Footer.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactBulmaComponents = require("react-bulma-components");
+
+var _constants = require("./../constants");
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var FooterContainer = function FooterContainer() {
   return /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Hero, {
@@ -51532,8 +51753,120 @@ var FooterContainer = function FooterContainer() {
   }, "CC BY FIRST DIGITAL"), "."))))));
 };
 
-var Home = function Home(_ref6) {
-  var children = _ref6.children;
+_reactBulmaComponents.Hero.propTypes = {
+  color: _propTypes.default.string
+};
+var _default = FooterContainer;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","react-bulma-components":"../node_modules/react-bulma-components/dist/index.js","./../constants":"constants.js","prop-types":"../node_modules/prop-types/index.js"}],"components/HomePage.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _SectionContainer = _interopRequireDefault(require("./SectionContainer"));
+
+var _SectionContainerForm = _interopRequireDefault(require("./SectionContainerForm"));
+
+var _FormContact = _interopRequireDefault(require("./FormContact"));
+
+var _ContainerGeneric = _interopRequireDefault(require("./ContainerGeneric"));
+
+var _ColumnsGeneric = _interopRequireDefault(require("./ColumnsGeneric"));
+
+var _NavBar = _interopRequireDefault(require("./NavBar"));
+
+var _Footer = _interopRequireDefault(require("./Footer"));
+
+var _constants = require("./../constants");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var HomePage = function HomePage() {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "default-block"
+  }, /*#__PURE__*/_react.default.createElement(_NavBar.default, null), /*#__PURE__*/_react.default.createElement(_SectionContainer.default, {
+    srcImage: _constants.CONSTANT['web1'],
+    color: "twitter",
+    size: "large",
+    title: _constants.ressources.home1['title'],
+    content: _constants.ressources.home1['content'],
+    position: 1
+  }), /*#__PURE__*/_react.default.createElement(_SectionContainer.default, {
+    color: "white",
+    size: "medium",
+    title: _constants.ressources.home3['title'],
+    align: "center",
+    icon: true
+  }), /*#__PURE__*/_react.default.createElement(_SectionContainer.default, {
+    srcImage: _constants.CONSTANT['web0'],
+    color: "twitter",
+    size: "large",
+    title: _constants.ressources.home2['title'],
+    content: _constants.ressources.home2['content'],
+    position: 0
+  }), /*#__PURE__*/_react.default.createElement(_ContainerGeneric.default, null), /*#__PURE__*/_react.default.createElement(_SectionContainer.default, {
+    srcImage: _constants.CONSTANT['web2'],
+    color: "twitter",
+    size: "large",
+    title: _constants.ressources.home4['title'],
+    content: _constants.ressources.home4['content'],
+    position: 0
+  }), /*#__PURE__*/_react.default.createElement(_SectionContainerForm.default, {
+    srcImage: _constants.CONSTANT['web5'],
+    color: "twitter",
+    size: "large",
+    position: 0,
+    children: [/*#__PURE__*/_react.default.createElement(_FormContact.default, {
+      title: _constants.ressources.contact['title'],
+      content: _constants.ressources.contact['content']
+    })]
+  }), /*#__PURE__*/_react.default.createElement(_ColumnsGeneric.default, {
+    title: "Ils nous ont fait confiance",
+    element: _constants.LOGO
+  }), /*#__PURE__*/_react.default.createElement(_SectionContainer.default, {
+    color: "white",
+    size: "medium",
+    title: "Une équipe de professionnel à votre service, chez firstDigital votre safisfaction est notre priorité !",
+    align: "center",
+    icon: false
+  }), /*#__PURE__*/_react.default.createElement(_Footer.default, null));
+};
+
+var _default = HomePage;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./SectionContainer":"components/SectionContainer.js","./SectionContainerForm":"components/SectionContainerForm.js","./FormContact":"components/FormContact.js","./ContainerGeneric":"components/ContainerGeneric.js","./ColumnsGeneric":"components/ColumnsGeneric.js","./NavBar":"components/NavBar.js","./Footer":"components/Footer.js","./../constants":"constants.js"}],"components/home/Home.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _useReducer3 = _interopRequireWildcard(require("./../../reducer/useReducer"));
+
+var _HomePage = _interopRequireDefault(require("./../HomePage"));
+
+var _constants = require("./../../constants");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+console.log('logo', _constants.CONSTANT, _constants.LOGO, _constants.ICON, _constants.ressources); // const { Input, Field, Control, Label, Help, InputFile, Select, CheckboxControlled, Textarea, RadioGroup } = Form;
+
+var HomeElement = function HomeElement(_ref) {
+  var children = _ref.children;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "home-wrapper"
   }, children.map(function (component, i) {
@@ -51543,8 +51876,8 @@ var Home = function Home(_ref6) {
   }));
 };
 
-var FirstBlock = function FirstBlock(_ref7) {
-  var initialCount = _ref7.initialCount;
+var FirstBlock = function FirstBlock(_ref2) {
+  var initialCount = _ref2.initialCount;
   initialCount = 0;
 
   var _useReducer = (0, _react.useReducer)(_useReducer3.default, initialCount, _useReducer3.init),
@@ -51552,10 +51885,10 @@ var FirstBlock = function FirstBlock(_ref7) {
       state = _useReducer2[0],
       dispatch = _useReducer2[1];
 
-  var _useState5 = (0, _react.useState)(0),
-      _useState6 = (0, _slicedToArray2.default)(_useState5, 2),
-      wordIndex = _useState6[0],
-      setWordIndex = _useState6[1];
+  var _useState = (0, _react.useState)(0),
+      _useState2 = (0, _slicedToArray2.default)(_useState, 2),
+      wordIndex = _useState2[0],
+      setWordIndex = _useState2[1];
 
   var words = ['hey', 'this', 'is', 'cool'];
   console.log('word', wordIndex);
@@ -51599,75 +51932,15 @@ var FirstBlock = function FirstBlock(_ref7) {
   }, "+"));
 };
 
-var SecondBlock = function SecondBlock() {
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "default-block"
-  }, /*#__PURE__*/_react.default.createElement(NavBarGeneric, null), /*#__PURE__*/_react.default.createElement(SectionContainer, {
-    srcImage: _constants.CONSTANT['web1'],
-    color: "twitter",
-    size: "large",
-    title: _constants.ressources.home1['title'],
-    content: _constants.ressources.home1['content'],
-    position: 1
-  }), /*#__PURE__*/_react.default.createElement(SectionContainer, {
-    color: "white",
-    size: "medium",
-    title: _constants.ressources.home3['title'],
-    align: "center",
-    icon: true
-  }), /*#__PURE__*/_react.default.createElement(SectionContainer, {
-    srcImage: _constants.CONSTANT['web0'],
-    color: "twitter",
-    size: "large",
-    title: _constants.ressources.home2['title'],
-    content: _constants.ressources.home2['content'],
-    position: 0
-  }), /*#__PURE__*/_react.default.createElement(ContainerGeneric, null), /*#__PURE__*/_react.default.createElement(SectionContainer, {
-    srcImage: _constants.CONSTANT['web2'],
-    color: "twitter",
-    size: "large",
-    title: _constants.ressources.home4['title'],
-    content: _constants.ressources.home4['content'],
-    position: 0
-  }), /*#__PURE__*/_react.default.createElement(SectionContainerForm, {
-    srcImage: _constants.CONSTANT['web5'],
-    color: "twitter",
-    size: "large",
-    position: 0,
-    children: [/*#__PURE__*/_react.default.createElement(FormContact, {
-      title: _constants.ressources.contact['title'],
-      content: _constants.ressources.contact['content']
-    })]
-  }), /*#__PURE__*/_react.default.createElement(SectionContainerRight, null), /*#__PURE__*/_react.default.createElement(ColumnsGeneric, {
-    title: "Ils nous ont fait confiance",
-    element: _constants.LOGO
-  }), /*#__PURE__*/_react.default.createElement(SectionContainerSingle, {
-    color: "white",
-    size: "medium",
-    title: "Une équipe de professionnel à votre service, chez firstDigital votre safisfaction est notre priorité !",
-    align: "center",
-    icon: false
-  }), /*#__PURE__*/_react.default.createElement(FooterContainer, null));
-};
-
-var HomeElement = function HomeElement() {
-  return /*#__PURE__*/_react.default.createElement(Home, {
-    children: [/*#__PURE__*/_react.default.createElement(SecondBlock, null)]
+var Home = function Home() {
+  return /*#__PURE__*/_react.default.createElement(HomeElement, {
+    children: [/*#__PURE__*/_react.default.createElement(_HomePage.default, null)]
   });
 };
 
-_reactBulmaComponents.Hero.propTypes = {
-  color: _propTypes.default.string
-};
-_reactBulmaComponents.Icon.propTypes = {
-  color: _propTypes.default.string.isRequired
-};
-FormContact.propTypes = {
-  defaultValue: _propTypes.default.string
-};
-var _default = HomeElement;
+var _default = Home;
 exports.default = _default;
-},{"@babel/runtime/helpers/slicedToArray":"../node_modules/@babel/runtime/helpers/slicedToArray.js","react":"../node_modules/react/index.js","./../../reducer/useReducer":"reducer/useReducer.js","react-bulma-components":"../node_modules/react-bulma-components/dist/index.js","./../../constants":"constants.js","@fortawesome/fontawesome-svg-core":"../node_modules/@fortawesome/fontawesome-svg-core/index.es.js","@fortawesome/free-brands-svg-icons":"../node_modules/@fortawesome/free-brands-svg-icons/index.es.js","@fortawesome/free-solid-svg-icons":"../node_modules/@fortawesome/free-solid-svg-icons/index.es.js","@fortawesome/react-fontawesome":"../node_modules/@fortawesome/react-fontawesome/index.es.js","prop-types":"../node_modules/prop-types/index.js","react-reveal/Zoom":"../node_modules/react-reveal/Zoom.js","react-reveal/Fade":"../node_modules/react-reveal/Fade.js","react-reveal/Slide":"../node_modules/react-reveal/Slide.js"}],"serviceWorker.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/slicedToArray":"../node_modules/@babel/runtime/helpers/slicedToArray.js","react":"../node_modules/react/index.js","./../../reducer/useReducer":"reducer/useReducer.js","./../HomePage":"components/HomePage.js","./../../constants":"constants.js"}],"serviceWorker.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -51841,7 +52114,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51863" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51421" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

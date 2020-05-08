@@ -57,6 +57,15 @@ html .navbar {
             }
         }
     }
+
+    &-menu{
+        @media screen and (max-width: $tablet - 1px){
+            display: block !important;
+            width: 100%;
+            padding: 20px 40px;
+            position: absolute; 
+        }
+    }
 }
 
 html {
