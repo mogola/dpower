@@ -22,25 +22,27 @@ html {
 .txtAd {
   padding: 40px; }
 
-html .navbar.is-transparent {
-  background: transparent; }
-
-html .navbar-item {
-  font-size: 1.3rem; }
-
-html .navbar-brand img {
-  max-height: initial !important;
-  width: 55% !important; }
+html .navbar {
+  align-items: center; }
+  html .navbar.is-transparent {
+    background: transparent; }
+  html .navbar-item {
+    font-size: 1.3rem; }
+  html .navbar-brand img {
+    max-height: initial !important;
+    width: 55% !important; }
+    @media screen and (max-width: 768px) {
+      html .navbar-brand img {
+        width: 30% !important; } }
+  @media screen and (min-width: 768px) {
+    html .navbar .react-reveal {
+      opacity: 1 !important; } }
   @media screen and (max-width: 768px) {
-    html .navbar-brand img {
-      width: 30% !important; } }
-
-@media screen and (max-width: 768px) {
-  html .navbar-menu {
-    display: block !important;
-    width: 100%;
-    padding: 20px 40px;
-    position: absolute; } }
+    html .navbar-menu {
+      display: block !important;
+      width: 100%;
+      padding: 20px 40px;
+      position: absolute; } }
 
 html .title--large {
   text-transform: uppercase;

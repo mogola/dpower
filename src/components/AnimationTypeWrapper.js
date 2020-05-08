@@ -40,9 +40,9 @@ const AnimationTypeWrapper = ({ type, children, ...rest }) => {
     }
 
     return (
-        <div>
+        <React.Fragment>
             {content}
-        </div>
+        </React.Fragment>
     )
 };
 

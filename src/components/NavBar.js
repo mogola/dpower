@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AnimationTypeWrapper from './AnimationTypeWrapper'
 
 import {
@@ -27,6 +27,17 @@ const NavBarGeneric = () => {
         styleDisplay = {}
         booleanAnimation = false
     }
+
+    useEffect(() => {
+        if (window.innerWidth > 1023) {
+            let getNavBar = document.getElementsByClassName('navbar-menu')
+            let d = getNavBar[0].parentNode.getAttributeNode("style")
+            console.log('remove attr', getNavBar)
+            getNavBar[0].parentNode.removeAttributeNode(d)
+        }
+    }, []);
+
+
 
     const WrapperLinkMenu = () => {
         return (
@@ -60,7 +71,7 @@ const NavBarGeneric = () => {
                 </Navbar.Brand>
 
                 <AnimationTypeWrapper
-                    type="Bounce"
+                    type="Slide"
                     opposite
                     right
                     when={booleanAnimation}

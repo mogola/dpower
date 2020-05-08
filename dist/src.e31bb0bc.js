@@ -31823,7 +31823,7 @@ var AnimationTypeWrapper = function AnimationTypeWrapper(_ref) {
       content = /*#__PURE__*/_react.default.createElement("div", null, children);
   }
 
-  return /*#__PURE__*/_react.default.createElement("div", null, content);
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, content);
 };
 
 var _default = AnimationTypeWrapper;
@@ -51660,6 +51660,15 @@ var NavBarGeneric = function NavBarGeneric() {
     booleanAnimation = false;
   }
 
+  (0, _react.useEffect)(function () {
+    if (window.innerWidth > 1023) {
+      var getNavBar = document.getElementsByClassName('navbar-menu');
+      var d = getNavBar[0].parentNode.getAttributeNode("style");
+      console.log('remove attr', getNavBar);
+      getNavBar[0].parentNode.removeAttributeNode(d);
+    }
+  }, []);
+
   var WrapperLinkMenu = function WrapperLinkMenu() {
     return /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Navbar.Menu, {
       style: styleDisplay
@@ -51706,7 +51715,7 @@ var NavBarGeneric = function NavBarGeneric() {
       });
     }
   })), /*#__PURE__*/_react.default.createElement(_AnimationTypeWrapper.default, {
-    type: "Bounce",
+    type: "Slide",
     opposite: true,
     right: true,
     when: booleanAnimation,
