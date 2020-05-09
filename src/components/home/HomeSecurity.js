@@ -1,5 +1,5 @@
 import React from 'react';
-import HomePage from './../HomePage'
+import HomePageSecurity from './../HomePageSecurity'
 
 // const { Input, Field, Control, Label, Help, InputFile, Select, CheckboxControlled, Textarea, RadioGroup } = Form;
 const HomeElement = ({ children }) => {
@@ -14,11 +14,11 @@ const HomeElement = ({ children }) => {
     );
 }
 
-const Home = () => {
+const HomeSecurity = () => {
     return (
         <HomeElement
-            children={[<HomePage />]}
+            children={[<HomePageSecurity />]}
         />
     )
 }
-export default Home;
+export default HomeSecurity;

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AnimationTypeWrapper from './AnimationTypeWrapper'
+import { Link } from "react-router-dom";
 
 import {
     Navbar,
@@ -16,7 +17,7 @@ const NavBarGeneric = () => {
     const [displayNav, setDisplayNav] = useState(false)
     const [animNav, setAnimNav] = useState(false)
 
-    let styleDisplay, booleanAnimation
+    let styleDisplay, booleanAnimation, styleColorMenu
 
     if (displayNav) {
         styleDisplay = {
@@ -30,10 +31,17 @@ const NavBarGeneric = () => {
 
     useEffect(() => {
         if (window.innerWidth > 1023) {
-            let getNavBar = document.getElementsByClassName('navbar-menu')
-            let d = getNavBar[0].parentNode.getAttributeNode("style")
+            let getNavBar = document.getElementsByClassName('navbar-menu')[0]
+            let d = getNavBar.parentNode.getAttributeNode("style")
             console.log('remove attr', getNavBar)
-            getNavBar[0].parentNode.removeAttributeNode(d)
+            // getNavBar.parentNode.removeAttributeNode(d)
+
+            styleColorMenu = {
+                "color": "white"
+            }
+            console.log(styleColorMenu)
+        } else {
+            styleColorMenu = {}
         }
     }, []);
 
@@ -44,8 +52,22 @@ const NavBarGeneric = () => {
             <Navbar.Menu style={styleDisplay}>
                 <Navbar.Container position="start">
                     {NAV.map((itemNav, i) => (
-                        <Navbar.Item style={{ fontWeight: "bold" }} key={i} href="#">
-                            {itemNav.text}
+                        <Navbar.Item renderAs="div" style={{ color: "white", fontWeight: "bold" }} key={i}>
+                            {window.innerWidth < 1023 &&
+                                <Link
+                                    onClick={() => setDisplayNav(val => !val)}
+                                    style={{ color: "" }}
+                                    to={itemNav.link}>
+                                    {itemNav.text}
+                                </Link>
+                            }
+                            {window.innerWidth > 1023 &&
+                                <Link
+                                    style={{ color: "white" }}
+                                    to={itemNav.link}>
+                                    {itemNav.text}
+                                </Link>
+                            }
                         </Navbar.Item>
                     ))}
                 </Navbar.Container>

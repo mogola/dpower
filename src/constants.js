@@ -23,6 +23,29 @@ const ressources = {
     }
 }
 
+const ressourcesSecurity = {
+    "home1": {
+        "title": "Sécurisez votre trafic web",
+        "content": "Assurer votre sécurité web aujourd\'hui et pour l'avenir, nous vous accompagnons et nous vous aidons à assurer la protection web de votre société",
+    },
+    "home2": {
+        "title": "Protection avant, pendant et àprés une attaque",
+        "content": "Les sites web sont par nature des éléments très exposés du système d\'information. Leur sécurisation revêt une grand importance et ceux à plusieurs titres"
+    },
+    "home3": {
+        "title": "Audit et sécurisation de site web",
+        "content": ""
+    },
+    "home4": {
+        "title": "Audit sécurité site web",
+        "content": "Des cyberattaques se produisent tous les jours, car en cas de problème de sécurité, toute personne ayant une connexion Internet peut trouver les faiblesses de votre plate-forme"
+    },
+    "contact": {
+        "title": "Contact",
+        "content": "Nous serons à votre disposition"
+    }
+}
+
 const ICON = [
     {
         'text': 'Travailler dur',
@@ -69,11 +92,11 @@ const NAV = [
     },
     {
         "text": "Sécurité Web",
-        "link": "/"
+        "link": "/security"
     },
     {
         "text": "Contact",
-        "link": "/"
+        "link": "/contact"
     }
 ]
 export {
@@ -81,5 +104,6 @@ export {
     LOGO,
     ressources,
     ICON,
-    NAV
+    NAV,
+    ressourcesSecurity
 }

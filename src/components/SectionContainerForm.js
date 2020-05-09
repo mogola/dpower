@@ -1,36 +1,31 @@
-import React, { useRef, useEffect, useCallback, useState, useReducer, useMemo } from 'react';
+import React from 'react';
+import AnimationTypeWrapper from './AnimationTypeWrapper'
 
 import {
-    Button,
-    Navbar,
     Columns,
     Container,
     Image,
-    Heading,
     Section,
     Hero,
     Icon,
-    Footer,
-    Content,
-    Form
 } from 'react-bulma-components'
-
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faCoffee, faBrain, faGrin, faTrophy, faHeart, faGrinStars, faHandsHelping } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import PropTypes from 'prop-types'
 
-//animation global
-import Zoom from 'react-reveal/Zoom'
-import Fade from 'react-reveal/Fade'
-import Slide from 'react-reveal/Slide'
-
-library.add(fab, faBrain, faCoffee, faGrin, faTrophy, faHeart, faGrinStars, faHandsHelping)
-
 const onChangeInput = (event) => {
     console.log(event)
+}
+
+const ContentImage = ({ srcImage, typeAnimation = "Slide", ...rest }) => {
+    return (
+        <Columns.Column>
+            <AnimationTypeWrapper
+                type={typeAnimation}
+                {...rest}
+                children={<Image src={srcImage} width="" className="imageW" />}
+            />
+        </Columns.Column>
+    );
 }
 
 const SectionContainerForm = ({ children, srcImage, color, size, position, align = "left", icon = false }) => {
@@ -42,9 +37,7 @@ const SectionContainerForm = ({ children, srcImage, color, size, position, align
                         <Container>
                             <Columns centered={true} style={{ alignItems: "center" }}>
                                 {position == 0 &&
-                                    <Columns.Column>
-                                        <Image src={srcImage} width="" className="imageW" />
-                                    </Columns.Column>
+                                    <ContentImage srcImage={srcImage} left />
                                 }
                                 <Columns.Column>
                                     <div className="txtAss">
@@ -59,7 +52,7 @@ const SectionContainerForm = ({ children, srcImage, color, size, position, align
                                 </Columns.Column>
                                 {position == 1 &&
                                     <Columns.Column>
-                                        <Image src={srcImage} width="" className="imageW" />
+                                        <ContentImage srcImage={srcImage} right />
                                     </Columns.Column>
                                 }
                             </Columns>
@@ -73,11 +66,6 @@ const SectionContainerForm = ({ children, srcImage, color, size, position, align
 
 Hero.propTypes = {
     color: PropTypes.string
-}
-
-
-Icon.propTypes = {
-    color: PropTypes.string.isRequired
 }
 
 export default SectionContainerForm

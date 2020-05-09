@@ -6,17 +6,15 @@ import FormContact from './FormContact'
 import ContainerGeneric from './ContainerGeneric'
 import ColumnsGeneric from './ColumnsGeneric'
 import NavBarGeneric from './NavBar'
-import FooterContainer from './Footer'
 
 
 import {
     CONSTANT,
     LOGO,
-    ressources,
-    ICON
+    ressourcesSecurity as ressources,
 } from './../constants';
 
-const HomePage = () => {
+const HomePageSecurity = () => {
     return (
         <div className="default-block">
             <NavBarGeneric />
@@ -75,4 +73,4 @@ const HomePage = () => {
     );
 }
 
-export default HomePage
+export default HomePageSecurity

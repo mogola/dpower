@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import NavBarGeneric from './components/NavBar'
+import FooterContainer from './components/Footer'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+import { Switch, Redirect, Route, BrowserRouter as Router } from "react-router-dom"
+
+// Define all Route
+import getRoute from './components/Route/Router'
+
+const App = () => {
+  return (
+    <Router>
+      <NavBarGeneric />
+      {getRoute.map((routeApp, i) => (
+        <Route
+          exact
+          key={routeApp.key || routeApp.path}
+          path={routeApp.path}
+        >
+          {routeApp.component}
+        </Route>
+      ))}
+      <FooterContainer />
+    </Router>
+  );
 }
 
 export default App;

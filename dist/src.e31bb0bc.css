@@ -22,6 +22,10 @@ html {
 .txtAd {
   padding: 40px; }
 
+@media screen and (max-width: 768px) {
+  #root {
+    padding-top: 40px; } }
+
 html .navbar {
   align-items: center; }
   html .navbar.is-transparent {
