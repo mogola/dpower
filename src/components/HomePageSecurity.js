@@ -17,7 +17,6 @@ import {
 const HomePageSecurity = () => {
     return (
         <div className="default-block">
-            <NavBarGeneric />
             <SectionContainer
                 srcImage={CONSTANT['web1']}
                 color="twitter"

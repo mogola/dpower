@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AnimationTypeWrapper from './AnimationTypeWrapper'
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
+import { Link } from "react-tiger-transition";
 
 import {
     Navbar,
@@ -57,14 +58,17 @@ const NavBarGeneric = () => {
                                 <Link
                                     onClick={() => setDisplayNav(val => !val)}
                                     style={{ color: "" }}
-                                    to={itemNav.link}>
+                                    to={itemNav.link}
+                                    transition='glide-left'>
                                     {itemNav.text}
+
                                 </Link>
                             }
                             {window.innerWidth > 1023 &&
                                 <Link
                                     style={{ color: "white" }}
-                                    to={itemNav.link}>
+                                    to={itemNav.link}
+                                    transition='glide-left'>
                                     {itemNav.text}
                                 </Link>
                             }

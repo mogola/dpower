@@ -70,6 +70,30 @@ const ICON = [
 
 ]
 
+const ICONBRAND = [
+    {
+        'text': 'Wordpress',
+        'nameicon': 'wordpress'
+    },
+    {
+        'text': 'Shopify',
+        'nameicon': 'shopify'
+    },
+    {
+        'text': 'Salesforce',
+        'nameicon': 'salesforce'
+    },
+    {
+        'text': 'Wix',
+        'nameicon': 'wix'
+    },
+    {
+        'text': 'Php',
+        'nameicon': 'php'
+    }
+
+]
+
 const LOGO = [
     path + "digital-power-i.png",
     path + "samsung.png",
@@ -78,6 +102,7 @@ const LOGO = [
 ]
 
 const CONSTANT = {
+    "logoSVG": path + "first-digital-black.svg",
     "logo": path + "first-digital-white.png",
     "web0": path + "application_block_2.png",
     "web1": path + "application_block_1.png",
@@ -104,6 +129,7 @@ export {
     LOGO,
     ressources,
     ICON,
+    ICONBRAND,
     NAV,
     ressourcesSecurity
 }

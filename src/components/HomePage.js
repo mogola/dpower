@@ -4,22 +4,19 @@ import SectionContainer from './SectionContainer'
 import SectionContainerForm from './SectionContainerForm'
 import FormContact from './FormContact'
 import ContainerGeneric from './ContainerGeneric'
+import ContainerPlatform from './ContainerGenericPlatform'
 import ColumnsGeneric from './ColumnsGeneric'
-import NavBarGeneric from './NavBar'
-import FooterContainer from './Footer'
 
 
 import {
     CONSTANT,
     LOGO,
     ressources,
-    ICON
 } from './../constants';
 
 const HomePage = () => {
     return (
         <div className="default-block">
-            <NavBarGeneric />
             <SectionContainer
                 srcImage={CONSTANT['web1']}
                 color="twitter"
@@ -52,6 +49,7 @@ const HomePage = () => {
                 content={ressources.home4['content']}
                 position={0}
             />
+            <ContainerPlatform />
             <SectionContainerForm
                 srcImage={CONSTANT['web5']}
                 color="twitter"

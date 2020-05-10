@@ -9,16 +9,31 @@ import {
     ressources,
 } from './../../constants';
 
+const screenStyle = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+};
+
 const getRoute = [{
     path: "/",
+    exact: true,
     component: <Home />,
+    screenProps: {
+        ...screenStyle
+    }
 },
 {
     path: "/security",
     component: <HomeSecurity />,
+    exact: true,
+    screenProps: {
+        ...screenStyle
+    }
 },
 {
     path: "/contact",
+    exact: true,
     component: <SectionContainerForm
         srcImage={CONSTANT['web5']}
         color="twitter"
@@ -30,6 +45,9 @@ const getRoute = [{
                 content={ressources.contact['content']}
             />]}
     />,
+    screenProps: {
+        ...screenStyle
+    }
 }];
 
 export default getRoute

@@ -34805,7 +34805,4189 @@ if ("development" !== "production") {
     style: _propTypes.default.object
   });
 }
-},{"react-router":"../node_modules/react-router/esm/react-router.js","@babel/runtime/helpers/esm/inheritsLoose":"../node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"../node_modules/react/index.js","history":"../node_modules/history/esm/history.js","prop-types":"../node_modules/prop-types/index.js","tiny-warning":"../node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"../node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"../node_modules/react-bulma-components/dist/index.js":[function(require,module,exports) {
+},{"react-router":"../node_modules/react-router/esm/react-router.js","@babel/runtime/helpers/esm/inheritsLoose":"../node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"../node_modules/react/index.js","history":"../node_modules/history/esm/history.js","prop-types":"../node_modules/prop-types/index.js","tiny-warning":"../node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"../node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"../node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/extends.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = _extends;
+
+function _extends() {
+  exports.default = _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+},{}],"../node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = _objectWithoutPropertiesLoose;
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+},{}],"../node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = _inheritsLoose;
+
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+}
+},{}],"../node_modules/dom-helpers/esm/hasClass.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = hasClass;
+
+function hasClass(element, className) {
+  if (element.classList) return !!className && element.classList.contains(className);
+  return (" " + (element.className.baseVal || element.className) + " ").indexOf(" " + className + " ") !== -1;
+}
+},{}],"../node_modules/dom-helpers/esm/addClass.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = addClass;
+
+var _hasClass = _interopRequireDefault(require("./hasClass"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function addClass(element, className) {
+  if (element.classList) element.classList.add(className);else if (!(0, _hasClass.default)(element, className)) if (typeof element.className === 'string') element.className = element.className + " " + className;else element.setAttribute('class', (element.className && element.className.baseVal || '') + " " + className);
+}
+},{"./hasClass":"../node_modules/dom-helpers/esm/hasClass.js"}],"../node_modules/dom-helpers/esm/removeClass.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = removeClass;
+
+function replaceClassName(origClass, classToRemove) {
+  return origClass.replace(new RegExp("(^|\\s)" + classToRemove + "(?:\\s|$)", 'g'), '$1').replace(/\s+/g, ' ').replace(/^\s*|\s*$/g, '');
+}
+
+function removeClass(element, className) {
+  if (element.classList) {
+    element.classList.remove(className);
+  } else if (typeof element.className === 'string') {
+    ;
+    element.className = replaceClassName(element.className, className);
+  } else {
+    element.setAttribute('class', replaceClassName(element.className && element.className.baseVal || '', className));
+  }
+}
+},{}],"../node_modules/react-transition-group/esm/config.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  disabled: false
+};
+exports.default = _default;
+},{}],"../node_modules/react-transition-group/esm/utils/PropTypes.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.classNamesShape = exports.timeoutsShape = void 0;
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var timeoutsShape = "development" !== 'production' ? _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.shape({
+  enter: _propTypes.default.number,
+  exit: _propTypes.default.number,
+  appear: _propTypes.default.number
+}).isRequired]) : null;
+exports.timeoutsShape = timeoutsShape;
+var classNamesShape = "development" !== 'production' ? _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.shape({
+  enter: _propTypes.default.string,
+  exit: _propTypes.default.string,
+  active: _propTypes.default.string
+}), _propTypes.default.shape({
+  enter: _propTypes.default.string,
+  enterDone: _propTypes.default.string,
+  enterActive: _propTypes.default.string,
+  exit: _propTypes.default.string,
+  exitDone: _propTypes.default.string,
+  exitActive: _propTypes.default.string
+})]) : null;
+exports.classNamesShape = classNamesShape;
+},{"prop-types":"../node_modules/prop-types/index.js"}],"../node_modules/react-transition-group/esm/TransitionGroupContext.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _default = _react.default.createContext(null);
+
+exports.default = _default;
+},{"react":"../node_modules/react/index.js"}],"../node_modules/react-transition-group/esm/Transition.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.EXITING = exports.ENTERED = exports.ENTERING = exports.EXITED = exports.UNMOUNTED = void 0;
+
+var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose"));
+
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/inheritsLoose"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactDom = _interopRequireDefault(require("react-dom"));
+
+var _config = _interopRequireDefault(require("./config"));
+
+var _PropTypes = require("./utils/PropTypes");
+
+var _TransitionGroupContext = _interopRequireDefault(require("./TransitionGroupContext"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var UNMOUNTED = 'unmounted';
+exports.UNMOUNTED = UNMOUNTED;
+var EXITED = 'exited';
+exports.EXITED = EXITED;
+var ENTERING = 'entering';
+exports.ENTERING = ENTERING;
+var ENTERED = 'entered';
+exports.ENTERED = ENTERED;
+var EXITING = 'exiting';
+/**
+ * The Transition component lets you describe a transition from one component
+ * state to another _over time_ with a simple declarative API. Most commonly
+ * it's used to animate the mounting and unmounting of a component, but can also
+ * be used to describe in-place transition states as well.
+ *
+ * ---
+ *
+ * **Note**: `Transition` is a platform-agnostic base component. If you're using
+ * transitions in CSS, you'll probably want to use
+ * [`CSSTransition`](https://reactcommunity.org/react-transition-group/css-transition)
+ * instead. It inherits all the features of `Transition`, but contains
+ * additional features necessary to play nice with CSS transitions (hence the
+ * name of the component).
+ *
+ * ---
+ *
+ * By default the `Transition` component does not alter the behavior of the
+ * component it renders, it only tracks "enter" and "exit" states for the
+ * components. It's up to you to give meaning and effect to those states. For
+ * example we can add styles to a component when it enters or exits:
+ *
+ * ```jsx
+ * import { Transition } from 'react-transition-group';
+ *
+ * const duration = 300;
+ *
+ * const defaultStyle = {
+ *   transition: `opacity ${duration}ms ease-in-out`,
+ *   opacity: 0,
+ * }
+ *
+ * const transitionStyles = {
+ *   entering: { opacity: 1 },
+ *   entered:  { opacity: 1 },
+ *   exiting:  { opacity: 0 },
+ *   exited:  { opacity: 0 },
+ * };
+ *
+ * const Fade = ({ in: inProp }) => (
+ *   <Transition in={inProp} timeout={duration}>
+ *     {state => (
+ *       <div style={{
+ *         ...defaultStyle,
+ *         ...transitionStyles[state]
+ *       }}>
+ *         I'm a fade Transition!
+ *       </div>
+ *     )}
+ *   </Transition>
+ * );
+ * ```
+ *
+ * There are 4 main states a Transition can be in:
+ *  - `'entering'`
+ *  - `'entered'`
+ *  - `'exiting'`
+ *  - `'exited'`
+ *
+ * Transition state is toggled via the `in` prop. When `true` the component
+ * begins the "Enter" stage. During this stage, the component will shift from
+ * its current transition state, to `'entering'` for the duration of the
+ * transition and then to the `'entered'` stage once it's complete. Let's take
+ * the following example (we'll use the
+ * [useState](https://reactjs.org/docs/hooks-reference.html#usestate) hook):
+ *
+ * ```jsx
+ * function App() {
+ *   const [inProp, setInProp] = useState(false);
+ *   return (
+ *     <div>
+ *       <Transition in={inProp} timeout={500}>
+ *         {state => (
+ *           // ...
+ *         )}
+ *       </Transition>
+ *       <button onClick={() => setInProp(true)}>
+ *         Click to Enter
+ *       </button>
+ *     </div>
+ *   );
+ * }
+ * ```
+ *
+ * When the button is clicked the component will shift to the `'entering'` state
+ * and stay there for 500ms (the value of `timeout`) before it finally switches
+ * to `'entered'`.
+ *
+ * When `in` is `false` the same thing happens except the state moves from
+ * `'exiting'` to `'exited'`.
+ */
+
+exports.EXITING = EXITING;
+
+var Transition = /*#__PURE__*/function (_React$Component) {
+  (0, _inheritsLoose2.default)(Transition, _React$Component);
+
+  function Transition(props, context) {
+    var _this;
+
+    _this = _React$Component.call(this, props, context) || this;
+    var parentGroup = context; // In the context of a TransitionGroup all enters are really appears
+
+    var appear = parentGroup && !parentGroup.isMounting ? props.enter : props.appear;
+    var initialStatus;
+    _this.appearStatus = null;
+
+    if (props.in) {
+      if (appear) {
+        initialStatus = EXITED;
+        _this.appearStatus = ENTERING;
+      } else {
+        initialStatus = ENTERED;
+      }
+    } else {
+      if (props.unmountOnExit || props.mountOnEnter) {
+        initialStatus = UNMOUNTED;
+      } else {
+        initialStatus = EXITED;
+      }
+    }
+
+    _this.state = {
+      status: initialStatus
+    };
+    _this.nextCallback = null;
+    return _this;
+  }
+
+  Transition.getDerivedStateFromProps = function getDerivedStateFromProps(_ref, prevState) {
+    var nextIn = _ref.in;
+
+    if (nextIn && prevState.status === UNMOUNTED) {
+      return {
+        status: EXITED
+      };
+    }
+
+    return null;
+  }; // getSnapshotBeforeUpdate(prevProps) {
+  //   let nextStatus = null
+  //   if (prevProps !== this.props) {
+  //     const { status } = this.state
+  //     if (this.props.in) {
+  //       if (status !== ENTERING && status !== ENTERED) {
+  //         nextStatus = ENTERING
+  //       }
+  //     } else {
+  //       if (status === ENTERING || status === ENTERED) {
+  //         nextStatus = EXITING
+  //       }
+  //     }
+  //   }
+  //   return { nextStatus }
+  // }
+
+
+  var _proto = Transition.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    this.updateStatus(true, this.appearStatus);
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    var nextStatus = null;
+
+    if (prevProps !== this.props) {
+      var status = this.state.status;
+
+      if (this.props.in) {
+        if (status !== ENTERING && status !== ENTERED) {
+          nextStatus = ENTERING;
+        }
+      } else {
+        if (status === ENTERING || status === ENTERED) {
+          nextStatus = EXITING;
+        }
+      }
+    }
+
+    this.updateStatus(false, nextStatus);
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this.cancelNextCallback();
+  };
+
+  _proto.getTimeouts = function getTimeouts() {
+    var timeout = this.props.timeout;
+    var exit, enter, appear;
+    exit = enter = appear = timeout;
+
+    if (timeout != null && typeof timeout !== 'number') {
+      exit = timeout.exit;
+      enter = timeout.enter; // TODO: remove fallback for next major
+
+      appear = timeout.appear !== undefined ? timeout.appear : enter;
+    }
+
+    return {
+      exit: exit,
+      enter: enter,
+      appear: appear
+    };
+  };
+
+  _proto.updateStatus = function updateStatus(mounting, nextStatus) {
+    if (mounting === void 0) {
+      mounting = false;
+    }
+
+    if (nextStatus !== null) {
+      // nextStatus will always be ENTERING or EXITING.
+      this.cancelNextCallback();
+
+      var node = _reactDom.default.findDOMNode(this);
+
+      if (nextStatus === ENTERING) {
+        this.performEnter(node, mounting);
+      } else {
+        this.performExit(node);
+      }
+    } else if (this.props.unmountOnExit && this.state.status === EXITED) {
+      this.setState({
+        status: UNMOUNTED
+      });
+    }
+  };
+
+  _proto.performEnter = function performEnter(node, mounting) {
+    var _this2 = this;
+
+    var enter = this.props.enter;
+    var appearing = this.context ? this.context.isMounting : mounting;
+    var timeouts = this.getTimeouts();
+    var enterTimeout = appearing ? timeouts.appear : timeouts.enter; // no enter animation skip right to ENTERED
+    // if we are mounting and running this it means appear _must_ be set
+
+    if (!mounting && !enter || _config.default.disabled) {
+      this.safeSetState({
+        status: ENTERED
+      }, function () {
+        _this2.props.onEntered(node);
+      });
+      return;
+    }
+
+    this.props.onEnter(node, appearing);
+    this.safeSetState({
+      status: ENTERING
+    }, function () {
+      _this2.props.onEntering(node, appearing);
+
+      _this2.onTransitionEnd(node, enterTimeout, function () {
+        _this2.safeSetState({
+          status: ENTERED
+        }, function () {
+          _this2.props.onEntered(node, appearing);
+        });
+      });
+    });
+  };
+
+  _proto.performExit = function performExit(node) {
+    var _this3 = this;
+
+    var exit = this.props.exit;
+    var timeouts = this.getTimeouts(); // no exit animation skip right to EXITED
+
+    if (!exit || _config.default.disabled) {
+      this.safeSetState({
+        status: EXITED
+      }, function () {
+        _this3.props.onExited(node);
+      });
+      return;
+    }
+
+    this.props.onExit(node);
+    this.safeSetState({
+      status: EXITING
+    }, function () {
+      _this3.props.onExiting(node);
+
+      _this3.onTransitionEnd(node, timeouts.exit, function () {
+        _this3.safeSetState({
+          status: EXITED
+        }, function () {
+          _this3.props.onExited(node);
+        });
+      });
+    });
+  };
+
+  _proto.cancelNextCallback = function cancelNextCallback() {
+    if (this.nextCallback !== null) {
+      this.nextCallback.cancel();
+      this.nextCallback = null;
+    }
+  };
+
+  _proto.safeSetState = function safeSetState(nextState, callback) {
+    // This shouldn't be necessary, but there are weird race conditions with
+    // setState callbacks and unmounting in testing, so always make sure that
+    // we can cancel any pending setState callbacks after we unmount.
+    callback = this.setNextCallback(callback);
+    this.setState(nextState, callback);
+  };
+
+  _proto.setNextCallback = function setNextCallback(callback) {
+    var _this4 = this;
+
+    var active = true;
+
+    this.nextCallback = function (event) {
+      if (active) {
+        active = false;
+        _this4.nextCallback = null;
+        callback(event);
+      }
+    };
+
+    this.nextCallback.cancel = function () {
+      active = false;
+    };
+
+    return this.nextCallback;
+  };
+
+  _proto.onTransitionEnd = function onTransitionEnd(node, timeout, handler) {
+    this.setNextCallback(handler);
+    var doesNotHaveTimeoutOrListener = timeout == null && !this.props.addEndListener;
+
+    if (!node || doesNotHaveTimeoutOrListener) {
+      setTimeout(this.nextCallback, 0);
+      return;
+    }
+
+    if (this.props.addEndListener) {
+      this.props.addEndListener(node, this.nextCallback);
+    }
+
+    if (timeout != null) {
+      setTimeout(this.nextCallback, timeout);
+    }
+  };
+
+  _proto.render = function render() {
+    var status = this.state.status;
+
+    if (status === UNMOUNTED) {
+      return null;
+    }
+
+    var _this$props = this.props,
+        children = _this$props.children,
+        childProps = (0, _objectWithoutPropertiesLoose2.default)(_this$props, ["children"]); // filter props for Transtition
+
+    delete childProps.in;
+    delete childProps.mountOnEnter;
+    delete childProps.unmountOnExit;
+    delete childProps.appear;
+    delete childProps.enter;
+    delete childProps.exit;
+    delete childProps.timeout;
+    delete childProps.addEndListener;
+    delete childProps.onEnter;
+    delete childProps.onEntering;
+    delete childProps.onEntered;
+    delete childProps.onExit;
+    delete childProps.onExiting;
+    delete childProps.onExited;
+
+    if (typeof children === 'function') {
+      // allows for nested Transitions
+      return _react.default.createElement(_TransitionGroupContext.default.Provider, {
+        value: null
+      }, children(status, childProps));
+    }
+
+    var child = _react.default.Children.only(children);
+
+    return (// allows for nested Transitions
+      _react.default.createElement(_TransitionGroupContext.default.Provider, {
+        value: null
+      }, _react.default.cloneElement(child, childProps))
+    );
+  };
+
+  return Transition;
+}(_react.default.Component);
+
+Transition.contextType = _TransitionGroupContext.default;
+Transition.propTypes = "development" !== "production" ? {
+  /**
+   * A `function` child can be used instead of a React element. This function is
+   * called with the current transition status (`'entering'`, `'entered'`,
+   * `'exiting'`, `'exited'`), which can be used to apply context
+   * specific props to a component.
+   *
+   * ```jsx
+   * <Transition in={this.state.in} timeout={150}>
+   *   {state => (
+   *     <MyComponent className={`fade fade-${state}`} />
+   *   )}
+   * </Transition>
+   * ```
+   */
+  children: _propTypes.default.oneOfType([_propTypes.default.func.isRequired, _propTypes.default.element.isRequired]).isRequired,
+
+  /**
+   * Show the component; triggers the enter or exit states
+   */
+  in: _propTypes.default.bool,
+
+  /**
+   * By default the child component is mounted immediately along with
+   * the parent `Transition` component. If you want to "lazy mount" the component on the
+   * first `in={true}` you can set `mountOnEnter`. After the first enter transition the component will stay
+   * mounted, even on "exited", unless you also specify `unmountOnExit`.
+   */
+  mountOnEnter: _propTypes.default.bool,
+
+  /**
+   * By default the child component stays mounted after it reaches the `'exited'` state.
+   * Set `unmountOnExit` if you'd prefer to unmount the component after it finishes exiting.
+   */
+  unmountOnExit: _propTypes.default.bool,
+
+  /**
+   * Normally a component is not transitioned if it is shown when the
+   * `<Transition>` component mounts. If you want to transition on the first
+   * mount set `appear` to `true`, and the component will transition in as soon
+   * as the `<Transition>` mounts.
+   *
+   * > **Note**: there are no special appear states like `appearing`/`appeared`, this prop
+   * > only adds an additional enter transition. However, in the
+   * > `<CSSTransition>` component that first enter transition does result in
+   * > additional `.appear-*` classes, that way you can choose to style it
+   * > differently.
+   */
+  appear: _propTypes.default.bool,
+
+  /**
+   * Enable or disable enter transitions.
+   */
+  enter: _propTypes.default.bool,
+
+  /**
+   * Enable or disable exit transitions.
+   */
+  exit: _propTypes.default.bool,
+
+  /**
+   * The duration of the transition, in milliseconds.
+   * Required unless `addEndListener` is provided.
+   *
+   * You may specify a single timeout for all transitions:
+   *
+   * ```jsx
+   * timeout={500}
+   * ```
+   *
+   * or individually:
+   *
+   * ```jsx
+   * timeout={{
+   *  appear: 500,
+   *  enter: 300,
+   *  exit: 500,
+   * }}
+   * ```
+   *
+   * - `appear` defaults to the value of `enter`
+   * - `enter` defaults to `0`
+   * - `exit` defaults to `0`
+   *
+   * @type {number | { enter?: number, exit?: number, appear?: number }}
+   */
+  timeout: function timeout(props) {
+    var pt = _PropTypes.timeoutsShape;
+    if (!props.addEndListener) pt = pt.isRequired;
+
+    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    return pt.apply(void 0, [props].concat(args));
+  },
+
+  /**
+   * Add a custom transition end trigger. Called with the transitioning
+   * DOM node and a `done` callback. Allows for more fine grained transition end
+   * logic. **Note:** Timeouts are still used as a fallback if provided.
+   *
+   * ```jsx
+   * addEndListener={(node, done) => {
+   *   // use the css transitionend event to mark the finish of a transition
+   *   node.addEventListener('transitionend', done, false);
+   * }}
+   * ```
+   */
+  addEndListener: _propTypes.default.func,
+
+  /**
+   * Callback fired before the "entering" status is applied. An extra parameter
+   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool) -> void
+   */
+  onEnter: _propTypes.default.func,
+
+  /**
+   * Callback fired after the "entering" status is applied. An extra parameter
+   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool)
+   */
+  onEntering: _propTypes.default.func,
+
+  /**
+   * Callback fired after the "entered" status is applied. An extra parameter
+   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool) -> void
+   */
+  onEntered: _propTypes.default.func,
+
+  /**
+   * Callback fired before the "exiting" status is applied.
+   *
+   * @type Function(node: HtmlElement) -> void
+   */
+  onExit: _propTypes.default.func,
+
+  /**
+   * Callback fired after the "exiting" status is applied.
+   *
+   * @type Function(node: HtmlElement) -> void
+   */
+  onExiting: _propTypes.default.func,
+
+  /**
+   * Callback fired after the "exited" status is applied.
+   *
+   * @type Function(node: HtmlElement) -> void
+   */
+  onExited: _propTypes.default.func // Name the function so it is clearer in the documentation
+
+} : {};
+
+function noop() {}
+
+Transition.defaultProps = {
+  in: false,
+  mountOnEnter: false,
+  unmountOnExit: false,
+  appear: false,
+  enter: true,
+  exit: true,
+  onEnter: noop,
+  onEntering: noop,
+  onEntered: noop,
+  onExit: noop,
+  onExiting: noop,
+  onExited: noop
+};
+Transition.UNMOUNTED = 0;
+Transition.EXITED = 1;
+Transition.ENTERING = 2;
+Transition.ENTERED = 3;
+Transition.EXITING = 4;
+var _default = Transition;
+exports.default = _default;
+},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","@babel/runtime/helpers/esm/inheritsLoose":"../node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","prop-types":"../node_modules/prop-types/index.js","react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./config":"../node_modules/react-transition-group/esm/config.js","./utils/PropTypes":"../node_modules/react-transition-group/esm/utils/PropTypes.js","./TransitionGroupContext":"../node_modules/react-transition-group/esm/TransitionGroupContext.js"}],"../node_modules/react-transition-group/esm/CSSTransition.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
+
+var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose"));
+
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/inheritsLoose"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _addClass2 = _interopRequireDefault(require("dom-helpers/addClass"));
+
+var _removeClass = _interopRequireDefault(require("dom-helpers/removeClass"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Transition = _interopRequireDefault(require("./Transition"));
+
+var _PropTypes = require("./utils/PropTypes");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _addClass = function addClass(node, classes) {
+  return node && classes && classes.split(' ').forEach(function (c) {
+    return (0, _addClass2.default)(node, c);
+  });
+};
+
+var removeClass = function removeClass(node, classes) {
+  return node && classes && classes.split(' ').forEach(function (c) {
+    return (0, _removeClass.default)(node, c);
+  });
+};
+/**
+ * A transition component inspired by the excellent
+ * [ng-animate](http://www.nganimate.org/) library, you should use it if you're
+ * using CSS transitions or animations. It's built upon the
+ * [`Transition`](https://reactcommunity.org/react-transition-group/transition)
+ * component, so it inherits all of its props.
+ *
+ * `CSSTransition` applies a pair of class names during the `appear`, `enter`,
+ * and `exit` states of the transition. The first class is applied and then a
+ * second `*-active` class in order to activate the CSS transition. After the
+ * transition, matching `*-done` class names are applied to persist the
+ * transition state.
+ *
+ * ```jsx
+ * function App() {
+ *   const [inProp, setInProp] = useState(false);
+ *   return (
+ *     <div>
+ *       <CSSTransition in={inProp} timeout={200} classNames="my-node">
+ *         <div>
+ *           {"I'll receive my-node-* classes"}
+ *         </div>
+ *       </CSSTransition>
+ *       <button type="button" onClick={() => setInProp(true)}>
+ *         Click to Enter
+ *       </button>
+ *     </div>
+ *   );
+ * }
+ * ```
+ *
+ * When the `in` prop is set to `true`, the child component will first receive
+ * the class `example-enter`, then the `example-enter-active` will be added in
+ * the next tick. `CSSTransition` [forces a
+ * reflow](https://github.com/reactjs/react-transition-group/blob/5007303e729a74be66a21c3e2205e4916821524b/src/CSSTransition.js#L208-L215)
+ * between before adding the `example-enter-active`. This is an important trick
+ * because it allows us to transition between `example-enter` and
+ * `example-enter-active` even though they were added immediately one after
+ * another. Most notably, this is what makes it possible for us to animate
+ * _appearance_.
+ *
+ * ```css
+ * .my-node-enter {
+ *   opacity: 0;
+ * }
+ * .my-node-enter-active {
+ *   opacity: 1;
+ *   transition: opacity 200ms;
+ * }
+ * .my-node-exit {
+ *   opacity: 1;
+ * }
+ * .my-node-exit-active {
+ *   opacity: 0;
+ *   transition: opacity 200ms;
+ * }
+ * ```
+ *
+ * `*-active` classes represent which styles you want to animate **to**.
+ *
+ * **Note**: If you're using the
+ * [`appear`](http://reactcommunity.org/react-transition-group/transition#Transition-prop-appear)
+ * prop, make sure to define styles for `.appear-*` classes as well.
+ */
+
+
+var CSSTransition = /*#__PURE__*/function (_React$Component) {
+  (0, _inheritsLoose2.default)(CSSTransition, _React$Component);
+
+  function CSSTransition() {
+    var _this;
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
+    _this.appliedClasses = {
+      appear: {},
+      enter: {},
+      exit: {}
+    };
+
+    _this.onEnter = function (node, appearing) {
+      _this.removeClasses(node, 'exit');
+
+      _this.addClass(node, appearing ? 'appear' : 'enter', 'base');
+
+      if (_this.props.onEnter) {
+        _this.props.onEnter(node, appearing);
+      }
+    };
+
+    _this.onEntering = function (node, appearing) {
+      var type = appearing ? 'appear' : 'enter';
+
+      _this.addClass(node, type, 'active');
+
+      if (_this.props.onEntering) {
+        _this.props.onEntering(node, appearing);
+      }
+    };
+
+    _this.onEntered = function (node, appearing) {
+      var type = appearing ? 'appear' : 'enter';
+
+      _this.removeClasses(node, type);
+
+      _this.addClass(node, type, 'done');
+
+      if (_this.props.onEntered) {
+        _this.props.onEntered(node, appearing);
+      }
+    };
+
+    _this.onExit = function (node) {
+      _this.removeClasses(node, 'appear');
+
+      _this.removeClasses(node, 'enter');
+
+      _this.addClass(node, 'exit', 'base');
+
+      if (_this.props.onExit) {
+        _this.props.onExit(node);
+      }
+    };
+
+    _this.onExiting = function (node) {
+      _this.addClass(node, 'exit', 'active');
+
+      if (_this.props.onExiting) {
+        _this.props.onExiting(node);
+      }
+    };
+
+    _this.onExited = function (node) {
+      _this.removeClasses(node, 'exit');
+
+      _this.addClass(node, 'exit', 'done');
+
+      if (_this.props.onExited) {
+        _this.props.onExited(node);
+      }
+    };
+
+    _this.getClassNames = function (type) {
+      var classNames = _this.props.classNames;
+      var isStringClassNames = typeof classNames === 'string';
+      var prefix = isStringClassNames && classNames ? classNames + "-" : '';
+      var baseClassName = isStringClassNames ? "" + prefix + type : classNames[type];
+      var activeClassName = isStringClassNames ? baseClassName + "-active" : classNames[type + "Active"];
+      var doneClassName = isStringClassNames ? baseClassName + "-done" : classNames[type + "Done"];
+      return {
+        baseClassName: baseClassName,
+        activeClassName: activeClassName,
+        doneClassName: doneClassName
+      };
+    };
+
+    return _this;
+  }
+
+  var _proto = CSSTransition.prototype;
+
+  _proto.addClass = function addClass(node, type, phase) {
+    var className = this.getClassNames(type)[phase + "ClassName"];
+
+    if (type === 'appear' && phase === 'done') {
+      className += " " + this.getClassNames('enter').doneClassName;
+    } // This is for to force a repaint,
+    // which is necessary in order to transition styles when adding a class name.
+
+
+    if (phase === 'active') {
+      /* eslint-disable no-unused-expressions */
+      node && node.scrollTop;
+    }
+
+    this.appliedClasses[type][phase] = className;
+
+    _addClass(node, className);
+  };
+
+  _proto.removeClasses = function removeClasses(node, type) {
+    var _this$appliedClasses$ = this.appliedClasses[type],
+        baseClassName = _this$appliedClasses$.base,
+        activeClassName = _this$appliedClasses$.active,
+        doneClassName = _this$appliedClasses$.done;
+    this.appliedClasses[type] = {};
+
+    if (baseClassName) {
+      removeClass(node, baseClassName);
+    }
+
+    if (activeClassName) {
+      removeClass(node, activeClassName);
+    }
+
+    if (doneClassName) {
+      removeClass(node, doneClassName);
+    }
+  };
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        _ = _this$props.classNames,
+        props = (0, _objectWithoutPropertiesLoose2.default)(_this$props, ["classNames"]);
+    return _react.default.createElement(_Transition.default, (0, _extends2.default)({}, props, {
+      onEnter: this.onEnter,
+      onEntered: this.onEntered,
+      onEntering: this.onEntering,
+      onExit: this.onExit,
+      onExiting: this.onExiting,
+      onExited: this.onExited
+    }));
+  };
+
+  return CSSTransition;
+}(_react.default.Component);
+
+CSSTransition.defaultProps = {
+  classNames: ''
+};
+CSSTransition.propTypes = "development" !== "production" ? (0, _extends2.default)({}, _Transition.default.propTypes, {
+  /**
+   * The animation classNames applied to the component as it appears, enters,
+   * exits or has finished the transition. A single name can be provided and it
+   * will be suffixed for each stage: e.g.
+   *
+   * `classNames="fade"` applies `fade-appear`, `fade-appear-active`,
+   * `fade-appear-done`, `fade-enter`, `fade-enter-active`, `fade-enter-done`,
+   * `fade-exit`, `fade-exit-active`, and `fade-exit-done`.
+   *
+   * **Note**: `fade-appear-done` and `fade-enter-done` will _both_ be applied.
+   * This allows you to define different behavior for when appearing is done and
+   * when regular entering is done, using selectors like
+   * `.fade-enter-done:not(.fade-appear-done)`. For example, you could apply an
+   * epic entrance animation when element first appears in the DOM using
+   * [Animate.css](https://daneden.github.io/animate.css/). Otherwise you can
+   * simply use `fade-enter-done` for defining both cases.
+   *
+   * Each individual classNames can also be specified independently like:
+   *
+   * ```js
+   * classNames={{
+   *  appear: 'my-appear',
+   *  appearActive: 'my-active-appear',
+   *  appearDone: 'my-done-appear',
+   *  enter: 'my-enter',
+   *  enterActive: 'my-active-enter',
+   *  enterDone: 'my-done-enter',
+   *  exit: 'my-exit',
+   *  exitActive: 'my-active-exit',
+   *  exitDone: 'my-done-exit',
+   * }}
+   * ```
+   *
+   * If you want to set these classes using CSS Modules:
+   *
+   * ```js
+   * import styles from './styles.css';
+   * ```
+   *
+   * you might want to use camelCase in your CSS file, that way could simply
+   * spread them instead of listing them one by one:
+   *
+   * ```js
+   * classNames={{ ...styles }}
+   * ```
+   *
+   * @type {string | {
+   *  appear?: string,
+   *  appearActive?: string,
+   *  appearDone?: string,
+   *  enter?: string,
+   *  enterActive?: string,
+   *  enterDone?: string,
+   *  exit?: string,
+   *  exitActive?: string,
+   *  exitDone?: string,
+   * }}
+   */
+  classNames: _PropTypes.classNamesShape,
+
+  /**
+   * A `<Transition>` callback fired immediately after the 'enter' or 'appear' class is
+   * applied.
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool)
+   */
+  onEnter: _propTypes.default.func,
+
+  /**
+   * A `<Transition>` callback fired immediately after the 'enter-active' or
+   * 'appear-active' class is applied.
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool)
+   */
+  onEntering: _propTypes.default.func,
+
+  /**
+   * A `<Transition>` callback fired immediately after the 'enter' or
+   * 'appear' classes are **removed** and the `done` class is added to the DOM node.
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool)
+   */
+  onEntered: _propTypes.default.func,
+
+  /**
+   * A `<Transition>` callback fired immediately after the 'exit' class is
+   * applied.
+   *
+   * @type Function(node: HtmlElement)
+   */
+  onExit: _propTypes.default.func,
+
+  /**
+   * A `<Transition>` callback fired immediately after the 'exit-active' is applied.
+   *
+   * @type Function(node: HtmlElement)
+   */
+  onExiting: _propTypes.default.func,
+
+  /**
+   * A `<Transition>` callback fired immediately after the 'exit' classes
+   * are **removed** and the `exit-done` class is added to the DOM node.
+   *
+   * @type Function(node: HtmlElement)
+   */
+  onExited: _propTypes.default.func
+}) : {};
+var _default = CSSTransition;
+exports.default = _default;
+},{"@babel/runtime/helpers/esm/extends":"../node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","@babel/runtime/helpers/esm/inheritsLoose":"../node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","prop-types":"../node_modules/prop-types/index.js","dom-helpers/addClass":"../node_modules/dom-helpers/esm/addClass.js","dom-helpers/removeClass":"../node_modules/dom-helpers/esm/removeClass.js","react":"../node_modules/react/index.js","./Transition":"../node_modules/react-transition-group/esm/Transition.js","./utils/PropTypes":"../node_modules/react-transition-group/esm/utils/PropTypes.js"}],"../node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = _assertThisInitialized;
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+},{}],"../node_modules/react-transition-group/esm/utils/ChildMapping.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getChildMapping = getChildMapping;
+exports.mergeChildMappings = mergeChildMappings;
+exports.getInitialChildMapping = getInitialChildMapping;
+exports.getNextChildMapping = getNextChildMapping;
+
+var _react = require("react");
+
+/**
+ * Given `this.props.children`, return an object mapping key to child.
+ *
+ * @param {*} children `this.props.children`
+ * @return {object} Mapping of key to child
+ */
+function getChildMapping(children, mapFn) {
+  var mapper = function mapper(child) {
+    return mapFn && (0, _react.isValidElement)(child) ? mapFn(child) : child;
+  };
+
+  var result = Object.create(null);
+  if (children) _react.Children.map(children, function (c) {
+    return c;
+  }).forEach(function (child) {
+    // run the map function here instead so that the key is the computed one
+    result[child.key] = mapper(child);
+  });
+  return result;
+}
+/**
+ * When you're adding or removing children some may be added or removed in the
+ * same render pass. We want to show *both* since we want to simultaneously
+ * animate elements in and out. This function takes a previous set of keys
+ * and a new set of keys and merges them with its best guess of the correct
+ * ordering. In the future we may expose some of the utilities in
+ * ReactMultiChild to make this easy, but for now React itself does not
+ * directly have this concept of the union of prevChildren and nextChildren
+ * so we implement it here.
+ *
+ * @param {object} prev prev children as returned from
+ * `ReactTransitionChildMapping.getChildMapping()`.
+ * @param {object} next next children as returned from
+ * `ReactTransitionChildMapping.getChildMapping()`.
+ * @return {object} a key set that contains all keys in `prev` and all keys
+ * in `next` in a reasonable order.
+ */
+
+
+function mergeChildMappings(prev, next) {
+  prev = prev || {};
+  next = next || {};
+
+  function getValueForKey(key) {
+    return key in next ? next[key] : prev[key];
+  } // For each key of `next`, the list of keys to insert before that key in
+  // the combined list
+
+
+  var nextKeysPending = Object.create(null);
+  var pendingKeys = [];
+
+  for (var prevKey in prev) {
+    if (prevKey in next) {
+      if (pendingKeys.length) {
+        nextKeysPending[prevKey] = pendingKeys;
+        pendingKeys = [];
+      }
+    } else {
+      pendingKeys.push(prevKey);
+    }
+  }
+
+  var i;
+  var childMapping = {};
+
+  for (var nextKey in next) {
+    if (nextKeysPending[nextKey]) {
+      for (i = 0; i < nextKeysPending[nextKey].length; i++) {
+        var pendingNextKey = nextKeysPending[nextKey][i];
+        childMapping[nextKeysPending[nextKey][i]] = getValueForKey(pendingNextKey);
+      }
+    }
+
+    childMapping[nextKey] = getValueForKey(nextKey);
+  } // Finally, add the keys which didn't appear before any key in `next`
+
+
+  for (i = 0; i < pendingKeys.length; i++) {
+    childMapping[pendingKeys[i]] = getValueForKey(pendingKeys[i]);
+  }
+
+  return childMapping;
+}
+
+function getProp(child, prop, props) {
+  return props[prop] != null ? props[prop] : child.props[prop];
+}
+
+function getInitialChildMapping(props, onExited) {
+  return getChildMapping(props.children, function (child) {
+    return (0, _react.cloneElement)(child, {
+      onExited: onExited.bind(null, child),
+      in: true,
+      appear: getProp(child, 'appear', props),
+      enter: getProp(child, 'enter', props),
+      exit: getProp(child, 'exit', props)
+    });
+  });
+}
+
+function getNextChildMapping(nextProps, prevChildMapping, onExited) {
+  var nextChildMapping = getChildMapping(nextProps.children);
+  var children = mergeChildMappings(prevChildMapping, nextChildMapping);
+  Object.keys(children).forEach(function (key) {
+    var child = children[key];
+    if (!(0, _react.isValidElement)(child)) return;
+    var hasPrev = (key in prevChildMapping);
+    var hasNext = (key in nextChildMapping);
+    var prevChild = prevChildMapping[key];
+    var isLeaving = (0, _react.isValidElement)(prevChild) && !prevChild.props.in; // item is new (entering)
+
+    if (hasNext && (!hasPrev || isLeaving)) {
+      // console.log('entering', key)
+      children[key] = (0, _react.cloneElement)(child, {
+        onExited: onExited.bind(null, child),
+        in: true,
+        exit: getProp(child, 'exit', nextProps),
+        enter: getProp(child, 'enter', nextProps)
+      });
+    } else if (!hasNext && hasPrev && !isLeaving) {
+      // item is old (exiting)
+      // console.log('leaving', key)
+      children[key] = (0, _react.cloneElement)(child, {
+        in: false
+      });
+    } else if (hasNext && hasPrev && (0, _react.isValidElement)(prevChild)) {
+      // item hasn't changed transition states
+      // copy over the last transition props;
+      // console.log('unchanged', key)
+      children[key] = (0, _react.cloneElement)(child, {
+        onExited: onExited.bind(null, child),
+        in: prevChild.props.in,
+        exit: getProp(child, 'exit', nextProps),
+        enter: getProp(child, 'enter', nextProps)
+      });
+    }
+  });
+  return children;
+}
+},{"react":"../node_modules/react/index.js"}],"../node_modules/react-transition-group/esm/TransitionGroup.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose"));
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
+
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/inheritsLoose"));
+
+var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/assertThisInitialized"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _TransitionGroupContext = _interopRequireDefault(require("./TransitionGroupContext"));
+
+var _ChildMapping = require("./utils/ChildMapping");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var values = Object.values || function (obj) {
+  return Object.keys(obj).map(function (k) {
+    return obj[k];
+  });
+};
+
+var defaultProps = {
+  component: 'div',
+  childFactory: function childFactory(child) {
+    return child;
+  }
+  /**
+   * The `<TransitionGroup>` component manages a set of transition components
+   * (`<Transition>` and `<CSSTransition>`) in a list. Like with the transition
+   * components, `<TransitionGroup>` is a state machine for managing the mounting
+   * and unmounting of components over time.
+   *
+   * Consider the example below. As items are removed or added to the TodoList the
+   * `in` prop is toggled automatically by the `<TransitionGroup>`.
+   *
+   * Note that `<TransitionGroup>`  does not define any animation behavior!
+   * Exactly _how_ a list item animates is up to the individual transition
+   * component. This means you can mix and match animations across different list
+   * items.
+   */
+
+};
+
+var TransitionGroup = /*#__PURE__*/function (_React$Component) {
+  (0, _inheritsLoose2.default)(TransitionGroup, _React$Component);
+
+  function TransitionGroup(props, context) {
+    var _this;
+
+    _this = _React$Component.call(this, props, context) || this;
+
+    var handleExited = _this.handleExited.bind((0, _assertThisInitialized2.default)((0, _assertThisInitialized2.default)(_this))); // Initial children should all be entering, dependent on appear
+
+
+    _this.state = {
+      contextValue: {
+        isMounting: true
+      },
+      handleExited: handleExited,
+      firstRender: true
+    };
+    return _this;
+  }
+
+  var _proto = TransitionGroup.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    this.mounted = true;
+    this.setState({
+      contextValue: {
+        isMounting: false
+      }
+    });
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this.mounted = false;
+  };
+
+  TransitionGroup.getDerivedStateFromProps = function getDerivedStateFromProps(nextProps, _ref) {
+    var prevChildMapping = _ref.children,
+        handleExited = _ref.handleExited,
+        firstRender = _ref.firstRender;
+    return {
+      children: firstRender ? (0, _ChildMapping.getInitialChildMapping)(nextProps, handleExited) : (0, _ChildMapping.getNextChildMapping)(nextProps, prevChildMapping, handleExited),
+      firstRender: false
+    };
+  };
+
+  _proto.handleExited = function handleExited(child, node) {
+    var currentChildMapping = (0, _ChildMapping.getChildMapping)(this.props.children);
+    if (child.key in currentChildMapping) return;
+
+    if (child.props.onExited) {
+      child.props.onExited(node);
+    }
+
+    if (this.mounted) {
+      this.setState(function (state) {
+        var children = (0, _extends2.default)({}, state.children);
+        delete children[child.key];
+        return {
+          children: children
+        };
+      });
+    }
+  };
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        Component = _this$props.component,
+        childFactory = _this$props.childFactory,
+        props = (0, _objectWithoutPropertiesLoose2.default)(_this$props, ["component", "childFactory"]);
+    var contextValue = this.state.contextValue;
+    var children = values(this.state.children).map(childFactory);
+    delete props.appear;
+    delete props.enter;
+    delete props.exit;
+
+    if (Component === null) {
+      return _react.default.createElement(_TransitionGroupContext.default.Provider, {
+        value: contextValue
+      }, children);
+    }
+
+    return _react.default.createElement(_TransitionGroupContext.default.Provider, {
+      value: contextValue
+    }, _react.default.createElement(Component, props, children));
+  };
+
+  return TransitionGroup;
+}(_react.default.Component);
+
+TransitionGroup.propTypes = "development" !== "production" ? {
+  /**
+   * `<TransitionGroup>` renders a `<div>` by default. You can change this
+   * behavior by providing a `component` prop.
+   * If you use React v16+ and would like to avoid a wrapping `<div>` element
+   * you can pass in `component={null}`. This is useful if the wrapping div
+   * borks your css styles.
+   */
+  component: _propTypes.default.any,
+
+  /**
+   * A set of `<Transition>` components, that are toggled `in` and out as they
+   * leave. the `<TransitionGroup>` will inject specific transition props, so
+   * remember to spread them through if you are wrapping the `<Transition>` as
+   * with our `<Fade>` example.
+   *
+   * While this component is meant for multiple `Transition` or `CSSTransition`
+   * children, sometimes you may want to have a single transition child with
+   * content that you want to be transitioned out and in when you change it
+   * (e.g. routes, images etc.) In that case you can change the `key` prop of
+   * the transition child as you change its content, this will cause
+   * `TransitionGroup` to transition the child out and back in.
+   */
+  children: _propTypes.default.node,
+
+  /**
+   * A convenience prop that enables or disables appear animations
+   * for all children. Note that specifying this will override any defaults set
+   * on individual children Transitions.
+   */
+  appear: _propTypes.default.bool,
+
+  /**
+   * A convenience prop that enables or disables enter animations
+   * for all children. Note that specifying this will override any defaults set
+   * on individual children Transitions.
+   */
+  enter: _propTypes.default.bool,
+
+  /**
+   * A convenience prop that enables or disables exit animations
+   * for all children. Note that specifying this will override any defaults set
+   * on individual children Transitions.
+   */
+  exit: _propTypes.default.bool,
+
+  /**
+   * You may need to apply reactive updates to a child as it is exiting.
+   * This is generally done by using `cloneElement` however in the case of an exiting
+   * child the element has already been removed and not accessible to the consumer.
+   *
+   * If you do need to update a child as it leaves you can provide a `childFactory`
+   * to wrap every child, even the ones that are leaving.
+   *
+   * @type Function(child: ReactElement) -> ReactElement
+   */
+  childFactory: _propTypes.default.func
+} : {};
+TransitionGroup.defaultProps = defaultProps;
+var _default = TransitionGroup;
+exports.default = _default;
+},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","@babel/runtime/helpers/esm/extends":"../node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/inheritsLoose":"../node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","@babel/runtime/helpers/esm/assertThisInitialized":"../node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js","prop-types":"../node_modules/prop-types/index.js","react":"../node_modules/react/index.js","./TransitionGroupContext":"../node_modules/react-transition-group/esm/TransitionGroupContext.js","./utils/ChildMapping":"../node_modules/react-transition-group/esm/utils/ChildMapping.js"}],"../node_modules/react-transition-group/esm/ReplaceTransition.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose"));
+
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/inheritsLoose"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactDom = _interopRequireDefault(require("react-dom"));
+
+var _TransitionGroup = _interopRequireDefault(require("./TransitionGroup"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * The `<ReplaceTransition>` component is a specialized `Transition` component
+ * that animates between two children.
+ *
+ * ```jsx
+ * <ReplaceTransition in>
+ *   <Fade><div>I appear first</div></Fade>
+ *   <Fade><div>I replace the above</div></Fade>
+ * </ReplaceTransition>
+ * ```
+ */
+var ReplaceTransition = /*#__PURE__*/function (_React$Component) {
+  (0, _inheritsLoose2.default)(ReplaceTransition, _React$Component);
+
+  function ReplaceTransition() {
+    var _this;
+
+    for (var _len = arguments.length, _args = new Array(_len), _key = 0; _key < _len; _key++) {
+      _args[_key] = arguments[_key];
+    }
+
+    _this = _React$Component.call.apply(_React$Component, [this].concat(_args)) || this;
+
+    _this.handleEnter = function () {
+      for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        args[_key2] = arguments[_key2];
+      }
+
+      return _this.handleLifecycle('onEnter', 0, args);
+    };
+
+    _this.handleEntering = function () {
+      for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+        args[_key3] = arguments[_key3];
+      }
+
+      return _this.handleLifecycle('onEntering', 0, args);
+    };
+
+    _this.handleEntered = function () {
+      for (var _len4 = arguments.length, args = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+        args[_key4] = arguments[_key4];
+      }
+
+      return _this.handleLifecycle('onEntered', 0, args);
+    };
+
+    _this.handleExit = function () {
+      for (var _len5 = arguments.length, args = new Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
+        args[_key5] = arguments[_key5];
+      }
+
+      return _this.handleLifecycle('onExit', 1, args);
+    };
+
+    _this.handleExiting = function () {
+      for (var _len6 = arguments.length, args = new Array(_len6), _key6 = 0; _key6 < _len6; _key6++) {
+        args[_key6] = arguments[_key6];
+      }
+
+      return _this.handleLifecycle('onExiting', 1, args);
+    };
+
+    _this.handleExited = function () {
+      for (var _len7 = arguments.length, args = new Array(_len7), _key7 = 0; _key7 < _len7; _key7++) {
+        args[_key7] = arguments[_key7];
+      }
+
+      return _this.handleLifecycle('onExited', 1, args);
+    };
+
+    return _this;
+  }
+
+  var _proto = ReplaceTransition.prototype;
+
+  _proto.handleLifecycle = function handleLifecycle(handler, idx, originalArgs) {
+    var _child$props;
+
+    var children = this.props.children;
+
+    var child = _react.default.Children.toArray(children)[idx];
+
+    if (child.props[handler]) (_child$props = child.props)[handler].apply(_child$props, originalArgs);
+    if (this.props[handler]) this.props[handler](_reactDom.default.findDOMNode(this));
+  };
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        children = _this$props.children,
+        inProp = _this$props.in,
+        props = (0, _objectWithoutPropertiesLoose2.default)(_this$props, ["children", "in"]);
+
+    var _React$Children$toArr = _react.default.Children.toArray(children),
+        first = _React$Children$toArr[0],
+        second = _React$Children$toArr[1];
+
+    delete props.onEnter;
+    delete props.onEntering;
+    delete props.onEntered;
+    delete props.onExit;
+    delete props.onExiting;
+    delete props.onExited;
+    return _react.default.createElement(_TransitionGroup.default, props, inProp ? _react.default.cloneElement(first, {
+      key: 'first',
+      onEnter: this.handleEnter,
+      onEntering: this.handleEntering,
+      onEntered: this.handleEntered
+    }) : _react.default.cloneElement(second, {
+      key: 'second',
+      onEnter: this.handleExit,
+      onEntering: this.handleExiting,
+      onEntered: this.handleExited
+    }));
+  };
+
+  return ReplaceTransition;
+}(_react.default.Component);
+
+ReplaceTransition.propTypes = "development" !== "production" ? {
+  in: _propTypes.default.bool.isRequired,
+  children: function children(props, propName) {
+    if (_react.default.Children.count(props[propName]) !== 2) return new Error("\"" + propName + "\" must be exactly two transition components.");
+    return null;
+  }
+} : {};
+var _default = ReplaceTransition;
+exports.default = _default;
+},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","@babel/runtime/helpers/esm/inheritsLoose":"../node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","prop-types":"../node_modules/prop-types/index.js","react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./TransitionGroup":"../node_modules/react-transition-group/esm/TransitionGroup.js"}],"../node_modules/react-transition-group/esm/SwitchTransition.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.modes = void 0;
+
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/inheritsLoose"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _Transition = require("./Transition");
+
+var _TransitionGroupContext = _interopRequireDefault(require("./TransitionGroupContext"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _leaveRenders, _enterRenders;
+
+function areChildrenDifferent(oldChildren, newChildren) {
+  if (oldChildren === newChildren) return false;
+
+  if (_react.default.isValidElement(oldChildren) && _react.default.isValidElement(newChildren) && oldChildren.key != null && oldChildren.key === newChildren.key) {
+    return false;
+  }
+
+  return true;
+}
+/**
+ * Enum of modes for SwitchTransition component
+ * @enum { string }
+ */
+
+
+var modes = {
+  out: 'out-in',
+  in: 'in-out'
+};
+exports.modes = modes;
+
+var callHook = function callHook(element, name, cb) {
+  return function () {
+    var _element$props;
+
+    element.props[name] && (_element$props = element.props)[name].apply(_element$props, arguments);
+    cb();
+  };
+};
+
+var leaveRenders = (_leaveRenders = {}, _leaveRenders[modes.out] = function (_ref) {
+  var current = _ref.current,
+      changeState = _ref.changeState;
+  return _react.default.cloneElement(current, {
+    in: false,
+    onExited: callHook(current, 'onExited', function () {
+      changeState(_Transition.ENTERING, null);
+    })
+  });
+}, _leaveRenders[modes.in] = function (_ref2) {
+  var current = _ref2.current,
+      changeState = _ref2.changeState,
+      children = _ref2.children;
+  return [current, _react.default.cloneElement(children, {
+    in: true,
+    onEntered: callHook(children, 'onEntered', function () {
+      changeState(_Transition.ENTERING);
+    })
+  })];
+}, _leaveRenders);
+var enterRenders = (_enterRenders = {}, _enterRenders[modes.out] = function (_ref3) {
+  var children = _ref3.children,
+      changeState = _ref3.changeState;
+  return _react.default.cloneElement(children, {
+    in: true,
+    onEntered: callHook(children, 'onEntered', function () {
+      changeState(_Transition.ENTERED, _react.default.cloneElement(children, {
+        in: true
+      }));
+    })
+  });
+}, _enterRenders[modes.in] = function (_ref4) {
+  var current = _ref4.current,
+      children = _ref4.children,
+      changeState = _ref4.changeState;
+  return [_react.default.cloneElement(current, {
+    in: false,
+    onExited: callHook(current, 'onExited', function () {
+      changeState(_Transition.ENTERED, _react.default.cloneElement(children, {
+        in: true
+      }));
+    })
+  }), _react.default.cloneElement(children, {
+    in: true
+  })];
+}, _enterRenders);
+/**
+ * A transition component inspired by the [vue transition modes](https://vuejs.org/v2/guide/transitions.html#Transition-Modes).
+ * You can use it when you want to control the render between state transitions.
+ * Based on the selected mode and the child's key which is the `Transition` or `CSSTransition` component, the `SwitchTransition` makes a consistent transition between them.
+ *
+ * If the `out-in` mode is selected, the `SwitchTransition` waits until the old child leaves and then inserts a new child.
+ * If the `in-out` mode is selected, the `SwitchTransition` inserts a new child first, waits for the new child to enter and then removes the old child
+ *
+ * ```jsx
+ *
+ * function App() {
+ *  const [state, setState] = useState(false);
+ *  return (
+ *    <SwitchTransition>
+ *      <FadeTransition key={state ? "Goodbye, world!" : "Hello, world!"}
+ *        addEndListener={(node, done) => node.addEventListener("transitionend", done, false)}
+ *        classNames='fade' >
+ *        <button onClick={() => setState(state => !state)}>
+ *          {state ? "Goodbye, world!" : "Hello, world!"}
+ *        </button>
+ *      </FadeTransition>
+ *    </SwitchTransition>
+ *  )
+ * }
+ * ```
+ */
+
+var SwitchTransition = /*#__PURE__*/function (_React$Component) {
+  (0, _inheritsLoose2.default)(SwitchTransition, _React$Component);
+
+  function SwitchTransition() {
+    var _this;
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
+    _this.state = {
+      status: _Transition.ENTERED,
+      current: null
+    };
+    _this.appeared = false;
+
+    _this.changeState = function (status, current) {
+      if (current === void 0) {
+        current = _this.state.current;
+      }
+
+      _this.setState({
+        status: status,
+        current: current
+      });
+    };
+
+    return _this;
+  }
+
+  var _proto = SwitchTransition.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    this.appeared = true;
+  };
+
+  SwitchTransition.getDerivedStateFromProps = function getDerivedStateFromProps(props, state) {
+    if (props.children == null) {
+      return {
+        current: null
+      };
+    }
+
+    if (state.status === _Transition.ENTERING && props.mode === modes.in) {
+      return {
+        status: _Transition.ENTERING
+      };
+    }
+
+    if (state.current && areChildrenDifferent(state.current, props.children)) {
+      return {
+        status: _Transition.EXITING
+      };
+    }
+
+    return {
+      current: _react.default.cloneElement(props.children, {
+        in: true
+      })
+    };
+  };
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        children = _this$props.children,
+        mode = _this$props.mode,
+        _this$state = this.state,
+        status = _this$state.status,
+        current = _this$state.current;
+    var data = {
+      children: children,
+      current: current,
+      changeState: this.changeState,
+      status: status
+    };
+    var component;
+
+    switch (status) {
+      case _Transition.ENTERING:
+        component = enterRenders[mode](data);
+        break;
+
+      case _Transition.EXITING:
+        component = leaveRenders[mode](data);
+        break;
+
+      case _Transition.ENTERED:
+        component = current;
+    }
+
+    return _react.default.createElement(_TransitionGroupContext.default.Provider, {
+      value: {
+        isMounting: !this.appeared
+      }
+    }, component);
+  };
+
+  return SwitchTransition;
+}(_react.default.Component);
+
+SwitchTransition.propTypes = "development" !== "production" ? {
+  /**
+   * Transition modes.
+   * `out-in`: Current element transitions out first, then when complete, the new element transitions in.
+   * `in-out: New element transitions in first, then when complete, the current element transitions out.`
+   *
+   * @type {'out-in'|'in-out'}
+   */
+  mode: _propTypes.default.oneOf([modes.in, modes.out]),
+
+  /**
+   * Any `Transition` or `CSSTransition` component
+   */
+  children: _propTypes.default.oneOfType([_propTypes.default.element.isRequired])
+} : {};
+SwitchTransition.defaultProps = {
+  mode: modes.out
+};
+var _default = SwitchTransition;
+exports.default = _default;
+},{"@babel/runtime/helpers/esm/inheritsLoose":"../node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","./Transition":"../node_modules/react-transition-group/esm/Transition.js","./TransitionGroupContext":"../node_modules/react-transition-group/esm/TransitionGroupContext.js"}],"../node_modules/react-transition-group/esm/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "CSSTransition", {
+  enumerable: true,
+  get: function () {
+    return _CSSTransition.default;
+  }
+});
+Object.defineProperty(exports, "ReplaceTransition", {
+  enumerable: true,
+  get: function () {
+    return _ReplaceTransition.default;
+  }
+});
+Object.defineProperty(exports, "SwitchTransition", {
+  enumerable: true,
+  get: function () {
+    return _SwitchTransition.default;
+  }
+});
+Object.defineProperty(exports, "TransitionGroup", {
+  enumerable: true,
+  get: function () {
+    return _TransitionGroup.default;
+  }
+});
+Object.defineProperty(exports, "Transition", {
+  enumerable: true,
+  get: function () {
+    return _Transition.default;
+  }
+});
+Object.defineProperty(exports, "config", {
+  enumerable: true,
+  get: function () {
+    return _config.default;
+  }
+});
+
+var _CSSTransition = _interopRequireDefault(require("./CSSTransition"));
+
+var _ReplaceTransition = _interopRequireDefault(require("./ReplaceTransition"));
+
+var _SwitchTransition = _interopRequireDefault(require("./SwitchTransition"));
+
+var _TransitionGroup = _interopRequireDefault(require("./TransitionGroup"));
+
+var _Transition = _interopRequireDefault(require("./Transition"));
+
+var _config = _interopRequireDefault(require("./config"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./CSSTransition":"../node_modules/react-transition-group/esm/CSSTransition.js","./ReplaceTransition":"../node_modules/react-transition-group/esm/ReplaceTransition.js","./SwitchTransition":"../node_modules/react-transition-group/esm/SwitchTransition.js","./TransitionGroup":"../node_modules/react-transition-group/esm/TransitionGroup.js","./Transition":"../node_modules/react-transition-group/esm/Transition.js","./config":"../node_modules/react-transition-group/esm/config.js"}],"../node_modules/react-tiger-transition/cjs/react-tiger-transition.js":[function(require,module,exports) {
+'use strict';
+
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var React = require('react');
+var React__default = _interopDefault(React);
+var reactRouterDom = require('react-router-dom');
+var reactTransitionGroup = require('react-transition-group');
+
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+function isNativeReflectConstruct() {
+  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+  if (Reflect.construct.sham) return false;
+  if (typeof Proxy === "function") return true;
+
+  try {
+    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+function _construct(Parent, args, Class) {
+  if (isNativeReflectConstruct()) {
+    _construct = Reflect.construct;
+  } else {
+    _construct = function _construct(Parent, args, Class) {
+      var a = [null];
+      a.push.apply(a, args);
+      var Constructor = Function.bind.apply(Parent, a);
+      var instance = new Constructor();
+      if (Class) _setPrototypeOf(instance, Class.prototype);
+      return instance;
+    };
+  }
+
+  return _construct.apply(null, arguments);
+}
+
+function _isNativeFunction(fn) {
+  return Function.toString.call(fn).indexOf("[native code]") !== -1;
+}
+
+function _wrapNativeSuper(Class) {
+  var _cache = typeof Map === "function" ? new Map() : undefined;
+
+  _wrapNativeSuper = function _wrapNativeSuper(Class) {
+    if (Class === null || !_isNativeFunction(Class)) return Class;
+
+    if (typeof Class !== "function") {
+      throw new TypeError("Super expression must either be null or a function");
+    }
+
+    if (typeof _cache !== "undefined") {
+      if (_cache.has(Class)) return _cache.get(Class);
+
+      _cache.set(Class, Wrapper);
+    }
+
+    function Wrapper() {
+      return _construct(Class, arguments, _getPrototypeOf(this).constructor);
+    }
+
+    Wrapper.prototype = Object.create(Class.prototype, {
+      constructor: {
+        value: Wrapper,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      }
+    });
+    return _setPrototypeOf(Wrapper, Class);
+  };
+
+  return _wrapNativeSuper(Class);
+}
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _wrapRegExp(re, groups) {
+  _wrapRegExp = function (re, groups) {
+    return new BabelRegExp(re, undefined, groups);
+  };
+
+  var _RegExp = _wrapNativeSuper(RegExp);
+
+  var _super = RegExp.prototype;
+
+  var _groups = new WeakMap();
+
+  function BabelRegExp(re, flags, groups) {
+    var _this = _RegExp.call(this, re, flags);
+
+    _groups.set(_this, groups || _groups.get(re));
+
+    return _this;
+  }
+
+  _inherits(BabelRegExp, _RegExp);
+
+  BabelRegExp.prototype.exec = function (str) {
+    var result = _super.exec.call(this, str);
+
+    if (result) result.groups = buildGroups(result, this);
+    return result;
+  };
+
+  BabelRegExp.prototype[Symbol.replace] = function (str, substitution) {
+    if (typeof substitution === "string") {
+      var groups = _groups.get(this);
+
+      return _super[Symbol.replace].call(this, str, substitution.replace(/\$<([^>]+)>/g, function (_, name) {
+        return "$" + groups[name];
+      }));
+    } else if (typeof substitution === "function") {
+      var _this = this;
+
+      return _super[Symbol.replace].call(this, str, function () {
+        var args = [];
+        args.push.apply(args, arguments);
+
+        if (typeof args[args.length - 1] !== "object") {
+          args.push(buildGroups(args, _this));
+        }
+
+        return substitution.apply(this, args);
+      });
+    } else {
+      return _super[Symbol.replace].call(this, str, substitution);
+    }
+  };
+
+  function buildGroups(result, re) {
+    var g = _groups.get(re);
+
+    return Object.keys(g).reduce(function (groups, name) {
+      groups[name] = result[g[name]];
+      return groups;
+    }, Object.create(null));
+  }
+
+  return _wrapRegExp.apply(this, arguments);
+}
+
+var computeClassName = function computeClassName(disable, className, defaultClassName) {
+  return disable ? typeof className === 'string' ? className : typeof className === 'function' ? className() : '' : typeof className === 'string' ? defaultClassName + " " + className : typeof className === 'function' ? defaultClassName + "  " + className() : defaultClassName;
+};
+
+// https://stackoverflow.com/questions/52097564/forward-ref-through-react-routers-withrouter-hoc
+
+var withRouterAndRef = function withRouterAndRef(Wrapped) {
+  var WithRouter = reactRouterDom.withRouter(function (_ref) {
+    var forwardRef = _ref.forwardRef,
+        otherProps = _objectWithoutPropertiesLoose(_ref, ["forwardRef"]);
+
+    return React__default.createElement(Wrapped, _extends({
+      ref: forwardRef
+    }, otherProps));
+  });
+  var WithRouterAndRef = React__default.forwardRef(function (props, ref) {
+    return React__default.createElement(WithRouter, _extends({}, props, {
+      forwardRef: ref
+    }));
+  });
+  var name = Wrapped.displayName || Wrapped.name;
+  WithRouterAndRef.displayName = "withRouterAndRef(" + name + ")";
+  return WithRouterAndRef;
+};
+
+var getEasing = function getEasing(easing) {
+  switch (easing) {
+    case 'easeInSine':
+      {
+        return 'cubic-bezier(0.47, 0, 0.745, 0.715)';
+      }
+
+    case 'easeOutSine':
+      {
+        return 'cubic-bezier(0.39, 0.575, 0.565, 1)';
+      }
+
+    case 'easeInOutSine':
+      {
+        return 'cubic-bezier(0.445, 0.05, 0.55, 0.95)';
+      }
+
+    case 'easeInCubic':
+      {
+        return 'cubic-bezier(0.55, 0.055, 0.675, 0.19)';
+      }
+
+    case 'easeOutCubic':
+      {
+        return 'cubic-bezier(0.215, 0.61, 0.355, 1)';
+      }
+
+    case 'easeInOutCubic':
+      {
+        return 'cubic-bezier(0.645, 0.045, 0.355, 1)';
+      }
+
+    case 'easeInQuint':
+      {
+        return 'cubic-bezier(0.755, 0.05, 0.855, 0.06)';
+      }
+
+    case 'easeOutQuint':
+      {
+        return 'cubic-bezier(0.23, 1, 0.32, 1)';
+      }
+
+    case 'easeInOutQuint':
+      {
+        return 'cubic-bezier(0.86, 0, 0.07, 1)';
+      }
+
+    case 'easeInCirc':
+      {
+        return 'cubic-bezier((0.6, 0.04, 0.98, 0.335)';
+      }
+
+    case 'easeOutCirc':
+      {
+        return 'cubic-bezier(0.075, 0.82, 0.165, 1)';
+      }
+
+    case 'easeInOutCirc':
+      {
+        return 'cubic-bezier(0.785, 0.135, 0.15, 0.86)';
+      }
+
+    case 'easeInQuad':
+      {
+        return 'cubic-bezier(0.55, 0.085, 0.68, 0.53)';
+      }
+
+    case 'easeOutQuad':
+      {
+        return 'cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+      }
+
+    case 'easeInOutQuad':
+      {
+        return 'cubic-bezier(0.455, 0.03, 0.515, 0.955)';
+      }
+
+    case 'easeInQuart':
+      {
+        return 'cubic-bezier(0.895, 0.03, 0.685, 0.22)';
+      }
+
+    case 'easeOutQuart':
+      {
+        return 'cubic-bezier(0.165, 0.84, 0.44, 1)';
+      }
+
+    case 'easeInOutQuart':
+      {
+        return 'cubic-bezier(0.77, 0, 0.175, 1)';
+      }
+
+    case 'easeInExpo':
+      {
+        return 'cubic-bezier(0.95, 0.05, 0.795, 0.035)';
+      }
+
+    case 'easeOutExpo':
+      {
+        return 'cubic-bezier(0.19, 1, 0.22, 1)';
+      }
+
+    case 'easeInOutExpo':
+      {
+        return 'cubic-bezier(1, 0, 0, 1)';
+      }
+
+    case 'easeInBack':
+      {
+        return 'cubic-bezier(0.6, -0.28, 0.735, 0.045)';
+      }
+
+    case 'easeOutBack':
+      {
+        return 'cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+      }
+
+    case 'easeInOutBack':
+      {
+        return 'cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+      }
+
+    default:
+      {
+        return easing;
+      }
+  }
+};
+
+/**
+ *  basic css processor for tiger
+ *  designed only for css written in tigers folder
+ *
+ */
+var prefixes = [{
+  name: 'transform',
+  prefixes: ['-webkit-', '-ms-']
+}, {
+  name: 'transition',
+  prefixes: ['-o-', '-webkit-']
+}, {
+  name: 'transition-delay',
+  prefixes: ['-o-', '-webkit-']
+}, {
+  name: 'transition-duration',
+  prefixes: ['-o-', '-webkit-']
+}, {
+  name: 'transition-timing-function',
+  prefixes: ['-o-', '-webkit-']
+}, {
+  name: 'transform-origin',
+  prefixes: ['-ms-', '-webkit-']
+}, {
+  name: 'animation',
+  prefixes: ['-webkit-']
+}, {
+  name: 'animation-delay',
+  prefixes: ['-webkit-']
+}, {
+  name: 'animation-timing-function',
+  prefixes: ['-webkit-']
+}];
+var prefixer = function prefixer(string, sep) {
+  if (sep === void 0) {
+    sep = '\n';
+  }
+
+  var prefixedString = string;
+
+  var regex = _wrapRegExp(/([a-z-]+) *:([^:;]+;)/gm, {
+    property: 1,
+    value: 2
+  });
+
+  var match;
+
+  while (match = regex.exec(string)) {
+    // eslint-disable-line
+    var prefix = prefixes.filter(function (p) {
+      return p.name === match.groups.property;
+    })[0]; // eslint-disable-line
+
+    if (prefix) {
+      var prefixedProperty = '';
+      prefix.prefixes.map(function (p, i) {
+        // eslint-disable-line
+        // insert tab after first line to keep it pretty
+        prefixedProperty += "" + (i > 0 ? '\t' : '') + p + match[0] + sep;
+      });
+      prefixedProperty += "\t" + match[0];
+      prefixedString = prefixedString.replace(match[0], prefixedProperty);
+    }
+  } // test for @keyframes
+  // keyframes are always last item
+
+
+  regex = /keyframes[\s\S]*\}/g;
+  match = regex.exec(prefixedString);
+
+  if (match) {
+    prefixedString += "@-webkit-" + match[0];
+  }
+
+  return prefixedString;
+};
+
+// postcss injectStyle function
+function styleInject(css, name, ref) {
+  if (ref === void 0) {
+    ref = {};
+  }
+
+  var created = document.querySelector("[data-meta=" + name + "]");
+  if (created) created.remove();
+  var _ref = ref,
+      insertAt = _ref.insertAt;
+
+  if (!css || typeof document === 'undefined') {
+    return;
+  }
+
+  var computedCSS = prefixer(css);
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var style = document.createElement('style');
+  style.type = 'text/css';
+  style.setAttribute('data-meta', name);
+
+  if (insertAt === 'top') {
+    if (head.firstChild) {
+      head.insertBefore(style, head.firstChild);
+    } else {
+      head.appendChild(style);
+    }
+  } else {
+    head.appendChild(style);
+  }
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = computedCSS;
+  } else {
+    style.appendChild(document.createTextNode(computedCSS));
+  }
+}
+
+var ScreenBase = React__default.forwardRef(function (_ref, ref) {
+  var className = _ref.className,
+      children = _ref.children,
+      other = _objectWithoutPropertiesLoose(_ref, ["className", "children"]);
+
+  return React__default.createElement("div", _extends({
+    ref: ref,
+    className: className
+  }, other), children);
+});
+ScreenBase.displayName = 'TigerScreenBase';
+ScreenBase.defaultProps = {
+  className: ''
+};
+var Display = reactRouterDom.withRouter(function (_ref2) {
+  var match = _ref2.match,
+      location = _ref2.location,
+      children = _ref2.children;
+
+  var _useState = React.useState(true),
+      isFirstRender = _useState[0],
+      setIsFirstRender = _useState[1];
+
+  var _useState2 = React.useState(match),
+      baseMatch = _useState2[0],
+      setBaseMatch = _useState2[1]; // eslint-disable-line no-unused-vars
+
+
+  var _useState3 = React.useState(null),
+      mountedChild = _useState3[0],
+      setMountedChild = _useState3[1];
+
+  React.useEffect(function () {
+    try {
+      React__default.Children.forEach(children, function (child) {
+        if (React__default.isValidElement(child)) {
+          if (children.length > 0) {
+            if (!child.key || children.filter(function (c) {
+              return !c;
+            }).filter(function (c) {
+              return c.key === child.key;
+            }).length > 0) {
+              throw new Error('Each child of <Screen display /> should have a unique key.');
+            }
+          } else if (!child.key) {
+            throw new Error('Each child of <Screen display /> should have a unique key.');
+          }
+        }
+      });
+    } catch (e) {
+      try {
+        console.error(e);
+      } // Non-standard
+      catch (_unused) {
+        console.log(e);
+      }
+    }
+
+    setIsFirstRender(false);
+  }, []);
+  var onDisplayPath = reactRouterDom.matchPath(location.pathname, _extends({}, baseMatch)) !== null;
+  var cancelAnimation = isFirstRender || !onDisplayPath;
+  var computeChildren = React.useMemo(function () {
+    var clonedChildren = [];
+    var element;
+    React__default.Children.forEach(children, function (child) {
+      if (React__default.isValidElement(child)) {
+        var overridesPath = !isFirstRender && cancelAnimation && child.key === mountedChild ? {
+          path: location.pathname
+        } : {};
+        element = child;
+        clonedChildren.push(React__default.cloneElement(element, _extends({
+          cancelAnimation: cancelAnimation
+        }, overridesPath)));
+      }
+    });
+    return clonedChildren;
+  }, [children, cancelAnimation]);
+  React.useEffect(function () {
+    if (!isFirstRender && onDisplayPath) {
+      React__default.Children.forEach(computeChildren, function (child) {
+        if (React__default.isValidElement(child) && child.props.path === location.pathname) {
+          setMountedChild(child.key);
+        }
+      });
+    }
+  }, [location.pathname, isFirstRender]);
+  return React.useMemo(function () {
+    return React__default.createElement(React__default.Fragment, null, computeChildren);
+  }, [computeChildren, cancelAnimation]);
+});
+/**
+ * @description
+ * A div with some default css applied to it. Designed to be child of [`<route />`](/docs/route),
+ * or parent if passed the `display` prop.
+ *
+ * @afterProps
+ * \*Ref and other props are passed to div container.
+ *
+ */
+
+var Screen = React__default.forwardRef(function (_ref3, ref) {
+  var className = _ref3.className,
+      disableStyle = _ref3.disableStyle,
+      container = _ref3.container,
+      display = _ref3.display,
+      children = _ref3.children,
+      other = _objectWithoutPropertiesLoose(_ref3, ["className", "disableStyle", "container", "display", "children"]);
+
+  var _className = computeClassName(disableStyle, className, "react-tiger-transition--" + (container || display ? 'container' : 'screen'));
+
+  var props = _extends({
+    className: _className,
+    ref: ref
+  }, other);
+
+  return display ? React__default.createElement(ScreenBase, props, React__default.createElement(Display, null, children)) : React__default.createElement(ScreenBase, props, children);
+});
+Screen.displayName = 'TigerScreen';
+Screen.defaultProps = {
+  disableStyle: false,
+  container: false,
+  display: false
+};
+
+var NavigationContext = React__default.createContext();
+
+/**
+ *
+ * @description
+ * Route uses the original
+ * [react-router `<Route />`](https://reacttraining.com/react-router/web/api/Route).
+ * It wraps the children with a transition component based on
+ * [`<Transition />`](https://reactcommunity.org/react-transition-group/transition)
+   and [`<CSSTransition />`](https://reactcommunity.org/react-transition-group/css-transition).
+ *
+ * Must be used inside [`<Navigation />`](/docs/navigation) to allow [`<Link />`](/docs/link)
+ * to consume context.
+ *
+ * Comes with some default css class that you can disable or chain with
+ * your custom classes.
+ *
+ * @afterProps
+ * \*Any other prop is passed to
+ * [react router `<Route />`](https://reacttraining.com/react-router/web/api/Route).
+ *
+ */
+
+var Route = function Route(_ref) {
+  var children = _ref.children,
+      className = _ref.className,
+      disableStyle = _ref.disableStyle,
+      containerProps = _ref.containerProps,
+      transitionProps = _ref.transitionProps,
+      screen = _ref.screen,
+      screenProps = _ref.screenProps,
+      cancelAnimation = _ref.cancelAnimation,
+      skip = _ref.skip,
+      other = _objectWithoutPropertiesLoose(_ref, ["children", "className", "disableStyle", "containerProps", "transitionProps", "screen", "screenProps", "cancelAnimation", "skip"]);
+
+  var _className = computeClassName(disableStyle, className, "react-tiger-transition--route");
+
+  var cancelTransition = cancelAnimation ? {
+    onEnter: function onEnter() {},
+    onEntering: function onEntering() {},
+    onEntered: function onEntered() {},
+    onExit: function onExit() {},
+    onExiting: function onExiting() {},
+    onExited: function onExited() {},
+    classNames: 'canceled-transition'
+  } : {};
+
+  var _useContext = React.useContext(NavigationContext),
+      transition = _useContext.transition,
+      globalTransitionProps = _useContext.globalTransitionProps;
+
+  return React__default.createElement(reactRouterDom.Route, other, function (props) {
+    return React__default.createElement(reactTransitionGroup.CSSTransition, _extends({
+      "in": props.match != null // eslint-disable-line react/prop-types
+
+    }, globalTransitionProps, transition, transitionProps, cancelTransition), React__default.createElement("div", _extends({
+      className: _className
+    }, containerProps), screen ? React__default.createElement(Screen, screenProps, children) : children));
+  });
+};
+
+Route.defaultProps = {
+  disableStyle: false,
+  screen: false,
+  screenProps: {},
+  transitionProps: {},
+  cancelAnimation: false
+};
+Route.displayName = 'TigerRoute';
+
+var evalTransition = function evalTransition(_ref) {
+  var transition = _ref.transition,
+      timeout = _ref.timeout;
+  var computeTimeout = timeout ? {
+    timeout: timeout
+  } : {};
+  return typeof transition === 'function' ? _extends({}, computeTimeout, {}, transition()) : Object.prototype.toString.call(transition) === '[object Object]' ? _extends({}, computeTimeout, {}, transition) : typeof transition === 'string' ? _extends({}, computeTimeout, {
+    classNames: transition
+  }) : {
+    timeout: 0,
+    classNames: ''
+  };
+};
+function reducer(state, action) {
+  switch (action.type) {
+    case 'setTransition':
+      {
+        var transition = evalTransition(_extends({}, action.value));
+        window.setTimeout(function () {
+          action.dispatch({
+            type: 'endTransition'
+          });
+        }, transition.timeout + 200);
+        return _extends({}, state, {
+          transition: transition,
+          onTransition: true
+        });
+      }
+
+    case 'endTransition':
+      {
+        return _extends({}, state, {
+          onTransition: false
+        });
+      }
+
+    default:
+      {
+        return _extends({}, state);
+      }
+  }
+}
+var NavigationProvider = reactRouterDom.withRouter(function (_ref2) {
+  var children = _ref2.children,
+      defaultRoute = _ref2.defaultRoute,
+      DefaultRouteWrapper = _ref2.DefaultRouteWrapper,
+      initialState = _ref2.initialState,
+      disableDefaultRoute = _ref2.disableDefaultRoute,
+      match = _ref2.match,
+      location = _ref2.location;
+
+  var _useReducer = React.useReducer(reducer, _extends({}, initialState, {
+    setTransition: function setTransition(transition, timeout) {
+      return new Promise(function (resolve) {
+        resolve(dispatch({
+          type: 'setTransition',
+          value: {
+            transition: transition,
+            timeout: timeout
+          },
+          dispatch: dispatch
+        }));
+      });
+    }
+  })),
+      state = _useReducer[0],
+      dispatch = _useReducer[1];
+
+  var matched = React.useMemo(function () {
+    var computeMatch;
+    React__default.Children.forEach(children, function (child) {
+      if (computeMatch == null && React__default.isValidElement(child)) {
+        var path = child.props.path || child.props.from || null;
+        computeMatch = path && !child.props.skip ? reactRouterDom.matchPath(location.pathname, _extends({}, child.props, {
+          path: path
+        })) : null;
+      }
+    });
+    return computeMatch != null;
+  }, [children, location, match]);
+  return React__default.createElement(NavigationContext.Provider, {
+    value: _extends({}, state)
+  }, children, !disableDefaultRoute && defaultRoute && DefaultRouteWrapper && React__default.createElement(DefaultRouteWrapper, {
+    transitionProps: {
+      "in": !matched
+    }
+  }, defaultRoute));
+});
+var globalTransitionPropsDefaultValues = {
+  unmountOnExit: true,
+  timeout: 600
+};
+/**
+ *
+ * @description
+ * The context provider for [`<Link />`](/docs/link). Allow link to change
+ * transition on click, before the routing. This makes possible to build as
+ * many different transitions for the same route as possible, all evaluated
+ * on the fly.
+ *
+ */
+
+var Navigation = function Navigation(_ref3) {
+  var children = _ref3.children,
+      containerProps = _ref3.containerProps,
+      globalTransitionProps = _ref3.globalTransitionProps,
+      other = _objectWithoutPropertiesLoose(_ref3, ["children", "containerProps", "globalTransitionProps"]);
+
+  return React__default.createElement(Screen, _extends({
+    container: true
+  }, containerProps), React__default.createElement(NavigationProvider, _extends({}, other, {
+    initialState: {
+      transition: evalTransition({
+        transition: globalTransitionProps.classNames,
+        timeout: globalTransitionProps.timeout
+      }),
+      currentTransition: null,
+      onTransition: false,
+      globalTransitionProps: _extends({}, globalTransitionPropsDefaultValues, {}, globalTransitionProps)
+    }
+  }), children));
+};
+
+var DefaultRouteWrapper = function DefaultRouteWrapper(_ref4) {
+  var transitionProps = _ref4.transitionProps,
+      children = _ref4.children;
+  return React__default.createElement(Route, {
+    screen: true,
+    transitionProps: transitionProps
+  }, children);
+};
+
+Navigation.defaultProps = {
+  defaultRoute: React__default.createElement(reactRouterDom.Redirect, {
+    to: "/"
+  }),
+  globalTransitionProps: globalTransitionPropsDefaultValues,
+  disableDefaultRoute: false,
+  DefaultRouteWrapper: DefaultRouteWrapper
+};
+
+/**
+ * @description
+ * Change transitions on the fly. The next transition is evaluated before
+ * the route change, allowing to easily reach and leave the same url with
+ * different transitions.
+ *
+ * @afterProps
+ * \*Ref and other props are passed to [react router `<Link />`](https://reacttraining.com/react-router/web/api/Link).
+ *
+ */
+
+var Link = React__default.forwardRef(function (_ref, ref) {
+  var match = _ref.match,
+      location = _ref.location,
+      history = _ref.history,
+      staticContext = _ref.staticContext,
+      children = _ref.children,
+      to = _ref.to,
+      transition = _ref.transition,
+      _onClick = _ref.onClick,
+      timeout = _ref.timeout,
+      other = _objectWithoutPropertiesLoose(_ref, ["match", "location", "history", "staticContext", "children", "to", "transition", "onClick", "timeout"]);
+
+  var _useContext = React.useContext(NavigationContext),
+      setTransition = _useContext.setTransition,
+      globalTransitionProps = _useContext.globalTransitionProps,
+      onTransition = _useContext.onTransition;
+
+  return React__default.createElement(reactRouterDom.Link, _extends({
+    onClick: function onClick() {
+      if (!onTransition) {
+        setTransition(transition || globalTransitionProps.classNames, timeout);
+        if (typeof _onClick === 'function') _onClick();
+      }
+    },
+    ref: ref,
+    to: onTransition ? location.pathname : to // eslint-disable-line react/prop-types
+
+  }, other), children);
+});
+Link.displayName = 'TigerLink';
+var Link$1 = withRouterAndRef(Link);
+
+var buildTiger = (function (argsInit, enterInit, enterTransition, exitInit, exitTransition) {
+  return function (_temp) {
+    var _ref = _temp === void 0 ? {} : _temp,
+        _ref$name = _ref.name,
+        name = _ref$name === void 0 ? '' : _ref$name,
+        _ref$enter = _ref.enter,
+        enter = _ref$enter === void 0 ? {} : _ref$enter,
+        _ref$exit = _ref.exit,
+        exit = _ref$exit === void 0 ? {} : _ref$exit,
+        args = _objectWithoutPropertiesLoose(_ref, ["name", "enter", "exit"]);
+
+    styleInject(enterTransition(_extends({
+      name: name
+    }, enterInit, {}, enter, {}, argsInit, {}, args)), name + "-enter");
+    styleInject(exitTransition(_extends({
+      name: name
+    }, exitInit, {}, exit, {}, argsInit, {}, args)), name + "-exit");
+  };
+});
+
+var flipIn = (function (_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      _ref$name = _ref.name,
+      name = _ref$name === void 0 ? 'flip' : _ref$name,
+      _ref$direction = _ref.direction,
+      direction = _ref$direction === void 0 ? 'left' : _ref$direction,
+      _ref$duration = _ref.duration,
+      duration = _ref$duration === void 0 ? 500 : _ref$duration,
+      _ref$easing = _ref.easing,
+      easing = _ref$easing === void 0 ? 'easeOutQuad' : _ref$easing,
+      _ref$opacity = _ref.opacity,
+      opacity = _ref$opacity === void 0 ? 0.2 : _ref$opacity,
+      _ref$zIndex = _ref.zIndex,
+      zIndex = _ref$zIndex === void 0 ? 1 : _ref$zIndex,
+      _ref$depth = _ref.depth,
+      depth = _ref$depth === void 0 ? 1000 : _ref$depth;
+
+  var config = {
+    left: {
+      transform: "translateZ(" + -depth + "px) rotateY(-90deg)",
+      transformActive: 'translateZ(0px) rotateY(0deg)'
+    },
+    right: {
+      transform: "translateZ(" + -depth + "px) rotateY(90deg)",
+      transformActive: 'translateZ(0px) rotateY(0deg)'
+    },
+    top: {
+      transform: "translateZ(" + -depth + "px) rotateX(-90deg)",
+      transformActive: 'translateZ(0px) rotateX(0deg)'
+    },
+    bottom: {
+      transform: "translateZ(" + -depth + "px) rotateX(90deg)",
+      transformActive: 'translateZ(0px) rotateX(0deg)'
+    }
+  };
+  var transition = "transform, opacity";
+  var delay = duration;
+  var style = "\n  ." + name + "-enter {\n    transformOrigin: '50% 50%';\n    transform: " + config[direction].transform + ";\n    z-index: " + zIndex + ";\n    opacity: " + opacity + ";\n  }\n  ." + name + "-enter-active {\n    transform: " + config[direction].transformActive + ";\n    opacity: 1;\n    transition: " + transition + ";\n    transition-delay: " + delay + "ms;\n    transition-duration: " + duration + "ms;\n    transition-timing-function: " + getEasing(easing) + ";\n  }\n  ";
+  return style;
+});
+
+var flipOut = (function (_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      _ref$name = _ref.name,
+      name = _ref$name === void 0 ? 'flip' : _ref$name,
+      _ref$direction = _ref.direction,
+      direction = _ref$direction === void 0 ? 'left' : _ref$direction,
+      _ref$duration = _ref.duration,
+      duration = _ref$duration === void 0 ? 500 : _ref$duration,
+      _ref$easing = _ref.easing,
+      easing = _ref$easing === void 0 ? 'easeInQuad' : _ref$easing,
+      _ref$opacity = _ref.opacity,
+      opacity = _ref$opacity === void 0 ? 0.2 : _ref$opacity,
+      _ref$zIndex = _ref.zIndex,
+      zIndex = _ref$zIndex === void 0 ? 2 : _ref$zIndex,
+      _ref$depth = _ref.depth,
+      depth = _ref$depth === void 0 ? 1000 : _ref$depth;
+
+  var config = {
+    left: "translateZ(" + -depth + "px) rotateY(90deg)",
+    right: "translateZ(" + -depth + "px) rotateY(-90deg)",
+    top: "translateZ(" + -depth + "px) rotateX(90deg)",
+    bottom: "translateZ(" + -depth + "px) rotateX(-90deg)"
+  };
+  var transition = "transform, opacity";
+  var style = "\n  ." + name + "-exit {\n    z-index: " + zIndex + ";\n  }\n  ." + name + "-exit-active {\n    transform: " + config[direction] + ";\n    opacity: " + opacity + ";\n    transition: " + transition + ";\n    transition-duration: " + duration + "ms;\n    transition-timing-function: " + getEasing(easing) + ";\n  }\n  ";
+  return style;
+});
+
+var flip = buildTiger( // common
+{
+  direction: 'left',
+  duration: 300
+}, // enter
+{
+  easing: 'easeOutQuad',
+  opacity: 0.2,
+  zIndex: 1,
+  depth: 1000
+}, flipIn, // exit
+{
+  easing: 'easeInQuad',
+  opacity: 0.2,
+  zIndex: 2,
+  depth: 1000
+}, flipOut);
+
+var glideIn = (function (_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      _ref$name = _ref.name,
+      name = _ref$name === void 0 ? 'glide' : _ref$name,
+      _ref$direction = _ref.direction,
+      direction = _ref$direction === void 0 ? 'left' : _ref$direction,
+      _ref$duration = _ref.duration,
+      duration = _ref$duration === void 0 ? 600 : _ref$duration,
+      _ref$easing = _ref.easing,
+      easing = _ref$easing === void 0 ? 'ease' : _ref$easing,
+      _ref$opacity = _ref.opacity,
+      opacity = _ref$opacity === void 0 ? 1 : _ref$opacity,
+      _ref$zIndex = _ref.zIndex,
+      zIndex = _ref$zIndex === void 0 ? 2 : _ref$zIndex,
+      _ref$delay = _ref.delay,
+      delay = _ref$delay === void 0 ? 0 : _ref$delay,
+      _ref$scale = _ref.scale,
+      scale = _ref$scale === void 0 ? 1 : _ref$scale;
+
+  var config = {
+    right: [-100, 'X'],
+    left: [100, 'X'],
+    bottom: [-100, 'Y'],
+    top: [100, 'Y']
+  };
+  var transform = "scale(" + scale + ") translate" + config[direction][1] + "(" + config[direction][0] + "%)";
+  var transformActive = "scale(1) translate" + config[direction][1] + "(0px)";
+  var transition = "transform, opacity";
+  var style = "\n  ." + name + "-enter {\n    transform: " + transform + ";\n    z-index: " + zIndex + ";\n    opacity: " + opacity + ";\n  }\n  ." + name + "-enter-active {\n    transform: " + transformActive + ";\n    opacity: 1;\n    transition: " + transition + ";\n    transition-delay: " + delay + "ms;\n    transition-duration: " + duration + "ms;\n    transition-timing-function: " + getEasing(easing) + ";\n  }\n  ";
+  return style;
+});
+
+var glideOut = (function (_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      _ref$name = _ref.name,
+      name = _ref$name === void 0 ? 'glide' : _ref$name,
+      _ref$direction = _ref.direction,
+      direction = _ref$direction === void 0 ? 'left' : _ref$direction,
+      _ref$duration = _ref.duration,
+      duration = _ref$duration === void 0 ? 600 : _ref$duration,
+      _ref$easing = _ref.easing,
+      easing = _ref$easing === void 0 ? 'ease' : _ref$easing,
+      _ref$opacity = _ref.opacity,
+      opacity = _ref$opacity === void 0 ? 1 : _ref$opacity,
+      _ref$zIndex = _ref.zIndex,
+      zIndex = _ref$zIndex === void 0 ? 1 : _ref$zIndex,
+      _ref$delay = _ref.delay,
+      delay = _ref$delay === void 0 ? 0 : _ref$delay,
+      _ref$scale = _ref.scale,
+      scale = _ref$scale === void 0 ? 1 : _ref$scale;
+
+  var config = {
+    left: [-100, 'X'],
+    right: [100, 'X'],
+    top: [-100, 'Y'],
+    bottom: [100, 'Y']
+  };
+  var transformActive = "scale(" + scale + ") translate" + config[direction][1] + "(" + config[direction][0] + "%)";
+  var transition = "transform, opacity";
+  var style = "\n  ." + name + "-exit {\n    z-index: " + zIndex + ";\n  }\n  ." + name + "-exit-active {\n    transform: " + transformActive + ";\n    opacity: " + opacity + ";\n    transition: " + transition + ";\n    transition-delay: " + delay + "ms;\n    transition-duration: " + duration + "ms;\n    transition-timing-function: " + getEasing(easing) + ";\n  }\n  ";
+  return style;
+});
+
+var glide = buildTiger( // common
+{
+  direction: 'left'
+}, // enter
+{
+  duration: 600,
+  easing: 'easeOutQuad',
+  opacity: 1,
+  zIndex: 2,
+  scale: 1,
+  delay: 0
+}, glideIn, // exit
+{
+  duration: 600,
+  easing: 'easeOutQuad',
+  opacity: 0.3,
+  zIndex: 1,
+  scale: 1,
+  delay: 0
+}, glideOut);
+
+var shuffleOut = (function (_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      _ref$name = _ref.name,
+      name = _ref$name === void 0 ? 'glide' : _ref$name,
+      _ref$direction = _ref.direction,
+      direction = _ref$direction === void 0 ? 'left' : _ref$direction,
+      _ref$duration = _ref.duration,
+      duration = _ref$duration === void 0 ? 600 : _ref$duration,
+      _ref$easing = _ref.easing,
+      easing = _ref$easing === void 0 ? 'ease' : _ref$easing,
+      _ref$opacity = _ref.opacity,
+      opacity = _ref$opacity === void 0 ? 1 : _ref$opacity,
+      _ref$zIndex = _ref.zIndex,
+      zIndex = _ref$zIndex === void 0 ? 1 : _ref$zIndex,
+      _ref$delay = _ref.delay,
+      delay = _ref$delay === void 0 ? 0 : _ref$delay,
+      _ref$scale = _ref.scale,
+      scale = _ref$scale === void 0 ? 1 : _ref$scale;
+
+  var config = {
+    left: [100, 'X'],
+    right: [-100, 'X'],
+    top: [100, 'Y'],
+    bottom: [-100, 'Y']
+  };
+  var transformActive = "scale(" + scale + ") translate" + config[direction][1] + "(" + config[direction][0] + "%)";
+  var transition = "transform, opacity";
+  var style = "\n  ." + name + "-exit {\n    z-index: " + zIndex + ";\n  }\n  ." + name + "-exit-active {\n    transform: " + transformActive + ";\n    opacity: " + opacity + ";\n    transition: " + transition + ";\n    transition-delay: " + delay + "ms;\n    transition-duration: " + duration + "ms;\n    transition-timing-function: " + getEasing(easing) + ";\n  }\n  ";
+  return style;
+});
+
+var shuffle = buildTiger( // common
+{
+  direction: 'left'
+}, // enter
+{
+  duration: 600,
+  easing: 'easeOutQuad',
+  opacity: 1,
+  zIndex: 2,
+  scale: 1,
+  delay: 0
+}, glideIn, // exit
+{
+  duration: 600,
+  easing: 'easeOutQuad',
+  opacity: 0.3,
+  zIndex: 1,
+  scale: 1,
+  delay: 0
+}, shuffleOut);
+
+var scaleIn = (function (_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      _ref$name = _ref.name,
+      name = _ref$name === void 0 ? 'scale' : _ref$name,
+      _ref$duration = _ref.duration,
+      duration = _ref$duration === void 0 ? 600 : _ref$duration,
+      _ref$easing = _ref.easing,
+      easing = _ref$easing === void 0 ? 'ease' : _ref$easing,
+      _ref$opacity = _ref.opacity,
+      opacity = _ref$opacity === void 0 ? 1 : _ref$opacity,
+      _ref$scale = _ref.scale,
+      scale = _ref$scale === void 0 ? 0.8 : _ref$scale,
+      _ref$zIndex = _ref.zIndex,
+      zIndex = _ref$zIndex === void 0 ? 1 : _ref$zIndex,
+      _ref$delay = _ref.delay,
+      delay = _ref$delay === void 0 ? 0 : _ref$delay;
+
+  var style = "\n  ." + name + "-enter {\n    z-index: " + zIndex + ";\n    opacity: " + opacity + ";\n    transform: scale(" + scale + ");\n  }\n  ." + name + "-enter-active {\n    opacity: 1;\n    transform: scale(1);\n    transition: opacity, transform;\n    transition-delay: " + delay + "ms;\n    transition-duration: " + duration + "ms;\n    transition-timing-function: " + getEasing(easing) + ";\n  }\n  ";
+  return style;
+});
+
+var scaleOut = (function (_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      _ref$name = _ref.name,
+      name = _ref$name === void 0 ? 'scale' : _ref$name,
+      _ref$duration = _ref.duration,
+      duration = _ref$duration === void 0 ? 600 : _ref$duration,
+      _ref$easing = _ref.easing,
+      easing = _ref$easing === void 0 ? 'ease' : _ref$easing,
+      _ref$opacity = _ref.opacity,
+      opacity = _ref$opacity === void 0 ? 1 : _ref$opacity,
+      _ref$scale = _ref.scale,
+      scale = _ref$scale === void 0 ? 0.8 : _ref$scale,
+      _ref$zIndex = _ref.zIndex,
+      zIndex = _ref$zIndex === void 0 ? 1 : _ref$zIndex,
+      _ref$delay = _ref.delay,
+      delay = _ref$delay === void 0 ? 0 : _ref$delay;
+
+  var style = "\n  ." + name + "-exit {\n    z-index: " + zIndex + ";\n  }\n  ." + name + "-exit-active {\n    opacity: " + opacity + ";\n    transform: scale(" + scale + ");\n    transition: opacity, transform;\n    transition-delay: " + delay + "ms;\n    transition-duration: " + duration + "ms;\n    transition-timing-function: " + getEasing(easing) + ";\n  }\n  ";
+  return style;
+});
+
+var fade = buildTiger( // common
+{}, // enter
+{
+  duration: 600,
+  easing: 'ease-in',
+  zIndex: 1,
+  opacity: 0,
+  scale: 1
+}, scaleIn, // exit
+{
+  duration: 600,
+  easing: 'ease-in',
+  opacity: 0,
+  zIndex: 2,
+  delay: 0,
+  scale: 1
+}, scaleOut);
+
+var scale = buildTiger( // common
+{}, // enter
+{
+  duration: 300,
+  easing: 'ease',
+  zIndex: 2,
+  delay: 300,
+  opacity: 0,
+  scale: 0.8
+}, scaleIn, // exit
+{
+  duration: 300,
+  easing: 'ease',
+  opacity: 0,
+  zIndex: 1,
+  delay: 0,
+  scale: 0.8
+}, scaleOut);
+
+var carouselIn = (function (_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      _ref$name = _ref.name,
+      name = _ref$name === void 0 ? 'carousel' : _ref$name,
+      _ref$direction = _ref.direction,
+      direction = _ref$direction === void 0 ? 'left' : _ref$direction,
+      _ref$duration = _ref.duration,
+      duration = _ref$duration === void 0 ? 600 : _ref$duration,
+      _ref$easing = _ref.easing,
+      easing = _ref$easing === void 0 ? 'ease-in' : _ref$easing,
+      _ref$opacity = _ref.opacity,
+      opacity = _ref$opacity === void 0 ? 0.3 : _ref$opacity,
+      _ref$zIndex = _ref.zIndex,
+      zIndex = _ref$zIndex === void 0 ? 1 : _ref$zIndex,
+      _ref$offset = _ref.offset,
+      offset = _ref$offset === void 0 ? 300 : _ref$offset,
+      _ref$angle = _ref.angle,
+      angle = _ref$angle === void 0 ? 65 : _ref$angle,
+      _ref$scale = _ref.scale,
+      scale = _ref$scale === void 0 ? 0.4 : _ref$scale,
+      _ref$delay = _ref.delay,
+      delay = _ref$delay === void 0 ? 0 : _ref$delay;
+
+  var config = {
+    left: {
+      origin: '0% 50%',
+      transform: "translateX(" + offset + "%) rotateY(" + angle + "deg) scale(" + scale + ")",
+      transformActive: 'translateX(0px) rotateY(0deg)'
+    },
+    right: {
+      origin: '100% 50%',
+      transform: "translateX(" + -offset + "%) rotateY(" + -angle + "deg) scale(" + scale + ")",
+      transformActive: 'translateX(0px) rotateY(0deg)'
+    },
+    top: {
+      origin: '50% 0%',
+      transform: "translateY(" + offset + "%) rotateX(" + -angle + "deg) scale(" + scale + ")",
+      transformActive: 'translateY(0px) rotateX(0deg)'
+    },
+    bottom: {
+      origin: '50% 100%',
+      transform: "translateY(" + -offset + "%) rotateX(" + angle + "deg) scale(" + scale + ")",
+      transformActive: 'translateY(0px) rotateX(0deg)'
+    }
+  };
+  var transition = "transform, opacity";
+  var style = "\n  ." + name + "-enter {\n    transformOrigin: " + config[direction].origin + ";\n    transform: " + config[direction].transform + ";\n    z-index: " + zIndex + ";\n    opacity: " + opacity + ";\n  }\n  ." + name + "-enter-active {\n    transform: " + config[direction].transformActive + ";\n    opacity: 1;\n    transition: " + transition + ";\n    transition-delay: " + delay + "ms;\n    transition-duration: " + duration + "ms;\n    transition-timing-function: " + getEasing(easing) + ";\n  }\n  ";
+  return style;
+});
+
+var carouselOut = (function (_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      _ref$name = _ref.name,
+      name = _ref$name === void 0 ? 'carousel' : _ref$name,
+      _ref$direction = _ref.direction,
+      direction = _ref$direction === void 0 ? 'left' : _ref$direction,
+      _ref$duration = _ref.duration,
+      duration = _ref$duration === void 0 ? 600 : _ref$duration,
+      _ref$easing = _ref.easing,
+      easing = _ref$easing === void 0 ? 'ease-in' : _ref$easing,
+      _ref$opacity = _ref.opacity,
+      opacity = _ref$opacity === void 0 ? 0.3 : _ref$opacity,
+      _ref$zIndex = _ref.zIndex,
+      zIndex = _ref$zIndex === void 0 ? 2 : _ref$zIndex,
+      _ref$offset = _ref.offset,
+      offset = _ref$offset === void 0 ? 300 : _ref$offset,
+      _ref$angle = _ref.angle,
+      angle = _ref$angle === void 0 ? 65 : _ref$angle,
+      _ref$scale = _ref.scale,
+      scale = _ref$scale === void 0 ? 0.4 : _ref$scale,
+      _ref$delay = _ref.delay,
+      delay = _ref$delay === void 0 ? 0 : _ref$delay;
+
+  var config = {
+    left: {
+      origin: '100% 50%',
+      transformActive: "translateX(" + -offset + "%) rotateY(" + -angle + "deg) scale(" + scale + ")"
+    },
+    right: {
+      origin: '0% 50%',
+      transformActive: "translateX(" + offset + "%) rotateY(" + angle + "deg) scale(" + scale + ")"
+    },
+    top: {
+      origin: '50% 100%',
+      transformActive: "translateY(" + -offset + "%) rotateX(" + angle + "deg) scale(" + scale + ")"
+    },
+    bottom: {
+      origin: '50% 0%',
+      transformActive: "translateY(" + offset + "%) rotateX(" + -angle + "deg) scale(" + scale + ")"
+    }
+  };
+  var transition = "transform, opacity";
+  var style = "\n  ." + name + "-exit {\n    transformOrigin: " + config[direction].origin + ";\n    z-index: " + zIndex + ";\n  }\n  ." + name + "-exit-active {\n    transform: " + config[direction].transformActive + ";\n    opacity: " + opacity + ";\n    transition: " + transition + ";\n    transition-delay: " + delay + "ms;\n    transition-duration: " + duration + "ms;\n    transition-timing-function: " + getEasing(easing) + ";\n  }\n  ";
+  return style;
+});
+
+var carousel = buildTiger( // common
+{
+  direction: 'left'
+}, // enter
+{
+  duration: 600,
+  opacity: 0.3,
+  easing: 'easeInOutCubic',
+  zIndex: 1,
+  delay: 0,
+  scale: 0.4,
+  offset: 300,
+  angle: 65
+}, carouselIn, // exit
+{
+  duration: 600,
+  opacity: 0.3,
+  easing: 'easeInOutCubic',
+  zIndex: 2,
+  delay: 0,
+  scale: 0.4,
+  offset: 300,
+  angle: 65
+}, carouselOut);
+
+var cubeIn = (function (_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      _ref$name = _ref.name,
+      name = _ref$name === void 0 ? 'cube' : _ref$name,
+      _ref$direction = _ref.direction,
+      direction = _ref$direction === void 0 ? 'left' : _ref$direction,
+      _ref$duration = _ref.duration,
+      duration = _ref$duration === void 0 ? 700 : _ref$duration,
+      _ref$easing = _ref.easing,
+      easing = _ref$easing === void 0 ? 'ease-in' : _ref$easing,
+      _ref$opacity = _ref.opacity,
+      opacity = _ref$opacity === void 0 ? 0.3 : _ref$opacity,
+      _ref$zIndex = _ref.zIndex,
+      zIndex = _ref$zIndex === void 0 ? 1 : _ref$zIndex,
+      _ref$depth = _ref.depth,
+      depth = _ref$depth === void 0 ? 200 : _ref$depth,
+      _ref$delay = _ref.delay,
+      delay = _ref$delay === void 0 ? 0 : _ref$delay;
+
+  var config = {
+    left: ['0% 50%', 'X(100%)', 'Y(90deg)', 'X(50%)', 'Y(45deg)'],
+    right: ['100% 50%', 'X(-100%)', 'Y(-90deg)', 'X(-50%)', 'Y(-45deg)'],
+    top: ['50% 0%', 'Y(100%)', 'X(-90deg)', 'Y(50%)', 'X(-45deg)'],
+    bottom: ['50% 100%', 'Y(-100%)', 'X(90deg)', 'Y(-50%)', 'X(45deg)']
+  };
+  var animationName = name + "--react-tiger-transition-cube-in";
+  var transformOrigin = config[direction][0];
+  var animationCss = animationName + " " + duration + "ms both " + getEasing(easing);
+  var transform0 = "translate" + config[direction][1] + " rotate" + config[direction][2];
+  var transform50 = "translate" + config[direction][3] + " translateZ(" + -depth + "px) rotate" + config[direction][4];
+  var style = "\n  ." + name + "-enter {\n    transform-origin: " + transformOrigin + ";\n    z-index: " + zIndex + ";\n    opacity: " + opacity + ";\n  }\n  ." + name + "-enter-active {\n    animation: " + animationCss + ";\n    animation-delay: " + delay + "ms;\n  }\n  @keyframes " + animationName + " {\n    0% {\n      opacity: " + opacity + ";\n      transform: " + transform0 + ";\n    }\n    50% {\n      transform: " + transform50 + ";\n      animation-timing-function: ease-out;\n    }\n    100% {\n      opacity: 1;\n    }\n  }\n  ";
+  return style;
+});
+
+var cubeOut = (function (_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      _ref$name = _ref.name,
+      name = _ref$name === void 0 ? 'cube' : _ref$name,
+      _ref$direction = _ref.direction,
+      direction = _ref$direction === void 0 ? 'left' : _ref$direction,
+      _ref$duration = _ref.duration,
+      duration = _ref$duration === void 0 ? 700 : _ref$duration,
+      _ref$easing = _ref.easing,
+      easing = _ref$easing === void 0 ? 'ease-in' : _ref$easing,
+      _ref$opacity = _ref.opacity,
+      opacity = _ref$opacity === void 0 ? 0.3 : _ref$opacity,
+      _ref$zIndex = _ref.zIndex,
+      zIndex = _ref$zIndex === void 0 ? 2 : _ref$zIndex,
+      _ref$depth = _ref.depth,
+      depth = _ref$depth === void 0 ? 200 : _ref$depth,
+      _ref$delay = _ref.delay,
+      delay = _ref$delay === void 0 ? 0 : _ref$delay;
+
+  var config = {
+    left: ['100% 50%', 'X(-50%)', 'Y(-45deg)', 'X(-100%)', 'Y(-90deg)'],
+    right: ['0% 50%', 'X(50%)', 'Y(45deg)', 'X(100%)', 'Y(90deg)'],
+    top: ['50% 100%', 'Y(-50%)', 'X(45deg)', 'Y(-100%)', 'X(90deg)'],
+    bottom: ['50% 0%', 'Y(50%)', 'X(-45deg)', 'Y(100%)', 'X(-90deg)']
+  };
+  var animationName = name + "--react-tiger-transition-cube-out";
+  var transformOrigin = config[direction][0];
+  var animationCss = animationName + " " + duration + "ms both " + getEasing(easing);
+  var transform50 = "translate" + config[direction][1] + " translateZ(" + -depth + "px) rotate" + config[direction][2];
+  var transform100 = "translate" + config[direction][3] + " rotate" + config[direction][4];
+  var style = "\n  ." + name + "-exit {\n    transform-origin: " + transformOrigin + ";\n    z-index: " + zIndex + ";\n    opacity: 1;\n  }\n  ." + name + "-exit-active {\n    animation: " + animationCss + ";\n    animation-delay: " + delay + "ms;\n  }\n  @keyframes " + animationName + " {\n    0% {\n      opacity: 1;\n    }\n    50% {\n      transform: " + transform50 + ";\n      animation-timing-function: ease-out;\n    }\n    100% {\n      opacity: " + opacity + ";\n      transform: " + transform100 + ";\n    }\n  }\n  ";
+  return style;
+});
+
+var cube = buildTiger( // common
+{
+  direction: 'left',
+  depth: 1000
+}, // enter
+{
+  duration: 600,
+  easing: 'ease-in',
+  opacity: 0.3,
+  zIndex: 1,
+  delay: 0
+}, cubeIn, // exit
+{
+  duration: 600,
+  easing: 'ease-in',
+  opacity: 0.3,
+  zIndex: 2,
+  delay: 0
+}, cubeOut);
+
+var foldRules = (function (_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      _ref$name = _ref.name,
+      name = _ref$name === void 0 ? 'folde' : _ref$name,
+      _ref$direction = _ref.direction,
+      direction = _ref$direction === void 0 ? 'left' : _ref$direction,
+      _ref$duration = _ref.duration,
+      duration = _ref$duration === void 0 ? 700 : _ref$duration,
+      _ref$easing = _ref.easing,
+      easing = _ref$easing === void 0 ? 'ease' : _ref$easing,
+      _ref$opacity = _ref.opacity,
+      opacity = _ref$opacity === void 0 ? 1 : _ref$opacity,
+      _ref$angle = _ref.angle,
+      angle = _ref$angle === void 0 ? 90 : _ref$angle,
+      _ref$zIndex = _ref.zIndex,
+      zIndex = _ref$zIndex === void 0 ? 1 : _ref$zIndex,
+      _ref$delay = _ref.delay,
+      delay = _ref$delay === void 0 ? 0 : _ref$delay;
+
+  var config = {
+    left: {
+      origin: '100% 50%',
+      transformActive: "translateX(-100%) rotateY(" + -angle + "deg)"
+    },
+    right: {
+      origin: '0% 50%',
+      transformActive: "translateX(100%) rotateY(" + angle + "deg)"
+    },
+    top: {
+      origin: '50% 100%',
+      transformActive: "translateY(-100%) rotateX(" + angle + "deg)"
+    },
+    bottom: {
+      origin: '50% 0%',
+      transformActive: "translateY(100%) rotateX(" + -angle + "deg)"
+    }
+  };
+  var transition = "transform, opacity";
+  var style = "\n  ." + name + "-exit {\n    transform-origin: " + config[direction].origin + ";\n    z-index: " + zIndex + ";\n  }\n  ." + name + "-exit-active {\n    transform: " + config[direction].transformActive + ";\n    opacity: " + opacity + ";\n    transition: " + transition + ";\n    transition-delay: " + delay + "ms;\n    transition-duration: " + duration + "ms;\n    transition-timing-function: " + getEasing(easing) + ";\n  }\n  ";
+  return style;
+});
+
+var fold = buildTiger( // common
+{
+  direction: 'left'
+}, // enter
+{
+  duration: 600,
+  easing: 'ease',
+  opacity: 0.3,
+  zIndex: 2,
+  delay: 0
+}, glideIn, // exit
+{
+  duration: 600,
+  easing: 'ease',
+  opacity: 0.3,
+  zIndex: 1,
+  angle: 90,
+  delay: 0
+}, foldRules);
+
+var unfoldRules = (function (_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      _ref$name = _ref.name,
+      name = _ref$name === void 0 ? 'unfold' : _ref$name,
+      _ref$direction = _ref.direction,
+      direction = _ref$direction === void 0 ? 'left' : _ref$direction,
+      _ref$duration = _ref.duration,
+      duration = _ref$duration === void 0 ? 700 : _ref$duration,
+      _ref$easing = _ref.easing,
+      easing = _ref$easing === void 0 ? 'ease' : _ref$easing,
+      _ref$opacity = _ref.opacity,
+      opacity = _ref$opacity === void 0 ? 1 : _ref$opacity,
+      _ref$angle = _ref.angle,
+      angle = _ref$angle === void 0 ? 90 : _ref$angle,
+      _ref$zIndex = _ref.zIndex,
+      zIndex = _ref$zIndex === void 0 ? 2 : _ref$zIndex,
+      _ref$delay = _ref.delay,
+      delay = _ref$delay === void 0 ? 0 : _ref$delay;
+
+  var config = {
+    right: {
+      origin: '100% 50%',
+      transform: "rotateY(" + -angle + "deg) translateX(-100%)",
+      transformActive: 'rotateY(0deg) translateX(0px)'
+    },
+    left: {
+      origin: '0% 50%',
+      transform: "rotateY(" + angle + "deg) translateX(100%)",
+      transformActive: 'rotateY(0deg) translateX(0px)'
+    },
+    top: {
+      origin: '50% 0%',
+      transform: "rotateX(" + -angle + "deg) translateY(100%)",
+      transformActive: 'rotateX(0deg) translateY(0px)'
+    },
+    bottom: {
+      origin: '50% 100%',
+      transform: "rotateX(" + angle + "deg) translateY(-100%)",
+      transformActive: 'rotateX(0deg) translateY(0px)'
+    }
+  };
+  var transition = "transform, opacity";
+  var style = "\n  ." + name + "-enter {\n    transform-origin: " + config[direction].origin + ";\n    transform: " + config[direction].transform + ";\n    z-index: " + zIndex + ";\n    opacity: " + opacity + ";\n  }\n  ." + name + "-enter-active {\n    transform: " + config[direction].transformActive + ";\n    opacity: 1;\n    transition: " + transition + ";\n    transition-delay: " + delay + "ms;\n    transition-duration: " + duration + "ms;\n    transition-timing-function: " + getEasing(easing) + ";\n  }\n  ";
+  return style;
+});
+
+var unfold = buildTiger( // common
+{
+  direction: 'left'
+}, // enter
+{
+  duration: 600,
+  easing: 'ease',
+  opacity: 0.3,
+  zIndex: 1,
+  angle: 90,
+  delay: 0
+}, unfoldRules, // exit
+{
+  duration: 600,
+  easing: 'ease',
+  opacity: 1,
+  zIndex: 2,
+  delay: 0
+}, glideOut);
+
+var glideIn$1 = buildTiger( // common
+{
+  direction: 'left'
+}, // enter
+{
+  duration: 600,
+  easing: 'ease',
+  opacity: 1,
+  zIndex: 2,
+  delay: 0
+}, glideIn, // exit
+{
+  duration: 600,
+  easing: 'ease',
+  opacity: 0.3,
+  zIndex: 1,
+  scale: 1,
+  delay: 0
+}, scaleOut);
+
+var glideOut$1 = buildTiger( // common
+{
+  direction: 'left'
+}, // enter
+{
+  duration: 600,
+  easing: 'ease',
+  opacity: 0.3,
+  zIndex: 1,
+  delay: 0,
+  scale: 1
+}, scaleIn, // exit
+{
+  duration: 600,
+  easing: 'ease',
+  opacity: 1,
+  zIndex: 2,
+  delay: 0
+}, glideOut);
+
+var drop = buildTiger( // common
+{
+  direction: 'left'
+}, // enter
+{
+  duration: 600,
+  easing: 'ease',
+  opacity: 1,
+  zIndex: 2,
+  delay: 0
+}, glideIn, // exit
+{
+  duration: 600,
+  easing: 'ease',
+  opacity: 0.3,
+  zIndex: 1,
+  scale: 0.6,
+  delay: 0
+}, scaleOut);
+
+var rise = buildTiger( // common
+{
+  direction: 'left'
+}, // enter
+{
+  duration: 600,
+  easing: 'ease',
+  opacity: 0.3,
+  zIndex: 1,
+  delay: 0,
+  scale: 0.6
+}, scaleIn, // exit
+{
+  duration: 600,
+  easing: 'ease',
+  opacity: 1,
+  zIndex: 2,
+  delay: 0
+}, glideOut);
+
+var roomIn = (function (_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      _ref$name = _ref.name,
+      name = _ref$name === void 0 ? 'room' : _ref$name,
+      _ref$direction = _ref.direction,
+      direction = _ref$direction === void 0 ? 'left' : _ref$direction,
+      _ref$duration = _ref.duration,
+      duration = _ref$duration === void 0 ? 700 : _ref$duration,
+      _ref$easing = _ref.easing,
+      easing = _ref$easing === void 0 ? 'ease-in' : _ref$easing,
+      _ref$opacity = _ref.opacity,
+      opacity = _ref$opacity === void 0 ? 0.3 : _ref$opacity,
+      _ref$zIndex = _ref.zIndex,
+      zIndex = _ref$zIndex === void 0 ? 1 : _ref$zIndex,
+      _ref$angle = _ref.angle,
+      angle = _ref$angle === void 0 ? 90 : _ref$angle,
+      _ref$delay = _ref.delay,
+      delay = _ref$delay === void 0 ? 0 : _ref$delay;
+
+  var config = {
+    left: {
+      origin: '0% 50%',
+      transform: "translateX(100%) rotateY(" + -angle + "deg)",
+      transformActive: "translateX(0px) rotateY(0deg)"
+    },
+    right: {
+      origin: '100% 50%',
+      transform: "translateX(-100%) rotateY(" + angle + "deg)",
+      transformActive: "translateX(0px) rotateY(0deg)"
+    },
+    top: {
+      origin: '50% 0%',
+      transform: "translateY(100%) rotateX(" + angle + "deg)",
+      transformActive: "translateY(0px) rotateX(0deg)"
+    },
+    bottom: {
+      origin: '50% 100%',
+      transform: "translateY(-100%) rotateX(" + -angle + "deg)",
+      transformActive: "translateY(0px) rotateX(0deg)"
+    }
+  };
+  var transition = "transform, opacity";
+  var style = "\n  ." + name + "-enter {\n    transform-origin: " + config[direction].origin + ";\n    transform: " + config[direction].transform + ";\n    z-index: " + zIndex + ";\n    opacity: " + opacity + ";\n  }\n  ." + name + "-enter-active {\n    transform: " + config[direction].transformActive + ";\n    opacity: 1;\n    transition: " + transition + ";\n    transition-delay: " + delay + "ms;\n    transition-duration: " + duration + "ms;\n    transition-timing-function: " + getEasing(easing) + ";\n  }\n  ";
+  return style;
+});
+
+var roomOut = (function (_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      _ref$name = _ref.name,
+      name = _ref$name === void 0 ? 'room' : _ref$name,
+      _ref$direction = _ref.direction,
+      direction = _ref$direction === void 0 ? 'left' : _ref$direction,
+      _ref$duration = _ref.duration,
+      duration = _ref$duration === void 0 ? 700 : _ref$duration,
+      _ref$easing = _ref.easing,
+      easing = _ref$easing === void 0 ? 'ease-in' : _ref$easing,
+      _ref$opacity = _ref.opacity,
+      opacity = _ref$opacity === void 0 ? 0.3 : _ref$opacity,
+      _ref$zIndex = _ref.zIndex,
+      zIndex = _ref$zIndex === void 0 ? 2 : _ref$zIndex,
+      _ref$angle = _ref.angle,
+      angle = _ref$angle === void 0 ? 90 : _ref$angle,
+      _ref$delay = _ref.delay,
+      delay = _ref$delay === void 0 ? 0 : _ref$delay;
+
+  var config = {
+    left: {
+      origin: '100% 50%',
+      transformActive: "translateX(-100%) rotateY(" + angle + "deg)"
+    },
+    right: {
+      origin: '0% 50%',
+      transformActive: "translateX(100%) rotateY(" + -angle + "deg)"
+    },
+    top: {
+      origin: '50% 100%',
+      transformActive: "translateY(-100%) rotateX(" + -angle + "deg)"
+    },
+    bottom: {
+      origin: '50% 0%',
+      transformActive: "translateY(100%) rotateX(" + angle + "deg)"
+    }
+  };
+  var transition = "transform, opacity";
+  var style = "\n  ." + name + "-exit {\n    transform-origin: " + config[direction].origin + ";\n    z-index: " + zIndex + ";\n  }\n  ." + name + "-exit-active {\n    transform: " + config[direction].transformActive + ";\n    opacity: " + opacity + ";\n    transition: " + transition + ";\n    transition-delay: " + delay + "ms;\n    transition-duration: " + duration + "ms;\n    transition-timing-function: " + getEasing(easing) + ";\n  }\n  ";
+  return style;
+});
+
+var room = buildTiger( // common
+{
+  direction: 'left',
+  angle: 90
+}, // enter
+{
+  duration: 600,
+  easing: 'ease',
+  opacity: 0.3,
+  zIndex: 1,
+  delay: 0
+}, roomIn, // exit
+{
+  duration: 600,
+  easing: 'ease',
+  opacity: 0.3,
+  zIndex: 2,
+  delay: 0
+}, roomOut);
+
+var pull = (function (_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      _ref$name = _ref.name,
+      name = _ref$name === void 0 ? 'pull' : _ref$name,
+      _ref$direction = _ref.direction,
+      direction = _ref$direction === void 0 ? 'left' : _ref$direction,
+      _ref$duration = _ref.duration,
+      duration = _ref$duration === void 0 ? 700 : _ref$duration,
+      _ref$easing = _ref.easing,
+      easing = _ref$easing === void 0 ? 'ease' : _ref$easing,
+      _ref$opacity = _ref.opacity,
+      opacity = _ref$opacity === void 0 ? 1 : _ref$opacity,
+      _ref$angle = _ref.angle,
+      angle = _ref$angle === void 0 ? 90 : _ref$angle,
+      _ref$zIndex = _ref.zIndex,
+      zIndex = _ref$zIndex === void 0 ? 2 : _ref$zIndex,
+      _ref$delay = _ref.delay,
+      delay = _ref$delay === void 0 ? 0 : _ref$delay;
+
+  var config = {
+    left: {
+      origin: '100% 50%',
+      transform: "rotateY(" + -angle + "deg)",
+      transformActive: 'rotateY(0deg)'
+    },
+    right: {
+      origin: '0% 50%',
+      transform: "rotateY(" + angle + "deg)",
+      transformActive: 'rotateY(0deg)'
+    },
+    bottom: {
+      origin: '50% 0%',
+      transform: "rotateX(" + -angle + "deg)",
+      transformActive: 'rotateX(0deg)'
+    },
+    top: {
+      origin: '50% 100%',
+      transform: "rotateX(" + angle + "deg)",
+      transformActive: 'rotateX(0deg)'
+    }
+  };
+  var transition = "transform, opacity";
+  var style = "\n  ." + name + "-enter {\n    transform-origin: " + config[direction].origin + ";\n    transform: " + config[direction].transform + ";\n    z-index: " + zIndex + ";\n    opacity: " + opacity + ";\n  }\n  ." + name + "-enter-active {\n    transform: " + config[direction].transformActive + ";\n    opacity: 1;\n    transition: " + transition + ";\n    transition-delay: " + delay + "ms;\n    transition-duration: " + duration + "ms;\n    transition-timing-function: " + getEasing(easing) + ";\n  }\n  ";
+  return style;
+});
+
+var pull$1 = buildTiger( // common
+{
+  direction: 'left'
+}, // enter
+{
+  duration: 600,
+  easing: 'easeOutBack',
+  opacity: 0.3,
+  zIndex: 1,
+  delay: 0,
+  angle: 90
+}, pull, // exit
+{
+  duration: 600,
+  easing: 'easeOutBack',
+  opacity: 1,
+  zIndex: 2,
+  delay: 0
+}, glideOut);
+
+var push = (function (_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      _ref$name = _ref.name,
+      name = _ref$name === void 0 ? 'push' : _ref$name,
+      _ref$direction = _ref.direction,
+      direction = _ref$direction === void 0 ? 'left' : _ref$direction,
+      _ref$duration = _ref.duration,
+      duration = _ref$duration === void 0 ? 700 : _ref$duration,
+      _ref$easing = _ref.easing,
+      easing = _ref$easing === void 0 ? 'ease' : _ref$easing,
+      _ref$opacity = _ref.opacity,
+      opacity = _ref$opacity === void 0 ? 1 : _ref$opacity,
+      _ref$angle = _ref.angle,
+      angle = _ref$angle === void 0 ? 90 : _ref$angle,
+      _ref$zIndex = _ref.zIndex,
+      zIndex = _ref$zIndex === void 0 ? 1 : _ref$zIndex,
+      _ref$delay = _ref.delay,
+      delay = _ref$delay === void 0 ? 0 : _ref$delay;
+
+  var config = {
+    right: {
+      origin: '100% 50%',
+      transformActive: "rotateY(" + -angle + "deg)"
+    },
+    left: {
+      origin: '0% 50%',
+      transformActive: "rotateY(" + angle + "deg)"
+    },
+    top: {
+      origin: '50% 100%',
+      transformActive: "rotateX(" + -angle + "deg)"
+    },
+    bottom: {
+      origin: '50% 0%',
+      transformActive: "rotateX(" + angle + "deg)"
+    }
+  };
+  var transition = "transform, opacity";
+  var style = "\n  ." + name + "-exit {\n    transform-origin: " + config[direction].origin + ";\n    z-index: " + zIndex + ";\n  }\n  ." + name + "-exit-active {\n    transform: " + config[direction].transformActive + ";\n    opacity: " + opacity + ";\n    transition: " + transition + ";\n    transition-delay: " + delay + "ms;\n    transition-duration: " + duration + "ms;\n    transition-timing-function: " + getEasing(easing) + ";\n  }\n  ";
+  return style;
+});
+
+var push$1 = buildTiger( // common
+{
+  direction: 'left'
+}, // enter
+{
+  duration: 600,
+  easing: 'easeInBack',
+  opacity: 1,
+  zIndex: 2,
+  delay: 0
+}, glideIn, // exit
+{
+  duration: 600,
+  easing: 'easeInBack',
+  opacity: 0.3,
+  zIndex: 1,
+  angle: 90,
+  delay: 0
+}, push);
+
+var pushPull = buildTiger( // common
+{
+  direction: 'left'
+}, // enter
+{
+  duration: 500,
+  easing: 'easeInOutBack',
+  opacity: 0,
+  zIndex: 1,
+  angle: 90,
+  delay: 100
+}, pull, // exit
+{
+  duration: 500,
+  easing: 'easeInOutBack',
+  opacity: 0,
+  zIndex: 2,
+  angle: 90
+}, push);
+
+var sideIn = (function (_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      _ref$name = _ref.name,
+      name = _ref$name === void 0 ? 'side' : _ref$name,
+      _ref$direction = _ref.direction,
+      direction = _ref$direction === void 0 ? 'left' : _ref$direction,
+      _ref$duration = _ref.duration,
+      duration = _ref$duration === void 0 ? 700 : _ref$duration,
+      _ref$easing = _ref.easing,
+      easing = _ref$easing === void 0 ? 'ease-in' : _ref$easing,
+      _ref$opacity = _ref.opacity,
+      opacity = _ref$opacity === void 0 ? 0.3 : _ref$opacity,
+      _ref$zIndex = _ref.zIndex,
+      zIndex = _ref$zIndex === void 0 ? 1 : _ref$zIndex,
+      _ref$depth = _ref.depth,
+      depth = _ref$depth === void 0 ? 500 : _ref$depth,
+      _ref$angle = _ref.angle,
+      angle = _ref$angle === void 0 ? 90 : _ref$angle,
+      _ref$offset = _ref.offset,
+      offset = _ref$offset === void 0 ? 100 : _ref$offset,
+      _ref$delay = _ref.delay,
+      delay = _ref$delay === void 0 ? 0 : _ref$delay;
+
+  var config = {
+    left: {
+      origin: 50 + offset + "% 50%",
+      transform: "translateZ(" + -depth + "px) rotateY(" + -angle + "deg)",
+      transformActive: "translateX(0px) rotateY(0deg)"
+    },
+    right: {
+      origin: -(50 + offset) + "% 50%",
+      transform: "translateZ(" + depth + "px) rotateY(" + angle + "deg)",
+      transformActive: "translateX(0px) rotateY(0deg)"
+    },
+    bottom: {
+      origin: "50% " + (50 + offset) + "%",
+      transform: "translateZ(" + -depth + "px) rotateX(" + angle + "deg)",
+      transformActive: "translateY(0px) rotateX(0deg)"
+    },
+    top: {
+      origin: "50% " + -(50 + offset) + "%",
+      transform: "translateZ(" + -depth + "px) rotateX(" + -angle + "deg)",
+      transformActive: "translateY(0px) rotateX(0deg)"
+    }
+  };
+  var transition = "transform, opacity";
+  var style = "\n  ." + name + "-enter {\n    transform-origin: " + config[direction].origin + ";\n    transform: " + config[direction].transform + ";\n    z-index: " + zIndex + ";\n    opacity: " + opacity + ";\n  }\n  ." + name + "-enter-active {\n    transform: " + config[direction].transformActive + ";\n    opacity: 1;\n    transition: " + transition + ";\n    transition-delay: " + delay + "ms;\n    transition-duration: " + duration + "ms;\n    transition-timing-function: " + getEasing(easing) + ";\n  }\n  ";
+  return style;
+});
+
+var sideOut = (function (_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      _ref$name = _ref.name,
+      name = _ref$name === void 0 ? 'side' : _ref$name,
+      _ref$direction = _ref.direction,
+      direction = _ref$direction === void 0 ? 'left' : _ref$direction,
+      _ref$duration = _ref.duration,
+      duration = _ref$duration === void 0 ? 700 : _ref$duration,
+      _ref$easing = _ref.easing,
+      easing = _ref$easing === void 0 ? 'ease-in' : _ref$easing,
+      _ref$opacity = _ref.opacity,
+      opacity = _ref$opacity === void 0 ? 0.3 : _ref$opacity,
+      _ref$zIndex = _ref.zIndex,
+      zIndex = _ref$zIndex === void 0 ? 2 : _ref$zIndex,
+      _ref$depth = _ref.depth,
+      depth = _ref$depth === void 0 ? 500 : _ref$depth,
+      _ref$angle = _ref.angle,
+      angle = _ref$angle === void 0 ? 90 : _ref$angle,
+      _ref$offset = _ref.offset,
+      offset = _ref$offset === void 0 ? 100 : _ref$offset,
+      _ref$delay = _ref.delay,
+      delay = _ref$delay === void 0 ? 0 : _ref$delay;
+
+  var config = {
+    left: {
+      origin: 50 - offset + "% 50%",
+      transformActive: "translateZ(" + depth + "px) rotateY(" + angle + "deg)"
+    },
+    right: {
+      origin: 50 + offset + "% 50%",
+      transformActive: "translateZ(" + -depth + "px) rotateY(" + -angle + "deg)"
+    },
+    bottom: {
+      origin: "50% " + (50 - offset) + "%",
+      transformActive: "translateZ(" + -depth + "px) rotateX(" + -angle + "deg)"
+    },
+    top: {
+      origin: "50% " + (50 + offset) + "%",
+      transformActive: "translateZ(" + -depth + "px) rotateX(" + angle + "deg)"
+    }
+  };
+  var transition = "transform, opacity";
+  var style = "\n  ." + name + "-exit {\n    transform-origin: " + config[direction].origin + ";\n    z-index: " + zIndex + ";\n  }\n  ." + name + "-exit-active {\n    transform: " + config[direction].transformActive + ";\n    opacity: " + opacity + ";\n    transition: " + transition + ";\n    transition-delay: " + delay + "ms;\n    transition-duration: " + duration + "ms;\n    transition-timing-function: " + getEasing(easing) + ";\n  }\n  ";
+  return style;
+});
+
+var side = buildTiger( // common
+{
+  direction: 'left'
+}, // enter
+{
+  duration: 400,
+  easing: 'ease-out',
+  opacity: 0,
+  zIndex: 1,
+  delay: 200,
+  depth: 500,
+  angle: 90,
+  offset: 100
+}, sideIn, // exit
+{
+  duration: 400,
+  easing: 'ease-in',
+  opacity: 0,
+  zIndex: 2,
+  depth: 500,
+  angle: 90,
+  offset: 100,
+  delay: 0
+}, sideOut);
+
+var slideIn = (function (_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      _ref$name = _ref.name,
+      name = _ref$name === void 0 ? 'slide' : _ref$name,
+      _ref$direction = _ref.direction,
+      direction = _ref$direction === void 0 ? 'left' : _ref$direction,
+      _ref$duration = _ref.duration,
+      duration = _ref$duration === void 0 ? 700 : _ref$duration,
+      _ref$easing = _ref.easing,
+      easing = _ref$easing === void 0 ? 'ease-in' : _ref$easing,
+      _ref$opacity = _ref.opacity,
+      opacity = _ref$opacity === void 0 ? 0.3 : _ref$opacity,
+      _ref$zIndex = _ref.zIndex,
+      zIndex = _ref$zIndex === void 0 ? 1 : _ref$zIndex,
+      _ref$depth = _ref.depth,
+      depth = _ref$depth === void 0 ? 500 : _ref$depth,
+      _ref$offset = _ref.offset,
+      offset = _ref$offset === void 0 ? 200 : _ref$offset,
+      _ref$delay = _ref.delay,
+      delay = _ref$delay === void 0 ? 0 : _ref$delay;
+
+  var config = {
+    left: "X(" + offset + "%)",
+    right: "X(" + -offset + "%)",
+    top: "Y(" + offset + "%)",
+    bottom: "Y(" + -offset + "%)"
+  };
+  var animationName = name + "--react-tige-transition-slide-in";
+  var animationCss = animationName + " " + duration + "ms both " + getEasing(easing);
+  var transform0 = "translateZ(" + -depth + "px) translate" + config[direction];
+  var transform75 = "translateZ(" + -depth + "px)";
+  var style = "\n  ." + name + "-enter {\n    z-index: " + zIndex + ";\n    opacity: " + opacity + ";\n  }\n  ." + name + "-enter-active {\n    animation: " + animationCss + ";\n    animation-delay: " + delay + "ms;\n  }\n  @keyframes " + animationName + " {\n    0%, 25% {\n      opacity: " + opacity + ";\n      transform: " + transform0 + ";\n    }\n    75% {\n      opacity: " + opacity + ";\n      transform: " + transform75 + ";\n    }\n    100% {\n      opacity: 1;\n      transform: translateZ(0) translateX(0);\n    }\n  }\n  ";
+  return style;
+});
+
+var slideOut = (function (_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      _ref$name = _ref.name,
+      name = _ref$name === void 0 ? 'slide' : _ref$name,
+      _ref$direction = _ref.direction,
+      direction = _ref$direction === void 0 ? 'left' : _ref$direction,
+      _ref$duration = _ref.duration,
+      duration = _ref$duration === void 0 ? 700 : _ref$duration,
+      _ref$easing = _ref.easing,
+      easing = _ref$easing === void 0 ? 'ease-in' : _ref$easing,
+      _ref$opacity = _ref.opacity,
+      opacity = _ref$opacity === void 0 ? 0.3 : _ref$opacity,
+      _ref$zIndex = _ref.zIndex,
+      zIndex = _ref$zIndex === void 0 ? 2 : _ref$zIndex,
+      _ref$depth = _ref.depth,
+      depth = _ref$depth === void 0 ? 500 : _ref$depth,
+      _ref$offset = _ref.offset,
+      offset = _ref$offset === void 0 ? 200 : _ref$offset,
+      _ref$delay = _ref.delay,
+      delay = _ref$delay === void 0 ? 0 : _ref$delay;
+
+  var config = {
+    left: "X(" + -offset + "%)",
+    right: "X(" + offset + "%)",
+    top: "Y(" + -offset + "%)",
+    bottom: "Y(" + offset + "%)"
+  };
+  var animationName = name + "--react-tige-transition-slide-out";
+  var animationCss = animationName + " " + duration + "ms both " + getEasing(easing);
+  var transform25 = "translateZ(" + -depth + "px)";
+  var transform75 = "translateZ(" + -depth + "px) translate" + config[direction];
+  var transform100 = "translateZ(" + -depth + "px) translate" + config[direction];
+  var style = "\n  ." + name + "-exit {\n    z-index: " + zIndex + ";\n    opacity: 1;\n  }\n  ." + name + "-exit-active {\n    animation: " + animationCss + ";\n    animation-delay: " + delay + "ms;\n  }\n  @keyframes " + animationName + " {\n    0% {\n      opacity: 1;\n    }\n    25% {\n      opacity: " + opacity + ";\n      transform: " + transform25 + ";\n    }\n    75% {\n      opacity: " + opacity + ";\n      transform: " + transform75 + ";\n    }\n    100% {\n      opacity: " + opacity + ";\n      transform: " + transform100 + ";\n    }\n  }\n  ";
+  return style;
+});
+
+var slide = buildTiger( // common
+{
+  direction: 'left',
+  depth: 500,
+  offset: 200
+}, // enter
+{
+  duration: 600,
+  easing: 'ease',
+  opacity: 0.5,
+  zIndex: 1,
+  delay: 0
+}, slideIn, // exit
+{
+  duration: 600,
+  easing: 'ease',
+  opacity: 0.5,
+  zIndex: 2
+}, slideOut);
+
+var glueInRules = (function (_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      _ref$name = _ref.name,
+      name = _ref$name === void 0 ? 'glue' : _ref$name,
+      _ref$direction = _ref.direction,
+      direction = _ref$direction === void 0 ? 'left' : _ref$direction,
+      _ref$duration = _ref.duration,
+      duration = _ref$duration === void 0 ? 700 : _ref$duration,
+      _ref$easing = _ref.easing,
+      easing = _ref$easing === void 0 ? 'ease-in' : _ref$easing,
+      _ref$opacity = _ref.opacity,
+      opacity = _ref$opacity === void 0 ? 0.3 : _ref$opacity,
+      _ref$zIndex = _ref.zIndex,
+      zIndex = _ref$zIndex === void 0 ? 1 : _ref$zIndex,
+      _ref$depth = _ref.depth,
+      depth = _ref$depth === void 0 ? 200 : _ref$depth,
+      _ref$angle = _ref.angle,
+      angle = _ref$angle === void 0 ? 15 : _ref$angle,
+      _ref$delay = _ref.delay,
+      delay = _ref$delay === void 0 ? 0 : _ref$delay;
+
+  var config = {
+    left: ['100% 50%', "Y(" + -angle + "deg)"],
+    right: ['0% 50%', "Y(" + angle + "deg)"],
+    top: ['50% 0%', "X(" + -angle + "deg)"],
+    bottom: ['50% 100%', "X(" + angle + "deg)"]
+  };
+  var animationName = name + "--react-tige-transition-glue-in";
+  var animationCss = animationName + " " + duration + "ms both " + getEasing(easing);
+  var transformOrigin = config[direction][0];
+  var transform0 = "translateZ(" + -depth + "px)";
+  var transform1 = "rotate" + config[direction][1];
+  var style = "\n  ." + name + "-enter {\n    transform-origin: " + transformOrigin + ";\n    z-index: " + zIndex + ";\n    opacity: " + opacity + ";\n    transform: " + transform0 + ";\n  }\n  ." + name + "-enter-active {\n    animation: " + animationCss + ";\n    animation-delay: " + delay + "ms;\n  }\n  @keyframes " + animationName + " {\n    0% {\n      opacity: " + opacity + ";\n      transform: " + transform0 + ";\n    }\n    60% {\n      transform: " + transform1 + ";\n    }\n    100% {\n      transform: translateZ(0px);\n      opacity: 1;\n    }\n  }\n  ";
+  return style;
+});
+
+var glueIn = buildTiger( // common
+{
+  direction: 'left'
+}, // enter
+{
+  duration: 600,
+  easing: 'ease-in',
+  opacity: 0,
+  zIndex: 1,
+  angle: 15,
+  depth: 200,
+  delay: 0
+}, glueInRules, // exit
+{
+  duration: 400,
+  easing: 'ease',
+  opacity: 1,
+  zIndex: 2
+}, glideOut);
+
+var glueOutRules = (function (_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      _ref$name = _ref.name,
+      name = _ref$name === void 0 ? 'glue' : _ref$name,
+      _ref$direction = _ref.direction,
+      direction = _ref$direction === void 0 ? 'left' : _ref$direction,
+      _ref$duration = _ref.duration,
+      duration = _ref$duration === void 0 ? 700 : _ref$duration,
+      _ref$easing = _ref.easing,
+      easing = _ref$easing === void 0 ? 'ease-in' : _ref$easing,
+      _ref$opacity = _ref.opacity,
+      opacity = _ref$opacity === void 0 ? 0.3 : _ref$opacity,
+      _ref$zIndex = _ref.zIndex,
+      zIndex = _ref$zIndex === void 0 ? 1 : _ref$zIndex,
+      _ref$depth = _ref.depth,
+      depth = _ref$depth === void 0 ? 200 : _ref$depth,
+      _ref$angle = _ref.angle,
+      angle = _ref$angle === void 0 ? 15 : _ref$angle,
+      _ref$delay = _ref.delay,
+      delay = _ref$delay === void 0 ? 0 : _ref$delay;
+
+  var config = {
+    left: ['0% 50%', "Y(" + angle + "deg)"],
+    right: ['100% 50%', "Y(" + -angle + "deg)"],
+    top: ['50% 100%', "X(" + angle + "deg)"],
+    bottom: ['50% 0%', "X(" + -angle + "deg)"]
+  };
+  var animationName = name + "--react-tige-transition-glue-out";
+  var animationCss = animationName + " " + duration + "ms both " + getEasing(easing);
+  var transformOrigin = config[direction][0];
+  var transform40 = "rotate" + config[direction][1];
+  var transform100 = "translateZ(" + -depth + "px)";
+  var style = "\n  ." + name + "-exit {\n    transform-origin: " + transformOrigin + ";\n    z-index: " + zIndex + ";\n    opacity: 1;\n  }\n  ." + name + "-exit-active {\n    animation: " + animationCss + ";\n    animation-delay: " + delay + "ms;\n  }\n  @keyframes " + animationName + " {\n    0% {\n      opacity: 1;\n    }\n    40% {\n      transform: " + transform40 + ";\n    }\n    100% {\n      transform: " + transform100 + ";\n      opacity: " + opacity + ";\n    }\n  }\n  ";
+  return style;
+});
+
+var glueOut = buildTiger( // common
+{
+  direction: 'left'
+}, // enter
+{
+  duration: 400,
+  easing: 'ease',
+  opacity: 1,
+  zIndex: 2,
+  delay: 200
+}, glideIn, // exit
+{
+  duration: 600,
+  easing: 'ease-in',
+  opacity: 0,
+  zIndex: 1,
+  depth: 200,
+  angle: 15
+}, glueOutRules);
+
+exports.Link = Link$1;
+exports.Navigation = Navigation;
+exports.Route = Route;
+exports.Screen = Screen;
+exports.buildTiger = buildTiger;
+exports.carousel = carousel;
+exports.cube = cube;
+exports.drop = drop;
+exports.fade = fade;
+exports.flip = flip;
+exports.fold = fold;
+exports.glide = glide;
+exports.glideIn = glideIn$1;
+exports.glideOut = glideOut$1;
+exports.glueIn = glueIn;
+exports.glueOut = glueOut;
+exports.pull = pull$1;
+exports.push = push$1;
+exports.pushPull = pushPull;
+exports.rise = rise;
+exports.room = room;
+exports.scale = scale;
+exports.shuffle = shuffle;
+exports.side = side;
+exports.slide = slide;
+exports.unfold = unfold;
+
+
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-transition-group":"../node_modules/react-transition-group/esm/index.js"}],"../node_modules/react-tiger-transition/index.js":[function(require,module,exports) {
+"use strict";
+
+if ("development" === "production") {
+  module.exports = require("./cjs/react-tiger-transition.min.js");
+} else {
+  module.exports = require("./cjs/react-tiger-transition.js");
+}
+},{"./cjs/react-tiger-transition.js":"../node_modules/react-tiger-transition/cjs/react-tiger-transition.js"}],"../node_modules/react-bulma-components/dist/index.js":[function(require,module,exports) {
 var define;
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -41050,7 +45232,7 @@ panel_Panel.defaultProps = panel_objectSpread({}, modifiers.defaultProps, {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ressourcesSecurity = exports.NAV = exports.ICON = exports.ressources = exports.LOGO = exports.CONSTANT = void 0;
+exports.ressourcesSecurity = exports.NAV = exports.ICONBRAND = exports.ICON = exports.ressources = exports.LOGO = exports.CONSTANT = void 0;
 var path = './../images/';
 var ressources = {
   "home1": {
@@ -41115,9 +45297,27 @@ var ICON = [{
   'nameicon': 'grin-stars'
 }];
 exports.ICON = ICON;
+var ICONBRAND = [{
+  'text': 'Wordpress',
+  'nameicon': 'wordpress'
+}, {
+  'text': 'Shopify',
+  'nameicon': 'shopify'
+}, {
+  'text': 'Salesforce',
+  'nameicon': 'salesforce'
+}, {
+  'text': 'Wix',
+  'nameicon': 'wix'
+}, {
+  'text': 'Php',
+  'nameicon': 'php'
+}];
+exports.ICONBRAND = ICONBRAND;
 var LOGO = [path + "digital-power-i.png", path + "samsung.png", path + "digital-power-i.png", path + "samsung.png"];
 exports.LOGO = LOGO;
 var CONSTANT = {
+  "logoSVG": path + "first-digital-black.svg",
   "logo": path + "first-digital-white.png",
   "web0": path + "application_block_2.png",
   "web1": path + "application_block_1.png",
@@ -41150,7 +45350,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _AnimationTypeWrapper = _interopRequireDefault(require("./AnimationTypeWrapper"));
 
-var _reactRouterDom = require("react-router-dom");
+var _reactTigerTransition = require("react-tiger-transition");
 
 var _reactBulmaComponents = require("react-bulma-components");
 
@@ -41164,6 +45364,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//import { Link } from "react-router-dom";
 var NavBarGeneric = function NavBarGeneric() {
   var _useState = (0, _react.useState)(false),
       _useState2 = (0, _slicedToArray2.default)(_useState, 2),
@@ -41215,7 +45416,7 @@ var NavBarGeneric = function NavBarGeneric() {
           fontWeight: "bold"
         },
         key: i
-      }, window.innerWidth < 1023 && /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+      }, window.innerWidth < 1023 && /*#__PURE__*/_react.default.createElement(_reactTigerTransition.Link, {
         onClick: function onClick() {
           return setDisplayNav(function (val) {
             return !val;
@@ -41224,12 +45425,14 @@ var NavBarGeneric = function NavBarGeneric() {
         style: {
           color: ""
         },
-        to: itemNav.link
-      }, itemNav.text), window.innerWidth > 1023 && /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+        to: itemNav.link,
+        transition: "glide-left"
+      }, itemNav.text), window.innerWidth > 1023 && /*#__PURE__*/_react.default.createElement(_reactTigerTransition.Link, {
         style: {
           color: "white"
         },
-        to: itemNav.link
+        to: itemNav.link,
+        transition: "glide-left"
       }, itemNav.text));
     })));
   };
@@ -41277,7 +45480,7 @@ _reactBulmaComponents.Navbar.propTypes = {
 };
 var _default = NavBarGeneric;
 exports.default = _default;
-},{"@babel/runtime/helpers/slicedToArray":"../node_modules/@babel/runtime/helpers/slicedToArray.js","react":"../node_modules/react/index.js","./AnimationTypeWrapper":"components/AnimationTypeWrapper.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bulma-components":"../node_modules/react-bulma-components/dist/index.js","./../constants":"constants.js","prop-types":"../node_modules/prop-types/index.js"}],"components/Footer.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/slicedToArray":"../node_modules/@babel/runtime/helpers/slicedToArray.js","react":"../node_modules/react/index.js","./AnimationTypeWrapper":"components/AnimationTypeWrapper.js","react-tiger-transition":"../node_modules/react-tiger-transition/index.js","react-bulma-components":"../node_modules/react-bulma-components/dist/index.js","./../constants":"constants.js","prop-types":"../node_modules/prop-types/index.js"}],"components/Footer.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41316,7 +45519,30 @@ _reactBulmaComponents.Hero.propTypes = {
 };
 var _default = FooterContainer;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","react-bulma-components":"../node_modules/react-bulma-components/dist/index.js","./../constants":"constants.js","prop-types":"../node_modules/prop-types/index.js"}],"../node_modules/@babel/runtime/helpers/extends.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-bulma-components":"../node_modules/react-bulma-components/dist/index.js","./../constants":"constants.js","prop-types":"../node_modules/prop-types/index.js"}],"../node_modules/react-tiger-transition/styles/main.min.css":[function(require,module,exports) {
+
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+},{"_css_loader":"../../Users/mogola/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/@babel/runtime/helpers/defineProperty.js":[function(require,module,exports) {
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+module.exports = _defineProperty;
+},{}],"../node_modules/@babel/runtime/helpers/extends.js":[function(require,module,exports) {
 function _extends() {
   module.exports = _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -54749,7 +58975,102 @@ _reactBulmaComponents.Icon.propTypes = {
 };
 var _default = ContainerGeneric;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./AnimationTypeWrapper":"components/AnimationTypeWrapper.js","react-bulma-components":"../node_modules/react-bulma-components/dist/index.js","./../constants":"constants.js","@fortawesome/fontawesome-svg-core":"../node_modules/@fortawesome/fontawesome-svg-core/index.es.js","@fortawesome/free-brands-svg-icons":"../node_modules/@fortawesome/free-brands-svg-icons/index.es.js","@fortawesome/free-solid-svg-icons":"../node_modules/@fortawesome/free-solid-svg-icons/index.es.js","@fortawesome/react-fontawesome":"../node_modules/@fortawesome/react-fontawesome/index.es.js","prop-types":"../node_modules/prop-types/index.js"}],"components/ColumnsGeneric.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./AnimationTypeWrapper":"components/AnimationTypeWrapper.js","react-bulma-components":"../node_modules/react-bulma-components/dist/index.js","./../constants":"constants.js","@fortawesome/fontawesome-svg-core":"../node_modules/@fortawesome/fontawesome-svg-core/index.es.js","@fortawesome/free-brands-svg-icons":"../node_modules/@fortawesome/free-brands-svg-icons/index.es.js","@fortawesome/free-solid-svg-icons":"../node_modules/@fortawesome/free-solid-svg-icons/index.es.js","@fortawesome/react-fontawesome":"../node_modules/@fortawesome/react-fontawesome/index.es.js","prop-types":"../node_modules/prop-types/index.js"}],"components/ContainerGenericPlatform.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _AnimationTypeWrapper = _interopRequireDefault(require("./AnimationTypeWrapper"));
+
+var _reactBulmaComponents = require("react-bulma-components");
+
+var _constants = require("./../constants");
+
+var _fontawesomeSvgCore = require("@fortawesome/fontawesome-svg-core");
+
+var _freeBrandsSvgIcons = require("@fortawesome/free-brands-svg-icons");
+
+var _reactFontawesome = require("@fortawesome/react-fontawesome");
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_fontawesomeSvgCore.library.add(_freeBrandsSvgIcons.fab, _freeBrandsSvgIcons.faWordpress);
+
+var ContentGeneric = function ContentGeneric(_ref) {
+  var childrenIcon = _ref.childrenIcon,
+      classes = _ref.classes,
+      _ref$size = _ref.size,
+      size = _ref$size === void 0 ? 'large' : _ref$size,
+      iconName = _ref.iconName,
+      color = _ref.color,
+      sizeIcon = _ref.sizeIcon,
+      text = _ref.text;
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Icon, {
+    size: size,
+    className: "i-home ".concat(iconName),
+    color: color
+  }, childrenIcon), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Heading, {
+    className: classes,
+    size: 5,
+    renderAs: "h2"
+  }, text));
+};
+
+var ContainerPlatform = function ContainerPlatform() {
+  //brain , sizeIcon = 6x, classes = upper-home upper-home-margin, color = twitter'
+  return /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Section, {
+    className: "neutral",
+    size: "medium"
+  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Container, {
+    style: {
+      textAlign: "center"
+    }
+  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Heading, {
+    style: {
+      marginBottom: 50
+    },
+    size: 1,
+    className: "upper-home is-size-3-mobile",
+    renderAs: "p"
+  }, "Nos expertises"), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns, {
+    centered: true,
+    style: {
+      paddingTop: 50,
+      alignItems: "center"
+    }
+  }, _constants.ICONBRAND.map(function (ico, i) {
+    return /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, {
+      size: 4,
+      key: i
+    }, /*#__PURE__*/_react.default.createElement(_AnimationTypeWrapper.default, {
+      type: "Slide",
+      top: true,
+      children: /*#__PURE__*/_react.default.createElement(ContentGeneric, {
+        color: "twitter",
+        text: ico.text,
+        childrenIcon: /*#__PURE__*/_react.default.createElement(_reactFontawesome.FontAwesomeIcon, {
+          icon: ['fab', "".concat(ico.nameicon)],
+          size: "6x"
+        }),
+        classes: "upper-home upper-home-margin "
+      })
+    }));
+  }))));
+};
+
+_reactBulmaComponents.Icon.propTypes = {
+  color: _propTypes.default.string.isRequired
+};
+var _default = ContainerPlatform;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./AnimationTypeWrapper":"components/AnimationTypeWrapper.js","react-bulma-components":"../node_modules/react-bulma-components/dist/index.js","./../constants":"constants.js","@fortawesome/fontawesome-svg-core":"../node_modules/@fortawesome/fontawesome-svg-core/index.es.js","@fortawesome/free-brands-svg-icons":"../node_modules/@fortawesome/free-brands-svg-icons/index.es.js","@fortawesome/react-fontawesome":"../node_modules/@fortawesome/react-fontawesome/index.es.js","prop-types":"../node_modules/prop-types/index.js"}],"components/ColumnsGeneric.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -54825,11 +59146,9 @@ var _FormContact = _interopRequireDefault(require("./FormContact"));
 
 var _ContainerGeneric = _interopRequireDefault(require("./ContainerGeneric"));
 
+var _ContainerGenericPlatform = _interopRequireDefault(require("./ContainerGenericPlatform"));
+
 var _ColumnsGeneric = _interopRequireDefault(require("./ColumnsGeneric"));
-
-var _NavBar = _interopRequireDefault(require("./NavBar"));
-
-var _Footer = _interopRequireDefault(require("./Footer"));
 
 var _constants = require("./../constants");
 
@@ -54838,7 +59157,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var HomePage = function HomePage() {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "default-block"
-  }, /*#__PURE__*/_react.default.createElement(_NavBar.default, null), /*#__PURE__*/_react.default.createElement(_SectionContainer.default, {
+  }, /*#__PURE__*/_react.default.createElement(_SectionContainer.default, {
     srcImage: _constants.CONSTANT['web1'],
     color: "twitter",
     size: "large",
@@ -54865,7 +59184,7 @@ var HomePage = function HomePage() {
     title: _constants.ressources.home4['title'],
     content: _constants.ressources.home4['content'],
     position: 0
-  }), /*#__PURE__*/_react.default.createElement(_SectionContainerForm.default, {
+  }), /*#__PURE__*/_react.default.createElement(_ContainerGenericPlatform.default, null), /*#__PURE__*/_react.default.createElement(_SectionContainerForm.default, {
     srcImage: _constants.CONSTANT['web5'],
     color: "twitter",
     size: "large",
@@ -54888,7 +59207,7 @@ var HomePage = function HomePage() {
 
 var _default = HomePage;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./SectionContainer":"components/SectionContainer.js","./SectionContainerForm":"components/SectionContainerForm.js","./FormContact":"components/FormContact.js","./ContainerGeneric":"components/ContainerGeneric.js","./ColumnsGeneric":"components/ColumnsGeneric.js","./NavBar":"components/NavBar.js","./Footer":"components/Footer.js","./../constants":"constants.js"}],"components/home/Home.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./SectionContainer":"components/SectionContainer.js","./SectionContainerForm":"components/SectionContainerForm.js","./FormContact":"components/FormContact.js","./ContainerGeneric":"components/ContainerGeneric.js","./ContainerGenericPlatform":"components/ContainerGenericPlatform.js","./ColumnsGeneric":"components/ColumnsGeneric.js","./../constants":"constants.js"}],"components/home/Home.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -54951,7 +59270,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var HomePageSecurity = function HomePageSecurity() {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "default-block"
-  }, /*#__PURE__*/_react.default.createElement(_NavBar.default, null), /*#__PURE__*/_react.default.createElement(_SectionContainer.default, {
+  }, /*#__PURE__*/_react.default.createElement(_SectionContainer.default, {
     srcImage: _constants.CONSTANT['web1'],
     color: "twitter",
     size: "large",
@@ -55043,6 +59362,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
 var _react = _interopRequireDefault(require("react"));
 
 var _Home = _interopRequireDefault(require("./../home/Home"));
@@ -55057,14 +59378,28 @@ var _constants = require("./../../constants");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+var screenStyle = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center"
+};
 var getRoute = [{
   path: "/",
-  component: /*#__PURE__*/_react.default.createElement(_Home.default, null)
+  exact: true,
+  component: /*#__PURE__*/_react.default.createElement(_Home.default, null),
+  screenProps: _objectSpread({}, screenStyle)
 }, {
   path: "/security",
-  component: /*#__PURE__*/_react.default.createElement(_HomeSecurity.default, null)
+  component: /*#__PURE__*/_react.default.createElement(_HomeSecurity.default, null),
+  exact: true,
+  screenProps: _objectSpread({}, screenStyle)
 }, {
   path: "/contact",
+  exact: true,
   component: /*#__PURE__*/_react.default.createElement(_SectionContainerForm.default, {
     srcImage: _constants.CONSTANT['web5'],
     color: "twitter",
@@ -55074,11 +59409,12 @@ var getRoute = [{
       title: _constants.ressources.contact['title'],
       content: _constants.ressources.contact['content']
     })]
-  })
+  }),
+  screenProps: _objectSpread({}, screenStyle)
 }];
 var _default = getRoute;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./../home/Home":"components/home/Home.js","./../home/HomeSecurity":"components/home/HomeSecurity.js","./../SectionContainerForm":"components/SectionContainerForm.js","./../FormContact":"components/FormContact.js","./../../constants":"constants.js"}],"App.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/defineProperty":"../node_modules/@babel/runtime/helpers/defineProperty.js","react":"../node_modules/react/index.js","./../home/Home":"components/home/Home.js","./../home/HomeSecurity":"components/home/HomeSecurity.js","./../SectionContainerForm":"components/SectionContainerForm.js","./../FormContact":"components/FormContact.js","./../../constants":"constants.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -55094,24 +59430,49 @@ var _Footer = _interopRequireDefault(require("./components/Footer"));
 
 var _reactRouterDom = require("react-router-dom");
 
+require("react-tiger-transition/styles/main.min.css");
+
+var _reactTigerTransition = require("react-tiger-transition");
+
 var _Router = _interopRequireDefault(require("./components/Route/Router"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// Define all Route
+// inject glide styles
+(0, _reactTigerTransition.glide)({
+  name: 'glide-left'
+});
+(0, _reactTigerTransition.glide)({
+  name: 'glide-right',
+  direction: 'right'
+}); // Define all Route
+
 var App = function App() {
-  return /*#__PURE__*/_react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_react.default.createElement(_NavBar.default, null), _Router.default.map(function (routeApp, i) {
-    return /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
-      exact: true,
+  return /*#__PURE__*/_react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_react.default.createElement(_reactTigerTransition.Navigation, null, /*#__PURE__*/_react.default.createElement(_NavBar.default, null), _Router.default.map(function (routeApp, i) {
+    return routeApp.hasOwnProperty("exact") && /*#__PURE__*/_react.default.createElement(_reactTigerTransition.Route, {
       key: routeApp.key || routeApp.path,
-      path: routeApp.path
+      path: routeApp.path,
+      exact: true,
+      screen: true,
+      screenProps: {
+        style: routeApp.screenProps
+      }
     }, routeApp.component);
-  }), /*#__PURE__*/_react.default.createElement(_Footer.default, null));
+  }), _Router.default.map(function (routeApp, i) {
+    return !routeApp.hasOwnProperty("exact") && /*#__PURE__*/_react.default.createElement(_reactTigerTransition.Route, {
+      key: routeApp.key || routeApp.path,
+      path: routeApp.path,
+      screen: true,
+      screenProps: {
+        style: routeApp.screenProps
+      }
+    }, routeApp.component);
+  }), /*#__PURE__*/_react.default.createElement(_Footer.default, null)));
 };
 
 var _default = App;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./components/NavBar":"components/NavBar.js","./components/Footer":"components/Footer.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./components/Route/Router":"components/Route/Router.js"}],"serviceWorker.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./components/NavBar":"components/NavBar.js","./components/Footer":"components/Footer.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-tiger-transition/styles/main.min.css":"../node_modules/react-tiger-transition/styles/main.min.css","react-tiger-transition":"../node_modules/react-tiger-transition/index.js","./components/Route/Router":"components/Route/Router.js"}],"serviceWorker.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
