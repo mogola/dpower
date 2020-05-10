@@ -45426,13 +45426,13 @@ var NavBarGeneric = function NavBarGeneric() {
           color: ""
         },
         to: itemNav.link,
-        transition: "glide-left"
+        transition: "glide-right"
       }, itemNav.text), window.innerWidth > 1023 && /*#__PURE__*/_react.default.createElement(_reactTigerTransition.Link, {
         style: {
           color: "white"
         },
         to: itemNav.link,
-        transition: "glide-left"
+        transition: "glide-right"
       }, itemNav.text));
     })));
   };
@@ -59439,12 +59439,28 @@ var _Router = _interopRequireDefault(require("./components/Route/Router"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // inject glide styles
-(0, _reactTigerTransition.glide)({
-  name: 'glide-left'
-});
-(0, _reactTigerTransition.glide)({
+(0, _reactTigerTransition.glideOut)({
   name: 'glide-right',
   direction: 'right'
+});
+(0, _reactTigerTransition.glide)({
+  name: "glide-right",
+  direction: "right",
+  enter: {
+    duration: 800,
+    easing: 'ease',
+    opacity: 1,
+    zIndex: 2,
+    delay: 0,
+    scale: 1
+  },
+  exit: {
+    duration: 800,
+    easing: 'ease',
+    opactiy: 1,
+    zIndex: 1,
+    delay: 800
+  }
 }); // Define all Route
 
 var App = function App() {

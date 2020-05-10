@@ -59,16 +59,15 @@ const NavBarGeneric = () => {
                                     onClick={() => setDisplayNav(val => !val)}
                                     style={{ color: "" }}
                                     to={itemNav.link}
-                                    transition='glide-left'>
+                                    transition='glide-right'>
                                     {itemNav.text}
-
                                 </Link>
                             }
                             {window.innerWidth > 1023 &&
                                 <Link
                                     style={{ color: "white" }}
                                     to={itemNav.link}
-                                    transition='glide-left'>
+                                    transition='glide-right'>
                                     {itemNav.text}
                                 </Link>
                             }

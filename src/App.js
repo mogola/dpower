@@ -5,17 +5,33 @@ import FooterContainer from './components/Footer'
 import { Switch, Redirect, BrowserRouter as Router } from "react-router-dom"
 
 import "react-tiger-transition/styles/main.min.css";
-import { Navigation, Route, Screen, Link, glide } from "react-tiger-transition";
+import { Navigation, Route, Screen, Link, glide, glideOut } from "react-tiger-transition";
 
 // inject glide styles
-glide({
-  name: 'glide-left'
-});
-glide({
+glideOut({
   name: 'glide-right',
   direction: 'right'
 });
 
+glide({
+  name: "glide-right",
+  direction: "right",
+  enter: {
+    duration: 800,
+    easing: 'ease',
+    opacity: 1,
+    zIndex: 2,
+    delay: 0,
+    scale: 1
+  },
+  exit: {
+    duration: 800,
+    easing: 'ease',
+    opactiy: 1,
+    zIndex: 1,
+    delay: 800
+  }
+})
 // Define all Route
 import getRoute from './components/Route/Router'
 
