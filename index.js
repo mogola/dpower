@@ -14,8 +14,8 @@ app.use('/dist', express.static('dist'))
 app.use('/public', express.static('public'))
 
 
-app.get('*', function (req, res) {
-    res.sendFile(path.join(__dirname + '/public/index.html'), function (err) {
+app.get('/*', function (req, res) {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'), function (err) {
         if (err) {
             res.status(500).send(err)
         }
