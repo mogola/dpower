@@ -83,7 +83,7 @@
   "scripts": {
     "start": "node_modules/.bin/nodemon ./index.js",
     "wp": "webpack-dev-server --open --config webpack.dev.js",
-    "build": "webpack",
+    "build": "webpack --config webpack.prod.js",
     "prod": "webpack --config webpack.prod.js",
     "build_olreacr": "react-scripts build",
     "build_old2": "react-scripts start",
@@ -93,6 +93,6 @@
     "start_toprod": "node index.js",
     "start-parcel": "parcel ./src/index.html --open",
     "prod_index": "node_modules/.bin/nodemon ./index.js",
-    "heroku-postbuild": "echo Skip builds on Heroku"
+    "heroku-postbuild": "webpack --config webpack.prod.js"
   }
 }
