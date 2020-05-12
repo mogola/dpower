@@ -92,6 +92,7 @@
     "eject": "react-scripts eject",
     "start_toprod": "node index.js",
     "start-parcel": "parcel ./src/index.html --open",
-    "prod_index": "node_modules/.bin/nodemon ./index.js"
+    "prod_index": "node_modules/.bin/nodemon ./index.js",
+    "heroku-postbuild": "echo Skip builds on Heroku"
   }
 }
