@@ -30682,17 +30682,7 @@ module.exports = reloadCSS;
         module.hot.dispose(reloadCSS);
         module.hot.accept(reloadCSS);
       
-},{"_css_loader":"../../Users/mogola/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../../Users/mogola/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"scss/home.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"C:\\digitalfirst\\node_modules\\@fortawesome\\fontawesome-free\\css\\fontawesome.min.css":"../node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css","_css_loader":"../../Users/mogola/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/@babel/runtime/helpers/arrayWithHoles.js":[function(require,module,exports) {
+},{"_css_loader":"../../Users/mogola/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/@babel/runtime/helpers/arrayWithHoles.js":[function(require,module,exports) {
 function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
 }
@@ -45365,7 +45355,9 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //import { Link } from "react-router-dom";
-var NavBarGeneric = function NavBarGeneric() {
+var NavBarGeneric = function NavBarGeneric(_ref) {
+  var colorTheme = _ref.colorTheme;
+
   var _useState = (0, _react.useState)(false),
       _useState2 = (0, _slicedToArray2.default)(_useState, 2),
       displayNav = _useState2[0],
@@ -45438,7 +45430,7 @@ var NavBarGeneric = function NavBarGeneric() {
   };
 
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Navbar, {
-    color: "twitter",
+    color: colorTheme,
     style: {
       padding: "20px 0"
     },
@@ -45519,12 +45511,60 @@ _reactBulmaComponents.Hero.propTypes = {
 };
 var _default = FooterContainer;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","react-bulma-components":"../node_modules/react-bulma-components/dist/index.js","./../constants":"constants.js","prop-types":"../node_modules/prop-types/index.js"}],"../node_modules/react-tiger-transition/styles/main.min.css":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-bulma-components":"../node_modules/react-bulma-components/dist/index.js","./../constants":"constants.js","prop-types":"../node_modules/prop-types/index.js"}],"context/theme-context.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getTheme = getTheme;
+exports.themeContext = exports.themes = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//themes examples
+var themes = {
+  twitter: {
+    name: 'twitter'
+  },
+  primary: {
+    name: 'primary'
+  },
+  white: {
+    name: 'white'
+  },
+  black: {
+    name: 'black'
+  }
+};
+exports.themes = themes;
+
+function getTheme(nameOfTheme) {
+  return themes[nameOfTheme].name;
+} //export of context
+
+
+var themeContext = _react.default.createContext({
+  theme: themes,
+  toggleTheme: function toggleTheme() {
+    console.log('default click');
+  }
+});
+
+exports.themeContext = themeContext;
+},{"react":"../node_modules/react/index.js"}],"../node_modules/react-tiger-transition/styles/main.min.css":[function(require,module,exports) {
 
         var reloadCSS = require('_css_loader');
         module.hot.dispose(reloadCSS);
         module.hot.accept(reloadCSS);
       
+},{"_css_loader":"../../Users/mogola/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"App.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
 },{"_css_loader":"../../Users/mogola/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/@babel/runtime/helpers/defineProperty.js":[function(require,module,exports) {
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -58890,6 +58930,8 @@ var _react = _interopRequireDefault(require("react"));
 
 var _AnimationTypeWrapper = _interopRequireDefault(require("./AnimationTypeWrapper"));
 
+var _themeContext = require("./../context/theme-context");
+
 var _reactBulmaComponents = require("react-bulma-components");
 
 var _constants = require("./../constants");
@@ -58914,7 +58956,8 @@ var ContentGeneric = function ContentGeneric(_ref) {
       _ref$size = _ref.size,
       size = _ref$size === void 0 ? 'large' : _ref$size,
       iconName = _ref.iconName,
-      color = _ref.color,
+      _ref$color = _ref.color,
+      color = _ref$color === void 0 ? 'default' : _ref$color,
       sizeIcon = _ref.sizeIcon,
       text = _ref.text;
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Icon, {
@@ -58930,52 +58973,54 @@ var ContentGeneric = function ContentGeneric(_ref) {
 
 var ContainerGeneric = function ContainerGeneric() {
   //brain , sizeIcon = 6x, classes = upper-home upper-home-margin, color = twitter'
-  return /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Section, {
-    className: "neutral",
-    size: "medium"
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Container, {
-    style: {
-      textAlign: "center"
-    }
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Heading, {
-    style: {
-      marginBottom: 50
-    },
-    size: 1,
-    className: "upper-home is-size-3-mobile",
-    renderAs: "p"
-  }, "Notre vision avec 5 r\xE8gles simples"), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns, {
-    centered: true,
-    style: {
-      paddingTop: 50,
-      alignItems: "center"
-    }
-  }, _constants.ICON.map(function (ico, i) {
-    return /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, {
-      size: 4,
-      key: i
-    }, /*#__PURE__*/_react.default.createElement(_AnimationTypeWrapper.default, {
-      type: "Slide",
-      top: true,
-      children: /*#__PURE__*/_react.default.createElement(ContentGeneric, {
-        color: "twitter",
-        text: ico.text,
-        childrenIcon: /*#__PURE__*/_react.default.createElement(_reactFontawesome.FontAwesomeIcon, {
-          icon: ico.nameicon,
-          size: "6x"
-        }),
-        classes: "upper-home upper-home-margin "
-      })
-    }));
-  }))));
+  return /*#__PURE__*/_react.default.createElement(_themeContext.themeContext.Consumer, null, function (themeColor) {
+    return /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Section, {
+      className: "neutral",
+      size: "medium"
+    }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Container, {
+      style: {
+        textAlign: "center"
+      }
+    }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Heading, {
+      style: {
+        marginBottom: 50
+      },
+      size: 1,
+      className: "upper-home is-size-3-mobile",
+      renderAs: "p"
+    }, "Notre vision avec 5 r\xE8gles simples"), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns, {
+      centered: true,
+      style: {
+        paddingTop: 50,
+        alignItems: "center"
+      }
+    }, _constants.ICON.map(function (ico, i) {
+      return /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, {
+        size: 4,
+        key: i
+      }, /*#__PURE__*/_react.default.createElement(_AnimationTypeWrapper.default, {
+        type: "Slide",
+        top: true,
+        children: /*#__PURE__*/_react.default.createElement(ContentGeneric, {
+          color: themeColor,
+          text: ico.text,
+          childrenIcon: /*#__PURE__*/_react.default.createElement(_reactFontawesome.FontAwesomeIcon, {
+            icon: ico.nameicon,
+            size: "6x"
+          }),
+          classes: "upper-home upper-home-margin "
+        })
+      }));
+    }))));
+  });
 };
 
 _reactBulmaComponents.Icon.propTypes = {
-  color: _propTypes.default.string.isRequired
+  color: _propTypes.default.string
 };
 var _default = ContainerGeneric;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./AnimationTypeWrapper":"components/AnimationTypeWrapper.js","react-bulma-components":"../node_modules/react-bulma-components/dist/index.js","./../constants":"constants.js","@fortawesome/fontawesome-svg-core":"../node_modules/@fortawesome/fontawesome-svg-core/index.es.js","@fortawesome/free-brands-svg-icons":"../node_modules/@fortawesome/free-brands-svg-icons/index.es.js","@fortawesome/free-solid-svg-icons":"../node_modules/@fortawesome/free-solid-svg-icons/index.es.js","@fortawesome/react-fontawesome":"../node_modules/@fortawesome/react-fontawesome/index.es.js","prop-types":"../node_modules/prop-types/index.js"}],"components/ContainerGenericPlatform.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./AnimationTypeWrapper":"components/AnimationTypeWrapper.js","./../context/theme-context":"context/theme-context.js","react-bulma-components":"../node_modules/react-bulma-components/dist/index.js","./../constants":"constants.js","@fortawesome/fontawesome-svg-core":"../node_modules/@fortawesome/fontawesome-svg-core/index.es.js","@fortawesome/free-brands-svg-icons":"../node_modules/@fortawesome/free-brands-svg-icons/index.es.js","@fortawesome/free-solid-svg-icons":"../node_modules/@fortawesome/free-solid-svg-icons/index.es.js","@fortawesome/react-fontawesome":"../node_modules/@fortawesome/react-fontawesome/index.es.js","prop-types":"../node_modules/prop-types/index.js"}],"components/ContainerGenericPlatform.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -58986,6 +59031,8 @@ exports.default = void 0;
 var _react = _interopRequireDefault(require("react"));
 
 var _AnimationTypeWrapper = _interopRequireDefault(require("./AnimationTypeWrapper"));
+
+var _themeContext = require("./../context/theme-context");
 
 var _reactBulmaComponents = require("react-bulma-components");
 
@@ -59025,44 +59072,46 @@ var ContentGeneric = function ContentGeneric(_ref) {
 
 var ContainerPlatform = function ContainerPlatform() {
   //brain , sizeIcon = 6x, classes = upper-home upper-home-margin, color = twitter'
-  return /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Section, {
-    className: "neutral",
-    size: "medium"
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Container, {
-    style: {
-      textAlign: "center"
-    }
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Heading, {
-    style: {
-      marginBottom: 50
-    },
-    size: 1,
-    className: "upper-home is-size-3-mobile",
-    renderAs: "p"
-  }, "Nos expertises"), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns, {
-    centered: true,
-    style: {
-      paddingTop: 50,
-      alignItems: "center"
-    }
-  }, _constants.ICONBRAND.map(function (ico, i) {
-    return /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, {
-      size: 4,
-      key: i
-    }, /*#__PURE__*/_react.default.createElement(_AnimationTypeWrapper.default, {
-      type: "Slide",
-      top: true,
-      children: /*#__PURE__*/_react.default.createElement(ContentGeneric, {
-        color: "twitter",
-        text: ico.text,
-        childrenIcon: /*#__PURE__*/_react.default.createElement(_reactFontawesome.FontAwesomeIcon, {
-          icon: ['fab', "".concat(ico.nameicon)],
-          size: "6x"
-        }),
-        classes: "upper-home upper-home-margin "
-      })
-    }));
-  }))));
+  return /*#__PURE__*/_react.default.createElement(_themeContext.themeContext.Consumer, null, function (themeColor) {
+    return /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Section, {
+      className: "neutral",
+      size: "medium"
+    }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Container, {
+      style: {
+        textAlign: "center"
+      }
+    }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Heading, {
+      style: {
+        marginBottom: 50
+      },
+      size: 1,
+      className: "upper-home is-size-3-mobile",
+      renderAs: "p"
+    }, "Nos expertises"), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns, {
+      centered: true,
+      style: {
+        paddingTop: 50,
+        alignItems: "center"
+      }
+    }, _constants.ICONBRAND.map(function (ico, i) {
+      return /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, {
+        size: 4,
+        key: i
+      }, /*#__PURE__*/_react.default.createElement(_AnimationTypeWrapper.default, {
+        type: "Slide",
+        top: true,
+        children: /*#__PURE__*/_react.default.createElement(ContentGeneric, {
+          color: themeColor,
+          text: ico.text,
+          childrenIcon: /*#__PURE__*/_react.default.createElement(_reactFontawesome.FontAwesomeIcon, {
+            icon: ['fab', "".concat(ico.nameicon)],
+            size: "6x"
+          }),
+          classes: "upper-home upper-home-margin "
+        })
+      }));
+    }))));
+  });
 };
 
 _reactBulmaComponents.Icon.propTypes = {
@@ -59070,7 +59119,7 @@ _reactBulmaComponents.Icon.propTypes = {
 };
 var _default = ContainerPlatform;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./AnimationTypeWrapper":"components/AnimationTypeWrapper.js","react-bulma-components":"../node_modules/react-bulma-components/dist/index.js","./../constants":"constants.js","@fortawesome/fontawesome-svg-core":"../node_modules/@fortawesome/fontawesome-svg-core/index.es.js","@fortawesome/free-brands-svg-icons":"../node_modules/@fortawesome/free-brands-svg-icons/index.es.js","@fortawesome/react-fontawesome":"../node_modules/@fortawesome/react-fontawesome/index.es.js","prop-types":"../node_modules/prop-types/index.js"}],"components/ColumnsGeneric.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./AnimationTypeWrapper":"components/AnimationTypeWrapper.js","./../context/theme-context":"context/theme-context.js","react-bulma-components":"../node_modules/react-bulma-components/dist/index.js","./../constants":"constants.js","@fortawesome/fontawesome-svg-core":"../node_modules/@fortawesome/fontawesome-svg-core/index.es.js","@fortawesome/free-brands-svg-icons":"../node_modules/@fortawesome/free-brands-svg-icons/index.es.js","@fortawesome/react-fontawesome":"../node_modules/@fortawesome/react-fontawesome/index.es.js","prop-types":"../node_modules/prop-types/index.js"}],"components/ColumnsGeneric.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -59079,6 +59128,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
+
+var _themeContext = require("./../context/theme-context");
 
 var _reactBulmaComponents = require("react-bulma-components");
 
@@ -59090,45 +59141,47 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var ColumnsGeneric = function ColumnsGeneric(_ref) {
   var title = _ref.title,
       element = _ref.element;
-  return /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Section, {
-    className: "neutral",
-    size: "medium"
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Container, {
-    style: {
-      textAlign: "center"
-    }
-  }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Heading, {
-    style: {
-      marginBottom: 50
-    },
-    size: 1,
-    className: "upper-home is-size-3-mobile",
-    renderAs: "p"
-  }, title), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns, {
-    centered: true,
-    style: {
-      paddingTop: 50,
-      alignItems: "center"
-    }
-  }, element.map(function (el, i) {
-    return /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, {
-      size: 3,
-      key: i,
+  return /*#__PURE__*/_react.default.createElement(_themeContext.themeContext.Consumer, null, function (colorTheme) {
+    return /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Section, {
+      className: "neutral",
+      size: "medium"
+    }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Container, {
       style: {
-        padding: 30
+        textAlign: "center"
       }
-    }, /*#__PURE__*/_react.default.createElement(_Slide.default, {
-      top: true
-    }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Image, {
-      src: el,
-      width: "170"
-    })));
-  }))));
+    }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Heading, {
+      style: {
+        marginBottom: 50
+      },
+      size: 1,
+      className: "upper-home is-size-3-mobile",
+      renderAs: "p"
+    }, title), /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns, {
+      centered: true,
+      style: {
+        paddingTop: 50,
+        alignItems: "center"
+      }
+    }, element.map(function (el, i) {
+      return /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Columns.Column, {
+        size: 3,
+        key: i,
+        style: {
+          padding: 30
+        }
+      }, /*#__PURE__*/_react.default.createElement(_Slide.default, {
+        top: true
+      }, /*#__PURE__*/_react.default.createElement(_reactBulmaComponents.Image, {
+        src: el,
+        width: "170"
+      })));
+    }))));
+  });
 };
 
 var _default = ColumnsGeneric;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","react-bulma-components":"../node_modules/react-bulma-components/dist/index.js","react-reveal/Slide":"../node_modules/react-reveal/Slide.js"}],"components/HomePage.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./../context/theme-context":"context/theme-context.js","react-bulma-components":"../node_modules/react-bulma-components/dist/index.js","react-reveal/Slide":"../node_modules/react-reveal/Slide.js"}],"components/HomePage.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -59136,7 +59189,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
+
+var _themeContext = require("./../context/theme-context");
 
 var _SectionContainer = _interopRequireDefault(require("./SectionContainer"));
 
@@ -59154,60 +59209,68 @@ var _constants = require("./../constants");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
 var HomePage = function HomePage() {
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "default-block"
-  }, /*#__PURE__*/_react.default.createElement(_SectionContainer.default, {
-    srcImage: _constants.CONSTANT['web1'],
-    color: "twitter",
-    size: "large",
-    title: _constants.ressources.home1['title'],
-    content: _constants.ressources.home1['content'],
-    position: 1
-  }), /*#__PURE__*/_react.default.createElement(_SectionContainer.default, {
-    color: "white",
-    size: "medium",
-    title: _constants.ressources.home3['title'],
-    align: "center",
-    icon: true
-  }), /*#__PURE__*/_react.default.createElement(_SectionContainer.default, {
-    srcImage: _constants.CONSTANT['web0'],
-    color: "twitter",
-    size: "large",
-    title: _constants.ressources.home2['title'],
-    content: _constants.ressources.home2['content'],
-    position: 0
-  }), /*#__PURE__*/_react.default.createElement(_ContainerGeneric.default, null), /*#__PURE__*/_react.default.createElement(_SectionContainer.default, {
-    srcImage: _constants.CONSTANT['web2'],
-    color: "twitter",
-    size: "large",
-    title: _constants.ressources.home4['title'],
-    content: _constants.ressources.home4['content'],
-    position: 0
-  }), /*#__PURE__*/_react.default.createElement(_ContainerGenericPlatform.default, null), /*#__PURE__*/_react.default.createElement(_SectionContainerForm.default, {
-    srcImage: _constants.CONSTANT['web5'],
-    color: "twitter",
-    size: "large",
-    position: 0,
-    children: [/*#__PURE__*/_react.default.createElement(_FormContact.default, {
-      title: _constants.ressources.contact['title'],
-      content: _constants.ressources.contact['content']
-    })]
-  }), /*#__PURE__*/_react.default.createElement(_ColumnsGeneric.default, {
-    title: "Ils nous ont fait confiance",
-    element: _constants.LOGO
-  }), /*#__PURE__*/_react.default.createElement(_SectionContainer.default, {
-    color: "white",
-    size: "medium",
-    title: "Une équipe de professionnel à votre service, chez firstDigital votre safisfaction est notre priorité !",
-    align: "center",
-    icon: false
-  }));
+  return /*#__PURE__*/_react.default.createElement(_themeContext.themeContext.Consumer, null, function (_ref) {
+    var colorTheme = _ref.colorTheme,
+        toggleTheme = _ref.toggleTheme;
+    return /*#__PURE__*/_react.default.createElement("div", {
+      className: "default-block"
+    }, /*#__PURE__*/_react.default.createElement(_SectionContainer.default, {
+      srcImage: _constants.CONSTANT['web1'],
+      color: colorTheme,
+      size: "large",
+      title: _constants.ressources.home1['title'],
+      content: _constants.ressources.home1['content'],
+      position: 1
+    }), /*#__PURE__*/_react.default.createElement(_SectionContainer.default, {
+      color: "white",
+      size: "medium",
+      title: _constants.ressources.home3['title'],
+      align: "center",
+      icon: true
+    }), /*#__PURE__*/_react.default.createElement(_SectionContainer.default, {
+      srcImage: _constants.CONSTANT['web0'],
+      color: colorTheme,
+      size: "large",
+      title: _constants.ressources.home2['title'],
+      content: _constants.ressources.home2['content'],
+      position: 0
+    }), /*#__PURE__*/_react.default.createElement(_ContainerGeneric.default, null), /*#__PURE__*/_react.default.createElement(_SectionContainer.default, {
+      srcImage: _constants.CONSTANT['web2'],
+      color: colorTheme,
+      size: "large",
+      title: _constants.ressources.home4['title'],
+      content: _constants.ressources.home4['content'],
+      position: 0
+    }), /*#__PURE__*/_react.default.createElement(_ContainerGenericPlatform.default, null), /*#__PURE__*/_react.default.createElement(_SectionContainerForm.default, {
+      srcImage: _constants.CONSTANT['web5'],
+      color: colorTheme,
+      size: "large",
+      position: 0,
+      children: [/*#__PURE__*/_react.default.createElement(_FormContact.default, {
+        title: _constants.ressources.contact['title'],
+        content: _constants.ressources.contact['content']
+      })]
+    }), /*#__PURE__*/_react.default.createElement(_ColumnsGeneric.default, {
+      title: "Ils nous ont fait confiance",
+      element: _constants.LOGO
+    }), /*#__PURE__*/_react.default.createElement(_SectionContainer.default, {
+      color: "white",
+      size: "medium",
+      title: "Une équipe de professionnel à votre service, chez firstDigital votre safisfaction est notre priorité !",
+      align: "center",
+      icon: false
+    }));
+  });
 };
 
 var _default = HomePage;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./SectionContainer":"components/SectionContainer.js","./SectionContainerForm":"components/SectionContainerForm.js","./FormContact":"components/FormContact.js","./ContainerGeneric":"components/ContainerGeneric.js","./ContainerGenericPlatform":"components/ContainerGenericPlatform.js","./ColumnsGeneric":"components/ColumnsGeneric.js","./../constants":"constants.js"}],"components/home/Home.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./../context/theme-context":"context/theme-context.js","./SectionContainer":"components/SectionContainer.js","./SectionContainerForm":"components/SectionContainerForm.js","./FormContact":"components/FormContact.js","./ContainerGeneric":"components/ContainerGeneric.js","./ContainerGenericPlatform":"components/ContainerGenericPlatform.js","./ColumnsGeneric":"components/ColumnsGeneric.js","./../constants":"constants.js"}],"components/home/Home.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -59422,21 +59485,29 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _NavBar = _interopRequireDefault(require("./components/NavBar"));
 
 var _Footer = _interopRequireDefault(require("./components/Footer"));
 
+var _themeContext = require("./context/theme-context");
+
 var _reactRouterDom = require("react-router-dom");
 
 require("react-tiger-transition/styles/main.min.css");
+
+require("./App.css");
 
 var _reactTigerTransition = require("react-tiger-transition");
 
 var _Router = _interopRequireDefault(require("./components/Route/Router"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 // inject glide styles
 (0, _reactTigerTransition.glideOut)({
@@ -59464,7 +59535,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 }); // Define all Route
 
 var App = function App() {
-  return /*#__PURE__*/_react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_react.default.createElement(_reactTigerTransition.Navigation, null, /*#__PURE__*/_react.default.createElement(_NavBar.default, null), _Router.default.map(function (routeApp, i) {
+  var colorNameTheme = 'black';
+  return /*#__PURE__*/_react.default.createElement(_themeContext.themeContext.Provider, {
+    value: {
+      colorTheme: (0, _themeContext.getTheme)(colorNameTheme)
+    }
+  }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactTigerTransition.Navigation, null, /*#__PURE__*/_react.default.createElement(_NavBar.default, {
+    colorTheme: (0, _themeContext.getTheme)(colorNameTheme)
+  }), _Router.default.map(function (routeApp, i) {
     return routeApp.hasOwnProperty("exact") && /*#__PURE__*/_react.default.createElement(_reactTigerTransition.Route, {
       key: routeApp.key || routeApp.path,
       path: routeApp.path,
@@ -59483,12 +59561,12 @@ var App = function App() {
         style: routeApp.screenProps
       }
     }, routeApp.component);
-  }), /*#__PURE__*/_react.default.createElement(_Footer.default, null)));
+  }), /*#__PURE__*/_react.default.createElement(_Footer.default, null)))));
 };
 
 var _default = App;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./components/NavBar":"components/NavBar.js","./components/Footer":"components/Footer.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-tiger-transition/styles/main.min.css":"../node_modules/react-tiger-transition/styles/main.min.css","react-tiger-transition":"../node_modules/react-tiger-transition/index.js","./components/Route/Router":"components/Route/Router.js"}],"serviceWorker.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./components/NavBar":"components/NavBar.js","./components/Footer":"components/Footer.js","./context/theme-context":"context/theme-context.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-tiger-transition/styles/main.min.css":"../node_modules/react-tiger-transition/styles/main.min.css","./App.css":"App.css","react-tiger-transition":"../node_modules/react-tiger-transition/index.js","./components/Route/Router":"components/Route/Router.js"}],"serviceWorker.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -59616,8 +59694,6 @@ var _reactDom = _interopRequireDefault(require("react-dom"));
 
 require("react-bulma-components/dist/react-bulma-components.min.css");
 
-require("./scss/home.scss");
-
 var _App = _interopRequireDefault(require("./App"));
 
 var serviceWorker = _interopRequireWildcard(require("./serviceWorker"));
@@ -59634,7 +59710,7 @@ _reactDom.default.render( /*#__PURE__*/_react.default.createElement(_App.default
 
 
 serviceWorker.unregister();
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","react-bulma-components/dist/react-bulma-components.min.css":"../node_modules/react-bulma-components/dist/react-bulma-components.min.css","./scss/home.scss":"scss/home.scss","./App":"App.js","./serviceWorker":"serviceWorker.js"}],"../../Users/mogola/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","react-bulma-components/dist/react-bulma-components.min.css":"../node_modules/react-bulma-components/dist/react-bulma-components.min.css","./App":"App.js","./serviceWorker":"serviceWorker.js"}],"../../Users/mogola/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

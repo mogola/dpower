@@ -1,5 +1,6 @@
 import React from 'react';
 import AnimationTypeWrapper from './AnimationTypeWrapper'
+import { themeContext } from './../context/theme-context'
 
 import {
     Columns,
@@ -38,30 +39,34 @@ const ContentGeneric = ({ childrenIcon, classes, size = 'large', iconName, color
 const ContainerPlatform = () => {
     //brain , sizeIcon = 6x, classes = upper-home upper-home-margin, color = twitter'
     return (
-        <Section className="neutral" size="medium">
-            <Container style={{ textAlign: "center" }}>
-                <Heading style={{ marginBottom: 50 }} size={1} className="upper-home is-size-3-mobile" renderAs="p">Nos expertises</Heading>
-                <Columns centered={true} style={{ paddingTop: 50, alignItems: "center" }}>
-                    {ICONBRAND.map((ico, i) => (
-                        <Columns.Column size={4} key={i} >
-                            <AnimationTypeWrapper
-                                type="Slide"
-                                top
-                                children={
-                                    <ContentGeneric
-                                        color="twitter"
-                                        text={ico.text}
-                                        childrenIcon={
-                                            <FontAwesomeIcon icon={['fab', `${ico.nameicon}`]} size="6x" />
-                                        }
-                                        classes="upper-home upper-home-margin "
-                                    />}
-                            />
-                        </Columns.Column>
-                    ))}
-                </Columns>
-            </Container>
-        </Section >
+        <themeContext.Consumer>
+            {(themeColor) => (
+                <Section className="neutral" size="medium">
+                    <Container style={{ textAlign: "center" }}>
+                        <Heading style={{ marginBottom: 50 }} size={1} className="upper-home is-size-3-mobile" renderAs="p">Nos expertises</Heading>
+                        <Columns centered={true} style={{ paddingTop: 50, alignItems: "center" }}>
+                            {ICONBRAND.map((ico, i) => (
+                                <Columns.Column size={4} key={i} >
+                                    <AnimationTypeWrapper
+                                        type="Slide"
+                                        top
+                                        children={
+                                            <ContentGeneric
+                                                color={themeColor}
+                                                text={ico.text}
+                                                childrenIcon={
+                                                    <FontAwesomeIcon icon={['fab', `${ico.nameicon}`]} size="6x" />
+                                                }
+                                                classes="upper-home upper-home-margin "
+                                            />}
+                                    />
+                                </Columns.Column>
+                            ))}
+                        </Columns>
+                    </Container>
+                </Section>
+            )}
+        </themeContext.Consumer>
     );
 }
 

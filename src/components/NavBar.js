@@ -14,7 +14,7 @@ import {
 
 import PropTypes from 'prop-types'
 
-const NavBarGeneric = () => {
+const NavBarGeneric = ({ colorTheme }) => {
     const [displayNav, setDisplayNav] = useState(false)
     const [animNav, setAnimNav] = useState(false)
 
@@ -80,7 +80,7 @@ const NavBarGeneric = () => {
 
     return (
         <div>
-            <Navbar color="twitter" style={{ padding: "20px 0" }} transparent={false} fixed="top">
+            <Navbar color={colorTheme} style={{ padding: "20px 0" }} transparent={false} fixed="top">
                 <Navbar.Brand style={{ paddingLeft: 40 }}>
                     <Navbar.Item renderAs="a" href="#">
                         <AnimationTypeWrapper

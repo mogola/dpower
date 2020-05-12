@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import NavBarGeneric from './components/NavBar'
 import FooterContainer from './components/Footer'
+import { themeContext, themes, getTheme } from './context/theme-context'
 
 import { Switch, Redirect, BrowserRouter as Router } from "react-router-dom"
 
 import "react-tiger-transition/styles/main.min.css";
+import "./App.css";
 import { Navigation, Route, Screen, Link, glide, glideOut } from "react-tiger-transition";
 
 // inject glide styles
@@ -36,41 +38,47 @@ glide({
 import getRoute from './components/Route/Router'
 
 const App = () => {
-  return (
-    <Router>
-      <Navigation>
-        <NavBarGeneric />
-        {getRoute.map((routeApp, i) => (
-          routeApp.hasOwnProperty("exact") &&
-          <Route
-            key={routeApp.key || routeApp.path}
-            path={routeApp.path}
-            exact
-            screen
-            screenProps={{
-              style: routeApp.screenProps
-            }}
-          >
-            {routeApp.component}
-          </Route>
-        ))}
+  const colorNameTheme = 'black'
 
-        {getRoute.map((routeApp, i) => (
-          !routeApp.hasOwnProperty("exact") &&
-          <Route
-            key={routeApp.key || routeApp.path}
-            path={routeApp.path}
-            screen
-            screenProps={{
-              style: routeApp.screenProps
-            }}
-          >
-            {routeApp.component}
-          </Route>
-        ))}
-        <FooterContainer />
-      </Navigation>
-    </Router>
+  return (
+    <themeContext.Provider value={{ colorTheme: getTheme(colorNameTheme) }}>
+      <Router>
+        <Switch>
+          <Navigation>
+            <NavBarGeneric colorTheme={getTheme(colorNameTheme)} />
+            {getRoute.map((routeApp, i) => (
+              routeApp.hasOwnProperty("exact") &&
+              <Route
+                key={routeApp.key || routeApp.path}
+                path={routeApp.path}
+                exact
+                screen
+                screenProps={{
+                  style: routeApp.screenProps
+                }}
+              >
+                {routeApp.component}
+              </Route>
+            ))}
+
+            {getRoute.map((routeApp, i) => (
+              !routeApp.hasOwnProperty("exact") &&
+              <Route
+                key={routeApp.key || routeApp.path}
+                path={routeApp.path}
+                screen
+                screenProps={{
+                  style: routeApp.screenProps
+                }}
+              >
+                {routeApp.component}
+              </Route>
+            ))}
+            <FooterContainer />
+          </Navigation>
+        </Switch>
+      </Router>
+    </themeContext.Provider>
   );
 }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import AnimationTypeWrapper from './AnimationTypeWrapper'
+import { themeContext } from './../context/theme-context'
 
 import {
     Columns,
@@ -22,7 +23,7 @@ import PropTypes from 'prop-types'
 
 library.add(fab, faBrain, faCoffee, faGrin, faTrophy, faHeart, faGrinStars, faHandsHelping)
 
-const ContentGeneric = ({ childrenIcon, classes, size = 'large', iconName, color, sizeIcon, text }) => {
+const ContentGeneric = ({ childrenIcon, classes, size = 'large', iconName, color = 'default', sizeIcon, text }) => {
     return (
         <div>
             <Icon
@@ -38,35 +39,40 @@ const ContentGeneric = ({ childrenIcon, classes, size = 'large', iconName, color
 
 const ContainerGeneric = () => {
     //brain , sizeIcon = 6x, classes = upper-home upper-home-margin, color = twitter'
+
     return (
-        <Section className="neutral" size="medium">
-            <Container style={{ textAlign: "center" }}>
-                <Heading style={{ marginBottom: 50 }} size={1} className="upper-home is-size-3-mobile" renderAs="p">Notre vision avec 5 règles simples</Heading>
-                <Columns centered={true} style={{ paddingTop: 50, alignItems: "center" }}>
-                    {ICON.map((ico, i) => (
-                        <Columns.Column size={4} key={i} >
-                            <AnimationTypeWrapper
-                                type="Slide"
-                                top
-                                children={
-                                    <ContentGeneric
-                                        color="twitter"
-                                        text={ico.text}
-                                        childrenIcon={
-                                            <FontAwesomeIcon icon={ico.nameicon} size="6x" />
-                                        }
-                                        classes="upper-home upper-home-margin "
-                                    />}
-                            />
-                        </Columns.Column>
-                    ))}
-                </Columns>
-            </Container>
-        </Section >
+        <themeContext.Consumer>
+            {(themeColor) => (
+                <Section className="neutral" size="medium">
+                    <Container style={{ textAlign: "center" }}>
+                        <Heading style={{ marginBottom: 50 }} size={1} className="upper-home is-size-3-mobile" renderAs="p">Notre vision avec 5 règles simples</Heading>
+                        <Columns centered={true} style={{ paddingTop: 50, alignItems: "center" }}>
+                            {ICON.map((ico, i) => (
+                                <Columns.Column size={4} key={i} >
+                                    <AnimationTypeWrapper
+                                        type="Slide"
+                                        top
+                                        children={
+                                            <ContentGeneric
+                                                color={themeColor}
+                                                text={ico.text}
+                                                childrenIcon={
+                                                    <FontAwesomeIcon icon={ico.nameicon} size="6x" />
+                                                }
+                                                classes="upper-home upper-home-margin "
+                                            />}
+                                    />
+                                </Columns.Column>
+                            ))}
+                        </Columns>
+                    </Container>
+                </Section>)}
+        </themeContext.Consumer>
     );
 }
 
 Icon.propTypes = {
-    color: PropTypes.string.isRequired
+    color: PropTypes.string
 }
+
 export default ContainerGeneric

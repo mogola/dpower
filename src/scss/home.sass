@@ -1,0 +1,142 @@
+@import "~bulma/sass/utilities/initial-variables.sass";
+@import "~bulma/sass/utilities/functions.sass";
+@import "~bulma/sass/utilities/derived-variables.sass";
+@import "../../node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css";
+
+$red: #e00002;
+$neutral: #fafafa;
+$blue: #72d0eb;
+// Add pink and its invert
+$pink: #ffb3b3;
+$pink-invert: #fff;
+// Add a serif family
+$family-serif: "Merriweather", "Georgia", serif;
+$fontAwesome: "Font Awesome 5 free";
+$tablet: 769px !default
+
+.icon {
+    &.fas {
+        font-family: $fontAwesome !important;
+    }
+}
+
+.fa, .fab, .fad, .fal, .far, .fas{
+    font-family: $fontAwesome !important;
+}
+
+// 3. Set the derived variables
+// Use the new pink as the primary color
+
+html {
+    padding-top: 0!important;
+}
+.txtAs {
+    position: absolute;
+    top:50%;
+    left:90px;
+    transform: translateY(-50%);
+}
+
+.txtAd {
+    padding: 40px;
+}
+
+.react-tiger-transition--container {
+    @media screen and (max-width: $tablet - 1px){
+        padding-top: 40px;
+    }
+}
+
+html .navbar {
+    align-items: center;
+
+    &.is-transparent {
+        background: transparent;
+    }
+    &-item {
+        font-size: 1.3rem;
+    }
+    &-brand {
+        img {
+            max-height: initial !important;
+            width: 55% !important;
+            @media screen and (max-width: $tablet - 1px){
+                width: 30% !important;
+            }
+        }
+    }
+
+    .react-reveal {
+        @media screen and (min-width: $tablet - 1px){
+            opacity: 1 !important;
+        }
+    }
+
+    &-menu{
+        @media screen and (min-width: $tablet - 1px){
+        }
+
+        @media screen and (max-width: $tablet - 1px){
+            display: block !important;
+            width: 100%;
+            padding: 20px 40px;
+            position: absolute; 
+        }
+    }
+}
+
+html {
+    .title {
+        &--large {
+            text-transform: uppercase;
+            font-size:4.2rem;
+        }
+    }
+
+    .i-home {
+        height: auto !important;
+        width: auto !important;
+    }
+
+    .upper-home {
+        text-transform: uppercase;
+        font-weight: bold;
+        &-margin {
+            margin-top: 15px;
+        }
+    }
+
+    .neutral {
+        background-color: $neutral;
+    }
+
+    .react-tiger-transition--screen {
+        display: block !important;
+        overflow: hidden !important;
+    }
+
+    .react-tiger-transition--route {
+        position: static !important;
+    }
+}
+
+// 4. Setup your Custom Colors
+$primary2: $pink;
+$primary-invert2: findColorInvert($primary2);
+// 5. Add new color variables to the color map.
+// 4. Setup your Custom Colors
+$linkedin: #0077B5;
+$linkedin-invert: findColorInvert($linkedin);
+$twitter: #1DA1F2;
+$twitter-invert: findColorInvert($twitter);
+$github: #222222;
+$github-invert: findColorInvert($github);
+// Add new color variables to the color map.
+$addColors: (
+  "twitter":($twitter, $twitter-invert), 
+  "linkedin": ($linkedin, $linkedin-invert),
+  "github": ($github, $github-invert)
+);
+
+$colors: map-merge($colors, $addColors);
+@import "../../node_modules/bulma";

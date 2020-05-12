@@ -56,6 +56,7 @@ const SectionContainer = ({ srcImage, color, size, title, content, position, ali
             </Columns.Column>
         );
     }
+
     return (
         <div>
             <Section size={size} style={{ padding: 0 }}>
