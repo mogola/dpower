@@ -75,8 +75,6 @@ class App extends Component {
                 key={routeApp.key || routeApp.path}
                 path={routeApp.path}>{routeApp.component}</Route>
             ))}
-            <Redirect from="/home" exact to="/" />
-            <Redirect to="/" />
             <FooterContainer />
             {/* </Navigation> */}
           </themeContext.Provider>

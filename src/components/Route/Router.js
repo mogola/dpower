@@ -15,39 +15,47 @@ const screenStyle = {
     justifyContent: "center"
 };
 
-const getRoute = [{
-    path: "/",
-    exact: true,
-    component: <Home />,
-    screenProps: {
-        ...screenStyle
-    }
-},
-{
-    path: "/security",
-    component: <HomeSecurity />,
-    exacta: true,
-    screenProps: {
-        ...screenStyle
-    }
-},
-{
-    path: "/contact",
-    exacta: true,
-    component: <SectionContainerForm
-        srcImage={CONSTANT['web5']}
-        color="twitter"
-        size="large"
-        position={0}
-        children={[
-            <FormContact
-                title={ressources.contact['title']}
-                content={ressources.contact['content']}
-            />]}
-    />,
-    screenProps: {
-        ...screenStyle
-    }
-}];
+const getRoute = [
+    {
+        path: "/",
+        exact: true,
+        component: <Home />,
+        screenProps: {
+            ...screenStyle
+        }
+    },
+    {
+        path: "/home",
+        component: <Home />,
+        screenProps: {
+            ...screenStyle
+        }
+    },
+    {
+        path: "/security",
+        component: <HomeSecurity />,
+        exacta: true,
+        screenProps: {
+            ...screenStyle
+        }
+    },
+    {
+        path: "/contact",
+        exacta: true,
+        component: <SectionContainerForm
+            srcImage={CONSTANT['web5']}
+            color="twitter"
+            size="large"
+            position={0}
+            children={[
+                <FormContact
+                    title={ressources.contact['title']}
+                    content={ressources.contact['content']}
+                />]}
+        />,
+        screenProps: {
+            ...screenStyle
+        }
+    }];
 
 export default getRoute

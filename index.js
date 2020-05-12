@@ -14,17 +14,13 @@ app.use('/dist', express.static('dist'))
 app.use('/public', express.static('public'))
 
 
-app.get('/*', function (req, res) {
+app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname + '/public/index.html'), function (err) {
         if (err) {
             res.status(500).send(err)
         }
     });
 });
-
-app.get('/home', function (req, res) {
-    res.sendFile(path.join(__dirname + '/home.html'));
-})
 
 app.listen(port, function () {
     console.log(`Listenin ${port}`);

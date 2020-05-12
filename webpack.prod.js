@@ -17,7 +17,6 @@ module.exports = {
     },
     devtool: "source-map",
     target: "web",
-    externals: ['umd'],
     resolve: {
         extensions: ['.js', '.jsx', '.json', '.scss', 'css', 'sass'],
     },

@@ -82,11 +82,13 @@ const NavBarGeneric = ({ colorTheme }) => {
         <div>
             <Navbar color={colorTheme} style={{ padding: "20px 0" }} transparent={false} fixed="top">
                 <Navbar.Brand style={{ paddingLeft: 40 }}>
-                    <Navbar.Item renderAs="a" href="#">
+                    <Navbar.Item renderAs="div">
                         <AnimationTypeWrapper
                             type="Zoom"
                             children={
-                                <img src={CONSTANT['logo']} alt="first digital" />
+                                <Link to="/">
+                                    <img src={CONSTANT['logo']} alt="first digital" />
+                                </Link>
                             }
                         />
                     </Navbar.Item>
