@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, Component } from 'react';
 import NavBarGeneric from './components/NavBar'
 import FooterContainer from './components/Footer'
 import { themeContext, themes, getTheme } from './context/theme-context'
 
-import { Switch, Redirect, BrowserRouter as Router } from "react-router-dom"
+import { Switch, Redirect, BrowserRouter as Router, Route } from "react-router-dom"
 
 import "react-tiger-transition/styles/main.min.css";
 import "./App.css";
-import { Navigation, Route, Screen, Link, glide, glideOut } from "react-tiger-transition";
+import { Navigation, Screen, Link, glide, glideOut } from "react-tiger-transition";
 
 // inject glide styles
 glideOut({
@@ -36,32 +36,27 @@ glide({
 })
 // Define all Route
 import getRoute from './components/Route/Router'
+const colorNameTheme = 'black'
 
-const App = () => {
-  const colorNameTheme = 'black'
+class App extends Component {
 
-  return (
-    <themeContext.Provider value={{ colorTheme: getTheme(colorNameTheme) }}>
+  render() {
+    return (
       <Router>
         <Switch>
-          <Navigation>
+          <themeContext.Provider value={{ colorTheme: getTheme(colorNameTheme) }}>
+            {/* <Navigation> */}
             <NavBarGeneric colorTheme={getTheme(colorNameTheme)} />
             {getRoute.map((routeApp, i) => (
               routeApp.hasOwnProperty("exact") &&
               <Route
-                key={routeApp.key || routeApp.path}
-                path={routeApp.path}
                 exact
-                screen
-                screenProps={{
-                  style: routeApp.screenProps
-                }}
-              >
-                {routeApp.component}
-              </Route>
+                key={routeApp.key || routeApp.path}
+                path={routeApp.path}>{routeApp.component}</Route>
+
             ))}
 
-            {getRoute.map((routeApp, i) => (
+            {/* {getRoute.map((routeApp, i) => (
               !routeApp.hasOwnProperty("exact") &&
               <Route
                 key={routeApp.key || routeApp.path}
@@ -73,13 +68,22 @@ const App = () => {
               >
                 {routeApp.component}
               </Route>
+            ))} */}
+            {getRoute.map((routeApp, i) => (
+              !routeApp.hasOwnProperty("exact") &&
+              <Route
+                key={routeApp.key || routeApp.path}
+                path={routeApp.path}>{routeApp.component}</Route>
             ))}
+            <Redirect from="/home" exact to="/" />
+            <Redirect to="/" />
             <FooterContainer />
-          </Navigation>
+            {/* </Navigation> */}
+          </themeContext.Provider>
         </Switch>
       </Router>
-    </themeContext.Provider>
-  );
+    );
+  }
 }
 
 export default App;

@@ -26,14 +26,14 @@ const getRoute = [{
 {
     path: "/security",
     component: <HomeSecurity />,
-    exact: true,
+    exacta: true,
     screenProps: {
         ...screenStyle
     }
 },
 {
     path: "/contact",
-    exact: true,
+    exacta: true,
     component: <SectionContainerForm
         srcImage={CONSTANT['web5']}
         color="twitter"
