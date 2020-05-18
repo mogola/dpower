@@ -59,6 +59,11 @@ module.exports = {
             hash: true,
             template: './public/index.html',
             filename: 'index.html',
+        }),
+        new webpack.DefinePlugin({
+            'process.env': {
+                REACT_APP_API_URL: JSON.stringify('https://calm-headland-49450.herokuapp.com')
+            }
         })
     ]
 };
