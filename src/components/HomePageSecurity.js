@@ -5,7 +5,6 @@ import SectionContainerForm from './SectionContainerForm'
 import FormContact from './FormContact'
 import ContainerGeneric from './ContainerGeneric'
 import ColumnsGeneric from './ColumnsGeneric'
-import NavBarGeneric from './NavBar'
 
 
 import {

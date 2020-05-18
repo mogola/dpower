@@ -41,7 +41,7 @@ module.exports = merge(common, {
         }),
         new webpack.DefinePlugin({
             'process.env': {
-                REACT_APP_API_URL: JSON.stringify('http://localhost:7000')
+                REACT_APP_API_URL: JSON.stringify('http://localhost:5555')
             }
         })
     ]
