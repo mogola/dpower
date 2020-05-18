@@ -1,6 +1,7 @@
 // webpack v4
 const path = require('path');// update 23.12.2018
 //const nodeExternals = require("webpack-node-externals");
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
