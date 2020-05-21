@@ -9,6 +9,8 @@ import "react-tiger-transition/styles/main.min.css";
 import "./App.css";
 import { Navigation, Screen, Link, glide, glideOut } from "react-tiger-transition";
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 // inject glide styles
 glideOut({
   name: 'glide-right',
@@ -36,7 +38,7 @@ glide({
 })
 // Define all Route
 import getRoute from './components/Route/Router'
-const colorNameTheme = 'black'
+const colorNameTheme = 'twitter'
 
 class App extends Component {
 
@@ -46,6 +48,7 @@ class App extends Component {
         <Switch>
           <themeContext.Provider value={{ colorTheme: getTheme(colorNameTheme) }}>
             {/* <Navigation> */}
+            <ToastContainer />
             <NavBarGeneric colorTheme={getTheme(colorNameTheme)} />
             {getRoute.map((routeApp, i) => (
               routeApp.hasOwnProperty("exact") &&
