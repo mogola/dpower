@@ -125,10 +125,10 @@ const FormContact = ({ title, content, align = "center" }) => {
         if (inputRef.current !== null && firstFocus === false)
             setFirstFocus(false)
         // console.log('setFirstFocus', firstFocus)
-        // console.log('next State', state)
-        console.log('console log', inputRefContent.current.value, txtEmail(inputRef.current.value))
-        if (inputRefContent.current.value === "" || !txtEmail(inputRef.current.value)) {
-            setFirstFocus(false)
+        if (inputRef.current !== null) {
+            if (inputRefContent.current !== null && inputRefContent.current.value === "" || !txtEmail(inputRef.current.value)) {
+                setFirstFocus(false)
+            }
         }
     }, [state])
 
@@ -152,7 +152,15 @@ const FormContact = ({ title, content, align = "center" }) => {
             SetErrorClass({ valid: '', error: 'is-danger' })
         }
     })
-    const notify = () => toast("Nous avons bien reçu votre demande")
+    const notify = () => toast.success("Nous avons bien reçu votre demande", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    })
     const formSubmit = (e) => {
         e.preventDefault();
         const { email, options, textarea } = state
