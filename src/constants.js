@@ -42,7 +42,7 @@ const ressourcesSecurity = {
     },
     "contact": {
         "title": "Contact",
-        "content": "Nous serons à votre disposition"
+        "content": "Nous sommes à votre disposition"
     }
 }
 

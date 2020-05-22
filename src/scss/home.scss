@@ -119,6 +119,10 @@ html .navbar {
     }
 
     .react-reveal {
+        @media screen and (max-width: $tablet - 1px){
+            z-index: -1;
+        }
+
         @media screen and (min-width: $tablet - 1px){
             opacity: 1 !important;
         }

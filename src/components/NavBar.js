@@ -29,7 +29,14 @@ const NavBarGeneric = ({ colorTheme }) => {
         styleDisplay = {}
         booleanAnimation = false
     }
-
+    const controlMobileNav = booleanMobile => {
+        let controlDisplay
+        if (window.innerWidth < 1023) {
+            return controlDisplay = {
+                display: booleanMobile ? 'block' : 'none'
+            }
+        }
+    }
     useEffect(() => {
         if (window.innerWidth > 1023) {
             let getNavBar = document.getElementsByClassName('navbar-menu')[0]
@@ -48,10 +55,10 @@ const NavBarGeneric = ({ colorTheme }) => {
 
 
 
-    const WrapperLinkMenu = () => {
+    const WrapperLinkMenu = ({ boolValue }) => {
         return (
             <Navbar.Menu style={styleDisplay}>
-                <Navbar.Container position="start">
+                <Navbar.Container style={controlMobileNav(boolValue)} position="start">
                     {NAV.map((itemNav, i) => (
                         <Navbar.Item renderAs="div" style={{ color: "white", fontWeight: "bold" }} key={i}>
                             {window.innerWidth < 1023 &&
@@ -99,10 +106,9 @@ const NavBarGeneric = ({ colorTheme }) => {
 
                 <AnimationTypeWrapper
                     type="Slide"
-                    opposite
                     right
                     when={booleanAnimation}
-                    children={<WrapperLinkMenu />}
+                    children={<WrapperLinkMenu boolValue={booleanAnimation} />}
                 />
             </Navbar>
         </div>

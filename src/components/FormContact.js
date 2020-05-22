@@ -19,11 +19,14 @@ const endPoint = process.env.REACT_APP_API_URL
 
 const FormContact = ({ title, content, align = "center" }) => {
     const inputRef = useRef(null)
+    const inputRefContent = useRef(null)
     const inputRefOption = useRef(null)
     const [inputValue, SetValue] = useState('enter your email')
     const [form, setForm] = useState({ email: '' })
+    const [valueEmail, setValueEmail] = useState('')
     const [inputError, SetInputError] = useState(false)
     const [errorClass, SetErrorClass] = useState({ valid: '', error: '' })
+    const [firstFocus, setFirstFocus] = useState(false)
     //const [validClass, SetValidClass] = useState('')
     const VALUES = {
         email: "",
@@ -73,12 +76,23 @@ const FormContact = ({ title, content, align = "center" }) => {
         return dispatch(...args)
     }
     const getValue = ({ target }) => {
+        const { value } = target
+
+        const valueEmailString = value !== "" ? value.toLowerCase() : ""
+
+        setValueEmail(valueEmailString)
 
         if (txtEmail(target.value)) {
             setForm({ ...form, [target.name]: target.value })
             SetInputError(false)
             SetErrorClass({ valid: 'is-success', error: '' })
             customDIspatch({ type: 'VERIFY_VALUE', payload: target.value })
+
+            if (inputRefContent.current.value !== "") {
+                console.log('set true', firstFocus)
+                setFirstFocus(true)
+            }
+
         } else {
             SetInputError(true)
             SetErrorClass({ valid: '', error: 'is-danger' })
@@ -88,7 +102,10 @@ const FormContact = ({ title, content, align = "center" }) => {
 
     const getValueText = ({ target }) => {
         customDIspatch({ type: 'TEXT', payload: target.value })
-        console.log('value dispatch', state, dispatch({ type: "TEXT", payload: target.value }), target.value)
+
+        if (txtEmail(inputRef.current.value)) {
+            setFirstFocus(true)
+        }
     }
 
     const getValueOption = ({ target }) => {
@@ -105,7 +122,14 @@ const FormContact = ({ title, content, align = "center" }) => {
         console.log('inputRef', inputRefOption)
         if (state.options === "" && inputRefOption.current !== null)
             customDIspatch({ type: 'OPTIONS', payload: inputRefOption.current.value })
-        console.log('next State', state)
+        if (inputRef.current !== null && firstFocus === false)
+            setFirstFocus(false)
+        // console.log('setFirstFocus', firstFocus)
+        // console.log('next State', state)
+        console.log('console log', inputRefContent.current.value, txtEmail(inputRef.current.value))
+        if (inputRefContent.current.value === "" || !txtEmail(inputRef.current.value)) {
+            setFirstFocus(false)
+        }
     }, [state])
 
     const txtEmail = (value) => {
@@ -115,11 +139,14 @@ const FormContact = ({ title, content, align = "center" }) => {
 
     const update = (({ target }) => {
         console.log(target.value, txtEmail(target.value))
-
         if (txtEmail(target.value)) {
             setForm({ ...form, [target.name]: target.value })
             SetInputError(false)
             SetErrorClass({ valid: 'is-success', error: '' })
+            if (inputRefContent.current.value !== "") {
+                setFirstFocus(true)
+            }
+
         } else {
             SetInputError(true)
             SetErrorClass({ valid: '', error: 'is-danger' })
@@ -147,7 +174,7 @@ const FormContact = ({ title, content, align = "center" }) => {
                 })
 
             dispatch({ type: 'EMAIL_SENDED', payload: VALUES })
-            console.log('state after send email', state)
+            //  console.log('state after send email', state)
         }
         catch (err) {
             console.log('error envoie email', err)
@@ -164,7 +191,7 @@ const FormContact = ({ title, content, align = "center" }) => {
             'display': 'show'
         }
     }
-    console.log('update', update, form)
+
     return (
         <React.Fragment>
             {!state.send_email &&
@@ -187,7 +214,8 @@ const FormContact = ({ title, content, align = "center" }) => {
                                         name="email"
                                         onChange={getValue}
                                         placeholder={inputValue}
-                                        value={state.email} />
+                                        value={valueEmail}
+                                    />
                                     {inputError && <div className="has-text-danger">le format du champs non conforme</div>}
                                 </div>
                             </div>
@@ -208,10 +236,21 @@ const FormContact = ({ title, content, align = "center" }) => {
                             <div className="field">
                                 <label className="label">Message</label>
                                 <div className="control">
-                                    <textarea value={state.textarea} onChange={getValueText} className="textarea" placeholder="Textarea"></textarea>
+                                    <textarea
+                                        ref={inputRefContent}
+                                        name="textarea"
+                                        value={state.textarea}
+                                        onChange={getValueText}
+                                        className="textarea"
+                                        placeholder="Textarea"></textarea>
                                 </div>
                             </div>
-                            <Button className="is-info is-inverted button is-large is-fullwidth" onClick={notify} disabled={inputError ? true : false}>Envoyer</Button>
+                            <Button
+                                className="is-info is-inverted button is-large is-fullwidth"
+                                onClick={notify}
+                                disabled={firstFocus === false ? true : false}>
+                                Envoyer
+                            </Button>
                         </form>
                     </div>
                 </Fade>}
