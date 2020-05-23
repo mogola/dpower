@@ -6,7 +6,10 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
-const ManifestPlugin = require('webpack-manifest-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const WriteFilePlugin = require('write-file-webpack-plugin');
+var WebpackPwaManifest = require('webpack-pwa-manifest');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
     mode: 'production',
@@ -69,6 +72,12 @@ module.exports = {
                 REACT_APP_API_URL: JSON.stringify('https://calm-headland-49450.herokuapp.com')
             }
         }),
+        new WriteFilePlugin(),
+        new CopyPlugin({
+            patterns: [
+                { from: 'src/images', to: 'images' }
+            ],
+        }),
         new WorkboxPlugin.GenerateSW({
             // these options encourage the ServiceWorkers to get in there fast
             // and not allow any straggling "old" SWs to hang around
@@ -76,6 +85,23 @@ module.exports = {
             skipWaiting: true,
             maximumFileSizeToCacheInBytes: 100000000
         }),
-        // new ManifestPlugin()
+        new WebpackPwaManifest({
+            filename: "manifest.json",
+            name: 'My Progressive Web App',
+            short_name: 'MyPWA',
+            description: 'My awesome Progressive Web App!',
+            background_color: '#007dfa',
+            crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
+            icons: [
+                {
+                    src: path.resolve('src/images/fdfive.png'),
+                    sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
+                }
+            ]
+        }),
+        new FaviconsWebpackPlugin({
+            logo: 'src/images/favicon.ico.png',
+            inject: true
+        })
     ]
 };
