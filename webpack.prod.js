@@ -5,6 +5,8 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
     mode: 'production',
@@ -60,11 +62,20 @@ module.exports = {
             hash: true,
             template: './public/index.html',
             filename: 'index.html',
+            title: "First digital PWA"
         }),
         new webpack.DefinePlugin({
             'process.env': {
                 REACT_APP_API_URL: JSON.stringify('https://calm-headland-49450.herokuapp.com')
             }
-        })
+        }),
+        new WorkboxPlugin.GenerateSW({
+            // these options encourage the ServiceWorkers to get in there fast
+            // and not allow any straggling "old" SWs to hang around
+            clientsClaim: true,
+            skipWaiting: true,
+            maximumFileSizeToCacheInBytes: 100000000
+        }),
+        new ManifestPlugin()
     ]
 };

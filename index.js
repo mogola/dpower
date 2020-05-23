@@ -17,6 +17,7 @@ app.use('/js', express.static('js'))
 app.use('/fonts', express.static('fonts'))
 app.use('/dist', express.static('dist'))
 app.use('/public', express.static('public'))
+app.use('/src', express.static('src'))
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
