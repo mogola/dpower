@@ -100,7 +100,7 @@ module.exports = {
             ]
         }),
         new FaviconsWebpackPlugin({
-            logo: 'src/images/favicon.ico.png',
+            logo: './src/images/favicon.ico.png',
             inject: true
         })
     ]
