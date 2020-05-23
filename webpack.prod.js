@@ -69,7 +69,8 @@ module.exports = {
         }),
         new webpack.DefinePlugin({
             'process.env': {
-                REACT_APP_API_URL: JSON.stringify('https://calm-headland-49450.herokuapp.com')
+                REACT_APP_API_URL: JSON.stringify('https://calm-headland-49450.herokuapp.com'),
+                PUBLIC_URL: JSON.stringify('https://calm-headland-49450.herokuapp.com')
             }
         }),
         new WriteFilePlugin(),
@@ -90,6 +91,7 @@ module.exports = {
             name: 'My Progressive Web App',
             short_name: 'MyPWA',
             description: 'My awesome Progressive Web App!',
+            theme_color: '#007dfa',
             background_color: '#007dfa',
             crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
             icons: [
