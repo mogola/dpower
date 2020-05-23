@@ -76,6 +76,6 @@ module.exports = {
             skipWaiting: true,
             maximumFileSizeToCacheInBytes: 100000000
         }),
-        new ManifestPlugin()
+        // new ManifestPlugin()
     ]
 };
