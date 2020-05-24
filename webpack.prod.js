@@ -86,11 +86,6 @@ module.exports = {
             skipWaiting: true,
             maximumFileSizeToCacheInBytes: 100000000
         }),
-        new WorkboxPlugin.InjectManifest({
-            swDest: 'sw.js',
-            swSrc: './src/sw.js',
-            swDest: 'service-worker.js'
-        }),
         new WebpackPwaManifest({
             filename: "manifest.json",
             name: 'My Progressive Web App',
