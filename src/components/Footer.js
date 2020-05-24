@@ -25,7 +25,7 @@ const FooterContainer = () => {
                                 <strong>First Digital</strong> by <a href="http://jgthms.com">Dewalgo</a>. The source code is licensed
                   <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
                 is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY FIRST DIGITAL</a>.
-                </p>
+                            </p>
                         </Content>
                     </Container>
                 </Footer>
