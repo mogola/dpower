@@ -14,6 +14,12 @@ $family-serif: "Merriweather", "Georgia", serif;
 $fontAwesome: "Font Awesome 5 free";
 $tablet: 769px !default;
 
+@media all and (display-mode: standalone) {
+    body {
+      background-color: yellow;
+    }
+  }
+  
 #root {
     @media screen and (max-width: $tablet - 1px){
        padding-top: 40px;
