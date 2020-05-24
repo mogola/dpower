@@ -93,8 +93,9 @@ module.exports = {
             description: 'My awesome Progressive Web App!',
             theme_color: '#007dfa',
             background_color: '#007dfa',
+            scope: "/",
             crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
-            start_url: '.',
+            start_url: './?source=pwa',
             icons: [
                 {
                     src: path.resolve('src/images/fdfive.png'),
