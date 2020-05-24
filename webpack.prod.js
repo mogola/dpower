@@ -19,7 +19,8 @@ module.exports = {
         publicPath: '/', //relative path to output path where  devserver will look for compiled file
         hot: true,
         open: true,
-        historyApiFallback: true
+        historyApiFallback: true,
+        lazy: true
     },
     devtool: "source-map",
     target: "web",
