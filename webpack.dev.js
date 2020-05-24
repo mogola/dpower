@@ -68,9 +68,9 @@ module.exports = merge(common, {
         }),
         new WebpackPwaManifest({
             filename: "manifest.json",
-            name: 'My Progressive Web App',
-            short_name: 'MyPWA',
-            description: 'My awesome Progressive Web App!',
+            name: 'Firstdigital Agence digital',
+            short_name: 'FirstDigital App',
+            description: 'FirstDigital agence Digital ecommerce, webdesign et sécurité',
             background_color: '#007dfa',
             crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
             icons: [

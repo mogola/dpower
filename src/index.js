@@ -10,14 +10,6 @@ ReactDOM.render(<App />, document.getElementById("root"));
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
-let deferredPrompt;
-
-window.addEventListener('beforeinstallprompt', (e) => {
-    // Prevent the mini-infobar from appearing on mobile
-    e.preventDefault();
-    // Stash the event so it can be triggered later.
-    deferredPrompt = e;
-});
 
 window.addEventListener('load', () => {
     if (navigator.standalone) {
@@ -43,11 +35,3 @@ if ('serviceWorker' in navigator) {
 }
 
 serviceWorker.register();
-
-if (window.location.protocol === 'http:') {
-    const requireHTTPS = document.getElementById('requireHTTPS');
-    const link = requireHTTPS.querySelector('a');
-    link.href = window.location.href.replace('http://', 'https://');
-    requireHTTPS.classList.remove('hidden');
-}
-
