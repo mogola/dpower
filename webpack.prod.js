@@ -10,6 +10,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
 var WebpackPwaManifest = require('webpack-pwa-manifest');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
     mode: 'production',
@@ -85,6 +86,11 @@ module.exports = {
             clientsClaim: true,
             skipWaiting: true,
             maximumFileSizeToCacheInBytes: 100000000
+        }),
+        new WorkboxWebpackPlugin.InjectManifest({
+            swDest: 'sw.js',
+            swSrc: './src/sw.js',
+            swDest: 'service-worker.js'
         }),
         new WebpackPwaManifest({
             filename: "manifest.json",
