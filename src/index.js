@@ -11,19 +11,6 @@ ReactDOM.render(<App />, document.getElementById("root"));
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
 
-window.addEventListener('load', () => {
-    if (navigator.standalone) {
-        console.log('Launched: Installed (iOS)');
-    } else if (matchMedia('(display-mode: standalone)').matches) {
-        console.log('Launched: Installed');
-    } else {
-        console.log('Launched: Browser Tab');
-    }
-});
-window.addEventListener('appinstalled', (evt) => {
-    console.log('a2hs installed');
-});
-
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/service-worker.js').then(registration => {
