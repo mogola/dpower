@@ -77,6 +77,7 @@ module.exports = {
                         options: {
                             esModule: true,
                             reloadAll: true,
+                            minimize: true
                         },
                     },
                     "css-loader",
@@ -147,6 +148,7 @@ module.exports = {
             inject: true
         }),
         new RobotstxtPlugin(options_robots),
-        new SitemapPlugin('https://firstdigital.herokuapp.com', paths)
+        new SitemapPlugin('https://firstdigital.herokuapp.com', paths),
+        new webpack.optimize.UglifyJsPlugin()
     ]
 };

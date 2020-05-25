@@ -99,7 +99,7 @@ const NavBarGeneric = ({ colorTheme }) => {
                             }
                         />
                     </Navbar.Item>
-                    <Navbar.Burger style={{ marginRight: 40 }} onClick={() => {
+                    <Navbar.Burger name="menu burger" style={{ marginRight: 40 }} onClick={() => {
                         setDisplayNav(val => !val)
                     }} />
                 </Navbar.Brand>
