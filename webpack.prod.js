@@ -12,6 +12,7 @@ var WebpackPwaManifest = require('webpack-pwa-manifest');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const RobotstxtPlugin = require("robotstxt-webpack-plugin");
 const SitemapPlugin = require('sitemap-webpack-plugin').default;
+const CompressionPlugin = require('compression-webpack-plugin');
 
 const paths = [
     '/contact/',
@@ -90,6 +91,9 @@ module.exports = {
         ]
     },
     plugins: [
+        new CompressionPlugin({
+            cache: true,
+        }),
         new webpack.HotModuleReplacementPlugin(),
         new MiniCssExtractPlugin(),
         new CleanWebpackPlugin({
