@@ -213,7 +213,7 @@ const FormContact = ({ title, content, align = "center" }) => {
                                 {content}
                             </Heading>
                             <div className="field">
-                                <label for="email" className="label">Votre email</label>
+                                <label htmlFor="email" className="label">Votre email</label>
                                 <div className="control">
                                     <input ref={inputRef}
                                         onBlur={update}
@@ -228,7 +228,7 @@ const FormContact = ({ title, content, align = "center" }) => {
                                 </div>
                             </div>
                             <div className="field">
-                                <label for="service" className="label">L'objet de la demande</label>
+                                <label htmlFor="service" className="label">L'objet de la demande</label>
                                 <div className="control">
                                     <div className="select">
                                         <select
@@ -243,7 +243,7 @@ const FormContact = ({ title, content, align = "center" }) => {
                                 </div>
                             </div>
                             <div className="field">
-                                <label for="message" className="label">Message</label>
+                                <label htmlFor="message" className="label">Message</label>
                                 <div className="control">
                                     <textarea
                                         name="message"
