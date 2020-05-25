@@ -76,10 +76,11 @@ module.exports = merge(common, {
             collapseWhitespace: true,
             removeComments: true,
             removeRedundantAttributes: true,
-            removeScriptTypeAttributes: true,
-            removeStyleLinkTypeAttributes: true,
+            removeScriptTypeAttributes: false,
+            removeStyleLinkTypeAttributes: false,
             useShortDoctype: true,
-            title: "Firstdigital agence digital Web et sécurité"
+            title: "Firstdigital agence digital Web et sécurité",
+            base: '/'
         }),
         new webpack.DefinePlugin({
             'process.env': {

@@ -86,6 +86,8 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new MiniCssExtractPlugin(),
         new CleanWebpackPlugin({
             cleanOnceBeforeBuildPatterns: ["public/*.*", "css/*.*", "js/*.*"],
         }),
@@ -95,10 +97,15 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             inject: true,
-            hash: true,
-            template: './public/index.html',
-            filename: 'index.html',
-            title: "First digital PWA"
+            template: SRC_DIR + '/public/index.html',
+            collapseWhitespace: true,
+            removeComments: true,
+            removeRedundantAttributes: true,
+            removeScriptTypeAttributes: false,
+            removeStyleLinkTypeAttributes: false,
+            useShortDoctype: true,
+            title: "Firstdigital agence digital Web et sécurité",
+            base: 'https://firstdigital.herokuapp.com'
         }),
         new webpack.DefinePlugin({
             'process.env': {
