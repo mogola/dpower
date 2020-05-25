@@ -4,7 +4,7 @@ module.exports = {
     entry: ['./src/index.js', './src/scss/home.scss'],
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'js/main.js',
+        filename: 'main.js',
         publicPath: '/',
     },
     devServer: {

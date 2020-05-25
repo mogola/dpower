@@ -11,7 +11,40 @@ const CopyPlugin = require('copy-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
 var WebpackPwaManifest = require('webpack-pwa-manifest');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const RobotstxtPlugin = require("robotstxt-webpack-plugin");
+const SitemapPlugin = require('sitemap-webpack-plugin').default;
+
 const SRC_DIR = __dirname + '/';
+
+const paths = [
+    '/contact/',
+    '/security/'
+];
+const options_robots = {
+    policy: [
+        {
+            userAgent: "Googlebot",
+            allow: "/",
+            disallow: ["/search"],
+            crawlDelay: 2,
+        },
+        {
+            userAgent: "OtherBot",
+            allow: ["/allow-for-all-bots", "/allow-only-for-other-bot"],
+            disallow: ["/admin", "/login"],
+            crawlDelay: 2,
+        },
+        {
+            userAgent: "*",
+            allow: "/",
+            disallow: "/search",
+            crawlDelay: 10,
+            cleanParam: "ref /articles/",
+        },
+    ],
+    sitemap: "http://localhost:3000/sitemap.xml",
+    host: "http://localhost:3000",
+}
 
 module.exports = merge(common, {
     mode: 'development',
@@ -46,7 +79,7 @@ module.exports = merge(common, {
             removeScriptTypeAttributes: true,
             removeStyleLinkTypeAttributes: true,
             useShortDoctype: true,
-            title: "First digital PWA"
+            title: "Firstdigital agence digital Web et sécurité"
         }),
         new webpack.DefinePlugin({
             'process.env': {
@@ -83,6 +116,8 @@ module.exports = merge(common, {
         new FaviconsWebpackPlugin({
             logo: 'src/images/favicon.ico.png',
             inject: true
-        })
+        }),
+        new RobotstxtPlugin(options_robots),
+        new SitemapPlugin('http://localhost:3000', paths)
     ]
 });

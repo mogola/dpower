@@ -10,6 +10,39 @@ const CopyPlugin = require('copy-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
 var WebpackPwaManifest = require('webpack-pwa-manifest');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const RobotstxtPlugin = require("robotstxt-webpack-plugin");
+const SitemapPlugin = require('sitemap-webpack-plugin').default;
+
+const paths = [
+    '/contact/',
+    '/security/'
+];
+
+const options_robots = {
+    policy: [
+        {
+            userAgent: "Googlebot",
+            allow: "/",
+            disallow: ["/search"],
+            crawlDelay: 2,
+        },
+        {
+            userAgent: "OtherBot",
+            allow: ["/allow-for-all-bots", "/allow-only-for-other-bot"],
+            disallow: ["/admin", "/login"],
+            crawlDelay: 2,
+        },
+        {
+            userAgent: "*",
+            allow: "/",
+            disallow: "/search",
+            crawlDelay: 10,
+            cleanParam: "ref /articles/",
+        },
+    ],
+    sitemap: "https://firstdigital.herokuapp.com/sitemap.xml",
+    host: "https://firstdigital.herokuapp.com",
+}
 
 module.exports = {
     mode: 'production',
@@ -88,9 +121,9 @@ module.exports = {
         }),
         new WebpackPwaManifest({
             filename: "manifest.json",
-            name: 'My Progressive Web App',
-            short_name: 'MyPWA',
-            description: 'My awesome Progressive Web App!',
+            name: 'Firstdigital Agence digital',
+            short_name: 'FirstDigital App',
+            description: 'FirstDigital agence Digital ecommerce, webdesign et sécurité',
             theme_color: '#007dfa',
             background_color: '#007dfa',
             crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
@@ -105,6 +138,8 @@ module.exports = {
         new FaviconsWebpackPlugin({
             logo: './src/images/favicon.ico.png',
             inject: true
-        })
+        }),
+        new RobotstxtPlugin(options_robots),
+        new SitemapPlugin('https://firstdigital.herokuapp.com', paths)
     ]
 };
