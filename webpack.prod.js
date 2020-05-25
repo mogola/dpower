@@ -140,7 +140,6 @@ module.exports = {
             theme_color: '#007dfa',
             background_color: '#007dfa',
             crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
-            start_url: '.',
             icons: [
                 {
                     src: path.resolve('src/images/fdfive.png'),
