@@ -13,6 +13,7 @@ var WebpackPwaManifest = require('webpack-pwa-manifest');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const RobotstxtPlugin = require("robotstxt-webpack-plugin");
 const SitemapPlugin = require('sitemap-webpack-plugin').default;
+const ImageminPlugin = require('imagemin-webpack-plugin').default
 
 const SRC_DIR = __dirname + '/';
 
@@ -93,6 +94,7 @@ module.exports = merge(common, {
                 { from: 'src/images', to: 'images' }
             ],
         }),
+        new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
         new WorkboxPlugin.GenerateSW({
             // these options encourage the ServiceWorkers to get in there fast
             // and not allow any straggling "old" SWs to hang around
