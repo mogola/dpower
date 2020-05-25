@@ -109,8 +109,8 @@ module.exports = {
             collapseWhitespace: true,
             removeComments: true,
             removeRedundantAttributes: true,
-            removeScriptTypeAttributes: false,
-            removeStyleLinkTypeAttributes: false,
+            removeScriptTypeAttributes: true,
+            removeStyleLinkTypeAttributes: true,
             useShortDoctype: true,
             title: "Firstdigital agence digital Web et sécurité",
             base: 'https://firstdigital.herokuapp.com'
