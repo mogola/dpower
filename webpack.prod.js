@@ -59,6 +59,9 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx', '.json', '.scss', 'css', 'sass'],
     },
+    optimization: {
+        minimize: true
+    },
     module: {
         rules: [
             {
@@ -148,7 +151,6 @@ module.exports = {
             inject: true
         }),
         new RobotstxtPlugin(options_robots),
-        new SitemapPlugin('https://firstdigital.herokuapp.com', paths),
-        new webpack.optimize.UglifyJsPlugin()
+        new SitemapPlugin('https://firstdigital.herokuapp.com', paths)
     ]
 };
