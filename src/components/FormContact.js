@@ -213,7 +213,7 @@ const FormContact = ({ title, content, align = "center" }) => {
                                 {content}
                             </Heading>
                             <div className="field">
-                                <label className="label">Votre email</label>
+                                <label name="email" className="label">Votre email</label>
                                 <div className="control">
                                     <input ref={inputRef}
                                         onBlur={update}
@@ -228,10 +228,11 @@ const FormContact = ({ title, content, align = "center" }) => {
                                 </div>
                             </div>
                             <div className="field">
-                                <label className="label">L'objet de la demande</label>
+                                <label name="service" className="label">L'objet de la demande</label>
                                 <div className="control">
                                     <div className="select">
                                         <select
+                                            name="service"
                                             onChange={getValueOption}
                                             ref={inputRefOption}
                                         >
@@ -242,9 +243,10 @@ const FormContact = ({ title, content, align = "center" }) => {
                                 </div>
                             </div>
                             <div className="field">
-                                <label className="label">Message</label>
+                                <label name="message" className="label">Message</label>
                                 <div className="control">
                                     <textarea
+                                        name="message"
                                         ref={inputRefContent}
                                         name="textarea"
                                         value={state.textarea}
@@ -254,6 +256,7 @@ const FormContact = ({ title, content, align = "center" }) => {
                                 </div>
                             </div>
                             <Button
+                                name="submit"
                                 className="is-info is-inverted button is-large is-fullwidth"
                                 onClick={notify}
                                 disabled={firstFocus === false ? true : false}>

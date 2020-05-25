@@ -19,7 +19,7 @@ $tablet: 769px !default;
       background-color: yellow;
     }
   }
-  
+
 #root {
     @media screen and (max-width: $tablet - 1px){
        padding-top: 40px;
@@ -179,6 +179,12 @@ html {
 
     .react-tiger-transition--route {
         position: static !important;
+    }
+    .footer {
+        a{
+            color:#363636;
+            font-weight: bold;
+        }
     }
 }
 
