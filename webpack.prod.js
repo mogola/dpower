@@ -97,7 +97,7 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             inject: true,
-            template: SRC_DIR + '/public/index.html',
+            template: './public/index.html',
             collapseWhitespace: true,
             removeComments: true,
             removeRedundantAttributes: true,
