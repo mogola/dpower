@@ -23,7 +23,7 @@ import PropTypes from 'prop-types'
 
 library.add(fab, faBrain, faCoffee, faGrin, faTrophy, faHeart, faGrinStars, faHandsHelping)
 
-const ContentGeneric = ({ childrenIcon, classes, size = 'large', iconName, color = 'default', sizeIcon, text }) => {
+const ContentGeneric = ({ childrenIcon, classes, size = 'large', iconName, color = "black", sizeIcon, text }) => {
     return (
         <div>
             <Icon
@@ -42,19 +42,20 @@ const ContainerGeneric = () => {
 
     return (
         <themeContext.Consumer>
-            {(themeColor) => (
+            {({ colorTheme }) => (
                 <Section className="neutral" size="medium">
                     <Container style={{ textAlign: "center" }}>
                         <Heading style={{ marginBottom: 50 }} size={1} className="upper-home is-size-3-mobile" renderAs="p">Notre vision avec 5 règles simples</Heading>
                         <Columns centered={true} style={{ paddingTop: 50, alignItems: "center" }}>
                             {ICON.map((ico, i) => (
                                 <Columns.Column size={4} key={i} >
+                                    {colorTheme}
                                     <AnimationTypeWrapper
                                         type="Slide"
                                         top
                                         children={
                                             <ContentGeneric
-                                                color={themeColor}
+                                                color={colorTheme}
                                                 text={ico.text}
                                                 childrenIcon={
                                                     <FontAwesomeIcon icon={ico.nameicon} size="6x" />

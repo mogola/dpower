@@ -62,6 +62,16 @@ module.exports = {
         extensions: ['.js', '.jsx', '.json', '.scss', 'css', 'sass'],
     },
     optimization: {
+        splitChunks: {
+            cacheGroups: {
+                styles: {
+                    name: 'styles',
+                    test: /\.css$/,
+                    chunks: 'all',
+                    enforce: true,
+                },
+            },
+        },
         minimize: true
     },
     module: {
@@ -110,7 +120,8 @@ module.exports = {
             removeStyleLinkTypeAttributes: true,
             useShortDoctype: true,
             title: "Firstdigital agence digital Web et sécurité",
-            base: 'https://firstdigital.herokuapp.com'
+            base: 'https://firstdigital.herokuapp.com',
+            url: 'https://firstdigital.herokuapp.com'
         }),
         new webpack.DefinePlugin({
             'process.env': {

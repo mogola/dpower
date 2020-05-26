@@ -22,7 +22,7 @@ import PropTypes from 'prop-types'
 
 library.add(fab, faWordpress)
 
-const ContentGeneric = ({ childrenIcon, classes, size = 'large', iconName, color, sizeIcon, text }) => {
+const ContentGeneric = ({ childrenIcon, classes, size = 'large', iconName, color = 'black', sizeIcon, text }) => {
     return (
         <div>
             <Icon
@@ -40,7 +40,7 @@ const ContainerPlatform = () => {
     //brain , sizeIcon = 6x, classes = upper-home upper-home-margin, color = twitter'
     return (
         <themeContext.Consumer>
-            {(themeColor) => (
+            {({ colorTheme }) => (
                 <Section className="neutral" size="medium">
                     <Container style={{ textAlign: "center" }}>
                         <Heading style={{ marginBottom: 50 }} size={1} className="upper-home is-size-3-mobile" renderAs="p">Nos expertises</Heading>
@@ -52,7 +52,7 @@ const ContainerPlatform = () => {
                                         top
                                         children={
                                             <ContentGeneric
-                                                color={themeColor}
+                                                color={colorTheme}
                                                 text={ico.text}
                                                 childrenIcon={
                                                     <FontAwesomeIcon icon={['fab', `${ico.nameicon}`]} size="6x" />

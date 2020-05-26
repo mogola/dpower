@@ -55,6 +55,19 @@ module.exports = merge(common, {
         port: 3000,
         historyApiFallback: true
     },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                styles: {
+                    name: 'styles',
+                    test: /\.css$/,
+                    chunks: 'all',
+                    enforce: true,
+                },
+            },
+        },
+        minimize: true
+    },
     module: {
         rules: [{
             test: /\.(scss|css|sass)$/,
@@ -81,7 +94,8 @@ module.exports = merge(common, {
             removeStyleLinkTypeAttributes: false,
             useShortDoctype: true,
             title: "Firstdigital agence digital Web et sécurité",
-            base: '/'
+            base: '/',
+            url: 'http://localhost:5555'
         }),
         new webpack.DefinePlugin({
             'process.env': {
