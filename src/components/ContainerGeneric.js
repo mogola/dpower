@@ -49,7 +49,6 @@ const ContainerGeneric = () => {
                         <Columns centered={true} style={{ paddingTop: 50, alignItems: "center" }}>
                             {ICON.map((ico, i) => (
                                 <Columns.Column size={4} key={i} >
-                                    {colorTheme}
                                     <AnimationTypeWrapper
                                         type="Slide"
                                         top
