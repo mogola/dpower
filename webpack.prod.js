@@ -121,7 +121,12 @@ module.exports = {
             useShortDoctype: true,
             title: "Firstdigital agence digital Web et sécurité",
             base: 'https://firstdigital.herokuapp.com',
-            url: 'https://firstdigital.herokuapp.com'
+            url: 'https://firstdigital.herokuapp.com',
+            minify: {
+                minifyJS: true,
+                minifyCSS: true
+            },
+            hash: false
         }),
         new webpack.DefinePlugin({
             'process.env': {

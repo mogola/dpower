@@ -53,7 +53,8 @@ module.exports = merge(common, {
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         port: 3000,
-        historyApiFallback: true
+        historyApiFallback: true,
+        hot: true
     },
     optimization: {
         splitChunks: {
@@ -95,7 +96,12 @@ module.exports = merge(common, {
             useShortDoctype: true,
             title: "Firstdigital agence digital Web et sécurité",
             base: '/',
-            url: 'http://localhost:5555'
+            url: 'http://localhost:5555',
+            minify: {
+                minifyJS: true,
+                minifyCSS: true
+            },
+            hash: false
         }),
         new webpack.DefinePlugin({
             'process.env': {

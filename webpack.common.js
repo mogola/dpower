@@ -1,10 +1,12 @@
 const path = require('path'); // to get the current path
 
 module.exports = {
-    entry: ['./src/index.js', './src/scss/home.scss'],
+    entry: {
+        index: './src/index.js',
+    },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'main.js',
+        filename: '[name].main.js',
         publicPath: '/',
     },
     devServer: {
