@@ -50,10 +50,11 @@
     "yup": "^0.27.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
+    "@babel/cli": "^7.10.0",
+    "@babel/core": "^7.10.0",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-transform-runtime": "^7.9.0",
-    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-env": "^7.10.0",
     "@babel/preset-es2015": "^7.0.0-beta.53",
     "@babel/preset-react": "^7.8.3",
     "@material-ui/core": "^4.9.7",
@@ -86,6 +87,8 @@
     "serve": "^11.3.0",
     "sitemap-webpack-plugin": "^0.8.0",
     "style-loader": "^1.1.3",
+    "terser-webpack-plugin": "^3.0.2",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "uuid": "^3.3.2",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
@@ -97,7 +100,7 @@
   },
   "scripts": {
     "start": "node_modules/.bin/nodemon ./index.js",
-    "wp": "webpack-dev-server --open --config webpack.dev.js",
+    "wp": "webpack-dev-server --config webpack.dev.js --open",
     "build": "webpack --mode production --config webpack.prod.js",
     "prod": "webpack --config webpack.prod.js",
     "build_olreacr": "react-scripts build",

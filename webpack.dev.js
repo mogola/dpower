@@ -14,6 +14,7 @@ const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const RobotstxtPlugin = require("robotstxt-webpack-plugin");
 const SitemapPlugin = require('sitemap-webpack-plugin').default;
 const ImageminPlugin = require('imagemin-webpack-plugin').default
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const SRC_DIR = __dirname + '/';
 
@@ -57,8 +58,31 @@ module.exports = merge(common, {
         hot: true
     },
     optimization: {
+        minimize: true,
+        minimizer: [
+            new UglifyJsPlugin({
+                cache: true,
+                parallel: true,
+            })
+        ],
         splitChunks: {
+            chunks: 'async',
+            minSize: 30000,
+            maxSize: 0,
+            minChunks: 1,
+            maxAsyncRequests: 6,
+            maxInitialRequests: 4,
+            automaticNameDelimiter: '~',
             cacheGroups: {
+                default: {
+                    minChunks: 2,
+                    priority: -20,
+                    reuseExistingChunk: true
+                },
+                defaultVendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10
+                },
                 styles: {
                     name: 'styles',
                     test: /\.css$/,
@@ -67,7 +91,9 @@ module.exports = merge(common, {
                 },
             },
         },
-        minimize: true
+        runtimeChunk: {
+            name: 'runtime'
+        }
     },
     module: {
         rules: [{

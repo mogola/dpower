@@ -2,7 +2,7 @@ const path = './../images/';
 
 const ressources = {
     "home1": {
-        "title": "Raconter votre experience digital",
+        "title": "Créez des expériences digitales mobiles et web adaptatives avec firstdigital",
         "content": "De la strategie de haut niveau et la pensée creative à l\'éxecution et aux performances parfaites en pixels nous nous effondrons pour ajouter de la valeur à votre marque.Nous pensons grand, donnons vie à des idées, concevons des expériences et racontons des histoires qui rendent les utlisateurs heureux.",
     },
     "home2": {
@@ -11,10 +11,10 @@ const ressources = {
     },
     "home3": {
         "title": "Nous croyons à la collaboration et à la co-création",
-        "content": ""
+        "content": "Optimiser l\'expérience client grâce au digital"
     },
     "home4": {
-        "title": "Execution",
+        "title": "Partagez des émotions",
         "content": "Nous sommes tout aussi enthousiastes à l\'idée de voir grand que de transformer des idées en lignes de codes, de beaux designs, des flux dynamiques et des histoires sociales"
     },
     "contact": {
@@ -42,7 +42,7 @@ const ressourcesSecurity = {
     },
     "contact": {
         "title": "Contact",
-        "content": "Nous sommes à votre disposition"
+        "content": "Comment pouvons-nous vous aider ?"
     }
 }
 
@@ -95,10 +95,9 @@ const ICONBRAND = [
 ]
 
 const LOGO = [
-    path + "digital-power-i.png",
-    path + "samsung.png",
-    path + "digital-power-i.png",
-    path + "samsung.png",
+    path + "rapelite.png",
+    path + "dewalgo-logo.png",
+    path + "lionsport.png"
 ]
 
 const CONSTANT = {

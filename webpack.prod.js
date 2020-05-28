@@ -14,6 +14,7 @@ const RobotstxtPlugin = require("robotstxt-webpack-plugin");
 const SitemapPlugin = require('sitemap-webpack-plugin').default;
 const CompressionPlugin = require('compression-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const paths = [
     '/contact/',
@@ -62,8 +63,31 @@ module.exports = {
         extensions: ['.js', '.jsx', '.json', '.scss', 'css', 'sass'],
     },
     optimization: {
+        minimize: true,
+        minimizer: [
+            new UglifyJsPlugin({
+                cache: true,
+                parallel: true,
+            })
+        ],
         splitChunks: {
+            chunks: 'async',
+            minSize: 30000,
+            maxSize: 0,
+            minChunks: 1,
+            maxAsyncRequests: 6,
+            maxInitialRequests: 4,
+            automaticNameDelimiter: '~',
             cacheGroups: {
+                default: {
+                    minChunks: 2,
+                    priority: -20,
+                    reuseExistingChunk: true
+                },
+                defaultVendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10
+                },
                 styles: {
                     name: 'styles',
                     test: /\.css$/,
@@ -72,7 +96,9 @@ module.exports = {
                 },
             },
         },
-        minimize: true
+        runtimeChunk: {
+            name: 'runtime'
+        }
     },
     module: {
         rules: [
@@ -155,6 +181,7 @@ module.exports = {
             description: 'FirstDigital agence Digital ecommerce, webdesign et sécurité',
             theme_color: '#007dfa',
             background_color: '#007dfa',
+            start_url: '.',
             crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
             icons: [
                 {

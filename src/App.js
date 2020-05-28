@@ -1,12 +1,9 @@
-import React, { useContext, Component } from 'react';
+import React, { Component } from 'react';
 import NavBarGeneric from './components/NavBar'
 import FooterContainer from './components/Footer'
 import { themeContext, themes, getTheme } from './context/theme-context'
 
 import { Switch, Redirect, BrowserRouter as Router, Route } from "react-router-dom"
-
-import "react-tiger-transition/styles/main.min.css";
-import "./App.css";
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
