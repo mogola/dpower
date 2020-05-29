@@ -178,7 +178,7 @@ module.exports = {
             description: 'FirstDigital agence Digital ecommerce, webdesign et sécurité',
             theme_color: '#007dfa',
             background_color: '#007dfa',
-            start_url: '.',
+            start_url: 'https://firstdigital.herokuapp.com',
             crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
             icons: [
                 {
