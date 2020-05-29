@@ -213,9 +213,10 @@ const FormContact = ({ title, content, align = "center" }) => {
                                 {content}
                             </Heading>
                             <div className="field">
-                                <label htmlFor="email" className="label">Votre email</label>
+                                <label id="email" htmlFor="email" className="label">Votre email</label>
                                 <div className="control">
                                     <input ref={inputRef}
+                                        aria-labelledby="email"
                                         onBlur={update}
                                         className={`input ${errorClass['error']} ${errorClass['valid']}`}
                                         type="text"
@@ -228,10 +229,11 @@ const FormContact = ({ title, content, align = "center" }) => {
                                 </div>
                             </div>
                             <div className="field">
-                                <label htmlFor="service" className="label">L'objet de la demande</label>
+                                <label id="service" htmlFor="service" className="label">L'objet de la demande</label>
                                 <div className="control">
                                     <div className="select">
                                         <select
+                                            aria-labelledby="service"
                                             name="service"
                                             onChange={getValueOption}
                                             ref={inputRefOption}
@@ -246,6 +248,8 @@ const FormContact = ({ title, content, align = "center" }) => {
                                 <label htmlFor="message" className="label">Message</label>
                                 <div className="control">
                                     <textarea
+                                        aria-labelledby="message"
+                                        id="message"
                                         name="message"
                                         ref={inputRefContent}
                                         value={state.textarea}
@@ -255,6 +259,7 @@ const FormContact = ({ title, content, align = "center" }) => {
                                 </div>
                             </div>
                             <Button
+                                id="submit"
                                 name="submit"
                                 className="is-info is-inverted button is-large is-fullwidth"
                                 onClick={notify}
