@@ -95,9 +95,6 @@ module.exports = {
                     enforce: true,
                 },
             },
-        },
-        runtimeChunk: {
-            name: 'runtime'
         }
     },
     module: {
