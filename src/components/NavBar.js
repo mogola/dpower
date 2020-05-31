@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import * as React from 'react'
+import { useState, useEffect, useRef } from 'react';
 import AnimationTypeWrapper from './AnimationTypeWrapper'
 import { Link } from "react-router-dom";
+import { motion, useCycle } from 'framer-motion';
 //import { Link } from "react-tiger-transition";
 
 import {
@@ -14,9 +16,102 @@ import {
 
 import PropTypes from 'prop-types'
 
+const useDimensions = ref => {
+    const dimensions = useRef({ width: 0, height: 0 });
+
+    useEffect(() => {
+        dimensions.current.width = ref.current.offsetWidth;
+        dimensions.current.height = ref.current.offsetHeight;
+    }, []);
+
+    return dimensions.current;
+};
+
+const Path = (props, d = "M 3 2.5 L 17 16.346", opacity = 1) => (
+    <motion.path
+        fill="transparent"
+        strokeWidth="3"
+        stroke="hsl(0, 0%, 18%)"
+        strokeLinecap="round"
+        d={d}
+        opacity={opacity}
+        {...props}
+    />
+)
+const pathOneVariants = {
+    open: { d: "M 3 16.5 L 17 2.5" },
+    closed: { d: "M 2 2.5 L 20 2.5" }
+}
+
+const pathTwoVariants = {
+    closed: { opacity: 1 },
+    open: {
+        opacity: 0,
+        transition: {
+            duration: 0.1
+        }
+    }
+}
+
+const pathThreeVariants = {
+    closed: { d: "M 2 16.346 L 20 16.346" },
+    open: { d: "M 3 2.5 L 17 16.346" }
+}
+
+const variants = {
+    open: (height = 1000) => ({
+        clipPath: `circle(${height * 2 + 200}px at 55px 49px)`,
+        transition: {
+            type: "spring",
+            stiffness: 20,
+            restDelta: 2
+        }
+    }),
+    closed: {
+        clipPath: "circle(30px at 55px 49px)",
+        transition: {
+            delay: 0.5,
+            type: "spring",
+            stiffness: 400,
+            damping: 40
+        }
+    }
+}
+
+const variantsMenu = {
+    open: {
+        transition: { staggerChildren: 0.07, delayChildren: -1 }
+    },
+    closed: {
+        transition: { staggerChildren: 0.05, staggerDirection: -1 }
+    }
+};
+
+const variantsItem = {
+    open: {
+        y: 0,
+        opacity: 1,
+        transition: {
+            y: { duration: 2, stiffness: 100 }
+        }
+    },
+    closed: {
+        y: 50,
+        opacity: 0,
+        transition: {
+            y: { duration: 2, stiffness: 1000 }
+        }
+    }
+};
+
 const NavBarGeneric = ({ colorTheme }) => {
+
     const [displayNav, setDisplayNav] = useState(false)
     const [animNav, setAnimNav] = useState(false)
+    const [isOpen, toggleOpen] = useCycle(false, true)
+
+    const containerRef = useRef(null);
+    const { height } = useDimensions(containerRef);
 
     let styleDisplay, booleanAnimation, styleColorMenu
 
@@ -53,36 +148,64 @@ const NavBarGeneric = ({ colorTheme }) => {
         }
     }, []);
 
+    // The current width of the viewport
+    const width = window.innerWidth;
+    // The width below which the mobile view should be rendered
+    const breakpoint = 1023;
 
+    function onComplete() {
+        console.log("Animation completed")
+    }
+    const NavMobile = () => {
+        const colors = ["#FF008C", "#D309E1", "#9C1AFF", "#7700FF", "#4400FF"];
 
-    const WrapperLinkMenu = ({ boolValue }) => {
+        return (
+            <motion.ul
+                //  style={{ display: isOpen ? "block" : "none" }}
+                className="navbar-customMenu"
+                variants={variantsMenu}
+                onAnimationComplete={onComplete}>
+                {NAV.map((itemNav, i) => (
+                    <motion.li
+                        variants={variantsItem}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                        key={i}
+                    >
+                        <Link
+                            onClick={() => toggleOpen(!isOpen)}
+                            style={{ color: colors[i] }}
+                            to={itemNav.link}
+                            transition='glide-right'>
+                            {itemNav.text}
+                        </Link>
+                    </motion.li>
+                ))}
+            </motion.ul>
+        )
+    }
+
+    const NavDesktop = () => {
         return (
             <Navbar.Menu style={styleDisplay}>
-                <Navbar.Container style={controlMobileNav(boolValue)} position="start">
+                <Navbar.Container position="start">
                     {NAV.map((itemNav, i) => (
-                        <Navbar.Item renderAs="div" style={{ color: "white", fontWeight: "bold" }} key={i}>
-                            {window.innerWidth < 1023 &&
-                                <Link
-                                    onClick={() => setDisplayNav(val => !val)}
-                                    style={{ color: "" }}
-                                    to={itemNav.link}
-                                    transition='glide-right'>
-                                    {itemNav.text}
-                                </Link>
-                            }
-                            {window.innerWidth > 1023 &&
-                                <Link
-                                    style={{ color: "white" }}
-                                    to={itemNav.link}
-                                    transition='glide-right'>
-                                    {itemNav.text}
-                                </Link>
-                            }
+                        <Navbar.Item key={i} renderAs="div">
+                            <Link
+                                style={{ color: "white" }}
+                                to={itemNav.link}
+                                transition='glide-right'>
+                                {itemNav.text}
+                            </Link>
                         </Navbar.Item>
                     ))}
                 </Navbar.Container>
             </Navbar.Menu>
-        );
+        )
+    }
+
+    const WrapperLinkMenu = ({ boolValue }) => {
+        return width < breakpoint ? <NavMobile /> : <NavDesktop />;
     }
 
     return (
@@ -93,24 +216,50 @@ const NavBarGeneric = ({ colorTheme }) => {
                         <AnimationTypeWrapper
                             type="Zoom"
                             children={
-                                <Link to="/">
-                                    <img src={CONSTANT['logo']} alt="first digital" />
-                                </Link>
+                                <motion.div animate={{ scale: [0.5, 1] }}>
+                                    <Link to="/">
+                                        <img src={CONSTANT['logo']} alt="first digital" />
+                                    </Link>
+                                </motion.div>
                             }
                         />
                     </Navbar.Item>
-                    <Navbar.Burger htmlFor="menu burger" style={{ marginRight: 40 }} onClick={() => {
-                        setDisplayNav(val => !val)
-                    }} />
-                </Navbar.Brand>
 
-                <AnimationTypeWrapper
-                    type="Slide"
-                    right
-                    when={booleanAnimation}
-                    children={<WrapperLinkMenu boolValue={booleanAnimation} />}
-                />
+                </Navbar.Brand>
             </Navbar>
+            <motion.nav
+                className="navbar-anim is-fixed-top"
+                animate={isOpen ? "open" : "closed"}
+                custom={height}
+                ref={containerRef}
+            >
+                <motion.div className="background" variants={variants} />
+                <WrapperLinkMenu />
+                <button
+                    className="menuButton"
+                    id="menuButton"
+                    aria-labelledby="menuButton"
+                    onClick={() => toggleOpen()}>
+                    <svg width="23" height="23" viewBox="0 0 23 23">
+                        <Path
+                            key="1"
+                            animate={isOpen ? "open" : "closed"}
+                            variants={pathOneVariants}
+                        />
+                        <Path
+                            key="2"
+                            animate={isOpen ? "open" : "closed"}
+                            d="M 2 9.423 L 20 9.423"
+                            variants={pathTwoVariants}
+                        />
+                        <Path
+                            key="3"
+                            animate={isOpen ? "open" : "closed"}
+                            variants={pathThreeVariants}
+                        />
+                    </svg>
+                </button>
+            </motion.nav>
         </div>
     );
 }

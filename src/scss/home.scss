@@ -12,7 +12,42 @@ $pink-invert: #fff;
 $family-serif: "Merriweather", "Georgia", serif;
 $fontAwesome: "Font Awesome 5 free";
 $tablet: 769px !default;
+body{
+width: 100vw;
+  background: linear-gradient(180deg, #0055ff 0%, rgb(0, 153, 255) 100%);
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+}
+.background {
+  position: fixed;
+  top: 0;
+left: 0;
+  bottom: 0;
+  width: 300px;
+  background: #fff;
+  z-index: 1;
 
+  @media screen and (min-width: $tablet - 1px){
+    display: none;
+}
+}
+.menuButton {
+    outline: none;
+    border: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    cursor: pointer;
+    position: absolute;
+    top: 28px;
+    left: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: transparent;
+    z-index: 5;
+}
 @media all and (display-mode: standalone) {
     body {
       background-color: #007dfa;
@@ -104,8 +139,85 @@ html {
     }
 }
 
-html .navbar {
+html .navbar-anim {
+
+    @media screen and (max-width: $tablet - 1px){
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 300px;
+        z-index: 40;
+      }
+
+      .navbar-customMenu {
+
+        
+        @media screen and (min-width: $tablet - 1px){
+        }
+
+        @media screen and (max-width: $tablet - 1px){
+            display: block;
+            width: auto;
+            padding: 0;
+            z-index: 3;
+            background: none;
+            right: 0;
+            box-shadow: none;
+            max-height: initial !important;
+            padding: 25px;
+            position: absolute;
+            top: 100px;
+            width: 100%;
+            z-index: 5;
+            overflow: visible !important;
+
+            ul {
+                padding: 0;
+                position: absolute;
+                top: 0;
+                right: 40px;
+                width:100%;
+            }
+            li {
+                text-align: left;
+                font-size: 22px;
+                padding-left: 20px;
+                list-style: none;
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                justify-content: flex-start;
+            }
+        }
+    }
+}
+html .navbar, html .navbar-anim {
     align-items: center;
+
+    &-start {
+        @media screen and (min-width: $tablet - 1px){
+            position: fixed;
+            z-index: 50;
+            top: 36px;
+            left: 223px;
+        }
+    }
+
+    .navbar-burger {
+        position: fixed;
+        left: 14;
+        top: 15px;    
+        z-index: 2;
+
+        span {
+            color: #007dfa;
+        }
+        &:hover {
+            background: none;
+        }
+    }
 
     &.is-transparent {
         background: transparent;
@@ -114,6 +226,14 @@ html .navbar {
         font-size: 1.3rem;
     }
     &-brand {
+        @media screen and (max-width: $tablet - 1px){
+            justify-content: flex-end;
+            .react-reveal {
+                padding-right: 40px;
+                text-align: right;
+            }
+
+        }
         img {
             max-height: initial !important;
             width: 55% !important;
@@ -133,15 +253,46 @@ html .navbar {
         }
     }
 
-    &-menu{
+    &-menu, &-customMenu{
+
+        
         @media screen and (min-width: $tablet - 1px){
         }
 
         @media screen and (max-width: $tablet - 1px){
-            display: block !important;
+            display: block;
+            width: auto;
+            padding: 0;
+            z-index: 3;
+            background: none;
+            right: 0;
+            box-shadow: none;
+            max-height: initial !important;
+            padding: 25px;
+            position: absolute;
+            top: 100px;
             width: 100%;
-            padding: 20px 40px;
-            position: absolute; 
+            z-index: 5;
+            overflow: visible !important;
+
+            ul {
+                padding: 0;
+                position: absolute;
+                top: 0;
+                right: 40px;
+                width:100%;
+            }
+            li {
+                text-align: left;
+                font-size: 22px;
+                padding-right: 0;
+                list-style: none;
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                justify-content: flex-end;
+            }
         }
     }
 }
@@ -186,6 +337,8 @@ html {
         }
     }
 }
+
+
 
 // 4. Setup your Custom Colors
 $primary2: $pink;
