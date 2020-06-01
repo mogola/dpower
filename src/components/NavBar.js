@@ -27,20 +27,20 @@ const useDimensions = ref => {
     return dimensions.current;
 };
 
-const Path = (props, d = "M 3 2.5 L 17 16.346", opacity = 1) => (
+const Path = (props, d, opacity = 1) => (
     <motion.path
         fill="transparent"
         strokeWidth="3"
         stroke="hsl(0, 0%, 18%)"
         strokeLinecap="round"
-        d={d}
         opacity={opacity}
+        d={d}
         {...props}
     />
 )
 const pathOneVariants = {
-    open: { d: "M 3 16.5 L 17 2.5" },
-    closed: { d: "M 2 2.5 L 20 2.5" }
+    open: { d: "m 3 16.5 L 17 2.5" },
+    closed: { d: "m 2 2.5 L 20 2.5" }
 }
 
 const pathTwoVariants = {
@@ -54,8 +54,8 @@ const pathTwoVariants = {
 }
 
 const pathThreeVariants = {
-    closed: { d: "M 2 16.346 L 20 16.346" },
-    open: { d: "M 3 2.5 L 17 16.346" }
+    closed: { d: "m 2 16.346 L 20 16.346" },
+    open: { d: "m 3 2.5 L 17 16.346" }
 }
 
 const variants = {
@@ -80,10 +80,13 @@ const variants = {
 
 const variantsMenu = {
     open: {
-        transition: { staggerChildren: 0.07, delayChildren: -1 }
+        transition: { staggerChildren: 2, delayChildren: -1 }
     },
     closed: {
-        transition: { staggerChildren: 0.05, staggerDirection: -1 }
+        transition: {
+            staggerChildren: 0.05,
+            staggerDirection: -1
+        }
     }
 };
 
@@ -92,14 +95,14 @@ const variantsItem = {
         y: 0,
         opacity: 1,
         transition: {
-            y: { duration: 2, stiffness: 100 }
+            y: { stiffness: 1000, velocity: -100 }
         }
     },
     closed: {
         y: 50,
         opacity: 0,
         transition: {
-            y: { duration: 2, stiffness: 1000 }
+            y: { stiffness: 1000 }
         }
     }
 };
@@ -132,6 +135,7 @@ const NavBarGeneric = ({ colorTheme }) => {
             }
         }
     }
+
     useEffect(() => {
         if (window.innerWidth > 1023) {
             let getNavBar = document.getElementsByClassName('navbar-menu')[0]
@@ -148,23 +152,25 @@ const NavBarGeneric = ({ colorTheme }) => {
         }
     }, []);
 
+    function onComplete() {
+        setAnimNav(!animNav)
+    }
     // The current width of the viewport
     const width = window.innerWidth;
     // The width below which the mobile view should be rendered
     const breakpoint = 1023;
 
-    function onComplete() {
-        console.log("Animation completed")
-    }
     const NavMobile = () => {
         const colors = ["#FF008C", "#D309E1", "#9C1AFF", "#7700FF", "#4400FF"];
 
         return (
             <motion.ul
-                //  style={{ display: isOpen ? "block" : "none" }}
+                // style={{ display: animNav === true ? "" : "none" }}
+                onAnimationComplete={onComplete}
+                // style={{ transform: isOpen ? `translateY(0)` : `translateY(-300px)` }}
                 className="navbar-customMenu"
                 variants={variantsMenu}
-                onAnimationComplete={onComplete}>
+            >
                 {NAV.map((itemNav, i) => (
                     <motion.li
                         variants={variantsItem}
@@ -173,14 +179,15 @@ const NavBarGeneric = ({ colorTheme }) => {
                         key={i}
                     >
                         <Link
-                            onClick={() => toggleOpen(!isOpen)}
+                            onClick={() => toggleOpen()}
                             style={{ color: colors[i] }}
                             to={itemNav.link}
                             transition='glide-right'>
                             {itemNav.text}
                         </Link>
                     </motion.li>
-                ))}
+                ))
+                }
             </motion.ul>
         )
     }
@@ -227,14 +234,16 @@ const NavBarGeneric = ({ colorTheme }) => {
 
                 </Navbar.Brand>
             </Navbar>
+            {width > breakpoint && <WrapperLinkMenu />}
             <motion.nav
                 className="navbar-anim is-fixed-top"
                 animate={isOpen ? "open" : "closed"}
                 custom={height}
                 ref={containerRef}
             >
-                <motion.div className="background" variants={variants} />
-                <WrapperLinkMenu />
+                <motion.div className="background" variants={variants}>
+                    <WrapperLinkMenu />
+                </motion.div>
                 <button
                     className="menuButton"
                     id="menuButton"
@@ -249,7 +258,7 @@ const NavBarGeneric = ({ colorTheme }) => {
                         <Path
                             key="2"
                             animate={isOpen ? "open" : "closed"}
-                            d="M 2 9.423 L 20 9.423"
+                            d="m 2 9.423 L 20 9.423"
                             variants={pathTwoVariants}
                         />
                         <Path
