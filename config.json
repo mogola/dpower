@@ -1,0 +1,6 @@
+{
+    "connectionString": "mongodb://localhost/mycargarage",
+    "JWT_KEY": "secret",
+    "USER_EMAIL" : "mogola.sangare_dewalgo.com_0@mailboxbackup.info",
+    "PASSWORD_EMAIL" : "msangare19"
+}

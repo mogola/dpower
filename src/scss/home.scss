@@ -1,7 +1,31 @@
 @import "~bulma/sass/utilities/initial-variables.sass";
 @import "~bulma/sass/utilities/functions.sass";
 @import "~bulma/sass/utilities/derived-variables.sass";
-@import "../../node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css";
+
+@font-face {
+    font-family: 'robotobold';
+    src: url('../fonts/roboto-bold-webfont-webfont.woff2') format('woff2'),
+         url('../fonts/roboto-bold-webfont-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'robotolight';
+    src: url('../fonts/roboto-light-webfont-webfont.woff2') format('woff2'),
+         url('../fonts/roboto-light-webfont-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'robotoregular';
+    src: url('../fonts/roboto-regular-webfont-webfont.woff2') format('woff2'),
+         url('../fonts/roboto-regular-webfont-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
 
 $red: #e00002;
 $neutral: #fafafa;
@@ -10,8 +34,103 @@ $blue: #72d0eb;
 $pink: #ffb3b3;
 $pink-invert: #fff;
 // Add a serif family
-$family-serif: "Merriweather", "Georgia", serif;
+$family-serif: "robotoregular","Merriweather", "Georgia", serif;
 $fontAwesome: "Font Awesome 5 free";
+$tablet: 769px !default;
+body{
+width: 100vw;
+  background: linear-gradient(180deg, #0055ff 0%, rgb(0, 153, 255) 100%);
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+}
+.background {
+  position: fixed;
+  top: 0;
+left: 0;
+  bottom: 0;
+  width: 300px;
+  background: #fff;
+  z-index: 1;
+
+  @media screen and (min-width: $tablet - 1px){
+    display: none;
+}
+}
+.menuButton {
+    outline: none;
+    border: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    cursor: pointer;
+    position: absolute;
+    top: 28px;
+    left: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: transparent;
+    z-index: 5;
+}
+@media all and (display-mode: standalone) {
+    body {
+      background-color: #007dfa;
+    }
+  }
+
+#root {
+    @media screen and (max-width: $tablet - 1px){
+       padding-top: 40px;
+    }
+
+    .home-wrapper{
+        position:relative; 
+    }
+
+    .Toastify{
+        position: fixed;
+        z-index: 50;
+    }
+
+    form {
+        label {
+            color: #fff;
+            font-size: 20px;
+            font-weight: normal;
+            font-family: 'robotoregular';
+        }
+        .field {
+            + .field{
+                margin-top:30px;
+            }
+            
+            input[type="text"]{
+                height:48px;
+            }
+        }
+
+        .select, .select select:not([multiple]){
+            width: 100%;
+            height:48px;
+        }
+
+        .button{
+            max-width: 100%;
+            margin: 30px auto;
+            display: block;
+            min-width: 100%;
+            float: none;
+            height:48px;
+            border-radius:0;
+        }
+
+        .subtitle{
+            text-align: center;
+            font-weight: bold;
+        }
+    }
+}
 
 .icon {
     &.fas {
@@ -22,6 +141,7 @@ $fontAwesome: "Font Awesome 5 free";
 .fa, .fab, .fad, .fal, .far, .fas{
     font-family: $fontAwesome !important;
 }
+
 // 3. Set the derived variables
 // Use the new pink as the primary color
 
@@ -39,14 +159,169 @@ html {
     padding: 40px;
 }
 
-html .navbar {
+.react-tiger-transition--container {
+    @media screen and (max-width: $tablet - 1px){
+        padding-top: 40px;
+    }
+}
+
+html .navbar-anim {
+
+    @media screen and (max-width: $tablet - 1px){
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 300px;
+        z-index: 40;
+        height: 95px; 
+      }
+
+      .navbar-customMenu {
+
+        
+        @media screen and (min-width: $tablet - 1px){
+        }
+
+        @media screen and (max-width: $tablet - 1px){
+            display: block;
+            width: auto;
+            padding: 0;
+            z-index: 3;
+            background: none;
+            right: 0;
+            box-shadow: none;
+            max-height: initial !important;
+            padding: 25px;
+            position: absolute;
+            top: 100px;
+            width: 100%;
+            z-index: 5;
+            overflow: visible !important;
+
+            ul {
+                padding: 0;
+                position: absolute;
+                top: 0;
+                right: 40px;
+                width:100%;
+            }
+            li {
+                text-align: left;
+                font-size: 22px;
+                padding-left: 20px;
+                list-style: none;
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                justify-content: flex-start;
+                font-family: 'robotobold';
+            }
+        }
+    }
+}
+html .navbar, html .navbar-anim {
+    align-items: center;
+
+    &-start {
+        @media screen and (min-width: $tablet - 1px){
+            position: fixed;
+            z-index: 50;
+            top: 36px;
+            left: 223px;
+        }
+    }
+
+    .navbar-burger {
+        position: fixed;
+        left: 14;
+        top: 15px;    
+        z-index: 2;
+
+        span {
+            color: #007dfa;
+        }
+        &:hover {
+            background: none;
+        }
+    }
+
     &.is-transparent {
         background: transparent;
     }
     &-item {
         font-size: 1.3rem;
+        font-family: 'robotobold';
+    }
+    &-brand {
+        @media screen and (max-width: $tablet - 1px){
+            justify-content: flex-end;
+            .react-reveal {
+                padding-right: 20px;
+                text-align: right;
+            }
+
+        }
         img {
-            max-height: 5rem;
+            max-height: initial !important;
+            width: 55% !important;
+            @media screen and (max-width: $tablet - 1px){
+                width: 30% !important;
+            }
+        }
+    }
+
+    .react-reveal {
+        @media screen and (max-width: $tablet - 1px){
+            z-index: -1;
+        }
+
+        @media screen and (min-width: $tablet - 1px){
+            opacity: 1 !important;
+        }
+    }
+
+    &-menu, &-customMenu{
+
+        
+        @media screen and (min-width: $tablet - 1px){
+        }
+
+        @media screen and (max-width: $tablet - 1px){
+            display: block;
+            width: auto;
+            padding: 0;
+            z-index: 3;
+            background: none;
+            right: 0;
+            box-shadow: none;
+            max-height: initial !important;
+            padding: 25px;
+            position: absolute;
+            top: 100px;
+            width: 100%;
+            z-index: 5;
+            overflow: visible !important;
+
+            ul {
+                padding: 0;
+                position: absolute;
+                top: 0;
+                right: 40px;
+                width:100%;
+            }
+            li {
+                text-align: left;
+                font-size: 22px;
+                padding-right: 0;
+                list-style: none;
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                justify-content: flex-end;
+            }
         }
     }
 }
@@ -54,8 +329,8 @@ html .navbar {
 html {
     .title {
         &--large {
-            text-transform: uppercase;
-            font-size:4.2rem !important;
+            text-transform: initial;
+            font-size:4.2rem;
         }
     }
 
@@ -75,7 +350,46 @@ html {
     .neutral {
         background-color: $neutral;
     }
+
+    .react-tiger-transition--screen {
+        display: block !important;
+        overflow: hidden !important;
+    }
+
+    .react-tiger-transition--route {
+        position: static !important;
+    }
+    .footer {
+        a{
+            color:#363636;
+            font-weight: bold;
+        }
+    }
+    .contact-fl {
+        @media screen and (max-width: $tablet - 1px){
+            display: flex;
+            flex-wrap: wrap !important;
+        }
+
+        .column {
+            flex-basis: unset;
+
+            &:first-child {
+                @media screen and (max-width: $tablet - 1px){
+                    order: 2
+                }
+            }
+
+            &:last-child {
+                @media screen and (max-width: $tablet - 1px){
+                    order: 1
+                }
+            }
+        }
+    }
 }
+
+
 
 // 4. Setup your Custom Colors
 $primary2: $pink;
