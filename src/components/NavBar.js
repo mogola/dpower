@@ -28,15 +28,16 @@ const useDimensions = ref => {
 };
 
 const Path = (props, d, opacity = 1) => {
-    return (<motion.path
-        fill="transparent"
-        strokeWidth="3"
-        stroke="hsl(0, 0%, 18%)"
-        strokeLinecap="round"
-        opacity={opacity}
-        d={d}
-        {...props}
-    />)
+    return (
+        <motion.path
+            fill="transparent"
+            strokeWidth="3"
+            stroke="#1DA1F2"
+            strokeLinecap="round"
+            opacity={opacity}
+            d={d}
+            {...props}
+        />)
 }
 const pathOneVariants = {
     open: { d: "m 3 16.5 L 17 2.5" },
