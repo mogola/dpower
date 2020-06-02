@@ -98,6 +98,7 @@ left: 0;
             color: #fff;
             font-size: 20px;
             font-weight: normal;
+            font-family: 'robotoregular';
         }
         .field {
             + .field{
@@ -173,6 +174,7 @@ html .navbar-anim {
         bottom: 0;
         width: 300px;
         z-index: 40;
+        height: 95px; 
       }
 
       .navbar-customMenu {
@@ -327,7 +329,7 @@ html .navbar, html .navbar-anim {
 html {
     .title {
         &--large {
-            text-transform: uppercase;
+            text-transform: initial;
             font-size:4.2rem;
         }
     }
