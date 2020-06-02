@@ -27,8 +27,8 @@ const useDimensions = ref => {
     return dimensions.current;
 };
 
-const Path = (props, d, opacity = 1) => (
-    <motion.path
+const Path = (props, d, opacity = 1) => {
+    return (<motion.path
         fill="transparent"
         strokeWidth="3"
         stroke="hsl(0, 0%, 18%)"
@@ -36,8 +36,8 @@ const Path = (props, d, opacity = 1) => (
         opacity={opacity}
         d={d}
         {...props}
-    />
-)
+    />)
+}
 const pathOneVariants = {
     open: { d: "m 3 16.5 L 17 2.5" },
     closed: { d: "m 2 2.5 L 20 2.5" }
@@ -249,7 +249,7 @@ const NavBarGeneric = ({ colorTheme }) => {
                     id="menuButton"
                     aria-labelledby="menuButton"
                     onClick={() => toggleOpen()}>
-                    <svg width="23" height="23" viewBox="0 0 23 23">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
                         <Path
                             key="1"
                             animate={isOpen ? "open" : "closed"}

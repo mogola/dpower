@@ -2,6 +2,31 @@
 @import "~bulma/sass/utilities/functions.sass";
 @import "~bulma/sass/utilities/derived-variables.sass";
 
+@font-face {
+    font-family: 'robotobold';
+    src: url('../fonts/roboto-bold-webfont-webfont.woff2') format('woff2'),
+         url('../fonts/roboto-bold-webfont-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'robotolight';
+    src: url('../fonts/roboto-light-webfont-webfont.woff2') format('woff2'),
+         url('../fonts/roboto-light-webfont-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'robotoregular';
+    src: url('../fonts/roboto-regular-webfont-webfont.woff2') format('woff2'),
+         url('../fonts/roboto-regular-webfont-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 $red: #e00002;
 $neutral: #fafafa;
 $blue: #72d0eb;
@@ -9,7 +34,7 @@ $blue: #72d0eb;
 $pink: #ffb3b3;
 $pink-invert: #fff;
 // Add a serif family
-$family-serif: "Merriweather", "Georgia", serif;
+$family-serif: "robotoregular","Merriweather", "Georgia", serif;
 $fontAwesome: "Font Awesome 5 free";
 $tablet: 769px !default;
 body{
@@ -189,6 +214,7 @@ html .navbar-anim {
                 align-items: center;
                 cursor: pointer;
                 justify-content: flex-start;
+                font-family: 'robotobold';
             }
         }
     }
@@ -224,6 +250,7 @@ html .navbar, html .navbar-anim {
     }
     &-item {
         font-size: 1.3rem;
+        font-family: 'robotobold';
     }
     &-brand {
         @media screen and (max-width: $tablet - 1px){
@@ -334,6 +361,28 @@ html {
         a{
             color:#363636;
             font-weight: bold;
+        }
+    }
+    .contact-fl {
+        @media screen and (max-width: $tablet - 1px){
+            display: flex;
+            flex-wrap: wrap !important;
+        }
+
+        .column {
+            flex-basis: unset;
+
+            &:first-child {
+                @media screen and (max-width: $tablet - 1px){
+                    order: 2
+                }
+            }
+
+            &:last-child {
+                @media screen and (max-width: $tablet - 1px){
+                    order: 1
+                }
+            }
         }
     }
 }

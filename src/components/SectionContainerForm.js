@@ -35,7 +35,7 @@ const SectionContainerForm = ({ children, srcImage, color, size, position, align
                 <Hero color={color} gradient>
                     <Hero.Body>
                         <Container>
-                            <Columns centered={true} style={{ alignItems: "center" }}>
+                            <Columns className="contact-fl" centered={true} style={{ alignItems: "center" }}>
                                 {position == 0 &&
                                     <ContentImage srcImage={srcImage} left />
                                 }
