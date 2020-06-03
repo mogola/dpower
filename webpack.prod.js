@@ -138,6 +138,7 @@ module.exports = {
     },
     plugins: [
         new CompressionPlugin({
+            algorithm: 'gzip',
             cache: true,
         }),
         new webpack.HotModuleReplacementPlugin(),
