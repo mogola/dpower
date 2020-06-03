@@ -113,7 +113,7 @@ module.exports = {
                     {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
-                            esModule: true,
+                            esModule: false,
                             reloadAll: true,
                             minimize: true
                         },
@@ -196,7 +196,7 @@ module.exports = {
             icons: [
                 {
                     src: path.resolve('src/images/fdfive.png'),
-                    sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
+                    sizes: [192, 512] // multiple sizes
                 }
             ]
         }),
