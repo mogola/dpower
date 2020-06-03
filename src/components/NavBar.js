@@ -44,7 +44,9 @@ const pathOneVariants = {
 }
 
 const pathTwoVariants = {
-    closed: { opacity: 1 },
+    closed: {
+        opacity: 1
+    },
     open: {
         opacity: 0,
         transition: {
@@ -256,6 +258,7 @@ const NavBarGeneric = ({ colorTheme }) => {
                         <Path
                             key="1"
                             animate={isOpen ? "open" : "closed"}
+                            d="m 3 16.5 L 17 2.5"
                             variants={pathOneVariants}
                         />
                         <Path
@@ -267,6 +270,7 @@ const NavBarGeneric = ({ colorTheme }) => {
                         <Path
                             key="3"
                             animate={isOpen ? "open" : "closed"}
+                            d="m 3 2.5 L 17 16.346"
                             variants={pathThreeVariants}
                         />
                     </svg>
