@@ -248,6 +248,8 @@ const NavBarGeneric = ({ colorTheme }) => {
                     className="menuButton"
                     id="menuButton"
                     aria-labelledby="menuButton"
+                    role="button"
+                    aria-label="menuButton"
                     name="menuButton"
                     onClick={() => toggleOpen()}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
