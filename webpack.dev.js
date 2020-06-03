@@ -15,6 +15,7 @@ const RobotstxtPlugin = require("robotstxt-webpack-plugin");
 const SitemapPlugin = require('sitemap-webpack-plugin').default;
 const ImageminPlugin = require('imagemin-webpack-plugin').default
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 
 const SRC_DIR = __dirname + '/';
 
@@ -121,6 +122,7 @@ module.exports = merge(common, {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
+        new FixStyleOnlyEntriesPlugin(),
         new MiniCssExtractPlugin(),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
@@ -166,7 +168,7 @@ module.exports = merge(common, {
             short_name: 'FirstDigital App',
             description: 'FirstDigital agence Digital ecommerce, webdesign et sécurité',
             background_color: '#007dfa',
-            theme_color:'#007dfa',
+            theme_color: '#007dfa',
             crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
             icons: [
                 {

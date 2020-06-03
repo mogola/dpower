@@ -15,6 +15,7 @@ const SitemapPlugin = require('sitemap-webpack-plugin').default;
 const CompressionPlugin = require('compression-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 
 const paths = [
     '/contact/',
@@ -113,7 +114,7 @@ module.exports = {
                     {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
-                            esModule: false,
+                            esModule: true,
                             reloadAll: true,
                             minimize: true
                         },
@@ -142,6 +143,7 @@ module.exports = {
             cache: true,
         }),
         new webpack.HotModuleReplacementPlugin(),
+        new FixStyleOnlyEntriesPlugin(),
         new MiniCssExtractPlugin(),
         new CleanWebpackPlugin({
             cleanOnceBeforeBuildPatterns: ["public/*.*", "css/*.*", "js/*.*"],
