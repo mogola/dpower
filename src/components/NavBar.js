@@ -1,5 +1,4 @@
-import * as React from 'react'
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import AnimationTypeWrapper from './AnimationTypeWrapper'
 import { Link } from "react-router-dom";
 import { motion, useCycle } from 'framer-motion';
@@ -249,6 +248,7 @@ const NavBarGeneric = ({ colorTheme }) => {
                     className="menuButton"
                     id="menuButton"
                     aria-labelledby="menuButton"
+                    name="menuButton"
                     onClick={() => toggleOpen()}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
                         <Path

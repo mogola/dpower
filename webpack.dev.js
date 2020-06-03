@@ -166,6 +166,7 @@ module.exports = merge(common, {
             short_name: 'FirstDigital App',
             description: 'FirstDigital agence Digital ecommerce, webdesign et sécurité',
             background_color: '#007dfa',
+            theme_color:'#007dfa',
             crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
             icons: [
                 {

@@ -1,43 +1,55 @@
+//import Loadable from 'react-loadable';
+import loadable from '@loadable/component';
+
 import React from 'react'
-import Home from './../home/Home'
-import HomeSecurity from './../home/HomeSecurity'
-import SectionContainerForm from './../SectionContainerForm'
-import FormContact from './../FormContact'
+// import Home from './../home/Home'
+// import HomeSecurity from './../home/HomeSecurity'
+// import SectionContainerForm from './../SectionContainerForm'
+// import FormContact from './../FormContact'
+
+const Home = loadable(() => import('./../home/Home'))
+const HomeSecurity = loadable(() => import('./../home/HomeSecurity'))
+const SectionContainerForm = loadable(() => import('./../SectionContainerForm'))
+const FormContact = loadable(() => import('./../FormContact'))
+
+// HomeSecurity.load()
+// SectionContainerForm.load()
+// FormContact.load()
 
 import {
     CONSTANT,
     ressources,
 } from './../../constants';
 
-const screenStyle = {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
-};
+// const screenStyle = {
+//     display: "flex",
+//     alignItems: "center",
+//     justifyContent: "center"
+// };
 
 const getRoute = [
     {
         path: "/",
         exact: true,
         component: <Home />,
-        screenProps: {
-            ...screenStyle
-        }
+        // screenProps: {
+        //     ...screenStyle
+        // }
     },
     {
         path: "/home",
         component: <Home />,
-        screenProps: {
-            ...screenStyle
-        }
+        // screenProps: {
+        //     ...screenStyle
+        // }
     },
     {
         path: "/security",
         component: <HomeSecurity />,
         exacta: true,
-        screenProps: {
-            ...screenStyle
-        }
+        // screenProps: {
+        //     ...screenStyle
+        // }
     },
     {
         path: "/contact",
@@ -53,9 +65,9 @@ const getRoute = [
                     content={ressources.contact['content']}
                 />]}
         />,
-        screenProps: {
-            ...screenStyle
-        }
+        // screenProps: {
+        //     ...screenStyle
+        // }
     }];
 
 export default getRoute

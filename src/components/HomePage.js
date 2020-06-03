@@ -1,13 +1,20 @@
+import loadable from '@loadable/component';
 import React, { useContext } from 'react';
 import { themeContext } from './../context/theme-context'
 
-import SectionContainer from './SectionContainer'
-import SectionContainerForm from './SectionContainerForm'
-import FormContact from './FormContact'
-import ContainerGeneric from './ContainerGeneric'
-import ContainerPlatform from './ContainerGenericPlatform'
-import ColumnsGeneric from './ColumnsGeneric'
+// import SectionContainer from './SectionContainer'
+// import SectionContainerForm from './SectionContainerForm'
+// import FormContact from './FormContact'
+// import ContainerGeneric from './ContainerGeneric'
+// import ContainerPlatform from './ContainerGenericPlatform'
+// import ColumnsGeneric from './ColumnsGeneric'
 
+const SectionContainer =  loadable(() => import('./SectionContainer'))
+const SectionContainerForm =  loadable(() => import('./SectionContainerForm'))
+const FormContact =  loadable(() => import('./FormContact'))
+const ContainerGeneric =  loadable(() => import('./ContainerGeneric'))
+const ContainerPlatform =  loadable(() => import('./ContainerGenericPlatform'))
+const ColumnsGeneric =  loadable(() => import('./ColumnsGeneric'))
 
 import {
     CONSTANT,
