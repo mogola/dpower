@@ -26,3 +26,7 @@ yarn-error.log*
 .cache/*/**
 .cache/
 dist/
+distdevelopment/
+dist/*/**
+distdevelopment/*/**
+src/

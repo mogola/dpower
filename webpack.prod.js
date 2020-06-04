@@ -16,7 +16,10 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
+const PreloadWebpackPlugin = require('preload-webpack-plugin');
 
+var envUrl = 'https://firstdigital.herokuapp.com'
+//var envUrl = 'https://www.onfirstdigital.com'
 const paths = [
     '/contact/',
     '/security/'
@@ -44,8 +47,8 @@ const options_robots = {
             cleanParam: "ref /articles/",
         },
     ],
-    sitemap: "https://firstdigital.herokuapp.com/sitemap.xml",
-    host: "https://firstdigital.herokuapp.com",
+    sitemap: envUrl + "/sitemap.xml",
+    host: envUrl,
 }
 
 module.exports = {
@@ -158,18 +161,27 @@ module.exports = {
             removeStyleLinkTypeAttributes: true,
             useShortDoctype: true,
             title: "Firstdigital agence digital Web et sécurité",
-            base: 'https://firstdigital.herokuapp.com',
-            url: 'https://firstdigital.herokuapp.com',
+            base: envUrl,
+            url: envUrl,
             minify: {
                 minifyJS: true,
                 minifyCSS: true
             },
             hash: false
         }),
+        new PreloadWebpackPlugin({
+            rel: 'preload',
+            as(entry) {
+                if (/\.css$/.test(entry)) return 'style';
+                if (/\.woff$/.test(entry)) return 'font';
+                if (/\.png$/.test(entry)) return 'image';
+                return 'script';
+            }
+        }),
         new webpack.DefinePlugin({
             'process.env': {
                 REACT_APP_API_URL: JSON.stringify('https://calm-headland-49450.herokuapp.com'),
-                PUBLIC_URL: JSON.stringify('https://firstdigital.herokuapp.com')
+                PUBLIC_URL: JSON.stringify(envUrl)
             }
         }),
         new WriteFilePlugin(),
@@ -193,12 +205,12 @@ module.exports = {
             description: 'FirstDigital agence Digital ecommerce, webdesign et sécurité',
             theme_color: '#007dfa',
             background_color: '#007dfa',
-            start_url: 'https://firstdigital.herokuapp.com',
+            start_url: envUrl,
             crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
             icons: [
                 {
                     src: path.resolve('src/images/fdfive.png'),
-                    sizes: [192, 512] // multiple sizes
+                    sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
                 }
             ]
         }),
@@ -207,6 +219,6 @@ module.exports = {
             inject: true
         }),
         new RobotstxtPlugin(options_robots),
-        new SitemapPlugin('https://firstdigital.herokuapp.com', paths)
+        new SitemapPlugin(envUrl, paths)
     ]
 };

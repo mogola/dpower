@@ -16,6 +16,7 @@ const SitemapPlugin = require('sitemap-webpack-plugin').default;
 const ImageminPlugin = require('imagemin-webpack-plugin').default
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
+const PreloadWebpackPlugin = require('preload-webpack-plugin');
 
 const SRC_DIR = __dirname + '/';
 
@@ -53,10 +54,15 @@ module.exports = merge(common, {
     mode: 'development',
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: path.join(__dirname, 'dist'),
+        contentBase: path.join(__dirname, 'distdevelopment'),
         port: 3000,
         historyApiFallback: true,
         hot: true
+    },
+    output: {
+        path: path.resolve(__dirname, 'distdevelopment'),
+        filename: '[name].main.js',
+        publicPath: '/',
     },
     optimization: {
         minimize: true,
@@ -68,7 +74,7 @@ module.exports = merge(common, {
         ],
         splitChunks: {
             chunks: 'async',
-            minSize: 30000,
+            minSize: 0,
             maxSize: 0,
             minChunks: 1,
             maxAsyncRequests: 6,
@@ -142,6 +148,15 @@ module.exports = merge(common, {
                 minifyCSS: true
             },
             hash: false
+        }),
+        new PreloadWebpackPlugin({
+            rel: 'preload',
+            as(entry) {
+                if (/\.css$/.test(entry)) return 'style';
+                if (/\.woff$/.test(entry)) return 'font';
+                if (/\.png$/.test(entry)) return 'image';
+                return 'script';
+            }
         }),
         new webpack.DefinePlugin({
             'process.env': {
