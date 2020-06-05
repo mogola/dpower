@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 
-const HomePage = React.lazy(() => import(/*webpackPrefetch: true*/ './../HomePage'))
+const HomePage = React.lazy(() => import(/*webpackPreLoad: true*/ './../HomePage'))
 // const { Input, Field, Control, Label, Help, InputFile, Select, CheckboxControlled, Textarea, RadioGroup } = Form;
 const HomeElement = ({ children }) => {
     return (

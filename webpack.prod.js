@@ -18,8 +18,15 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
 
-var envUrl = 'https://firstdigital.herokuapp.com'
-//var envUrl = 'https://www.onfirstdigital.com'
+const prodftp = false
+let envUrl
+
+if (prodftp) {
+    envUrl = 'https://www.onfirstdigital.com'
+} else {
+    envUrl = 'https://firstdigital.herokuapp.com'
+}
+
 const paths = [
     '/contact/',
     '/security/'
@@ -59,6 +66,7 @@ module.exports = {
         publicPath: '/', //relative path to output path where  devserver will look for compiled file
         hot: true,
         open: true,
+        compress: true,
         historyApiFallback: true
     },
     devtool: "source-map",
@@ -167,7 +175,8 @@ module.exports = {
                 minifyJS: true,
                 minifyCSS: true
             },
-            hash: false
+            hash: false,
+            ga_property_id: 'UA-106502299-3'
         }),
         new PreloadWebpackPlugin({
             rel: 'preload',

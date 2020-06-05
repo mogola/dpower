@@ -1,12 +1,8 @@
 //import Loadable from 'react-loadable';
-import loadable from '@loadable/component';
 import React, { Component } from 'react';
-//import NavBarGeneric from './components/NavBar'
-//import FooterContainer from './components/Footer'
+import loadable from '@loadable/component';
 import { themeContext, themes, getTheme } from './context/theme-context'
-
 import { Switch, Redirect, BrowserRouter as Router, Route } from "react-router-dom"
-
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 // Define all Route
@@ -34,6 +30,7 @@ class App extends Component {
       <Router>
         <Switch>
           <themeContext.Provider value={{ colorTheme: getTheme(colorNameTheme) }}>
+
             {/* <Navigation> */}
             <ToastContainer />
             <NavBarGeneric colorTheme={getTheme(colorNameTheme)} />

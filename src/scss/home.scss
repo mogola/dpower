@@ -27,6 +27,12 @@
 
 }
 
+body {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(180deg, #0055ff 0%, rgb(0, 153, 255) 100%);
+  }
+
 $red: #e00002;
 $neutral: #fafafa;
 $blue: #72d0eb;
@@ -209,7 +215,7 @@ html .navbar-anim {
             }
             li {
                 text-align: left;
-                font-size: 22px;
+                font-size: 20px;
                 padding-left: 20px;
                 list-style: none;
                 margin-bottom: 20px;
@@ -218,6 +224,7 @@ html .navbar-anim {
                 cursor: pointer;
                 justify-content: flex-start;
                 font-family: 'robotobold';
+                text-transform: uppercase;
             }
         }
     }

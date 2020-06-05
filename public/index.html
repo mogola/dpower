@@ -6,48 +6,62 @@
   <meta name="theme-color" content="#007dfa" />
   <meta name="description" content="Firstdigital, agence digital web, sécurité web, graphisme, webdesign, ecommerce" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!--
-      manifest.json provides metadata used when your web app is added to the
-      homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-  <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
+  <script async
+    src="https://www.googletagmanager.com/gtag/js?id=<%= htmlWebpackPlugin.options.ga_property_id %>"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', '<%= htmlWebpackPlugin.options.ga_property_id %>');
+  </script>
   <title><%= htmlWebpackPlugin.options.title %></title>
   <link rel="canonical" href=<%= htmlWebpackPlugin.options.url %> />
 </head>
 
 <body>
   <noscript>
-    <h1>FirstDigital agence Digital</h1>
-    <div class="noscriptmsg">
-      You don't have javascript enabled. Good luck with that.
-    </div>
-    <div>
-      <h1 class="title--large is-size-3-mobile title is-1 has-text-weight-bold is-spaced" style="text-align: left;">
-        Raconter votre experience digital</h1>
-      <h1 class="subtitle">De la strategie de haut niveau et la pensée creative à l'éxecution et aux performances
-        parfaites en pixels nous nous effondrons pour ajouter de la valeur à votre marque.Nous pensons grand, donnons
-        vie à des idées, concevons des expériences et racontons des histoires qui rendent les utlisateurs heureux.</h1>
-    </div>
+    You don't have javascript enabled. Good luck with that.
   </noscript>
   <div id="root"></div>
-  <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
 </body>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js').then(registration => {
+        console.log('SW registered: ', registration);
+      }).catch(registrationError => {
+        console.log('SW registration failed: ', registrationError);
+      });
+    });
+  }
+
+  let CACHE_NAME = 'sw-v1'
+  self.addEventListener('install', (event) => {
+    event.waitUntil(
+      caches.open(CACHE_NAME)
+        .then(cache => cache.addAll('./404.html'))
+    )
+  })
+  self.addEventListener('fetch', (event) => {
+    if (event.request.method === 'GET') {
+      event.respondWith(
+        caches.match(event.request)
+          .then((cached) => {
+            var networked = fetch(event.request)
+              .then((response) => {
+                let cacheCopy = response.clone()
+                caches.open(CACHE_NAME)
+                  .then(cache => cache.put(event.request, cacheCopy))
+                return response;
+              })
+              .catch(() => caches.match(offlinePage));
+            return cached || networked;
+          })
+      )
+    }
+    return;
+  });
+</script>
 
 </html>

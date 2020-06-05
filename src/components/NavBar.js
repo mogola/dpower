@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import AnimationTypeWrapper from './AnimationTypeWrapper'
 import { Link } from "react-router-dom";
-import { motion, useCycle } from 'framer-motion';
+import { motion, useCycle, AnimatePresence } from 'framer-motion';
 //import { Link } from "react-tiger-transition";
 
 import {
@@ -183,8 +183,7 @@ const NavBarGeneric = ({ colorTheme }) => {
                         <Link
                             onClick={() => toggleOpen()}
                             style={{ color: colors[i] }}
-                            to={itemNav.link}
-                            transition='glide-right'>
+                            to={itemNav.link}>
                             {itemNav.text}
                         </Link>
                     </motion.li>
@@ -218,7 +217,7 @@ const NavBarGeneric = ({ colorTheme }) => {
     }
 
     return (
-        <div>
+        <>
             <Navbar color={colorTheme} style={{ padding: "20px 0" }} transparent={false} fixed="top">
                 <Navbar.Brand style={{ paddingLeft: 40 }}>
                     <Navbar.Item renderAs="div">
@@ -237,46 +236,48 @@ const NavBarGeneric = ({ colorTheme }) => {
                 </Navbar.Brand>
             </Navbar>
             {width > breakpoint && <WrapperLinkMenu />}
-            <motion.nav
-                className="navbar-anim is-fixed-top"
-                animate={isOpen ? "open" : "closed"}
-                custom={height}
-                ref={containerRef}
-            >
-                <motion.div className="background" variants={variants}>
-                    <WrapperLinkMenu />
-                </motion.div>
-                <button
-                    className="menuButton"
-                    id="menuButton"
-                    aria-labelledby="menuButton"
-                    role="button"
-                    aria-label="menuButton"
-                    name="menuButton"
-                    onClick={() => toggleOpen()}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
-                        <Path
-                            key="1"
-                            animate={isOpen ? "open" : "closed"}
-                            d="m 3 16.5 L 17 2.5"
-                            variants={pathOneVariants}
-                        />
-                        <Path
-                            key="2"
-                            animate={isOpen ? "open" : "closed"}
-                            d="m 2 9.423 L 20 9.423"
-                            variants={pathTwoVariants}
-                        />
-                        <Path
-                            key="3"
-                            animate={isOpen ? "open" : "closed"}
-                            d="m 3 2.5 L 17 16.346"
-                            variants={pathThreeVariants}
-                        />
-                    </svg>
-                </button>
-            </motion.nav>
-        </div>
+            <AnimatePresence initial={false}>
+                <motion.nav
+                    className="navbar-anim is-fixed-top"
+                    animate={isOpen ? "open" : "closed"}
+                    custom={height}
+                    ref={containerRef}
+                >
+                    <motion.div className="background" variants={variants}>
+                        <WrapperLinkMenu />
+                    </motion.div>
+                    <button
+                        className="menuButton"
+                        id="menuButton"
+                        aria-labelledby="menuButton"
+                        role="button"
+                        aria-label="menuButton"
+                        name="menuButton"
+                        onClick={() => toggleOpen()}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
+                            <Path
+                                key="1"
+                                animate={isOpen ? "open" : "closed"}
+                                d="m 3 16.5 L 17 2.5"
+                                variants={pathOneVariants}
+                            />
+                            <Path
+                                key="2"
+                                animate={isOpen ? "open" : "closed"}
+                                d="m 2 9.423 L 20 9.423"
+                                variants={pathTwoVariants}
+                            />
+                            <Path
+                                key="3"
+                                animate={isOpen ? "open" : "closed"}
+                                d="m 3 2.5 L 17 16.346"
+                                variants={pathThreeVariants}
+                            />
+                        </svg>
+                    </button>
+                </motion.nav>
+            </AnimatePresence>
+        </>
     );
 }
 

@@ -17,8 +17,13 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
+const HtmlWebpackPartialsPlugin = require('html-webpack-partials-plugin');
 
 const SRC_DIR = __dirname + '/';
+
+const prodftp = true
+
+let envUrl = 'http://localhost:3000'
 
 const paths = [
     '/contact/',
@@ -46,157 +51,171 @@ const options_robots = {
             cleanParam: "ref /articles/",
         },
     ],
-    sitemap: "http://localhost:3000/sitemap.xml",
-    host: "http://localhost:3000",
+    sitemap: envUrl + "/sitemap.xml",
+    host: envUrl,
 }
 
-module.exports = merge(common, {
-    mode: 'development',
-    devtool: 'inline-source-map',
-    devServer: {
-        contentBase: path.join(__dirname, 'distdevelopment'),
-        port: 3000,
-        historyApiFallback: true,
-        hot: true
-    },
-    output: {
-        path: path.resolve(__dirname, 'distdevelopment'),
-        filename: '[name].main.js',
-        publicPath: '/',
-    },
-    optimization: {
-        minimize: true,
-        minimizer: [
-            new UglifyJsPlugin({
-                cache: true,
-                parallel: true,
-            })
-        ],
-        splitChunks: {
-            chunks: 'async',
-            minSize: 0,
-            maxSize: 0,
-            minChunks: 1,
-            maxAsyncRequests: 6,
-            maxInitialRequests: 4,
-            automaticNameDelimiter: '~',
-            cacheGroups: {
-                default: {
-                    minChunks: 2,
-                    priority: -20,
-                    reuseExistingChunk: true
-                },
-                defaultVendors: {
-                    test: /[\\/]node_modules[\\/]/,
-                    priority: -10
-                },
-                styles: {
-                    name: 'styles',
-                    test: /\.css$/,
-                    chunks: 'all',
-                    enforce: true,
-                },
+console.log(process.env.ND)
+
+
+module.exports = function (env) {
+    console.log(env.ND, 'env.ND')
+    if (env.ND === 'dev') {
+        return merge(common, {
+            mode: 'development',
+            devtool: 'inline-source-map',
+            devServer: {
+                contentBase: path.join(__dirname, 'distdevelopment'),
+                port: 3000,
+                historyApiFallback: true,
+                hot: true
             },
-        },
-        runtimeChunk: {
-            name: 'runtime'
-        }
-    },
-    module: {
-        rules: [{
-            test: /\.(scss|css|sass)$/,
-            use: [
-                MiniCssExtractPlugin.loader
-                , {
-                    loader: "css-loader"
-                }, {
-                    loader: "sass-loader"
+            output: {
+                path: path.resolve(__dirname, 'distdevelopment'),
+                filename: '[name].main.js',
+                publicPath: '/',
+            },
+            optimization: {
+                minimize: true,
+                minimizer: [
+                    new UglifyJsPlugin({
+                        cache: true,
+                        parallel: true,
+                    })
+                ],
+                splitChunks: {
+                    chunks: 'async',
+                    minSize: 0,
+                    maxSize: 0,
+                    minChunks: 1,
+                    maxAsyncRequests: 6,
+                    maxInitialRequests: 4,
+                    automaticNameDelimiter: '~',
+                    cacheGroups: {
+                        default: {
+                            minChunks: 2,
+                            priority: -20,
+                            reuseExistingChunk: true
+                        },
+                        defaultVendors: {
+                            test: /[\\/]node_modules[\\/]/,
+                            priority: -10
+                        },
+                        styles: {
+                            name: 'styles',
+                            test: /\.css$/,
+                            chunks: 'all',
+                            enforce: true,
+                        },
+                    },
+                },
+                runtimeChunk: {
+                    name: 'runtime'
+                }
+            },
+            module: {
+                rules: [{
+                    test: /\.(scss|css|sass)$/,
+                    use: [
+                        MiniCssExtractPlugin.loader
+                        , {
+                            loader: "css-loader"
+                        }, {
+                            loader: "sass-loader"
+                        }]
+                },
+                {
+                    test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                    use: [
+                        {
+                            loader: 'file-loader',
+                            options: {
+                                name: '[name].[ext]',
+                                outputPath: 'fonts/'
+                            }
+                        }
+                    ]
                 }]
-        },
-        {
-            test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-            use: [
-                {
-                    loader: 'file-loader',
-                    options: {
-                        name: '[name].[ext]',
-                        outputPath: 'fonts/'
-                    }
-                }
-            ]
-        }]
-    },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new FixStyleOnlyEntriesPlugin(),
-        new MiniCssExtractPlugin(),
-        new CleanWebpackPlugin(),
-        new HtmlWebpackPlugin({
-            inject: true,
-            template: SRC_DIR + '/public/index.html',
-            collapseWhitespace: true,
-            removeComments: true,
-            removeRedundantAttributes: true,
-            removeScriptTypeAttributes: false,
-            removeStyleLinkTypeAttributes: false,
-            useShortDoctype: true,
-            title: "Firstdigital agence digital Web et sécurité",
-            base: '/',
-            url: 'http://localhost:5555',
-            minify: {
-                minifyJS: true,
-                minifyCSS: true
             },
-            hash: false
-        }),
-        new PreloadWebpackPlugin({
-            rel: 'preload',
-            as(entry) {
-                if (/\.css$/.test(entry)) return 'style';
-                if (/\.woff$/.test(entry)) return 'font';
-                if (/\.png$/.test(entry)) return 'image';
-                return 'script';
-            }
-        }),
-        new webpack.DefinePlugin({
-            'process.env': {
-                REACT_APP_API_URL: JSON.stringify('http://localhost:5555')
-            }
-        }),
-        new WriteFilePlugin(),
-        new CopyPlugin({
-            patterns: [
-                { from: 'src/images', to: 'images' }
-            ],
-        }),
-        new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
-        new WorkboxPlugin.GenerateSW({
-            // these options encourage the ServiceWorkers to get in there fast
-            // and not allow any straggling "old" SWs to hang around
-            clientsClaim: true,
-            skipWaiting: true,
-            maximumFileSizeToCacheInBytes: 100000000
-        }),
-        new WebpackPwaManifest({
-            filename: "manifest.json",
-            name: 'Firstdigital Agence digital',
-            short_name: 'FirstDigital App',
-            description: 'FirstDigital agence Digital ecommerce, webdesign et sécurité',
-            background_color: '#007dfa',
-            theme_color: '#007dfa',
-            crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
-            icons: [
-                {
-                    src: path.resolve('src/images/fdfive.png'),
-                    sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
-                }
+            plugins: [
+                new webpack.HotModuleReplacementPlugin(),
+                new FixStyleOnlyEntriesPlugin(),
+                new MiniCssExtractPlugin(),
+                new CleanWebpackPlugin(),
+                new HtmlWebpackPlugin({
+                    inject: true,
+                    template: SRC_DIR + '/public/index.html',
+                    collapseWhitespace: true,
+                    removeComments: true,
+                    removeRedundantAttributes: true,
+                    removeScriptTypeAttributes: false,
+                    removeStyleLinkTypeAttributes: false,
+                    useShortDoctype: true,
+                    title: "Firstdigital agence digital Web et sécurité" + process.env.ND,
+                    base: '/',
+                    url: envUrl,
+                    minify: {
+                        minifyJS: true,
+                        minifyCSS: true
+                    },
+                    hash: false,
+                    ga_property_id: 'UA-106502299-3'
+                }),
+                new HtmlWebpackPartialsPlugin({
+                    path: 'analytics.html',
+                    location: 'head',
+                    priority: 'high'
+                }),
+                new PreloadWebpackPlugin({
+                    rel: 'preload',
+                    as(entry) {
+                        if (/\.css$/.test(entry)) return 'style';
+                        if (/\.woff$/.test(entry)) return 'font';
+                        if (/\.png$/.test(entry)) return 'image';
+                        return 'script';
+                    }
+                }),
+                new webpack.DefinePlugin({
+                    'process.env': {
+                        REACT_APP_API_URL: JSON.stringify('http://localhost:5555')
+                    }
+                }),
+                new WriteFilePlugin(),
+                new CopyPlugin({
+                    patterns: [
+                        { from: 'src/images', to: 'images' }
+                    ],
+                }),
+                new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
+                new WorkboxPlugin.GenerateSW({
+                    // these options encourage the ServiceWorkers to get in there fast
+                    // and not allow any straggling "old" SWs to hang around
+                    clientsClaim: true,
+                    skipWaiting: true,
+                    maximumFileSizeToCacheInBytes: 100000000
+                }),
+                new WebpackPwaManifest({
+                    filename: "manifest.json",
+                    name: 'Firstdigital Agence digital',
+                    short_name: 'FirstDigital App',
+                    description: 'FirstDigital agence Digital ecommerce, webdesign et sécurité',
+                    background_color: '#007dfa',
+                    theme_color: '#007dfa',
+                    crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
+                    icons: [
+                        {
+                            src: path.resolve('src/images/fdfive.png'),
+                            sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
+                        }
+                    ]
+                }),
+                new FaviconsWebpackPlugin({
+                    logo: 'src/images/favicon.ico.png',
+                    inject: true
+                }),
+                new RobotstxtPlugin(options_robots),
+                new SitemapPlugin(envUrl, paths)
             ]
-        }),
-        new FaviconsWebpackPlugin({
-            logo: 'src/images/favicon.ico.png',
-            inject: true
-        }),
-        new RobotstxtPlugin(options_robots),
-        new SitemapPlugin('http://localhost:3000', paths)
-    ]
-});
+        })
+    }
+}
