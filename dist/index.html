@@ -3,10 +3,9 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="theme-color" content="#007dfa" />
-  <meta name="description" content="Firstdigital, agence digital web, sécurité web, graphisme, webdesign, ecommerce" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+  <meta name="theme-color" content="#007dfa">
+  <meta name="description" content="Firstdigital, agence digital web, sécurité web, graphisme, webdesign, ecommerce">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <!--
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -21,16 +20,17 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
   <title>Firstdigital agence digital Web et sécurité</title>
-<link rel="manifest" href="/manifest.json" crossorigin="use-credentials" /><link rel="icon" href="/assets/favicon.png"><link href="/main.css" rel="stylesheet"></head>
+  <link rel="canonical" href="http://localhost:5555">
+<meta name="theme-color" content="#007dfa"><link rel="manifest" href="/manifest.json" crossorigin="use-credentials"><link rel="icon" href="/assets/favicon.png"><link href="/styles.css" rel="stylesheet"><link href="/index.css" rel="stylesheet"></head>
 
-<body style="background:#007dfa">
+<body>
   <noscript>
     <h1>FirstDigital agence Digital</h1>
     <div class="noscriptmsg">
       You don't have javascript enabled. Good luck with that.
     </div>
     <div>
-      <h1 class="title--large is-size-3-mobile title is-1 has-text-weight-bold is-spaced" style="text-align: left;">
+      <h1 class="title--large is-size-3-mobile title is-1 has-text-weight-bold is-spaced" style="text-align:left">
         Raconter votre experience digital</h1>
       <h1 class="subtitle">De la strategie de haut niveau et la pensée creative à l'éxecution et aux performances
         parfaites en pixels nous nous effondrons pour ajouter de la valeur à votre marque.Nous pensons grand, donnons
@@ -48,6 +48,44 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-<script type="text/javascript" src="/main.js"></script></body>
+  <script type="text/javascript">
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js').then(registration => {
+          console.log('SW registered: ', registration);
+        }).catch(registrationError => {
+          console.log('SW registration failed: ', registrationError);
+        });
+      });
+    }
+
+    let CACHE_NAME = 'sw-v1'
+    self.addEventListener('install', (event) => {
+      event.waitUntil(
+        caches.open(CACHE_NAME)
+          .then(cache => cache.addAll('./404.html'))
+      )
+    })
+    self.addEventListener('fetch', (event) => {
+      if (event.request.method === 'GET') {
+        event.respondWith(
+          caches.match(event.request)
+            .then((cached) => {
+              var networked = fetch(event.request)
+                .then((response) => {
+                  let cacheCopy = response.clone()
+                  caches.open(CACHE_NAME)
+                    .then(cache => cache.put(event.request, cacheCopy))
+                  return response;
+                })
+                .catch(() => caches.match(offlinePage));
+              return cached || networked;
+            })
+        )
+      }
+      return;
+    });
+  </script>
+<script type="text/javascript" src="/runtime.main.js"></script><script type="text/javascript" src="/styles.main.js"></script><script type="text/javascript" src="/index.main.js"></script></body>
 
 </html>
