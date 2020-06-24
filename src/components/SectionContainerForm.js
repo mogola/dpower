@@ -1,10 +1,10 @@
 import React from 'react';
 import AnimationTypeWrapper from './AnimationTypeWrapper'
+import ScrollToTop from './ScrollToTop'
 
 import {
     Columns,
     Container,
-    Image,
     Section,
     Hero,
     Icon,
@@ -17,12 +17,25 @@ const onChangeInput = (event) => {
 }
 
 const ContentImage = ({ srcImage, typeAnimation = "Slide", ...rest }) => {
+
+    const ElementImage = () =>{
+        return(
+            <figure className="image imageW">
+                <img
+                    src={srcImage}
+                    loading="lazy"
+                    className="imageW"
+                    alt=""
+                />
+            </figure>)
+    }
+
     return (
         <Columns.Column>
             <AnimationTypeWrapper
                 type={typeAnimation}
                 {...rest}
-                children={<Image src={srcImage} width="" className="imageW" />}
+                children={<ElementImage />}
             />
         </Columns.Column>
     );
@@ -31,6 +44,7 @@ const ContentImage = ({ srcImage, typeAnimation = "Slide", ...rest }) => {
 const SectionContainerForm = ({ children, srcImage, color, size, position, align = "left", icon = false }) => {
     return (
         <div>
+            <ScrollToTop />
             <Section size={size} style={{ padding: 0 }}>
                 <Hero color={color} gradient>
                     <Hero.Body>

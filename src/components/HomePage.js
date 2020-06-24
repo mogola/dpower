@@ -1,19 +1,19 @@
 //import loadable from '@loadable/component';
 import React, { Suspense } from 'react';
 import { themeContext } from './../context/theme-context'
-// import SectionContainer from './SectionContainer'
-// import SectionContainerForm from './SectionContainerForm'
-// import FormContact from './FormContact'
-// import ContainerGeneric from './ContainerGeneric'
-// import ContainerPlatform from './ContainerGenericPlatform'
-// import ColumnsGeneric from './ColumnsGeneric'
-
-const SectionContainer = React.lazy(() => import('./SectionContainer'))
-const SectionContainerForm = React.lazy(() => import('./SectionContainerForm'))
-const FormContact = React.lazy(() => import('./FormContact'))
-const ContainerGeneric = React.lazy(() => import('./ContainerGeneric'))
-const ContainerPlatform = React.lazy(() => import('./ContainerGenericPlatform'))
-const ColumnsGeneric = React.lazy(() => import('./ColumnsGeneric'))
+import SectionContainer from './SectionContainer'
+import SectionContainerForm from './SectionContainerForm'
+import FormContact from './FormContact'
+import ContainerGeneric from './ContainerGeneric'
+import ContainerPlatform from './ContainerGenericPlatform'
+import ColumnsGeneric from './ColumnsGeneric'
+import ScrollToTop from './ScrollToTop'
+// const SectionContainer = React.lazy(() => import('./SectionContainer'))
+// const SectionContainerForm = React.lazy(() => import('./SectionContainerForm'))
+// const FormContact = React.lazy(() => import('./FormContact'))
+// const ContainerGeneric = React.lazy(() => import('./ContainerGeneric'))
+// const ContainerPlatform = React.lazy(() => import('./ContainerGenericPlatform'))
+// const ColumnsGeneric = React.lazy(() => import('./ColumnsGeneric'))
 
 import {
     CONSTANT,
@@ -25,8 +25,9 @@ const HomePage = () => {
     return (
         <themeContext.Consumer>
             {({ colorTheme, toggleTheme }) => (
-                <Suspense fallback={<div>Chargement...</div>}>
+                // <Suspense fallback={<div>Chargement...</div>}>
                     <div className="default-block">
+                        <ScrollToTop />
                         <SectionContainer
                             srcImage={CONSTANT['web1']}
                             color={colorTheme}
@@ -80,7 +81,7 @@ const HomePage = () => {
                             icon={false}
                         />
                     </div>
-                </Suspense>
+               // </Suspense>
             )}
         </themeContext.Consumer>
     );

@@ -4,7 +4,6 @@ import { themeContext } from './../context/theme-context'
 import {
     Columns,
     Container,
-    Image,
     Heading,
     Section
 } from 'react-bulma-components'
@@ -13,6 +12,19 @@ import {
 import Slide from 'react-reveal/Slide'
 
 const ColumnsGeneric = ({ title, element }) => {
+
+    const ElementImage = ({srcImage}) =>{
+        return(
+            <figure className="image imageW">
+                <img
+                    src={srcImage}
+                    loading="lazy"
+                    className="imageW"
+                    alt=""
+                />
+            </figure>)
+    }
+
     return (
         <themeContext.Consumer>
             {({ colorTheme }) => (
@@ -23,7 +35,7 @@ const ColumnsGeneric = ({ title, element }) => {
                             {element.map((el, i) => (
                                 <Columns.Column size={3} key={i} style={{ padding: 30 }}>
                                     <Slide top>
-                                        <Image src={el} width="170" />
+                                    <ElementImage srcImage={el} />
                                     </Slide>
                                 </Columns.Column>
                             ))}

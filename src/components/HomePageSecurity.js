@@ -6,6 +6,8 @@ import FormContact from './FormContact'
 import ContainerGeneric from './ContainerGeneric'
 import ColumnsGeneric from './ColumnsGeneric'
 
+import ScrollToTop from './ScrollToTop'
+import { themeContext } from './../context/theme-context'
 
 import {
     CONSTANT,
@@ -15,10 +17,13 @@ import {
 
 const HomePageSecurity = () => {
     return (
+<themeContext.Consumer>
+    {({ colorTheme2, toggleTheme }) => (
         <div className="default-block">
+            <ScrollToTop />
             <SectionContainer
                 srcImage={CONSTANT['web1']}
-                color="twitter"
+                color={colorTheme2}
                 size="large"
                 title={ressources.home1['title']}
                 content={ressources.home1['content']}
@@ -33,7 +38,7 @@ const HomePageSecurity = () => {
             />
             <SectionContainer
                 srcImage={CONSTANT['web0']}
-                color="twitter"
+                color={colorTheme2}
                 size="large"
                 title={ressources.home2['title']}
                 content={ressources.home2['content']}
@@ -42,7 +47,7 @@ const HomePageSecurity = () => {
             <ContainerGeneric />
             <SectionContainer
                 srcImage={CONSTANT['web2']}
-                color="twitter"
+                color={colorTheme2}
                 size="large"
                 title={ressources.home4['title']}
                 content={ressources.home4['content']}
@@ -50,7 +55,7 @@ const HomePageSecurity = () => {
             />
             <SectionContainerForm
                 srcImage={CONSTANT['web5']}
-                color="twitter"
+                color={colorTheme2}
                 size="large"
                 position={0}
                 children={[
@@ -68,6 +73,8 @@ const HomePageSecurity = () => {
                 icon={false}
             />
         </div>
+        )}
+        </themeContext.Consumer>
     );
 }
 

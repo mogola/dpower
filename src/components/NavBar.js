@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import AnimationTypeWrapper from './AnimationTypeWrapper'
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { motion, useCycle, AnimatePresence } from 'framer-motion';
 //import { Link } from "react-tiger-transition";
 
@@ -225,9 +225,9 @@ const NavBarGeneric = ({ colorTheme }) => {
                             type="Zoom"
                             children={
                                 <motion.div animate={{ scale: [0.5, 1] }}>
-                                    <Link to="/">
+                                    <NavLink to="/">
                                         <img src={CONSTANT['logo']} alt="first digital" />
-                                    </Link>
+                                    </NavLink>
                                 </motion.div>
                             }
                         />

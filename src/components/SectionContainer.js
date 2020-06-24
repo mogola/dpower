@@ -4,7 +4,6 @@ import AnimationTypeWrapper from './AnimationTypeWrapper'
 import {
     Columns,
     Container,
-    Image,
     Heading,
     Section,
     Hero,
@@ -45,13 +44,24 @@ const SectionContainer = ({ srcImage, color, size, title, content, position, ali
         )
     }
 
+    const ElementImage = () =>{
+        return(
+            <figure className="image imageW">
+                <img
+                    src={srcImage}
+                    loading="lazy"
+                    className="imageW"
+                    alt=""
+                />
+            </figure>)
+    }
     const ContentImage = ({ direction, ...rest }) => {
         return (
             <Columns.Column>
                 <AnimationTypeWrapper
                     type={typeAnimation}
                     {...rest}
-                    children={<Image src={srcImage} width="" className="imageW" />}
+                    children={<ElementImage />}
                 />
             </Columns.Column>
         );
