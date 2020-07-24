@@ -12,6 +12,9 @@ export const themes = {
     },
     black: {
         name: 'black'
+    },
+    gold: {
+        name: 'gold'
     }
 }
 
