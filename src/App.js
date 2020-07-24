@@ -7,14 +7,12 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 // Define all Route
 import getRoute from './components/Route/Router'
+import NavBarGeneric from './components/NavBar'
 
-const loading = () => {
-  return <div>Loading...</div>
-}
 const Loading = () => <div>Loading...</div>
-const NavBarGeneric = loadable(() => import('./components/NavBar'), {
-  LoadingComponent: Loading,
-})
+// const NavBarGeneric = loadable(() => import('./components/NavBar'), {
+//   LoadingComponent: Loading,
+// })
 const FooterContainer = loadable(() => import('./components/Footer'))
 // const NavBarGeneric = Loadable({
 //   loader: () => import('./components/NavBar'),
@@ -22,50 +20,52 @@ const FooterContainer = loadable(() => import('./components/Footer'))
 // });
 
 const colorNameTheme = 'twitter'
+const colorNameTheme2 = 'black'
 
 class App extends Component {
 
   render() {
     return (
       <Router>
-        <Switch>
-          <themeContext.Provider value={{ colorTheme: getTheme(colorNameTheme) }}>
+          <Switch>
+            <themeContext.Provider value={{
+              colorTheme: getTheme(colorNameTheme),
+              colorTheme2: getTheme(colorNameTheme2) }}>
+              {/* <Navigation> */}
+              <ToastContainer />
+              <NavBarGeneric colorTheme={getTheme(colorNameTheme)} />
+              {getRoute.map((routeApp, i) => (
+                routeApp.hasOwnProperty("exact") &&
+                <Route
+                  exact
+                  key={routeApp.key || routeApp.path}
+                  path={routeApp.path}>{routeApp.component}</Route>
 
-            {/* <Navigation> */}
-            <ToastContainer />
-            <NavBarGeneric colorTheme={getTheme(colorNameTheme)} />
-            {getRoute.map((routeApp, i) => (
-              routeApp.hasOwnProperty("exact") &&
-              <Route
-                exact
-                key={routeApp.key || routeApp.path}
-                path={routeApp.path}>{routeApp.component}</Route>
+              ))}
 
-            ))}
-
-            {/* {getRoute.map((routeApp, i) => (
-              !routeApp.hasOwnProperty("exact") &&
-              <Route
-                key={routeApp.key || routeApp.path}
-                path={routeApp.path}
-                screen
-                screenProps={{
-                  style: routeApp.screenProps
-                }}
-              >
-                {routeApp.component}
-              </Route>
-            ))} */}
-            {getRoute.map((routeApp, i) => (
-              !routeApp.hasOwnProperty("exact") &&
-              <Route
-                key={routeApp.key || routeApp.path}
-                path={routeApp.path}>{routeApp.component}</Route>
-            ))}
-            <FooterContainer />
-            {/* </Navigation> */}
-          </themeContext.Provider>
-        </Switch>
+              {/* {getRoute.map((routeApp, i) => (
+                !routeApp.hasOwnProperty("exact") &&
+                <Route
+                  key={routeApp.key || routeApp.path}
+                  path={routeApp.path}
+                  screen
+                  screenProps={{
+                    style: routeApp.screenProps
+                  }}
+                >
+                  {routeApp.component}
+                </Route>
+              ))} */}
+              {getRoute.map((routeApp, i) => (
+                !routeApp.hasOwnProperty("exact") &&
+                <Route
+                  key={routeApp.key || routeApp.path}
+                  path={routeApp.path}>{routeApp.component}</Route>
+              ))}
+              <FooterContainer />
+              {/* </Navigation> */}
+            </themeContext.Provider>
+          </Switch>
       </Router>
     );
   }

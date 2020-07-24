@@ -6,6 +6,7 @@
   <meta name="theme-color" content="#007dfa">
   <meta name="description" content="Firstdigital, agence digital web, sécurité web, graphisme, webdesign, ecommerce">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+<<<<<<< HEAD
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106502299-3"></script>
   <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-106502299-3")</script>
   <title>Firstdigital agence digital Web et sécurité</title>
@@ -15,10 +16,87 @@
 <body>
   <noscript>
     You don't have javascript enabled. Good luck with that.
+=======
+  <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+  <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+  <title>Firstdigital agence digital Web et sécurité</title>
+  <link rel="canonical" href="http://localhost:5555">
+<meta name="theme-color" content="#007dfa"><link rel="manifest" href="/manifest.json" crossorigin="use-credentials"><link rel="icon" href="/assets/favicon.png"><link href="/styles.css" rel="stylesheet"><link href="/index.css" rel="stylesheet"></head>
+
+<body>
+  <noscript>
+    <h1>FirstDigital agence Digital</h1>
+    <div class="noscriptmsg">
+      You don't have javascript enabled. Good luck with that.
+    </div>
+    <div>
+      <h1 class="title--large is-size-3-mobile title is-1 has-text-weight-bold is-spaced" style="text-align:left">
+        Raconter votre experience digital</h1>
+      <h1 class="subtitle">De la strategie de haut niveau et la pensée creative à l'éxecution et aux performances
+        parfaites en pixels nous nous effondrons pour ajouter de la valeur à votre marque.Nous pensons grand, donnons
+        vie à des idées, concevons des expériences et racontons des histoires qui rendent les utlisateurs heureux.</h1>
+    </div>
+>>>>>>> 06e4f59ca434d1e7321b797850441ebd460e9019
   </noscript>
   <div id="root"></div>
 <script src="styles.js"></script><script src="main.js"></script></body>
 
+<<<<<<< HEAD
 <script>"serviceWorker"in navigator&&window.addEventListener("load",()=>{navigator.serviceWorker.register("/service-worker.js").then(e=>{console.log("SW registered: ",e)}).catch(e=>{console.log("SW registration failed: ",e)})});let CACHE_NAME="sw-v1";self.addEventListener("install",e=>{e.waitUntil(caches.open(CACHE_NAME).then(e=>e.addAll("./404.html")))}),self.addEventListener("fetch",e=>{"GET"===e.request.method&&e.respondWith(caches.match(e.request).then(t=>{var r=fetch(e.request).then(t=>{let r=t.clone();return caches.open(CACHE_NAME).then(t=>t.put(e.request,r)),t}).catch(()=>caches.match(offlinePage));return t||r}))})</script>
+=======
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  <script type="text/javascript">
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js').then(registration => {
+          console.log('SW registered: ', registration);
+        }).catch(registrationError => {
+          console.log('SW registration failed: ', registrationError);
+        });
+      });
+    }
+
+    let CACHE_NAME = 'sw-v1'
+    self.addEventListener('install', (event) => {
+      event.waitUntil(
+        caches.open(CACHE_NAME)
+          .then(cache => cache.addAll('./404.html'))
+      )
+    })
+    self.addEventListener('fetch', (event) => {
+      if (event.request.method === 'GET') {
+        event.respondWith(
+          caches.match(event.request)
+            .then((cached) => {
+              var networked = fetch(event.request)
+                .then((response) => {
+                  let cacheCopy = response.clone()
+                  caches.open(CACHE_NAME)
+                    .then(cache => cache.put(event.request, cacheCopy))
+                  return response;
+                })
+                .catch(() => caches.match(offlinePage));
+              return cached || networked;
+            })
+        )
+      }
+      return;
+    });
+  </script>
+<script type="text/javascript" src="/runtime.main.js"></script><script type="text/javascript" src="/styles.main.js"></script><script type="text/javascript" src="/index.main.js"></script></body>
+>>>>>>> 06e4f59ca434d1e7321b797850441ebd460e9019
 
 </html>

@@ -30,8 +30,10 @@
 body {
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(180deg, #0055ff 0%, rgb(0, 153, 255) 100%);
-  }
+    background: linear-gradient(180deg, #1DA1F2 0%, rgb(0, 153, 255) 100%);
+    padding: 0;
+    margin: 0;
+}
 
 $red: #e00002;
 $neutral: #fafafa;
@@ -43,13 +45,7 @@ $pink-invert: #fff;
 $family-serif: "robotoregular","Merriweather", "Georgia", serif;
 $fontAwesome: "Font Awesome 5 free";
 $tablet: 769px !default;
-body{
-width: 100vw;
-  background: linear-gradient(180deg, #0055ff 0%, rgb(0, 153, 255) 100%);
-  overflow-x: hidden;
-  padding: 0;
-  margin: 0;
-}
+
 .background {
   position: fixed;
   top: 0;
