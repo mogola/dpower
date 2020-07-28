@@ -49,6 +49,7 @@ const SectionContainer = ({ srcImage, color, size, title, content, position, ali
             <figure className="image imageW">
                 <img
                     src={srcImage}
+                    rel="preload"
                     loading="lazy"
                     className="imageW"
                     alt=""

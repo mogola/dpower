@@ -19,6 +19,7 @@ const ColumnsGeneric = ({ title, element }) => {
                 <img
                     src={srcImage}
                     loading="lazy"
+                    rel="preload"
                     className="imageW"
                     alt=""
                 />

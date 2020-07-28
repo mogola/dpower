@@ -23,6 +23,7 @@ const ContentImage = ({ srcImage, typeAnimation = "Slide", ...rest }) => {
             <figure className="image imageW">
                 <img
                     src={srcImage}
+                    rel="preload"
                     loading="lazy"
                     className="imageW"
                     alt=""

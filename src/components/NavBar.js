@@ -226,7 +226,7 @@ const NavBarGeneric = ({ colorTheme }) => {
                             children={
                                 <motion.div animate={{ scale: [0.5, 1] }}>
                                     <NavLink to="/">
-                                        <img src={CONSTANT['logo']} alt="first digital" />
+                                        <img loading="lazy" src={CONSTANT['logo']} alt="first digital" />
                                     </NavLink>
                                 </motion.div>
                             }

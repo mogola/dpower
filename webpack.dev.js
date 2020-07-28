@@ -18,6 +18,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const HtmlWebpackPartialsPlugin = require('html-webpack-partials-plugin');
+var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const SRC_DIR = __dirname + '/';
 
@@ -84,7 +85,7 @@ module.exports = function (env) {
                     })
                 ],
                 splitChunks: {
-                    chunks: 'async',
+                    chunks: 'all',
                     minSize: 0,
                     maxSize: 0,
                     minChunks: 1,
@@ -141,15 +142,25 @@ module.exports = function (env) {
                 new webpack.HotModuleReplacementPlugin(),
                 new FixStyleOnlyEntriesPlugin(),
                 new MiniCssExtractPlugin(),
+                new OptimizeCssAssetsPlugin({
+                    assetNameRegExp: /\.optimize\.css$/g,
+                    cssProcessor: require('cssnano'),
+                    cssProcessorPluginOptions: {
+                        preset: ['default', { discardComments: { removeAll: true } }],
+                    },
+                    canPrint: true
+                }),
                 new CleanWebpackPlugin(),
                 new HtmlWebpackPlugin({
                     inject: true,
+                    cache: true,
+                    scriptLoading: 'defer',
                     template: SRC_DIR + '/public/index.html',
                     collapseWhitespace: true,
                     removeComments: true,
                     removeRedundantAttributes: true,
-                    removeScriptTypeAttributes: false,
-                    removeStyleLinkTypeAttributes: false,
+                    removeScriptTypeAttributes: true,
+                    removeStyleLinkTypeAttributes: true,
                     useShortDoctype: true,
                     title: "Firstdigital agence digital Web et sécurité" + process.env.ND,
                     base: '/',
@@ -168,13 +179,8 @@ module.exports = function (env) {
                 }),
                 new PreloadWebpackPlugin({
                     rel: 'preload',
-                    as(entry) {
-                        if (/\.css$/.test(entry)) return 'style';
-                        if (/\.woff$/.test(entry)) return 'font';
-                        if (/\.png$/.test(entry)) return 'image';
-                        return 'script';
-                    }
-                }),
+                    include: 'asyncChunks'
+                  }),
                 new webpack.DefinePlugin({
                     'process.env': {
                         REACT_APP_API_URL: JSON.stringify('http://localhost:5555')
