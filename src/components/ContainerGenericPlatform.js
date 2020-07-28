@@ -36,7 +36,7 @@ const ContentGeneric = ({ childrenIcon, classes, size = 'large', iconName, color
     )
 }
 
-const ContainerPlatform = () => {
+const ContainerPlatform = ({ color = 'twitter' }) => {
     //brain , sizeIcon = 6x, classes = upper-home upper-home-margin, color = twitter'
     return (
         <themeContext.Consumer>
@@ -52,7 +52,7 @@ const ContainerPlatform = () => {
                                         top
                                         children={
                                             <ContentGeneric
-                                                color={colorTheme}
+                                                color={color}
                                                 text={ico.text}
                                                 childrenIcon={
                                                     <FontAwesomeIcon icon={['fab', `${ico.nameicon}`]} size="6x" />

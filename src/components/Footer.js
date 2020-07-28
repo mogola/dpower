@@ -18,9 +18,7 @@ const FooterContainer = () => {
                         <Content style={{ textAlign: 'center' }}>
                             <p>
                                 {/* <img src={CONSTANT['logo']} alt="first digital" /> */}
-                                <strong>First Digital</strong> by <a href="/">Dewalgo</a>. The source code is licensed
-                  <a href="/">MIT</a>. The website content
-                is licensed <a href="/">CC BY FIRST DIGITAL</a>.
+                                <strong>OnFirstDigital &copy;2020-2021 | FRANCE - PARIS | tèl : 07 80 97 50 94</strong> The website contentis licensed <a href="https://www.onfirstdigital.com">CC BY FIRST DIGITAL</a>.
                             </p>
                         </Content>
                     </Container>

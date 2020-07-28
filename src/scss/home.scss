@@ -397,6 +397,7 @@ html {
 
 // 4. Setup your Custom Colors
 $primary2: $pink;
+$whitey: #ffffff;
 $primary-invert2: findColorInvert($primary2);
 // 5. Add new color variables to the color map.
 // 4. Setup your Custom Colors
@@ -406,11 +407,15 @@ $twitter: #1DA1F2;
 $twitter-invert: findColorInvert($twitter);
 $github: #222222;
 $github-invert: findColorInvert($github);
+
+$gold:#D1A917;
+$gold-invert: findColorInvert($twitter);
 // Add new color variables to the color map.
 $addColors: (
   "twitter":($twitter, $twitter-invert),
   "linkedin": ($linkedin, $linkedin-invert),
-  "github": ($github, $github-invert)
+  "github": ($github, $github-invert),
+  "gold": ($gold, $gold-invert)
 );
 
 $colors: map-merge($colors, $addColors);
