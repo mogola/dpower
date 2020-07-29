@@ -27,12 +27,12 @@ const useDimensions = ref => {
     return dimensions.current;
 };
 
-const Path = ({props, color, colorBis,d, opacity = 1}) => {
+const Path = (props, color, d, opacity = 1) => {
     return (
         <motion.path
             fill="transparent"
             strokeWidth="3"
-            stroke={colorBis}
+            stroke="#000000"
             strokeLinecap="round"
             opacity={opacity}
             d={d}
@@ -264,21 +264,18 @@ const NavBarGeneric = ({ colorTheme }) => {
                                 animate={isOpen ? "open" : "closed"}
                                 d="m 3 16.5 L 17 2.5"
                                 variants={pathOneVariants}
-                                colorBis={colorTheme}
                             />
                             <Path
                                 key="2"
                                 animate={isOpen ? "open" : "closed"}
                                 d="m 2 9.423 L 20 9.423"
                                 variants={pathTwoVariants}
-                                colorBis={colorTheme}
                             />
                             <Path
                                 key="3"
                                 animate={isOpen ? "open" : "closed"}
                                 d="m 3 2.5 L 17 16.346"
                                 variants={pathThreeVariants}
-                                colorBis={colorTheme}
                             />
                         </svg>
                     </button>
