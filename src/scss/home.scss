@@ -3,6 +3,22 @@
 @import "~bulma/sass/utilities/derived-variables.sass";
 
 @font-face {
+    font-family: 'robotolight';
+    src: url('../fonts/roboto-light-webfont-webfont.woff2') format('woff2'),
+         url('../fonts/roboto-light-webfont-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'robotoregular';
+    src: url('../fonts/roboto-regular-webfont-webfont.woff2') format('woff2'),
+         url('../fonts/roboto-regular-webfont-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
     font-family: 'robotobold';
     src: url('../fonts/roboto-bold-webfont-webfont.woff2') format('woff2'),
          url('../fonts/roboto-bold-webfont-webfont.woff') format('woff');
@@ -27,12 +43,41 @@
 
 }
 
+@font-face {
+    font-family: 'assistantbold';
+    src: url('../fonts/assistant-bold-webfont.woff2') format('woff2'),
+         url('../fonts/assistant-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'assistantlight';
+    src: url('../fonts/assistant-light-webfont.woff2') format('woff2'),
+         url('../fonts/assistant-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'assistantregular';
+    src: url('../fonts/assistant-regular-webfont.woff2') format('woff2'),
+         url('../fonts/assistant-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+$family-serif: 'assistantregular',"robotoregular","Merriweather", "Georgia", serif;
+
 body {
     width: 100vw;
     height: 100vh;
     background: linear-gradient(180deg, #1DA1F2 0%, rgb(0, 153, 255) 100%);
     padding: 0;
     margin: 0;
+    font-family: $family-serif;
 }
 
 $red: #e00002;
@@ -42,14 +87,13 @@ $blue: #72d0eb;
 $pink: #ffb3b3;
 $pink-invert: #fff;
 // Add a serif family
-$family-serif: "robotoregular","Merriweather", "Georgia", serif;
 $fontAwesome: "Font Awesome 5 free";
 $tablet: 769px !default;
 
 .background {
   position: fixed;
   top: 0;
-left: 0;
+  left: 0;
   bottom: 0;
   width: 300px;
   background: #fff;
@@ -100,7 +144,7 @@ left: 0;
             color: #fff;
             font-size: 18px;
             font-weight: normal;
-            font-family: 'robotobold';
+            font-family: 'assistantbold';
             letter-spacing: 0.5px;
         }
         .field {
@@ -219,7 +263,7 @@ html .navbar-anim {
                 align-items: center;
                 cursor: pointer;
                 justify-content: flex-start;
-                font-family: 'robotobold';
+                font-family: 'assistantbold';
                 text-transform: uppercase;
             }
         }
@@ -256,7 +300,7 @@ html .navbar, html .navbar-anim {
     }
     &-item {
         font-size: 1.3rem;
-        font-family: 'robotobold';
+        font-family: 'assistantbold';
     }
     &-brand {
         @media screen and (max-width: $tablet - 1px){
@@ -393,6 +437,11 @@ html {
     }
 }
 
+.onFirstBaseline {
+    font-family: 'assistantBold';
+    color: #fff;
+    font-size:14px;
+}
 
 
 // 4. Setup your Custom Colors
@@ -403,12 +452,13 @@ $primary-invert2: findColorInvert($primary2);
 // 4. Setup your Custom Colors
 $linkedin: #0077B5;
 $linkedin-invert: findColorInvert($linkedin);
-$twitter: #1DA1F2;
+$twitter: #11387A;
 $twitter-invert: findColorInvert($twitter);
 $github: #222222;
 $github-invert: findColorInvert($github);
 
-$gold:#D1A917;
+// $gold:#D1A917;
+$gold:#0C4DBD;
 $gold-invert: findColorInvert($twitter);
 // Add new color variables to the color map.
 $addColors: (

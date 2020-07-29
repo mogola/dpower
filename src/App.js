@@ -1,14 +1,12 @@
 //import Loadable from 'react-loadable';
 import React, { Component } from 'react';
 import loadable from '@loadable/component';
-import { themeContext, themes, getTheme } from './context/theme-context'
+import { themeContext, themes, getTheme, getThemeHexa } from './context/theme-context'
 import { Switch, Redirect, BrowserRouter as Router, Route } from "react-router-dom"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 // Define all Route
 import getRoute from './components/Route/Router'
-import NavBarGeneric from './components/NavBar'
-
 const Loading = () => <div>Loading...</div>
 // const NavBarGeneric = loadable(() => import('./components/NavBar'), {
 //   LoadingComponent: Loading,
@@ -20,7 +18,7 @@ const FooterContainer = loadable(() => import('./components/Footer'))
 // });
 
 const colorNameTheme = 'twitter'
-const colorNameTheme2 = 'black'
+const colorNameTheme2 = 'gold'
 
 class App extends Component {
 
@@ -30,10 +28,12 @@ class App extends Component {
           <Switch>
             <themeContext.Provider value={{
               colorTheme: getTheme(colorNameTheme),
-              colorTheme2: getTheme(colorNameTheme2) }}>
+              colorTheme2: getTheme(colorNameTheme2),
+              colorThemeHexa: getThemeHexa(colorNameTheme),
+              colorTheme2Hexa: getThemeHexa(colorNameTheme2)
+              }}>
               {/* <Navigation> */}
               <ToastContainer />
-              <NavBarGeneric colorTheme={getTheme(colorNameTheme)} />
               {getRoute.map((routeApp, i) => (
                 routeApp.hasOwnProperty("exact") &&
                 <Route

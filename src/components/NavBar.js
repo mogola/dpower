@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import AnimationTypeWrapper from './AnimationTypeWrapper'
 import { NavLink, Link } from "react-router-dom";
 import { motion, useCycle, AnimatePresence } from 'framer-motion';
+// import LogoOnFirst from './LogoOnFirst'
+import LogoFirst from './LogoFirst'
 //import { Link } from "react-tiger-transition";
 
 import {
@@ -9,7 +11,6 @@ import {
 } from 'react-bulma-components'
 
 import {
-    CONSTANT,
     NAV
 } from './../constants'
 
@@ -26,12 +27,12 @@ const useDimensions = ref => {
     return dimensions.current;
 };
 
-const Path = (props, d, opacity = 1) => {
+const Path = ({props, color, colorBis,d, opacity = 1}) => {
     return (
         <motion.path
             fill="transparent"
             strokeWidth="3"
-            stroke="#1DA1F2"
+            stroke={colorBis}
             strokeLinecap="round"
             opacity={opacity}
             d={d}
@@ -226,7 +227,10 @@ const NavBarGeneric = ({ colorTheme }) => {
                             children={
                                 <motion.div animate={{ scale: [0.5, 1] }}>
                                     <NavLink to="/">
-                                        <img loading="lazy" src={CONSTANT['logo']} alt="first digital" />
+                                        {/* <img src={CONSTANT['logo']} alt="first digital" /> */}
+                                        {/* <img loading="lazy" src={LogoOnFirst} alt="fiLogoOnFirst50" width="50" /> */}
+                                        <LogoFirst />
+                                        <span className="onFirstBaseline">On First Digital.</span>
                                     </NavLink>
                                 </motion.div>
                             }
@@ -260,18 +264,21 @@ const NavBarGeneric = ({ colorTheme }) => {
                                 animate={isOpen ? "open" : "closed"}
                                 d="m 3 16.5 L 17 2.5"
                                 variants={pathOneVariants}
+                                colorBis={colorTheme}
                             />
                             <Path
                                 key="2"
                                 animate={isOpen ? "open" : "closed"}
                                 d="m 2 9.423 L 20 9.423"
                                 variants={pathTwoVariants}
+                                colorBis={colorTheme}
                             />
                             <Path
                                 key="3"
                                 animate={isOpen ? "open" : "closed"}
                                 d="m 3 2.5 L 17 16.346"
                                 variants={pathThreeVariants}
+                                colorBis={colorTheme}
                             />
                         </svg>
                     </button>

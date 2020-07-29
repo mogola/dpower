@@ -1,6 +1,7 @@
 import React from 'react';
 import AnimationTypeWrapper from './AnimationTypeWrapper'
 import ScrollToTop from './ScrollToTop'
+import NavBarGeneric from './NavBar'
 
 import {
     Columns,
@@ -45,6 +46,7 @@ const ContentImage = ({ srcImage, typeAnimation = "Slide", ...rest }) => {
 const SectionContainerForm = ({ children, srcImage, color, size, position, align = "left", icon = false }) => {
     return (
         <div>
+            <NavBarGeneric colorTheme={color} />
             <ScrollToTop />
             <Section size={size} style={{ padding: 0 }}>
                 <Hero color={color} gradient>

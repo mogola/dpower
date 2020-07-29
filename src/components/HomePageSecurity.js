@@ -6,7 +6,7 @@ import FormContact from './FormContact'
 import ContainerGeneric from './ContainerGeneric'
 import ColumnsGeneric from './ColumnsGeneric'
 const ContainerPlatform = React.lazy(() => import('./ContainerGenericPlatform'))
-
+import NavBarGeneric from './NavBar'
 
 import ScrollToTop from './ScrollToTop'
 import { themeContext } from './../context/theme-context'
@@ -22,8 +22,9 @@ const customSecurityColor = 'gold';
 const HomePageSecurity = () => {
     return (
         <themeContext.Consumer>
-            {({ colorTheme2, toggleTheme }) => (
+            {({ colorTheme2Hexa, toggleTheme }) => (
                 <div className="default-block">
+                    <NavBarGeneric colorTheme={colorTheme2Hexa} />
                     <Suspense fallback={<div>Chargement...</div>}>
                         <div className="default-block">
                             <SectionContainer
