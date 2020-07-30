@@ -30,7 +30,8 @@ class App extends Component {
               colorTheme: getTheme(colorNameTheme),
               colorTheme2: getTheme(colorNameTheme2),
               colorThemeHexa: getThemeHexa(colorNameTheme),
-              colorTheme2Hexa: getThemeHexa(colorNameTheme2)
+              colorTheme2Hexa: getThemeHexa(colorNameTheme2),
+              theme: themes
               }}>
               {/* <Navigation> */}
               <ToastContainer />

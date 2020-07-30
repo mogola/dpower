@@ -2,7 +2,7 @@
 import React, { Suspense } from 'react';
 import { themeContext } from './../context/theme-context'
 import SectionContainer from './SectionContainer'
-import SectionContainerForm from './SectionContainerForm'
+import ContainerForm from './ContainerForm'
 import FormContact from './FormContact'
 import ContainerGeneric from './ContainerGeneric'
 import ContainerPlatform from './ContainerGenericPlatform'
@@ -10,7 +10,7 @@ import ColumnsGeneric from './ColumnsGeneric'
 import ScrollToTop from './ScrollToTop'
 import NavBarGeneric from './NavBar'
 // const SectionContainer = React.lazy(() => import('./SectionContainer'))
-// const SectionContainerForm = React.lazy(() => import('./SectionContainerForm'))
+// const ContainerForm = React.lazy(() => import('./ContainerForm'))
 // const FormContact = React.lazy(() => import('./FormContact'))
 // const ContainerGeneric = React.lazy(() => import('./ContainerGeneric'))
 // const ContainerPlatform = React.lazy(() => import('./ContainerGenericPlatform'))
@@ -27,7 +27,7 @@ const HomePage = () => {
         <themeContext.Consumer>
             {({ colorTheme, colorThemeHexa, toggleTheme }) => (
                 <>
-                <NavBarGeneric colorTheme={colorThemeHexa} />
+                <NavBarGeneric colorStroke={colorThemeHexa} colorTheme={colorTheme} />
                 {/* // <Suspense fallback={<div>Chargement...</div>}> */}
                     <div className="default-block">
                         <ScrollToTop />
@@ -64,7 +64,7 @@ const HomePage = () => {
                             position={0}
                         />
                         <ContainerPlatform />
-                        <SectionContainerForm
+                        <ContainerForm
                             srcImage={CONSTANT['web5']}
                             color={colorTheme}
                             size="large"

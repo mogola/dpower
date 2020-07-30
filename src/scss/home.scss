@@ -74,7 +74,7 @@ $family-serif: 'assistantregular',"robotoregular","Merriweather", "Georgia", ser
 body {
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(180deg, #1DA1F2 0%, rgb(0, 153, 255) 100%);
+    background: linear-gradient(180deg #11387A 0%, #0C4DBD 100%);
     padding: 0;
     margin: 0;
     font-family: $family-serif;
@@ -111,7 +111,7 @@ $tablet: 769px !default;
     -ms-user-select: none;
     cursor: pointer;
     position: absolute;
-    top: 28px;
+    top: 16px;
     left: 30px;
     width: 50px;
     height: 50px;
@@ -126,12 +126,13 @@ $tablet: 769px !default;
   }
 
 #root {
-    @media screen and (max-width: $tablet - 1px){
+    @media screen and (max-width: $tablet - 1px) {
        padding-top: 40px;
     }
 
     .home-wrapper{
         position:relative;
+        width:100%;
     }
 
     .Toastify{
@@ -164,17 +165,25 @@ $tablet: 769px !default;
 
         .button{
             max-width: 100%;
-            margin: 30px auto;
+            margin: 0 auto;
             display: block;
             min-width: 100%;
             float: none;
-            height:48px;
-            border-radius:0;
+            height: 48px;
+            border-radius: 6px;
+            padding: 0;
+            box-sizing: border-box;
+            padding:0;
+            background: #FF2D00;
+            color: #ffffff;
+            font-family: 'assistantBold';
+            font-size: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .subtitle{
             text-align: center;
-            font-weight: bold;
         }
     }
 }
@@ -241,7 +250,7 @@ html .navbar-anim {
             max-height: initial !important;
             padding: 25px;
             position: absolute;
-            top: 100px;
+            top: 54px;
             width: 100%;
             z-index: 5;
             overflow: visible !important;
@@ -269,6 +278,14 @@ html .navbar-anim {
         }
     }
 }
+
+html .navbar {
+    @media screen and (max-width: $tablet - 1px){
+        width: 100% !important;
+        right: initial !important;
+    }
+}
+
 html .navbar, html .navbar-anim {
     align-items: center;
 
@@ -276,7 +293,7 @@ html .navbar, html .navbar-anim {
         @media screen and (min-width: $tablet - 1px){
             position: fixed;
             z-index: 50;
-            top: 36px;
+            top: 30px;
             left: 223px;
         }
     }
@@ -304,12 +321,56 @@ html .navbar, html .navbar-anim {
     }
     &-brand {
         @media screen and (max-width: $tablet - 1px){
-            justify-content: flex-end;
-            .react-reveal {
-                padding-right: 20px;
-                text-align: right;
+            justify-content: center;
+            padding-left: 0 !important;
+            align-items: initial !important;
+
+            &.mainBrand {
+                .navbar-item {
+                    position:fixed;
+                    top:0;
+                    left:0;
+                    > a, > div {
+                        text-align: center;
+                        margin: 0 auto;
+                        position: relative !important;
+                        top: 3px;
+                    }
+                }
             }
 
+            .react-reveal {
+                padding-right: 0;
+                text-align: center;
+                margin: 0 auto;
+                transform: translateX(50%) translateZ(0) !important;
+                position: fixed;
+                width: 100%;
+                left:0;
+
+                > div {
+                    transform: none !important;
+                }
+            }
+
+            .navbar-item {
+                width: 100%;
+            }
+
+            .onFirstBaseline {
+                font-family: 'assistantBold';
+                color: #fff;
+                font-size:14px;
+                display: block;
+                text-align: center;
+                position: relative;
+                top: -6px;
+            }
+
+            .mainLogo {
+                height: 30px !important;
+                width: 30px !important;
+            }
         }
         img {
             max-height: initial !important;
@@ -441,6 +502,27 @@ html {
     font-family: 'assistantBold';
     color: #fff;
     font-size:14px;
+    display: block;
+    text-align: center;
+    position: relative;
+}
+
+.mainBrand {
+    padding-left: 25px;
+    .mainLogo {
+        height: 46px;
+    }
+    a {
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+    }
+}
+
+.logoFirst {
+    position: fixed;
+    transform: translateX(-50%);
+    left: 50%;
 }
 
 

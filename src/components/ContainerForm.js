@@ -2,7 +2,6 @@ import React from 'react';
 import AnimationTypeWrapper from './AnimationTypeWrapper'
 import ScrollToTop from './ScrollToTop'
 import NavBarGeneric from './NavBar'
-import { themeContext } from './../context/theme-context'
 
 import {
     Columns,
@@ -44,12 +43,9 @@ const ContentImage = ({ srcImage, typeAnimation = "Slide", ...rest }) => {
     );
 }
 
-const SectionContainerForm = ({ children, srcImage, color, size, position, align = "left", icon = false }) => {
+const ContainerForm = ({ children, srcImage, color, size, position, align = "left", icon = false }) => {
     return (
-            <themeContext.Consumer>
-            {({ colorTheme, colorTheme2Hexa, toggleTheme }) => (
-            <div>
-            <NavBarGeneric colorStroke={colorTheme2Hexa} colorTheme={colorTheme} />
+        <div>
             <ScrollToTop />
             <Section size={size} style={{ padding: 0 }}>
                 <Hero color={color} gradient>
@@ -80,9 +76,7 @@ const SectionContainerForm = ({ children, srcImage, color, size, position, align
                     </Hero.Body>
                 </Hero>
             </Section>
-            </div>
-            )}
-            </themeContext.Consumer>
+        </div>
     );
 }
 
@@ -90,4 +84,4 @@ Hero.propTypes = {
     color: PropTypes.string
 }
 
-export default SectionContainerForm
+export default ContainerForm

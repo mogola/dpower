@@ -13,6 +13,7 @@ const LogoFirst = ({ color = '#ffffff'}) => {
       height='60'
       width='60'
       fill={color}
+      className="mainLogo"
     >
       <linearGradient
         x1='0'

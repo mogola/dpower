@@ -25,6 +25,7 @@ export function getTheme(nameOfTheme) {
 }
 
 export function getThemeHexa(nameOfTheme) {
+    console.log('getthemeHexa',themes["gold"].hexa);
     return themes[nameOfTheme].hexa
 }
 //export of context

@@ -205,8 +205,8 @@ module.exports = function (env) {
                     name: 'Firstdigital Agence digital',
                     short_name: 'FirstDigital App',
                     description: 'FirstDigital agence Digital ecommerce, webdesign et sécurité',
-                    background_color: '#007dfa',
-                    theme_color: '#007dfa',
+                    background_color: '#11387A',
+                    theme_color: '#11387A',
                     crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
                     icons: [
                         {

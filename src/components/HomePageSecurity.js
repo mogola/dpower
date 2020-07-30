@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 
 import SectionContainer from './SectionContainer'
-import SectionContainerForm from './SectionContainerForm'
+import ContainerForm from './ContainerForm'
 import FormContact from './FormContact'
 import ContainerGeneric from './ContainerGeneric'
 import ColumnsGeneric from './ColumnsGeneric'
@@ -22,9 +22,9 @@ const customSecurityColor = 'gold';
 const HomePageSecurity = () => {
     return (
         <themeContext.Consumer>
-            {({ colorTheme2Hexa, toggleTheme }) => (
+            {({ colorTheme2, colorTheme2Hexa, toggleTheme }) => (
                 <div className="default-block">
-                    <NavBarGeneric colorTheme={colorTheme2Hexa} />
+                    <NavBarGeneric colorStroke={colorTheme2Hexa} colorTheme={colorTheme2} />
                     <Suspense fallback={<div>Chargement...</div>}>
                         <div className="default-block">
                             <SectionContainer
@@ -64,7 +64,7 @@ const HomePageSecurity = () => {
                             <ContainerPlatform
                                 color={customSecurityColor}
                             />
-                            <SectionContainerForm
+                            <ContainerForm
                                 srcImage={CONSTANT['web5']}
                                 color={customSecurityColor}
                                 size="large"

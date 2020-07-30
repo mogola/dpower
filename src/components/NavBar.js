@@ -27,18 +27,6 @@ const useDimensions = ref => {
     return dimensions.current;
 };
 
-const Path = (props, color, d, opacity = 1) => {
-    return (
-        <motion.path
-            fill="transparent"
-            strokeWidth="3"
-            stroke="#000000"
-            strokeLinecap="round"
-            opacity={opacity}
-            d={d}
-            {...props}
-        />)
-}
 const pathOneVariants = {
     open: { d: "m 3 16.5 L 17 2.5" },
     closed: { d: "m 2 2.5 L 20 2.5" }
@@ -63,7 +51,7 @@ const pathThreeVariants = {
 
 const variants = {
     open: (height = 1000) => ({
-        clipPath: `circle(${height * 2 + 200}px at 55px 49px)`,
+        clipPath: `circle(${height * 2 + 200}px at 55px 36px)`,
         transition: {
             type: "spring",
             stiffness: 20,
@@ -71,7 +59,7 @@ const variants = {
         }
     }),
     closed: {
-        clipPath: "circle(30px at 55px 49px)",
+        clipPath: "circle(23px at 55px 36px)",
         transition: {
             delay: 0.5,
             type: "spring",
@@ -110,7 +98,7 @@ const variantsItem = {
     }
 };
 
-const NavBarGeneric = ({ colorTheme }) => {
+const NavBarGeneric = ({ colorTheme, colorStroke}) => {
 
     const [displayNav, setDisplayNav] = useState(false)
     const [animNav, setAnimNav] = useState(false)
@@ -119,7 +107,20 @@ const NavBarGeneric = ({ colorTheme }) => {
     const containerRef = useRef(null);
     const { height } = useDimensions(containerRef);
 
-    let styleDisplay, booleanAnimation, styleColorMenu
+    let styleDisplay, booleanAnimation, styleColorMenu;
+    console.log('color of path', colorTheme);
+    const Path = (props, color, d, opacity = 1) => {
+        return (
+            <motion.path
+                fill="transparent"
+                strokeWidth="3"
+                stroke={colorStroke}
+                strokeLinecap="round"
+                opacity={opacity}
+                d={d}
+                {...props}
+            />)
+    }
 
     if (displayNav) {
         styleDisplay = {
@@ -183,7 +184,7 @@ const NavBarGeneric = ({ colorTheme }) => {
                     >
                         <Link
                             onClick={() => toggleOpen()}
-                            style={{ color: colors[i] }}
+                            style={{ color: colorStroke }}
                             to={itemNav.link}>
                             {itemNav.text}
                         </Link>
@@ -219,24 +220,18 @@ const NavBarGeneric = ({ colorTheme }) => {
 
     return (
         <>
-            <Navbar color={colorTheme} style={{ padding: "20px 0" }} transparent={false} fixed="top">
-                <Navbar.Brand style={{ paddingLeft: 40 }}>
+            <Navbar color={colorTheme} style={{ padding: "10px 0" }} transparent={false} fixed="top">
+                <Navbar.Brand className="mainBrand">
                     <Navbar.Item renderAs="div">
-                        <AnimationTypeWrapper
-                            type="Zoom"
-                            children={
-                                <motion.div animate={{ scale: [0.5, 1] }}>
-                                    <NavLink to="/">
-                                        {/* <img src={CONSTANT['logo']} alt="first digital" /> */}
-                                        {/* <img loading="lazy" src={LogoOnFirst} alt="fiLogoOnFirst50" width="50" /> */}
-                                        <LogoFirst />
-                                        <span className="onFirstBaseline">On First Digital.</span>
-                                    </NavLink>
-                                </motion.div>
-                            }
-                        />
+                        <motion.div animate={{scale:[0.5, 1]}}>
+                            <NavLink to="/">
+                                {/* <img src={CONSTANT['logo']} alt="first digital" /> */}
+                                {/* <img loading="lazy" src={LogoOnFirst} alt="fiLogoOnFirst50" width="50" /> */}
+                                <LogoFirst />
+                                <span className="onFirstBaseline">On First Digital.</span>
+                            </NavLink>
+                        </motion.div>
                     </Navbar.Item>
-
                 </Navbar.Brand>
             </Navbar>
             {width > breakpoint && <WrapperLinkMenu />}
