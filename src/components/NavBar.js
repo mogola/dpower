@@ -218,22 +218,26 @@ const NavBarGeneric = ({ colorTheme, colorStroke}) => {
         return width < breakpoint ? <NavMobile /> : <NavDesktop />;
     }
 
+    const LogoSite = () => {
+        return (
+        <div className="fixedMainMenu">
+        <Navbar color={colorTheme} style={{ padding: "10px 0" }} transparent={false} fixed="top">
+            <Navbar.Brand className="mainBrand">
+                <Navbar.Item renderAs="div">
+                    <motion.div animate={{scale:[0.5, 1]}}>
+                        <NavLink to="/">
+                            <LogoFirst />
+                            <span className="onFirstBaseline">On First Digital.</span>
+                        </NavLink>
+                    </motion.div>
+                </Navbar.Item>
+            </Navbar.Brand>
+        </Navbar></div>)
+    }
+
     return (
         <>
-            <Navbar color={colorTheme} style={{ padding: "10px 0" }} transparent={false} fixed="top">
-                <Navbar.Brand className="mainBrand">
-                    <Navbar.Item renderAs="div">
-                        <motion.div animate={{scale:[0.5, 1]}}>
-                            <NavLink to="/">
-                                {/* <img src={CONSTANT['logo']} alt="first digital" /> */}
-                                {/* <img loading="lazy" src={LogoOnFirst} alt="fiLogoOnFirst50" width="50" /> */}
-                                <LogoFirst />
-                                <span className="onFirstBaseline">On First Digital.</span>
-                            </NavLink>
-                        </motion.div>
-                    </Navbar.Item>
-                </Navbar.Brand>
-            </Navbar>
+            <LogoSite />
             {width > breakpoint && <WrapperLinkMenu />}
             <AnimatePresence initial={false}>
                 <motion.nav

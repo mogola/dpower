@@ -5,7 +5,8 @@ import ContainerForm from './ContainerForm'
 import FormContact from './FormContact'
 import ContainerGeneric from './ContainerGeneric'
 import ColumnsGeneric from './ColumnsGeneric'
-const ContainerPlatform = React.lazy(() => import('./ContainerGenericPlatform'))
+// const ContainerPlatform = React.lazy(() => import('./ContainerGenericPlatform'))
+import ContainerPlatform from './ContainerGenericPlatform'
 import NavBarGeneric from './NavBar'
 
 import ScrollToTop from './ScrollToTop'
@@ -23,9 +24,11 @@ const HomePageSecurity = () => {
     return (
         <themeContext.Consumer>
             {({ colorTheme2, colorTheme2Hexa, toggleTheme }) => (
+                <>
+                <ScrollToTop />
                 <div className="default-block">
                     <NavBarGeneric colorStroke={colorTheme2Hexa} colorTheme={colorTheme2} />
-                    <Suspense fallback={<div>Chargement...</div>}>
+                    {/* <Suspense fallback={<div>Chargement...</div>}> */}
                         <div className="default-block">
                             <SectionContainer
                                 srcImage={CONSTANT['web1']}
@@ -84,8 +87,9 @@ const HomePageSecurity = () => {
                                 icon={false}
                             />
                         </div>
-                    </Suspense>
+                    {/* </Suspense> */}
                 </div>
+                </>
             )}
         </themeContext.Consumer>
     );

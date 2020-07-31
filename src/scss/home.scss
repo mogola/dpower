@@ -110,7 +110,7 @@ $tablet: 769px !default;
     -moz-user-select: none;
     -ms-user-select: none;
     cursor: pointer;
-    position: absolute;
+    position: fixed;
     top: 16px;
     left: 30px;
     width: 50px;
@@ -118,6 +118,15 @@ $tablet: 769px !default;
     border-radius: 50%;
     background: transparent;
     z-index: 5;
+}
+.fixedMainMenu {
+    @media screen and (max-width: $tablet - 1px) {
+        position: static;
+        width:100%;
+        top:0;
+        left:0;
+        z-index: 1;
+     }
 }
 @media all and (display-mode: standalone) {
     body {
@@ -127,7 +136,7 @@ $tablet: 769px !default;
 
 #root {
     @media screen and (max-width: $tablet - 1px) {
-       padding-top: 40px;
+       padding-top: 0;
     }
 
     .home-wrapper{
@@ -224,13 +233,12 @@ html {
 html .navbar-anim {
 
     @media screen and (max-width: $tablet - 1px){
-        position: fixed;
+        position: static;
         top: 0;
         left: 0;
         bottom: 0;
         width: 300px;
         z-index: 40;
-        height: 95px;
       }
 
       .navbar-customMenu {
@@ -283,6 +291,11 @@ html .navbar {
     @media screen and (max-width: $tablet - 1px){
         width: 100% !important;
         right: initial !important;
+
+        &.is-fixed-top {
+            position: static;
+            padding: 0 !important;
+        }
     }
 }
 
@@ -327,15 +340,25 @@ html .navbar, html .navbar-anim {
 
             &.mainBrand {
                 .navbar-item {
-                    position:fixed;
+                    position:static;
                     top:0;
                     left:0;
+                    width: auto;
+                    margin: 0 auto;
                     > a, > div {
                         text-align: center;
                         margin: 0 auto;
-                        position: relative !important;
+                        position: static !important;
                         top: 3px;
                     }
+
+                    // > div {
+                    //     > a {
+                    //         position: absolute !important;
+                    //         top:0;
+                    //         left:0;
+                    //     }
+                    // }
                 }
             }
 
@@ -506,7 +529,9 @@ html {
     text-align: center;
     position: relative;
 }
-
+// .mainLogo {
+//     position:absolute;
+// }
 .mainBrand {
     padding-left: 25px;
     .mainLogo {
