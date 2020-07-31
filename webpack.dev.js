@@ -21,7 +21,7 @@ const HtmlWebpackPartialsPlugin = require('html-webpack-partials-plugin');
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const SRC_DIR = __dirname + '/';
-
+const colorTheme= '#11387A';
 const prodftp = true
 
 let envUrl = 'http://localhost:3000'
@@ -205,13 +205,14 @@ module.exports = function (env) {
                     name: 'Firstdigital Agence digital',
                     short_name: 'FirstDigital App',
                     description: 'FirstDigital agence Digital ecommerce, webdesign et sécurité',
-                    background_color: '#11387A',
-                    theme_color: '#11387A',
+                    background_color: colorTheme,
+                    theme_color: colorTheme,
                     crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
                     icons: [
                         {
                             src: path.resolve('src/images/fdfive.png'),
-                            sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
+                            sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
+                            purpose: "any maskable"
                         }
                     ]
                 }),

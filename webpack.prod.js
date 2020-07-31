@@ -220,7 +220,8 @@ module.exports = {
             icons: [
                 {
                     src: path.resolve('src/images/fdfive.png'),
-                    sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
+                    sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
+                    purpose: "any maskable"
                 }
             ]
         }),
