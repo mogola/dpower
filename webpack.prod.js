@@ -18,7 +18,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
 
-const prodftp = true;
+const prodftp = false;
 const colorTheme= '#11387A';
 let envUrl
 

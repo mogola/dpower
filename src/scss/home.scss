@@ -622,13 +622,22 @@ html {
 .neutral {
     &.logoPartner {
         img {
-            max-width:250px;
-            margin: 0 auto;
+            @media screen and (max-width: $tablet - 1px){
+                max-width:120px;
+                margin: 0 auto;
+            }
         }
     }
 }
 
-
+html {
+    .imageW img {
+        @media screen and (max-width: $tablet - 1px){
+            max-width: 78%;
+            margin: 0 auto;
+        }
+    }
+}
 // 4. Setup your Custom Colors
 $primary2: $pink;
 $whitey: #ffffff;

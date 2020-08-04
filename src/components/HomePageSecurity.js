@@ -56,6 +56,7 @@ const HomePageSecurity = () => {
                             />
                             <ContainerGeneric
                                 color={customSecurityColor}
+                                classes="logoComs"
                             />
                             <SectionContainer
                                 srcImage={CONSTANT['web2']}
@@ -67,6 +68,7 @@ const HomePageSecurity = () => {
                             />
                             <ContainerPlatform
                                 color={customSecurityColor}
+                                classes="logoComs"
                             />
                             <ContainerForm
                                 srcImage={CONSTANT['web5']}
