@@ -1,7 +1,9 @@
 import React from 'react';
+import loadable from '@loadable/component';
 import AnimationTypeWrapper from './AnimationTypeWrapper'
 import ScrollToTop from './ScrollToTop'
 import NavBarGeneric from './NavBar'
+const FooterContainer = loadable(() => import('./Footer'))
 import { themeContext } from './../context/theme-context'
 
 import {
@@ -80,6 +82,7 @@ const SectionContainerForm = ({ children, srcImage, color, size, position, align
                     </Hero.Body>
                 </Hero>
             </Section>
+            <FooterContainer colorTheme={colorTheme} />
             </div>
             )}
             </themeContext.Consumer>

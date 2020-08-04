@@ -18,7 +18,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
 
-const prodftp = false;
+const prodftp = true;
 const colorTheme= '#11387A';
 let envUrl
 
@@ -169,7 +169,7 @@ module.exports = {
             removeScriptTypeAttributes: true,
             removeStyleLinkTypeAttributes: true,
             useShortDoctype: true,
-            title: "Firstdigital agence digital Web et sécurité",
+            title: "OnFirstDigital agence digital Web, sécurité et conseil",
             base: envUrl,
             url: envUrl,
             minify: {
@@ -210,9 +210,9 @@ module.exports = {
         }),
         new WebpackPwaManifest({
             filename: "manifest.json",
-            name: 'Firstdigital Agence digital',
-            short_name: 'FirstDigital App',
-            description: 'FirstDigital agence Digital ecommerce, webdesign et sécurité',
+            name: 'OnFirstdigital Agence digital',
+            short_name: 'OnFirstDigital',
+            description: 'OnFirstDigital agence Digital ecommerce, webdesign et sécurité',
             theme_color: colorTheme,
             background_color: colorTheme,
             start_url: envUrl,

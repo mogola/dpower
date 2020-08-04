@@ -11,7 +11,7 @@ import {
 //animation global
 import Slide from 'react-reveal/Slide'
 
-const ColumnsGeneric = ({ title, element }) => {
+const ColumnsGeneric = ({ title, element, classes }) => {
 
     const ElementImage = ({srcImage}) =>{
         return(
@@ -29,7 +29,7 @@ const ColumnsGeneric = ({ title, element }) => {
     return (
         <themeContext.Consumer>
             {({ colorTheme }) => (
-                <Section className="neutral" size="medium">
+                <Section className={`neutral ${classes}`} size="medium">
                     <Container style={{ textAlign: "center" }}>
                         <Heading style={{ marginBottom: 50 }} size={1} className="upper-home is-size-3-mobile" renderAs="p">{title}</Heading>
                         <Columns centered={true} style={{ paddingTop: 50, alignItems: "center" }}>

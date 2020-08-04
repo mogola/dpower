@@ -52,7 +52,7 @@ const ICON = [
         'nameicon': 'brain'
     },
     {
-        'text': 'Être cool',
+        'text': 'Enthousiasme',
         'nameicon': 'grin'
     },
     {
@@ -106,7 +106,8 @@ const CONSTANT = {
     "web0": path + "application_block_2.png",
     "web1": path + "application_block_1.png",
     "web2": path + "application_block_3.png",
-    "web5": path + "application_block_5.png"
+    "web5": path + "application_block_5.png",
+    "web6": path + "undraw_web_devices_ad58.png"
 }
 
 const NAV = [

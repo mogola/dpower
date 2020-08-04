@@ -1,6 +1,5 @@
 //import Loadable from 'react-loadable';
 import React, { Component } from 'react';
-import loadable from '@loadable/component';
 import { themeContext, themes, getTheme, getThemeHexa } from './context/theme-context'
 import { Switch, Redirect, BrowserRouter as Router, Route } from "react-router-dom"
 import { ToastContainer } from 'react-toastify';
@@ -11,7 +10,7 @@ const Loading = () => <div>Loading...</div>
 // const NavBarGeneric = loadable(() => import('./components/NavBar'), {
 //   LoadingComponent: Loading,
 // })
-const FooterContainer = loadable(() => import('./components/Footer'))
+
 // const NavBarGeneric = Loadable({
 //   loader: () => import('./components/NavBar'),
 //   loading: loading
@@ -63,7 +62,6 @@ class App extends Component {
                   key={routeApp.key || routeApp.path}
                   path={routeApp.path}>{routeApp.component}</Route>
               ))}
-              <FooterContainer />
               {/* </Navigation> */}
             </themeContext.Provider>
           </Switch>

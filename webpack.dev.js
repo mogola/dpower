@@ -162,7 +162,7 @@ module.exports = function (env) {
                     removeScriptTypeAttributes: true,
                     removeStyleLinkTypeAttributes: true,
                     useShortDoctype: true,
-                    title: "Firstdigital agence digital Web et sécurité" + process.env.ND,
+                    title: "OnFirstdigital agence digital Web et sécurité" + process.env.ND,
                     base: '/',
                     url: envUrl,
                     minify: {
@@ -202,9 +202,9 @@ module.exports = function (env) {
                 }),
                 new WebpackPwaManifest({
                     filename: "manifest.json",
-                    name: 'Firstdigital Agence digital',
-                    short_name: 'FirstDigital App',
-                    description: 'FirstDigital agence Digital ecommerce, webdesign et sécurité',
+                    name: 'OnFirstdigital Agence digital',
+                    short_name: 'OnFirstDigital App',
+                    description: 'OnFirstDigital agence Digital ecommerce, webdesign et sécurité',
                     background_color: colorTheme,
                     theme_color: colorTheme,
                     crossorigin: 'use-credentials', //can be null, use-credentials or anonymous

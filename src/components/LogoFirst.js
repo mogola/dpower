@@ -1,6 +1,6 @@
 import React from "react";
 
-const LogoFirst = ({ color = '#ffffff'}) => {
+const LogoFirst = ({ classes = 'mainLogo', color = '#ffffff'}) => {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -13,7 +13,7 @@ const LogoFirst = ({ color = '#ffffff'}) => {
       height='60'
       width='60'
       fill={color}
-      className="mainLogo"
+      className={classes}
     >
       <linearGradient
         x1='0'

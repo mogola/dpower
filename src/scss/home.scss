@@ -78,6 +78,10 @@ body {
     padding: 0;
     margin: 0;
     font-family: $family-serif;
+    @media screen and (min-width: $tablet - 1px){
+        padding-top: 96px !important;
+    }
+
 }
 
 $red: #e00002;
@@ -459,10 +463,53 @@ html .navbar, html .navbar-anim {
 }
 
 html {
+    .columns.is-multiline {
+        @media screen and (max-width: $tablet - 1px){
+            padding-top: 0 !important;
+
+        }
+    }
+    .logoComs {
+        .columns.is-multiline {
+            @media screen and (max-width: $tablet - 1px){
+                display: flex;
+            }
+            .column {
+                @media screen and (max-width: $tablet - 1px){
+                    flex-basis: initial;
+                    padding-top: 25px;
+                    padding-right: 0;
+                    padding-left: 0;
+                    width: 50%;
+                    min-width: initial;
+                }
+            }
+        }
+    }
+    .section{
+        &.is-large{
+            padding: 2rem 1.5rem;
+        }
+
+        &.is-medium {
+            padding: 5rem 1.5rem;
+            @media screen and (max-width: $tablet - 1px){
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        .column.is-2 {
+            min-width: 180px;
+        }
+    }
     .title {
         &--large {
             text-transform: initial;
             font-size:4.2rem;
+            font-family: 'assistantBold';
+            &.is-1 {
+                font-size: 2.3rem;
+            }
         }
     }
 
@@ -471,11 +518,16 @@ html {
         width: auto !important;
     }
 
-    .upper-home {
-        text-transform: uppercase;
-        font-weight: bold;
-        &-margin {
-            margin-top: 15px;
+    .title {
+        &.upper-home {
+            text-transform: initial;
+            font-family: 'assistantBold';
+            &.is-1 {
+                color: #FF2D00;
+            }
+            &-margin {
+                margin-top: 15px;
+            }
         }
     }
 
@@ -492,9 +544,22 @@ html {
         position: static !important;
     }
     .footer {
-        a{
+        background: transparent;
+        strong {
+            font-family: 'assistantBold';
+            color: #FF2D00;
+            font-size:19px;
+            letter-spacing:0.5px;
+        }
+        a {
             color:#363636;
             font-weight: bold;
+            font-family: 'assistantBold';
+            color: #FF2D00;
+        }
+
+        p {
+            font-family: 'assistantRegular';
         }
     }
     .contact-fl {
@@ -518,6 +583,10 @@ html {
                 }
             }
         }
+    }
+
+    .mainFooterLogo {
+        padding-bottom: 10px;
     }
 }
 
@@ -548,6 +617,15 @@ html {
     position: fixed;
     transform: translateX(-50%);
     left: 50%;
+}
+
+.neutral {
+    &.logoPartner {
+        img {
+            max-width:250px;
+            margin: 0 auto;
+        }
+    }
 }
 
 

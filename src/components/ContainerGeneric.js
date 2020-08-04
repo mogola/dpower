@@ -37,18 +37,18 @@ const ContentGeneric = ({ childrenIcon, classes, size = 'large', iconName, color
     )
 }
 
-const ContainerGeneric = ({ color = 'twitter' }) => {
+const ContainerGeneric = ({ color = 'twitter', classes = ''}) => {
     //brain , sizeIcon = 6x, classes = upper-home upper-home-margin, color = twitter'
 
     return (
         <themeContext.Consumer>
             {({ colorTheme }) => (
-                <Section className="neutral" size="medium">
+                <Section className={`neutral ${classes}`} size="medium">
                     <Container style={{ textAlign: "center" }}>
                         <Heading style={{ marginBottom: 50 }} size={1} className="upper-home is-size-3-mobile" renderAs="p">Notre vision avec 5 règles simples</Heading>
                         <Columns centered={true} style={{ paddingTop: 50, alignItems: "center" }}>
                             {ICON.map((ico, i) => (
-                                <Columns.Column size={4} key={i} >
+                                <Columns.Column size={2} key={i} >
                                     <AnimationTypeWrapper
                                         type="Slide"
                                         top
@@ -57,7 +57,7 @@ const ContainerGeneric = ({ color = 'twitter' }) => {
                                                 color={color}
                                                 text={ico.text}
                                                 childrenIcon={
-                                                    <FontAwesomeIcon icon={ico.nameicon} size="6x" />
+                                                    <FontAwesomeIcon icon={ico.nameicon} size="3x" />
                                                 }
                                                 classes="upper-home upper-home-margin "
                                             />}

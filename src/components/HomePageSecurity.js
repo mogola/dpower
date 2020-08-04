@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-
+import loadable from '@loadable/component';
 import SectionContainer from './SectionContainer'
 import ContainerForm from './ContainerForm'
 import FormContact from './FormContact'
@@ -8,6 +8,7 @@ import ColumnsGeneric from './ColumnsGeneric'
 // const ContainerPlatform = React.lazy(() => import('./ContainerGenericPlatform'))
 import ContainerPlatform from './ContainerGenericPlatform'
 import NavBarGeneric from './NavBar'
+const FooterContainer = loadable(() => import('./Footer'))
 
 import ScrollToTop from './ScrollToTop'
 import { themeContext } from './../context/theme-context'
@@ -78,7 +79,11 @@ const HomePageSecurity = () => {
                                         content={ressources.contact['content']}
                                     />]}
                             />
-                            <ColumnsGeneric title="Ils nous ont fait confiance" element={LOGO} />
+                            <ColumnsGeneric
+                                title="Ils nous ont fait confiance"
+                                element={LOGO}
+                                classes="logoPartner"
+                            />
                             <SectionContainer
                                 color={customSecurityColor}
                                 size="medium"
@@ -86,6 +91,7 @@ const HomePageSecurity = () => {
                                 align="center"
                                 icon={false}
                             />
+                            <FooterContainer colorTheme={colorTheme2}/>
                         </div>
                     {/* </Suspense> */}
                 </div>

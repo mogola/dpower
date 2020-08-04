@@ -1,4 +1,4 @@
-//import loadable from '@loadable/component';
+import loadable from '@loadable/component';
 import React, { Suspense } from 'react';
 import { themeContext } from './../context/theme-context'
 import SectionContainer from './SectionContainer'
@@ -9,6 +9,7 @@ import ContainerPlatform from './ContainerGenericPlatform'
 import ColumnsGeneric from './ColumnsGeneric'
 import ScrollToTop from './ScrollToTop'
 import NavBarGeneric from './NavBar'
+const FooterContainer = loadable(() => import('./Footer'))
 // const SectionContainer = React.lazy(() => import('./SectionContainer'))
 // const ContainerForm = React.lazy(() => import('./ContainerForm'))
 // const FormContact = React.lazy(() => import('./FormContact'))
@@ -54,7 +55,7 @@ const HomePage = () => {
                             content={ressources.home2['content']}
                             position={0}
                         />
-                        <ContainerGeneric />
+                        <ContainerGeneric classes="logoComs" />
                         <SectionContainer
                             srcImage={CONSTANT['web2']}
                             color={colorTheme}
@@ -63,7 +64,7 @@ const HomePage = () => {
                             content={ressources.home4['content']}
                             position={0}
                         />
-                        <ContainerPlatform />
+                        <ContainerPlatform classes="logoComs"/>
                         <ContainerForm
                             srcImage={CONSTANT['web5']}
                             color={colorTheme}
@@ -75,7 +76,11 @@ const HomePage = () => {
                                     content={ressources.contact['content']}
                                 />]}
                         />
-                        <ColumnsGeneric title="Ils nous ont fait confiance" element={LOGO} />
+                        <ColumnsGeneric
+                            title="Ils nous ont fait confiance"
+                            element={LOGO}
+                            classes="logoPartner"
+                        />
                         <SectionContainer
                             color="white"
                             size="medium"
@@ -83,6 +88,7 @@ const HomePage = () => {
                             align="center"
                             icon={false}
                         />
+                        <FooterContainer colorTheme={colorTheme} />
                     </div>
                {/* // </Suspense> */}
                </>
