@@ -97,7 +97,7 @@ class App extends Component {
               bubbleStyle={{background: "#FF2D00", fontWeight:"bold"}}
               bubbleOptionStyle={{background: "#11387A", fontWeight:"bold"}}
               enableSmoothScroll={true}
-              width={200}
+              width="200"
               steps={[
                 {
                   id: '1',
@@ -155,18 +155,23 @@ class App extends Component {
                 },
                 {
                   id: '7',
-                  message: 'Quelle est votre budget ?',
+                  message: 'Avez-vous plus de détails à nous communiquer ?',
                   trigger: 'budget'
                 },
                 {
                   id: 'budget',
-                  options: [
-                    { value:'< 500 €', label: '< 500 €', trigger: '6' },
-                    { value: 'entre 500 € et 5000 €', label: 'entre 500 € et 5000 €', trigger: '6' },
-                    { value: 'entre 5000 € et 10000 €', label: 'entre 5000 € et 10000 €', trigger: '6' },
-                    { value: 'Pas de budget défini', label: 'Pas de budget défini', trigger: '6' },
-                  ]
+                  user: true,
+                  trigger: 6
                 }
+                // {
+                //   id: 'budget',
+                //   options: [
+                //     { value:'< 500 €', label: '< 500 €', trigger: '6' },
+                //     { value: 'entre 500 € et 5000 €', label: 'entre 500 € et 5000 €', trigger: '6' },
+                //     { value: 'entre 5000 € et 10000 €', label: 'entre 5000 € et 10000 €', trigger: '6' },
+                //     { value: 'Pas de budget défini', label: 'Pas de budget défini', trigger: '6' },
+                //   ]
+                // }
                 ]} />
               {/* </Navigation> */}
             </themeContext.Provider>
