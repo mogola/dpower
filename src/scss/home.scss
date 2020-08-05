@@ -631,6 +631,16 @@ html {
 }
 
 html {
+    .rsc-ts-user {
+        .rsc-ts-bubble {
+            background: #ffffff !important;
+            color:#333 !important;
+        }
+    }
+    .rsc-header {
+        background: #FF2D00;
+    }
+
     .imageW img {
         @media screen and (max-width: $tablet - 1px){
             max-width: 78%;
