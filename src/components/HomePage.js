@@ -88,7 +88,7 @@ const HomePage = () => {
                             align="center"
                             icon={false}
                         />
-                        <FooterContainer colorTheme={colorTheme} />
+                        <FooterContainer />
                     </div>
                {/* // </Suspense> */}
                </>

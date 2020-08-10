@@ -82,7 +82,7 @@ const SectionContainerForm = ({ children, srcImage, color, size, position, align
                     </Hero.Body>
                 </Hero>
             </Section>
-            <FooterContainer colorTheme={colorTheme} />
+            <FooterContainer />
             </div>
             )}
             </themeContext.Consumer>

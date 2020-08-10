@@ -11,6 +11,7 @@ const Home = loadable(() => import('./../home/Home'))
 const HomeSecurity = loadable(() => import('./../home/HomeSecurity'))
 const SectionContainerForm = loadable(() => import('./../SectionContainerForm'))
 const FormContact = loadable(() => import('./../FormContact'))
+const BusinessCard = loadable(() => import('./../BusinessCard'))
 
 // HomeSecurity.load()
 // SectionContainerForm.load()
@@ -46,6 +47,22 @@ const getRoute = [
     {
         path: "/security",
         component: <HomeSecurity />,
+        exacta: true,
+        // screenProps: {
+        //     ...screenStyle
+        // }
+    },
+    {
+        path: "/business_card_MS",
+        component: <BusinessCard src={CONSTANT["business1"]} />,
+        exacta: true,
+        // screenProps: {
+        //     ...screenStyle
+        // }
+    },
+    {
+        path: "/business_card_SY",
+        component: <BusinessCard src={CONSTANT["business2"]} />,
         exacta: true,
         // screenProps: {
         //     ...screenStyle

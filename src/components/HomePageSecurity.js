@@ -93,7 +93,7 @@ const HomePageSecurity = () => {
                                 align="center"
                                 icon={false}
                             />
-                            <FooterContainer colorTheme={colorTheme2}/>
+                            <FooterContainer />
                         </div>
                     {/* </Suspense> */}
                 </div>

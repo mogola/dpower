@@ -96,8 +96,9 @@ const ICONBRAND = [
 
 const LOGO = [
     path + "rapelite.png",
-    path + "dewalgo-logo.png",
-    path + "lionsport.png"
+    path + "Jbsportconsulting_logo.png",
+    path + "pastille-bastille-day-logo.png",
+    path + "dewalgo-logo.png"
 ]
 
 const CONSTANT = {
@@ -107,7 +108,9 @@ const CONSTANT = {
     "web1": path + "application_block_1.png",
     "web2": path + "application_block_3.png",
     "web5": path + "application_block_5.png",
-    "web6": path + "undraw_web_devices_ad58.png"
+    "web6": path + "undraw_web_devices_ad58.png",
+    "business1": path + "business_card_MS.png",
+    "business2": path + "business_card_SY.png"
 }
 
 const NAV = [

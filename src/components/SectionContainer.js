@@ -29,7 +29,7 @@ const SectionContainer = ({ srcImage, color, size, title, content, position, ali
                     <div>
                         {icon &&
                             <Icon size="large" className="i-home" color="black">
-                                <FontAwesomeIcon icon="hands-helping" size="6x" />
+                                <FontAwesomeIcon icon="hands-helping" size="3x" />
                             </Icon>
                         }
                         <Heading style={{ "textAlign": align }} className="title--large is-size-3-mobile" weight="bold" spaced={true} size={1}>

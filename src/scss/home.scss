@@ -489,12 +489,15 @@ html {
     .section{
         &.is-large{
             padding: 2rem 1.5rem;
+            @media screen and (max-width: $tablet - 1px){
+                padding: 2rem 24px;
+            }
         }
 
         &.is-medium {
             padding: 5rem 1.5rem;
             @media screen and (max-width: $tablet - 1px){
-                padding: 3rem 1.5rem;
+                padding: 3rem 24px;
             }
         }
 
@@ -547,19 +550,19 @@ html {
         background: transparent;
         strong {
             font-family: 'assistantBold';
-            color: #FF2D00;
+            color: #11387A;
             font-size:19px;
             letter-spacing:0.5px;
         }
         a {
-            color:#363636;
             font-weight: bold;
             font-family: 'assistantBold';
-            color: #FF2D00;
+            color: #11387A;
         }
 
         p {
             font-family: 'assistantRegular';
+            color: #11387A;
         }
     }
     .contact-fl {
@@ -647,6 +650,13 @@ html {
             margin: 0 auto;
         }
     }
+}
+
+.businessCard {
+    width:100%;
+    max-width: 620px;
+    display: block;
+    margin: 0 auto;
 }
 // 4. Setup your Custom Colors
 $primary2: $pink;
