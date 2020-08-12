@@ -489,6 +489,7 @@ html {
     .section{
         &.is-large{
             padding: 2rem 1.5rem;
+            letter-spacing: 1px;
             @media screen and (max-width: $tablet - 1px){
                 padding: 2rem 24px;
             }
@@ -561,8 +562,9 @@ html {
         }
 
         p {
-            font-family: 'assistantRegular';
+            font-family: 'assistantBold';
             color: #11387A;
+            font-size: 19px;
         }
     }
     .contact-fl {
@@ -640,10 +642,13 @@ html {
             color:#333 !important;
         }
     }
-    .rsc-header {
-        background: #FF2D00;
+    .rsc-ts-bubble, .rsc-os-option-element {
+        font-size: 18px;
     }
-
+    .gdbNji {
+        color: #e00002;
+        font-family: 'assistantBold';
+    }
     .imageW img {
         @media screen and (max-width: $tablet - 1px){
             max-width: 78%;

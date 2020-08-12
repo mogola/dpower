@@ -162,7 +162,7 @@ module.exports = function (env) {
                     removeScriptTypeAttributes: true,
                     removeStyleLinkTypeAttributes: true,
                     useShortDoctype: true,
-                    title: "OnFirstdigital agence digital Web et sécurité" + process.env.ND,
+                    title: "OnFirstdigital agence digital Web et sécurité",
                     base: '/',
                     url: envUrl,
                     minify: {
@@ -207,12 +207,31 @@ module.exports = function (env) {
                     description: 'OnFirstDigital agence Digital ecommerce, webdesign et sécurité',
                     background_color: colorTheme,
                     theme_color: colorTheme,
+                    inject: true,
+                    fingerprints: true,
+                    ios: true,
                     crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
                     icons: [
                         {
                             src: path.resolve('src/images/fdfive.png'),
-                            sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
-                            purpose: "any maskable"
+                            sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
+                        },
+                        {
+                            src: path.resolve('src/images/fdfive.png'),
+                            size: '1024x1024',
+                            purpose: 'maskable'
+                        },
+                        {
+                            src: path.resolve('src/images/fdfive.png'),
+                            sizes: [120, 152, 167, 180, 1024],
+                            destination: path.join('icons', 'ios'),
+                            ios: true
+                          },
+                        {
+                            src: path.resolve('src/images/fdfive.png'),
+                            size: 1024,
+                            destination: path.join('icons', 'ios'),
+                            ios: 'startup'
                         }
                     ]
                 }),

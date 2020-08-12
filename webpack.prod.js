@@ -215,13 +215,32 @@ module.exports = {
             description: 'OnFirstDigital agence Digital ecommerce, webdesign et sécurité',
             theme_color: colorTheme,
             background_color: colorTheme,
+            orientation: "portrait",
             start_url: envUrl,
+            inject: true,
+            fingerprints: true,
             crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
             icons: [
                 {
                     src: path.resolve('src/images/fdfive.png'),
-                    sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
-                    purpose: "any maskable"
+                    sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
+                },
+                {
+                    src: path.resolve('src/images/fdfive.png'),
+                    size: '1024x1024',
+                    purpose: 'maskable'
+                },
+                {
+                    src: path.resolve('src/images/fdfive.png'),
+                    sizes: [120, 152, 167, 180, 1024],
+                    destination: path.join('icons', 'ios'),
+                    ios: true
+                  },
+                {
+                    src: path.resolve('src/images/fdfive.png'),
+                    size: 1024,
+                    destination: path.join('icons', 'ios'),
+                    ios: 'startup'
                 }
             ]
         }),

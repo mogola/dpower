@@ -2,12 +2,12 @@ const path = './../images/';
 
 const ressources = {
     "home1": {
-        "title": "Créez des expériences digitales mobiles et web adaptatives avec firstdigital",
+        "title": "Créez des expériences digitales mobiles et web adaptatives avec Onfirstdigital",
         "content": "De la strategie de haut niveau et la pensée creative à l\'éxecution et aux performances parfaites en pixels nous nous effondrons pour ajouter de la valeur à votre marque.Nous pensons grand, donnons vie à des idées, concevons des expériences et racontons des histoires qui rendent les utlisateurs heureux.",
     },
     "home2": {
-        "title": "Conseil, agence, entièrement numérique",
-        "content": "Nous résolvons les défis numériques et créons des expériences client mémorables grâce à la conception, l\'ingénierie et l\'optimisation de produits"
+        "title": "Nous apportons de la valeur à vos projets",
+        "content": "Nous résolvons les défis numériques et créons des expériences client mémorables grâce à la conception, l\'ingénierie et l\'optimisation de produits."
     },
     "home3": {
         "title": "Nous croyons à la collaboration et à la co-création",
