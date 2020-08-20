@@ -1,6 +1,5 @@
 //import Loadable from 'react-loadable';
 import React, { Component } from 'react';
-import CC from "CookieConsent";
 import { themeContext, themes, getTheme, getThemeHexa } from './context/theme-context'
 import { ThemeProvider } from 'styled-components';
 import { Switch, Redirect, BrowserRouter as Router, Route } from "react-router-dom"
