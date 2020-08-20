@@ -25,6 +25,7 @@ const colorTheme= '#11387A';
 const prodftp = true
 
 let envUrl = 'http://localhost:3000'
+let facebookID = "346366339715645"
 
 const paths = [
     '/contact/',
@@ -170,7 +171,9 @@ module.exports = function (env) {
                         minifyCSS: true
                     },
                     hash: false,
-                    ga_property_id: 'UA-106502299-3'
+                    ga_property_id: 'UA-106502299-3',
+                    facebook_id: facebookID,
+                    imageFb : path.resolve('src/images/logo_fb_app.png')
                 }),
                 new HtmlWebpackPartialsPlugin({
                     path: 'analytics.html',

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="theme-color" content="#11387A" />
-  <meta name="description" content="OnFirstdigital est une agence digital web, conseil, sécurité web, graphisme, webdesign, ecommerce" />
+  <meta name="description" content="OnFirstdigital est une agence digital web, conseil, sécurité web, conception visuelle, webdesign, ecommerce" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script async
     src="https://www.googletagmanager.com/gtag/js?id=<%= htmlWebpackPlugin.options.ga_property_id %>"></script>
@@ -14,14 +14,53 @@
     gtag('js', new Date());
     gtag('config', '<%= htmlWebpackPlugin.options.ga_property_id %>');
   </script>
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '<%= htmlWebpackPlugin.options.facebook_id %>',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v8.0'
+    });
+
+    FB.AppEvents.logPageView();
+
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
   <title><%= htmlWebpackPlugin.options.title %></title>
   <link rel="canonical" href=<%= htmlWebpackPlugin.options.url %> />
 
+  <meta property="fb:app_id" content=<%= htmlWebpackPlugin.options.facebook_id %>>
+<meta property="og:url" content=<%= htmlWebpackPlugin.options.url %>>
+<meta property="og:type" content="website">
+<meta property="og:title" content="OnFirstdigital agency">
+<meta property="og:image" content=<%= htmlWebpackPlugin.options.imageFb %>>
+<meta property="og:description" content="OnFirstdigital est une agence digital web, conseil, sécurité web, conception visuelle, webdesign, ecommerce">
+<meta property="og:site_name" content="OnFirstdigital">
+<meta property="og:locale" content="fr_FR">
+<meta property="article:author" content="OnFirstdigital">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@onfirstdigital">
+<meta name="twitter:creator" content="@individual_account">
+<meta name="twitter:url" content=<%= htmlWebpackPlugin.options.url %>>
+<meta name="twitter:title" content="OnFirstdigital">
+<meta name="twitter:description" content="Content description less than 200 characters">
+<meta name="twitter:image" content="OnFirstdigital est une agence digital web, conseil, sécurité web, conception visuelle, webdesign, ecommerce">
 <body>
   <noscript>
     You don't have javascript enabled. Good luck with that.
   </noscript>
   <div id="root"></div>
+  <div id="content"></div>
 </body>
 
 <script>

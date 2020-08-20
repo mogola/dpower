@@ -12,7 +12,9 @@ const HomeSecurity = loadable(() => import('./../home/HomeSecurity'))
 const SectionContainerForm = loadable(() => import('./../SectionContainerForm'))
 const FormContact = loadable(() => import('./../FormContact'))
 const BusinessCard = loadable(() => import('./../BusinessCard'))
-
+const MentionsLegales = loadable(() => import('./../mentions_legales'))
+const References = loadable(() => import('./../References'))
+const Cgv = loadable(() => import('./../cgv'))
 // HomeSecurity.load()
 // SectionContainerForm.load()
 // FormContact.load()
@@ -53,6 +55,14 @@ const getRoute = [
         // }
     },
     {
+        path: "/references",
+        component: <References />,
+        exacta: true,
+        // screenProps: {
+        //     ...screenStyle
+        // }
+    },
+    {
         path: "/business_card_MS",
         component: <BusinessCard src={CONSTANT["business1"]} />,
         exacta: true,
@@ -63,6 +73,22 @@ const getRoute = [
     {
         path: "/business_card_SY",
         component: <BusinessCard src={CONSTANT["business2"]} />,
+        exacta: true,
+        // screenProps: {
+        //     ...screenStyle
+        // }
+    },
+    {
+        path: "/mentions_legales",
+        component: <MentionsLegales />,
+        exacta: true,
+        // screenProps: {
+        //     ...screenStyle
+        // }
+    },
+    {
+        path: "/cgv",
+        component: <Cgv />,
         exacta: true,
         // screenProps: {
         //     ...screenStyle

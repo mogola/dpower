@@ -1,3 +1,5 @@
+import { faCommentsDollar } from "@fortawesome/free-solid-svg-icons";
+
 const path = './../images/';
 
 const ressources = {
@@ -110,7 +112,12 @@ const CONSTANT = {
     "web5": path + "application_block_5.png",
     "web6": path + "undraw_web_devices_ad58.png",
     "business1": path + "business_card_MS.png",
-    "business2": path + "business_card_SY.png"
+    "business2": path + "business_card_SY.png",
+    'webHome': path + "homepage.png"
+}
+
+const htmlParse = {
+    homepage : "<strong>Être</strong> toujours <strong>performants</strong>, c\'est notre conviction, avançons <strong>ensemble</strong>"
 }
 
 const NAV = [
@@ -123,10 +130,15 @@ const NAV = [
         "link": "/security"
     },
     {
+        "text": "Nos références",
+        "link": "/references"
+    },
+    {
         "text": "Contact",
         "link": "/contact"
     }
 ]
+
 export {
     CONSTANT,
     LOGO,
@@ -134,5 +146,6 @@ export {
     ICON,
     ICONBRAND,
     NAV,
-    ressourcesSecurity
+    ressourcesSecurity,
+    htmlParse
 }

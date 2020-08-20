@@ -82,7 +82,7 @@ const HomePageSecurity = () => {
                                     />]}
                             />
                             <ColumnsGeneric
-                                title="Ils nous ont fait confiance"
+                                title="Nos références"
                                 element={LOGO}
                                 classes="logoPartner"
                             />

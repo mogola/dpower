@@ -21,6 +21,7 @@ import {
     CONSTANT,
     LOGO,
     ressources,
+    htmlParse,
 } from './../constants';
 
 const HomePage = () => {
@@ -32,6 +33,15 @@ const HomePage = () => {
                 {/* // <Suspense fallback={<div>Chargement...</div>}> */}
                     <div className="default-block">
                         <ScrollToTop />
+                        <SectionContainer
+                            color="white"
+                            size="medium"
+                            title=""
+                            align="center"
+                            icon={false}
+                            fullImage={true}
+                            srcImage={CONSTANT['webHome']}
+                        />
                         <SectionContainer
                             srcImage={CONSTANT['web1']}
                             color={colorTheme}
@@ -77,7 +87,7 @@ const HomePage = () => {
                                 />]}
                         />
                         <ColumnsGeneric
-                            title="Ils nous ont fait confiance"
+                            title="Nos références"
                             element={LOGO}
                             classes="logoPartner"
                         />

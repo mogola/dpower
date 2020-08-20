@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import AnimationTypeWrapper from './AnimationTypeWrapper'
 
 import {
@@ -19,21 +19,67 @@ import PropTypes from 'prop-types'
 
 library.add(fab, faBrain, faCoffee, faGrin, faTrophy, faHeart, faGrinStars, faHandsHelping)
 
-//content Global
+import {
+    htmlParse,
+} from './../constants';
 
-const SectionContainer = ({ srcImage, color, size, title, content, position, align = "left", icon = false, typeAnimation = "Slide", typeAnimationContent = "Zoom" }) => {
+let txt;
+let stringToHTML = (str) => {
+	let xmlString = str;
+    let doc = new DOMParser().parseFromString(xmlString, "text/html");
+	return <div>{doc.body.innerHTML}</div>;
+}
+//content Global
+const SectionContainer = ({ srcImage, color, size, title, content, position, align = "left", icon = false, fullImage = false, typeAnimation = "Slide", typeAnimationContent = "Zoom" }) => {
+    const [txtHome, setTxtHome] = useState('');
+
+    useEffect(() => {
+        setTxtHome(htmlParse.homepage)
+        console.log('txt doc', txtHome, typeof txt)
+    }, [])
+
+    let overStyle = {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '50%',
+        textAlign: 'left',
+        transform: 'translateY('+ "-50%" +')',
+        top: '50%',
+        fontSize: '40px'
+    }
+    let defaultCss = {
+        textAlign: "left"
+    }
+
+    const ContentHome = ({content}) => {
+        return (
+            <>
+                <div dangerouslySetInnerHTML={{ __html: content }}></div>
+            </>
+        );
+    }
+
     const ContentInfo = () => {
         return (
             <div className="txtAss">
-                <Section style={{ "textAlign": align }} size="large">
+                <Section className={fullImage ? "sectionFullImage" : '' } style={{ "textAlign": align }} size="large">
                     <div>
                         {icon &&
                             <Icon size="large" className="i-home" color="black">
                                 <FontAwesomeIcon icon="hands-helping" size="3x" />
                             </Icon>
                         }
-                        <Heading style={{ "textAlign": align }} className="title--large is-size-3-mobile" weight="bold" spaced={true} size={1}>
+                        {
+                            fullImage && <img className="fullImage" src={srcImage} />
+                        }
+                        <Heading style={fullImage ? {} : defaultCss} className={fullImage ? "fullTitle" : 'title--large is-size-3-mobile'} weight="bold" spaced={true} size={1}>
                             {title}
+                            {fullImage &&
+                                <ContentHome
+                                    content={txtHome}
+                                />
+                            }
                         </Heading>
                         <Heading subtitle>
                             {content}
@@ -44,7 +90,7 @@ const SectionContainer = ({ srcImage, color, size, title, content, position, ali
         )
     }
 
-    const ElementImage = () =>{
+    const ElementImage = () => {
         return(
             <figure className="image imageW">
                 <img
@@ -70,7 +116,7 @@ const SectionContainer = ({ srcImage, color, size, title, content, position, ali
 
     return (
         <div>
-            <Section size={size} style={{ padding: 0 }}>
+            <Section className={fullImage ? "sectionParentFullImage" : '' } size={size} style={{ padding: 0 }}>
                 <Hero color={color} gradient>
                     <Hero.Body>
                         <Container>

@@ -1,11 +1,13 @@
 //import Loadable from 'react-loadable';
 import React, { Component } from 'react';
+import CC from "CookieConsent";
 import { themeContext, themes, getTheme, getThemeHexa } from './context/theme-context'
 import { ThemeProvider } from 'styled-components';
 import { Switch, Redirect, BrowserRouter as Router, Route } from "react-router-dom"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import ChatBot from 'react-simple-chatbot';
+
 const endPoint = process.env.REACT_APP_API_URL
 // Define all Route
 import getRoute from './components/Route/Router'
@@ -19,10 +21,50 @@ const Loading = () => <div>Loading...</div>
 //   loading: loading
 // });
 // all available props
+const CookieConsent = () => {
+    window.cookieconsent.initialise({
+      container: document.getElementById("content"),
+      position: "bottom",
+      theme: "edgeless",
+      palette:{
+      popup: {background: "#081B3B"},
+      button: {background: "#FF2D00"},
+      },
+      revokable:true,
+      animateRevokable:true,
+      onStatusChange: function(status) {
+        // if(this.hasConsented()){
+
+        // } else {
+
+        // }
+      console.log(this.hasConsented() ?
+        'enable cookies' : 'disable cookies');
+      },
+      law: {
+      regionalLaw: false,
+      },
+      location: true,
+      content: {
+        header: 'Les cookies sont utilisés sur le site',
+        message: 'Nous utilisons des cookies analytiques et de profilage nous permettant de vous offrir une expérience de navigation personnalisée, de mesurer la performance du site et de lutter contre la fraude. En cliquant sur « Accepter les cookies » ou en poursuivant votre navigation sur le site, vous acceptez le dépôt de ces cookies.',
+        dismiss: 'J\'accepte!',
+        allow: 'Accepter les cookies',
+        deny: 'Décliner les cookies',
+        link: 'En savoir plus',
+        href: '/mentions_legales',
+        close: '&#x274c;',
+        policy:'',
+        target: '_blank',
+       }
+    })
+}
 const txtEmail = (value) => {
-  let re = new RegExp('^[a-z0-9.-]+@[a-z.]{2,}\.[a-z]$');
+  let re = new RegExp('^[a-zA-Z0-9.-]+@[a-zA-Z.]{2,}\.[a-zA-Z]$');
   return re.test(value);
 }
+
+
 const theme = {
   background: '#f5f8fb',
   fontFamily: 'assistantBold',
@@ -144,17 +186,18 @@ const colorNameTheme = 'twitter'
 const colorNameTheme2 = 'gold'
 
 const getEmailChatBox = ({steps, values}) => {
-    console.log(steps);
+    console.log(typeof steps);
     console.log(values);
+    console.log(steps["email"], steps["email"].value);
     console.log(`Chat handleEnd callback! Value Email: ${values.pop()}`);
-
+    console.log(values.pop());
+    let emailValue = values.pop()
     try {
-      console.log(steps["project"].value ,steps["budget"].value, steps["email"].value);
       fetch(endPoint + '/emailcontact',
           {
               method: 'POST',
               body: JSON.stringify({
-                  email: steps["email"].value,
+                  email: emailValue,
                   option: steps["project"].value,
                   content: steps["budget"].value
               }),
@@ -221,11 +264,11 @@ class App extends Component {
               bubbleOptionStyle={{background: "#11387A", fontWeight:"bold"}}
               enableSmoothScroll={true}
               width={200}
-              cache={false}
               headerTitle='OnfirstDigital chat'
               steps={steps} />
                 </ThemeProvider>
               {/* </Navigation> */}
+              {CookieConsent()}
             </themeContext.Provider>
           </Switch>
       </Router>

@@ -20,6 +20,7 @@ const PreloadWebpackPlugin = require('preload-webpack-plugin');
 
 const prodftp = false;
 const colorTheme= '#11387A';
+let facebookID = "346366339715645"
 let envUrl
 
 if (prodftp) {
@@ -177,7 +178,9 @@ module.exports = {
                 minifyCSS: true
             },
             hash: false,
-            ga_property_id: 'UA-106502299-3'
+            ga_property_id: 'UA-106502299-3',
+            facebook_id: facebookID,
+            imageFb : envUrl + '/images/logo_fb_app.png'
         }),
         new PreloadWebpackPlugin({
             rel: 'preload',
