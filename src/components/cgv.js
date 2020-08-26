@@ -3,12 +3,14 @@ import { themeContext } from './../context/theme-context'
 import loadable from '@loadable/component'
 import NavBarGeneric from './NavBar'
 const FooterContainer = loadable(() => import('./Footer'))
+import ScrollToTop from './ScrollToTop'
 
 const Cgv = () => {
     return (
         <themeContext.Consumer>
         {({ colorTheme, colorThemeHexa, toggleTheme }) => (
             <>
+                <ScrollToTop />
                 <NavBarGeneric colorStroke={colorThemeHexa} colorTheme={colorTheme} />
       <div style={{padding: '80px'}} className="mentions_legales hero is-twitter">
       <p dir="ltr" style={{textAlign: 'left'}}><span style={{display: 'none'}}>&nbsp;</span>&nbsp;</p>

@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import AnimationTypeWrapper from './AnimationTypeWrapper'
 import { NavLink, Link } from "react-router-dom";
 import { motion, useCycle, AnimatePresence } from 'framer-motion';
+import {themeEvent} from './../context/theme-event'
+
 // import LogoOnFirst from './LogoOnFirst'
 import LogoFirst from './LogoFirst'
 //import { Link } from "react-tiger-transition";
@@ -15,6 +17,9 @@ import {
 } from './../constants'
 
 import PropTypes from 'prop-types'
+import { faMarsStrokeH } from '@fortawesome/free-solid-svg-icons';
+
+let myPos = 0
 
 const useDimensions = ref => {
     const dimensions = useRef({ width: 0, height: 0 });
@@ -98,6 +103,24 @@ const variantsItem = {
     }
 };
 
+const LogoSite = ({color}) => {
+    return (
+    <div className="fixedMainMenu">
+        <Navbar color={color} style={{ padding: "10px 0" }} transparent={false} fixed="top">
+            <Navbar.Brand className="mainBrand">
+                <Navbar.Item renderAs="div">
+                    <motion.div animate={{scale:[0.5, 1]}}>
+                        <NavLink to="/">
+                            <LogoFirst />
+                            <span className="onFirstBaseline">On First Digital.</span>
+                        </NavLink>
+                    </motion.div>
+                </Navbar.Item>
+            </Navbar.Brand>
+        </Navbar>
+    </div>)
+}
+
 const NavBarGeneric = ({ colorTheme, colorStroke}) => {
 
     const [displayNav, setDisplayNav] = useState(false)
@@ -108,39 +131,32 @@ const NavBarGeneric = ({ colorTheme, colorStroke}) => {
     const { height } = useDimensions(containerRef);
 
     let styleDisplay, booleanAnimation, styleColorMenu;
-    console.log('color of path', colorTheme);
-    const Path = (props, color, d, opacity = 1) => {
-        return (
-            <motion.path
-                fill="transparent"
-                strokeWidth="3"
-                stroke={colorStroke}
-                strokeLinecap="round"
-                opacity={opacity}
-                d={d}
-                {...props}
-            />)
-    }
+   // console.log('color of path', colorTheme);
 
-    if (displayNav) {
-        styleDisplay = {
-            display: "block"
-        }
-        booleanAnimation = true
-    } else {
-        styleDisplay = {}
-        booleanAnimation = false
-    }
-    const controlMobileNav = booleanMobile => {
-        let controlDisplay
-        if (window.innerWidth < 1023) {
-            return controlDisplay = {
-                display: booleanMobile ? 'block' : 'none'
-            }
-        }
-    }
-
+   const Path = (props, color, d, opacity = 1) => {
+    return (
+        <motion.path
+            fill="transparent"
+            strokeWidth="3"
+            stroke={colorStroke}
+            strokeLinecap="round"
+            opacity={opacity}
+            d={d}
+            {...props}
+        />)
+}
+    console.log("isOpen", isOpen)
     useEffect(() => {
+        if (displayNav) {
+            styleDisplay = {
+                display: "block"
+            }
+            booleanAnimation = true
+        } else {
+            styleDisplay = {}
+            booleanAnimation = false
+        }
+
         if (window.innerWidth > 1023) {
             let getNavBar = document.getElementsByClassName('navbar-menu')[0]
             let d = getNavBar.parentNode.getAttributeNode("style")
@@ -154,7 +170,7 @@ const NavBarGeneric = ({ colorTheme, colorStroke}) => {
         } else {
             styleColorMenu = {}
         }
-    }, []);
+    }, [isOpen]);
 
     function onComplete() {
         setAnimNav(!animNav)
@@ -165,9 +181,10 @@ const NavBarGeneric = ({ colorTheme, colorStroke}) => {
     const breakpoint = 1023;
 
     const NavMobile = () => {
-        const colors = ["#FF008C", "#D309E1", "#9C1AFF", "#7700FF", "#4400FF"];
-
         return (
+            <themeEvent.Consumer>
+            {mssg => (
+            <>
             <motion.ul
                 // style={{ display: animNav === true ? "" : "none" }}
                 onAnimationComplete={onComplete}
@@ -191,7 +208,11 @@ const NavBarGeneric = ({ colorTheme, colorStroke}) => {
                     </motion.li>
                 ))
                 }
+
             </motion.ul>
+            </>
+             )}
+             </themeEvent.Consumer>
         )
     }
 
@@ -214,73 +235,63 @@ const NavBarGeneric = ({ colorTheme, colorStroke}) => {
         )
     }
 
-    const WrapperLinkMenu = ({ boolValue }) => {
+    const WrapperLinkMenu = () => {
         return width < breakpoint ? <NavMobile /> : <NavDesktop />;
     }
 
-    const LogoSite = () => {
-        return (
-        <div className="fixedMainMenu">
-        <Navbar color={colorTheme} style={{ padding: "10px 0" }} transparent={false} fixed="top">
-            <Navbar.Brand className="mainBrand">
-                <Navbar.Item renderAs="div">
-                    <motion.div animate={{scale:[0.5, 1]}}>
-                        <NavLink to="/">
-                            <LogoFirst />
-                            <span className="onFirstBaseline">On First Digital.</span>
-                        </NavLink>
-                    </motion.div>
-                </Navbar.Item>
-            </Navbar.Brand>
-        </Navbar></div>)
-    }
-
     return (
-        <>
-            <LogoSite />
-            {width > breakpoint && <WrapperLinkMenu />}
-            <AnimatePresence initial={false}>
-                <motion.nav
-                    className="navbar-anim is-fixed-top"
-                    animate={isOpen ? "open" : "closed"}
-                    custom={height}
-                    ref={containerRef}
-                >
-                    <motion.div className="background" variants={variants}>
-                        <WrapperLinkMenu />
-                    </motion.div>
-                    <button
-                        className="menuButton"
-                        id="menuButton"
-                        aria-labelledby="menuButton"
-                        role="button"
-                        aria-label="menuButton"
-                        name="menuButton"
-                        onClick={() => toggleOpen()}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
-                            <Path
-                                key="1"
-                                animate={isOpen ? "open" : "closed"}
-                                d="m 3 16.5 L 17 2.5"
-                                variants={pathOneVariants}
-                            />
-                            <Path
-                                key="2"
-                                animate={isOpen ? "open" : "closed"}
-                                d="m 2 9.423 L 20 9.423"
-                                variants={pathTwoVariants}
-                            />
-                            <Path
-                                key="3"
-                                animate={isOpen ? "open" : "closed"}
-                                d="m 3 2.5 L 17 16.346"
-                                variants={pathThreeVariants}
-                            />
-                        </svg>
-                    </button>
-                </motion.nav>
-            </AnimatePresence>
-        </>
+        <themeEvent.Consumer>
+            {mssg => (
+                <>
+                    <LogoSite color={colorTheme} />
+                    {width > breakpoint && <WrapperLinkMenu />}
+                    <AnimatePresence initial={false}>
+                        <motion.nav
+                            className="navbar-anim is-fixed-top"
+                            animate={isOpen ? "open" : "closed"}
+                            custom={height}
+                            ref={containerRef}
+                        >
+                            <motion.div className="background" variants={variants}>
+                                <WrapperLinkMenu />
+                            </motion.div>
+                            <button
+                                className="menuButton"
+                                id="menuButton"
+                                aria-labelledby="menuButton"
+                                role="button"
+                                aria-label="menuButton"
+                                name="menuButton"
+                                onClick={() =>{
+                                    toggleOpen();
+                                    mssg.onClose();
+                                }}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
+                                    <Path
+                                        key="1"
+                                        animate={isOpen ? "open" : "closed"}
+                                        d="m 3 16.5 L 17 2.5"
+                                        variants={pathOneVariants}
+                                    />
+                                    <Path
+                                        key="2"
+                                        animate={isOpen ? "open" : "closed"}
+                                        d="m 2 9.423 L 20 9.423"
+                                        variants={pathTwoVariants}
+                                    />
+                                    <Path
+                                        key="3"
+                                        animate={isOpen ? "open" : "closed"}
+                                        d="m 3 2.5 L 17 16.346"
+                                        variants={pathThreeVariants}
+                                    />
+                                </svg>
+                            </button>
+                        </motion.nav>
+                    </AnimatePresence>
+                </>
+            )}
+        </themeEvent.Consumer>
     );
 }
 

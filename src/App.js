@@ -1,13 +1,14 @@
 //import Loadable from 'react-loadable';
-import React, { Component } from 'react';
+import React, { Component, useState} from 'react';
 const CC = require("cookieconsent")
 import { themeContext, themes, getTheme, getThemeHexa } from './context/theme-context'
+import { themeEvent } from './context/theme-event'
 import { ThemeProvider } from 'styled-components';
 import { Switch, Redirect, BrowserRouter as Router, Route } from "react-router-dom"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import ChatBot from 'react-simple-chatbot';
-
+import DownMenu from './components/DownMenu'
 const endPoint = process.env.REACT_APP_API_URL
 // Define all Route
 import getRoute from './components/Route/Router'
@@ -212,7 +213,27 @@ const getEmailChatBox = ({steps, values}) => {
   }
 
 }
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state =  {
+      open: false,
+      close: false
+    }
+
+    this.setOpen = () => {
+      console.log("change test")
+      this.setState((prevState) => ({...this.state, open: true, close: false}))
+    }
+
+    this.setClose = () => {
+      console.log("close event")
+      this.setState((prevState) => ({...this.state, close: true, open: true}))
+    }
+
+  }
+
 
   render() {
     return (
@@ -225,6 +246,11 @@ class App extends Component {
               colorTheme2Hexa: getThemeHexa(colorNameTheme2),
               theme: themes
               }}>
+                <themeEvent.Provider value={{
+                  onOpen : this.setOpen,
+                  onClose : this.setClose,
+                  booleanOpen : this.state.open
+                }}>
               {/* <Navigation> */}
               <ToastContainer />
               {getRoute.map((routeApp, i) => (
@@ -256,19 +282,21 @@ class App extends Component {
                   path={routeApp.path}>{routeApp.component}</Route>
               ))}
               <ThemeProvider theme={theme}>
-              <ChatBot
-              handleEnd={getEmailChatBox}
-              floating={true}
-              floatingStyle={{background: "#FF2D00"}}
-              bubbleStyle={{background: "#FF2D00", fontWeight:"bold"}}
-              bubbleOptionStyle={{background: "#11387A", fontWeight:"bold"}}
-              enableSmoothScroll={true}
-              width={200}
-              headerTitle='OnfirstDigital chat'
-              steps={steps} />
+                <ChatBot
+                handleEnd={getEmailChatBox}
+                floating={true}
+                floatingStyle={{background: "#FF2D00"}}
+                bubbleStyle={{background: "#FF2D00", fontWeight:"bold"}}
+                bubbleOptionStyle={{background: "#11387A", fontWeight:"bold"}}
+                enableSmoothScroll={true}
+                width={200}
+                headerTitle='OnfirstDigital chat'
+                steps={steps} />
                 </ThemeProvider>
               {/* </Navigation> */}
               {CookieConsent()}
+                <DownMenu />
+              </themeEvent.Provider>
             </themeContext.Provider>
           </Switch>
       </Router>

@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import { Link } from "react-router-dom";
 import AnimationTypeWrapper from './AnimationTypeWrapper'
 
 import {
@@ -7,6 +8,7 @@ import {
     Heading,
     Section,
     Hero,
+    Button,
     Icon
 } from 'react-bulma-components'
 
@@ -73,12 +75,24 @@ const SectionContainer = ({ srcImage, color, size, title, content, position, ali
                         {
                             fullImage && <img className="fullImage" src={srcImage} />
                         }
-                        <Heading style={fullImage ? {} : defaultCss} className={fullImage ? "fullTitle" : 'title--large is-size-3-mobile'} weight="bold" spaced={true} size={1}>
+                        <Heading style={fullImage ? {} : {"textAlign": align}} className={fullImage ? "fullTitle" : 'title--large is-size-3-mobile'} weight="bold" spaced={true} size={1}>
                             {title}
                             {fullImage &&
+                            <>
                                 <ContentHome
                                     content={txtHome}
                                 />
+                                <Button
+                                id="contactUs"
+                                name="contactUs"
+                                className="is-info is-white is-inverted button is-large"
+                                onClick={() => {
+                                    FB.AppEvents.logEvent("Contact")
+                                }}
+                                >
+                                    <Link to="/contact">Contactez-nous</Link>
+                                </Button>
+                            </>
                             }
                         </Heading>
                         <Heading subtitle>

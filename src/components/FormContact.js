@@ -152,15 +152,20 @@ const FormContact = ({ title, content, align = "center" }) => {
             SetErrorClass({ valid: '', error: 'is-danger' })
         }
     })
-    const notify = () => toast.success("Nous avons bien reçu votre demande", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-    })
+    const notify = () => {
+        if(FB !== "undefined") {
+            FB.AppEvents.logEvent("form Contact")
+        }
+        toast.success("Nous avons bien reçu votre demande", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        })
+    }
     const formSubmit = (e) => {
         e.preventDefault();
         const { email, options, textarea } = state

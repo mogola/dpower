@@ -1,6 +1,7 @@
 import loadable from '@loadable/component';
 import React, { Suspense } from 'react';
 import { themeContext } from './../context/theme-context'
+import { themeEvent } from './../context/theme-event'
 import SectionContainer from './SectionContainer'
 import ContainerForm from './ContainerForm'
 import FormContact from './FormContact'
@@ -24,14 +25,30 @@ import {
     htmlParse,
 } from './../constants';
 
+import { useSpring, animated } from 'react-spring'
+import { useDrag } from 'react-use-gesture'
+
+
+function PullRelease(){
+    const [{ x }, set] = useSpring(() => ({ x: 0 }))
+    const bind = useDrag(
+        ({ down, movement: [mx] }) =>
+        set({ x: down ? mx : 0, immediate: down, config: { duration: 3000 } }),
+        { initial: () => [x.get(), 0] }
+    )
+    return <animated.div className="dragger" {...bind()} style={{ x }} />
+}
+
 const HomePage = () => {
     return (
+        <themeEvent.Consumer>
+        {mssg => (
         <themeContext.Consumer>
-            {({ colorTheme, colorThemeHexa, toggleTheme }) => (
+            {({ colorTheme, colorThemeHexa }) => (
                 <>
                 <NavBarGeneric colorStroke={colorThemeHexa} colorTheme={colorTheme} />
                 {/* // <Suspense fallback={<div>Chargement...</div>}> */}
-                    <div className="default-block">
+                    <div onClick={mssg.onClose} className="default-block">
                         <ScrollToTop />
                         <SectionContainer
                             color="white"
@@ -42,6 +59,9 @@ const HomePage = () => {
                             fullImage={true}
                             srcImage={CONSTANT['webHome']}
                         />
+                        <div id="drag">
+                            <PullRelease />
+                        </div>
                         <SectionContainer
                             srcImage={CONSTANT['web1']}
                             color={colorTheme}
@@ -104,6 +124,8 @@ const HomePage = () => {
                </>
             )}
         </themeContext.Consumer>
+        )}
+        </themeEvent.Consumer>
     );
 }
 

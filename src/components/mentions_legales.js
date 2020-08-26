@@ -3,12 +3,14 @@ import { themeContext } from './../context/theme-context'
 import loadable from '@loadable/component'
 import NavBarGeneric from './NavBar'
 const FooterContainer = loadable(() => import('./Footer'))
+import ScrollToTop from './ScrollToTop'
 
 const MentionsLegales = () => {
     return (
         <themeContext.Consumer>
         {({ colorTheme, colorThemeHexa, toggleTheme }) => (
             <>
+                <ScrollToTop />
                 <NavBarGeneric colorStroke={colorThemeHexa} colorTheme={colorTheme} />
                 <div style={{padding: '80px'}} className="mentions_legales hero is-twitter">
                     <h2 style={{fontFamily: 'assistantBold',fontSize:'22px'}}>Mentions légales et politique de confidentialité</h2>
