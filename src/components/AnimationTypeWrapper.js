@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, {useEffect} from 'react';
 
 //animation global
 import Zoom from 'react-reveal/Zoom'
@@ -9,7 +9,6 @@ import Bounce from 'react-reveal/Bounce'
 
 const AnimationTypeWrapper = ({ type, children, ...rest }) => {
     let content;
-
     switch (type) {
         case 'Zoom':
             console.log('zoom');

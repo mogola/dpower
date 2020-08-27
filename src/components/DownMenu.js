@@ -1,27 +1,39 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState} from 'react'
 import { useSpring, a, config } from 'react-spring'
 import { useDrag } from 'react-use-gesture'
 import {themeEvent} from './../context/theme-event'
 
-const items = ['save item', 'open item', 'share item', 'delete item', 'cancel']
+const items = ['Linkedin', 'facebook', 'twitter', 'contact', 'Annuler']
 const height = items.length * 60 + 80
 
-function DownMenu() {
+const DownMenu = ({BooleanCloseEvent}) => {
   const draggingRef = useRef(false)
   const [{ y }, set] = useSpring(() => ({ y: height }))
   let myPos = 0
 
+  const [togglePanel, setTogglePanel] = useState(true)
+
+  const close = (velocity = 0) => {
+    console.log('closePopin', BooleanCloseEvent)
+      set({ y: height, config: { ...config.stiff, velocity } })
+  }
+
   const open = () => {
     // when cancel is true, it means that the user passed the upwards threshold
     // so we change the spring config to create a nice wobbly effect
-    console.log("canceled")
     set({ y: myPos, config: '' ? config.wobbly : config.stiff })
   }
 
-  const close = (velocity = 0) => {
-    set({ y: height, config: { ...config.stiff, velocity } })
-  }
+  const controlTogglePanel = () => {
+    console.log('toggleOpen', togglePanel, 'BooleanCloseEvent', BooleanCloseEvent)
+    setTogglePanel(!togglePanel)
 
+    if(!togglePanel){
+      return close()
+    } else {
+      return open()
+    }
+  }
   const bind = useDrag(
     ({ first, last, vxvy: [, vy], movement: [, my], cancel, canceled }) => {
       if (first) draggingRef.current = true
@@ -54,16 +66,11 @@ function DownMenu() {
     <themeEvent.Consumer>
         {mssg => (
         <>
-          <a.div className="bg" onClick={() => close()} style={bgStyle}>
-            <img src="https://images.pexels.com/photos/1170831/sspexels-photo-1170831.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="" />
-            <img src="https://images.pexels.com/photos/1657110/pexels-photo-1657110.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=650&w=940" alt="" />
-          </a.div>
-          <div className="action-btn" onClick={() => open()} />
-            {mssg.onOpen && open()}
-            {mssg.onClose && close()}
+          <div className="action-btn" onClick={() => controlTogglePanel()}/>
+          {BooleanCloseEvent && close()}
           <a.div
             className="sheet" {...bind()}
-            style={{ display, bottom: `calc(-100vh + ${height - 100}px)`, y }}
+            style={{display, bottom: `calc(-100vh + ${height - 100}px)`, y }}
           >
             {items.map(entry => (
               <div key={entry} onClick={() => !draggingRef.current && close()} children={entry} />

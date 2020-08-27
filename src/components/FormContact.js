@@ -13,10 +13,7 @@ import Fade from 'react-reveal/Fade'
 
 import { toast } from 'react-toastify';
 
-console.log("process developpement", process.env.REACT_APP_API_URL)
 const endPoint = process.env.REACT_APP_API_URL
-
-
 const FormContact = ({ title, content, align = "center" }) => {
     const inputRef = useRef(null)
     const inputRefContent = useRef(null)
@@ -118,19 +115,16 @@ const FormContact = ({ title, content, align = "center" }) => {
     }
 
     useEffect(() => {
-
-        console.log('inputRef', inputRefOption)
         if (state.options === "" && inputRefOption.current !== null)
             customDIspatch({ type: 'OPTIONS', payload: inputRefOption.current.value })
         if (inputRef.current !== null && firstFocus === false)
             setFirstFocus(false)
-        // console.log('setFirstFocus', firstFocus)
         if (inputRef.current !== null) {
             if (inputRefContent.current !== null && inputRefContent.current.value === "" || !txtEmail(inputRef.current.value)) {
                 setFirstFocus(false)
             }
         }
-    }, [state])
+    }, [])
 
     const txtEmail = (value) => {
         let re = new RegExp('^[a-z0-9.-]+@[a-z.]{2,}\.[a-z]$');
@@ -152,6 +146,7 @@ const FormContact = ({ title, content, align = "center" }) => {
             SetErrorClass({ valid: '', error: 'is-danger' })
         }
     })
+
     const notify = () => {
         if(FB !== "undefined") {
             FB.AppEvents.logEvent("form Contact")
@@ -166,6 +161,7 @@ const FormContact = ({ title, content, align = "center" }) => {
             progress: undefined,
         })
     }
+
     const formSubmit = (e) => {
         e.preventDefault();
         const { email, options, textarea } = state
@@ -193,6 +189,7 @@ const FormContact = ({ title, content, align = "center" }) => {
             console.log('error envoie email', err)
         }
     }
+
     let displayed;
 
     if (state.send_email) {
@@ -260,7 +257,7 @@ const FormContact = ({ title, content, align = "center" }) => {
                                         value={state.textarea}
                                         onChange={getValueText}
                                         className="textarea"
-                                        placeholder="Textarea"></textarea>
+                                        placeholder="Veuillez entrer votre message ici..."></textarea>
                                 </div>
                             </div>
                             <Button

@@ -13,8 +13,7 @@ const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const RobotstxtPlugin = require("robotstxt-webpack-plugin");
 const SitemapPlugin = require('sitemap-webpack-plugin').default;
 const CompressionPlugin = require('compression-webpack-plugin');
-const ImageminPlugin = require('imagemin-webpack-plugin').default
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
 
@@ -78,12 +77,7 @@ module.exports = {
     },
     optimization: {
         minimize: true,
-        minimizer: [
-            new UglifyJsPlugin({
-                cache: true,
-                parallel: true,
-            })
-        ],
+        minimizer: [],
         splitChunks: {
             chunks: 'async',
             minSize: 30000,

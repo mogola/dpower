@@ -26,11 +26,7 @@ import {
 } from './../constants';
 
 let txt;
-let stringToHTML = (str) => {
-	let xmlString = str;
-    let doc = new DOMParser().parseFromString(xmlString, "text/html");
-	return <div>{doc.body.innerHTML}</div>;
-}
+
 //content Global
 const SectionContainer = ({ srcImage, color, size, title, content, position, align = "left", icon = false, fullImage = false, typeAnimation = "Slide", typeAnimationContent = "Zoom" }) => {
     const [txtHome, setTxtHome] = useState('');
@@ -38,21 +34,7 @@ const SectionContainer = ({ srcImage, color, size, title, content, position, ali
     useEffect(() => {
         setTxtHome(htmlParse.homepage)
         console.log('txt doc', txtHome, typeof txt)
-    }, [])
-
-    let overStyle = {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '50%',
-        textAlign: 'left',
-        transform: 'translateY('+ "-50%" +')',
-        top: '50%',
-        fontSize: '40px'
-    }
-    let defaultCss = {
-        textAlign: "left"
-    }
+    }, [txtHome])
 
     const ContentHome = ({content}) => {
         return (

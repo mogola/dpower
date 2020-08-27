@@ -228,12 +228,16 @@ class App extends Component {
     }
 
     this.setClose = () => {
-      console.log("close event")
-      this.setState((prevState) => ({...this.state, close: true, open: true}))
+      if(this.state.close === false){
+        this.setState({close: true})
+      }
+      if(this.state.close === true){
+        this.setState({close: false})
+      }
+
+      console.log("close event", this.state.close)
     }
-
   }
-
 
   render() {
     return (
@@ -249,7 +253,8 @@ class App extends Component {
                 <themeEvent.Provider value={{
                   onOpen : this.setOpen,
                   onClose : this.setClose,
-                  booleanOpen : this.state.open
+                  booleanOpen : this.state.open,
+                  booleanClose : this.state.close
                 }}>
               {/* <Navigation> */}
               <ToastContainer />
@@ -295,7 +300,7 @@ class App extends Component {
                 </ThemeProvider>
               {/* </Navigation> */}
               {CookieConsent()}
-                <DownMenu />
+               <DownMenu BooleanCloseEvent={this.state.close}/>
               </themeEvent.Provider>
             </themeContext.Provider>
           </Switch>

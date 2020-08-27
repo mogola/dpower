@@ -1,13 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
-import AnimationTypeWrapper from './AnimationTypeWrapper'
+import React, {useEffect, useRef } from 'react';
 import { NavLink, Link } from "react-router-dom";
 import { motion, useCycle, AnimatePresence } from 'framer-motion';
 import {themeEvent} from './../context/theme-event'
-
-// import LogoOnFirst from './LogoOnFirst'
 import LogoFirst from './LogoFirst'
-//import { Link } from "react-tiger-transition";
-
 import {
     Navbar,
 } from 'react-bulma-components'
@@ -17,9 +12,10 @@ import {
 } from './../constants'
 
 import PropTypes from 'prop-types'
-import { faMarsStrokeH } from '@fortawesome/free-solid-svg-icons';
-
-let myPos = 0
+// The current width of the viewport
+const width = window.innerWidth;
+// The width below which the mobile view should be rendered
+const breakpoint = 1023;
 
 const useDimensions = ref => {
     const dimensions = useRef({ width: 0, height: 0 });
@@ -91,7 +87,7 @@ const variantsItem = {
         y: 0,
         opacity: 1,
         transition: {
-            y: { stiffness: 1000, velocity: -100 }
+            y: { stiffness: 1000, velocity: -10 }
         }
     },
     closed: {
@@ -121,122 +117,88 @@ const LogoSite = ({color}) => {
     </div>)
 }
 
-const NavBarGeneric = ({ colorTheme, colorStroke}) => {
+const ItemMenu = ({animate, colorStroke, onToggleOpen}) => {
+    return (
+        <>
+            {NAV.map((itemNav, i) => (
+                <motion.li
+                    variants={variantsItem}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    animate={animate}
+                    key={i}
+                >
+                    <Link
+                        onClick={() => onToggleOpen}
+                        style={{ color: colorStroke }}
+                        to={itemNav.link}>
+                        {itemNav.text}
+                    </Link>
+                </motion.li>
+            ))}
+        </>
+    )
+}
 
-    const [displayNav, setDisplayNav] = useState(false)
-    const [animNav, setAnimNav] = useState(false)
+const NavMobile = ({onToggleOpen, colorStroke, animate}) => {
+    return (
+        <themeEvent.Consumer>
+        {mssg => (
+        <>
+            <motion.ul
+                className="navbar-customMenu"
+                variants={variantsMenu}
+            >
+                <ItemMenu animate={animate} colorStroke={colorStroke} onToggleOpen={onToggleOpen}/>
+            </motion.ul>
+        </>
+         )}
+         </themeEvent.Consumer>
+    )
+}
+
+const NavDesktop = () => {
+    return (
+        <Navbar.Menu>
+            <Navbar.Container position="start">
+                {NAV.map((itemNav, i) => (
+                    <Navbar.Item key={i} renderAs="div">
+                        <Link
+                            style={{ color: "white" }}
+                            to={itemNav.link}>
+                            {itemNav.text}
+                        </Link>
+                    </Navbar.Item>
+                ))}
+            </Navbar.Container>
+        </Navbar.Menu>
+    )
+}
+
+let getComponent;
+
+const NavBarGeneric = ({ colorTheme, colorStroke}) => {
     const [isOpen, toggleOpen] = useCycle(false, true)
 
     const containerRef = useRef(null);
     const { height } = useDimensions(containerRef);
-
-    let styleDisplay, booleanAnimation, styleColorMenu;
    // console.log('color of path', colorTheme);
 
-   const Path = (props, color, d, opacity = 1) => {
-    return (
-        <motion.path
-            fill="transparent"
-            strokeWidth="3"
-            stroke={colorStroke}
-            strokeLinecap="round"
-            opacity={opacity}
-            d={d}
-            {...props}
-        />)
-}
-    console.log("isOpen", isOpen)
     useEffect(() => {
-        if (displayNav) {
-            styleDisplay = {
-                display: "block"
-            }
-            booleanAnimation = true
-        } else {
-            styleDisplay = {}
-            booleanAnimation = false
-        }
+        console.log("isOpen", isOpen)
+    },[isOpen])
 
-        if (window.innerWidth > 1023) {
-            let getNavBar = document.getElementsByClassName('navbar-menu')[0]
-            let d = getNavBar.parentNode.getAttributeNode("style")
-            console.log('remove attr', getNavBar)
-            // getNavBar.parentNode.removeAttributeNode(d)
-
-            styleColorMenu = {
-                "color": "white"
-            }
-            console.log(styleColorMenu)
-        } else {
-            styleColorMenu = {}
-        }
-    }, [isOpen]);
-
-    function onComplete() {
-        setAnimNav(!animNav)
-    }
-    // The current width of the viewport
-    const width = window.innerWidth;
-    // The width below which the mobile view should be rendered
-    const breakpoint = 1023;
-
-    const NavMobile = () => {
+    const Path = (props, d, opacity = 1) => {
         return (
-            <themeEvent.Consumer>
-            {mssg => (
-            <>
-            <motion.ul
-                // style={{ display: animNav === true ? "" : "none" }}
-                onAnimationComplete={onComplete}
-                // style={{ transform: isOpen ? `translateY(0)` : `translateY(-300px)` }}
-                className="navbar-customMenu"
-                variants={variantsMenu}
-            >
-                {NAV.map((itemNav, i) => (
-                    <motion.li
-                        variants={variantsItem}
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                        key={i}
-                    >
-                        <Link
-                            onClick={() => toggleOpen()}
-                            style={{ color: colorStroke }}
-                            to={itemNav.link}>
-                            {itemNav.text}
-                        </Link>
-                    </motion.li>
-                ))
-                }
-
-            </motion.ul>
-            </>
-             )}
-             </themeEvent.Consumer>
-        )
-    }
-
-    const NavDesktop = () => {
-        return (
-            <Navbar.Menu style={styleDisplay}>
-                <Navbar.Container position="start">
-                    {NAV.map((itemNav, i) => (
-                        <Navbar.Item key={i} renderAs="div">
-                            <Link
-                                style={{ color: "white" }}
-                                to={itemNav.link}
-                                transition='glide-right'>
-                                {itemNav.text}
-                            </Link>
-                        </Navbar.Item>
-                    ))}
-                </Navbar.Container>
-            </Navbar.Menu>
-        )
-    }
-
-    const WrapperLinkMenu = () => {
-        return width < breakpoint ? <NavMobile /> : <NavDesktop />;
+            <motion.path
+                fill="transparent"
+                strokeWidth="3"
+                stroke={colorStroke}
+                strokeLinecap="round"
+                opacity={opacity}
+                d={d}
+                {...props}
+            />)
     }
 
     return (
@@ -244,7 +206,7 @@ const NavBarGeneric = ({ colorTheme, colorStroke}) => {
             {mssg => (
                 <>
                     <LogoSite color={colorTheme} />
-                    {width > breakpoint && <WrapperLinkMenu />}
+                    {width > breakpoint && <NavDesktop />}
                     <AnimatePresence initial={false}>
                         <motion.nav
                             className="navbar-anim is-fixed-top"
@@ -253,7 +215,11 @@ const NavBarGeneric = ({ colorTheme, colorStroke}) => {
                             ref={containerRef}
                         >
                             <motion.div className="background" variants={variants}>
-                                <WrapperLinkMenu />
+                                <NavMobile
+                                    animate={isOpen ? "open" : ""}
+                                    onToggleOpen={toggleOpen}
+                                    colorStroke={colorStroke}
+                                />
                             </motion.div>
                             <button
                                 className="menuButton"
