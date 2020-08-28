@@ -22,44 +22,7 @@ const Loading = () => <div>Loading...</div>
 //   loading: loading
 // });
 // all available props
-const CookieConsent = () => {
-    window.cookieconsent.initialise({
-      container: document.getElementById("content"),
-      position: "bottom",
-      theme: "edgeless",
-      palette:{
-      popup: {background: "#081B3B"},
-      button: {background: "#FF2D00"},
-      },
-      revokable:true,
-      animateRevokable:true,
-      onStatusChange: function(status) {
-        // if(this.hasConsented()){
 
-        // } else {
-
-        // }
-      console.log(this.hasConsented() ?
-        'enable cookies' : 'disable cookies');
-      },
-      law: {
-      regionalLaw: false,
-      },
-      location: true,
-      content: {
-        header: 'Les cookies sont utilisés sur le site',
-        message: 'Nous utilisons des cookies analytiques et de profilage nous permettant de vous offrir une expérience de navigation personnalisée, de mesurer la performance du site et de lutter contre la fraude. En cliquant sur « Accepter les cookies » ou en poursuivant votre navigation sur le site, vous acceptez le dépôt de ces cookies.',
-        dismiss: 'J\'accepte!',
-        allow: 'Accepter les cookies',
-        deny: 'Décliner les cookies',
-        link: 'En savoir plus',
-        href: '/mentions_legales',
-        close: '&#x274c;',
-        policy:'',
-        target: '_blank',
-       }
-    })
-}
 const txtEmail = (value) => {
   let re = new RegExp('^[a-zA-Z0-9.-]+@[a-zA-Z.]{2,}\.[a-zA-Z]$');
   return re.test(value);
@@ -214,12 +177,59 @@ const getEmailChatBox = ({steps, values}) => {
 
 }
 
+
+const CookieConsent = ({booleanCookie}) => {
+  console.log("booleanCookie", booleanCookie)
+  return(
+    <>
+      {booleanCookie && window.cookieconsent.initialise({
+        container: document.getElementById("content"),
+        position: "bottom",
+        theme: "edgeless",
+        palette:{
+        popup: {background: "#081B3B"},
+        button: {background: "#FF2D00"},
+        },
+        revokable:true,
+        animateRevokable:true,
+        onStatusChange: function(status) {
+          // if(this.hasConsented()){
+
+          // } else {
+
+          // }
+        console.log(this.hasConsented() ?
+          'enable cookies' : 'disable cookies');
+        },
+        law: {
+        regionalLaw: false,
+        },
+        location: true,
+        content: {
+          header: 'Les cookies sont utilisés sur le site',
+          message: 'Nous utilisons des cookies analytiques et de profilage nous permettant de vous offrir une expérience de navigation personnalisée, de mesurer la performance du site et de lutter contre la fraude. En cliquant sur « Accepter les cookies » ou en poursuivant votre navigation sur le site, vous acceptez le dépôt de ces cookies.',
+          dismiss: 'J\'accepte!',
+          allow: 'Accepter les cookies',
+          deny: 'Décliner les cookies',
+          link: 'En savoir plus',
+          href: '/mentions_legales',
+          close: '&#x274c;',
+          policy:'',
+          target: '_blank',
+        }
+      })}
+    </>
+    )
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state =  {
       open: false,
-      close: false
+      close: false,
+      boolCookie: true,
+      closePanel: false
     }
 
     this.setOpen = () => {
@@ -237,9 +247,27 @@ class App extends Component {
 
       console.log("close event", this.state.close)
     }
-  }
 
+    this.setCookie = () =>  {
+      this.setState({...this.state, boolCookie: false})
+    }
+
+    this.closePanel = () => {
+      this.setState({...this.state, closePanel : true})
+    }
+
+    this.openingPanel = () => {
+      this.setState({...this.state, closePanel : false})
+    }
+  }
+  componentDidMount(){
+    const {boolCookie} = this.state
+    this.setState({...this.state, boolCookie : false})
+    console.log('boolCookie', boolCookie)
+  }
   render() {
+    const {boolCookie} = this.state
+
     return (
       <Router>
           <Switch>
@@ -254,7 +282,9 @@ class App extends Component {
                   onOpen : this.setOpen,
                   onClose : this.setClose,
                   booleanOpen : this.state.open,
-                  booleanClose : this.state.close
+                  booleanClose : this.state.close,
+                  closingPanel: this.closePanel,
+                  OpenningPanel : this.openingPanel
                 }}>
               {/* <Navigation> */}
               <ToastContainer />
@@ -299,8 +329,8 @@ class App extends Component {
                 steps={steps} />
                 </ThemeProvider>
               {/* </Navigation> */}
-              {CookieConsent()}
-               <DownMenu BooleanCloseEvent={this.state.close}/>
+              <CookieConsent booleanCookie={boolCookie}/>
+              <DownMenu BooleanCloseEvent={this.state.close} boolCloseMenu={this.state.closePanel}/>
               </themeEvent.Provider>
             </themeContext.Provider>
           </Switch>

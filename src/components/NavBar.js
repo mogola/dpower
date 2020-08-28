@@ -230,7 +230,7 @@ const NavBarGeneric = ({ colorTheme, colorStroke}) => {
                                 name="menuButton"
                                 onClick={() =>{
                                     toggleOpen();
-                                    mssg.onClose();
+                                    mssg.closingPanel();
                                 }}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
                                     <Path

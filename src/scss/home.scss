@@ -840,6 +840,11 @@ html {
     border-radius: 12px 12px 0px;
     background: #fff;
     touch-action: none;
+    a {
+        font-family: 'assistantBold';
+        font-size: 28px;
+        color:#11387A;
+    }
   }
 
   .sheet > div {

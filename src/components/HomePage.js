@@ -102,6 +102,7 @@ const HomePage = () => {
                             icon={false}
                         />
                         <FooterContainer />
+
                     </div>
                {/* // </Suspense> */}
                </>

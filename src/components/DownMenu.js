@@ -3,10 +3,26 @@ import { useSpring, a, config } from 'react-spring'
 import { useDrag } from 'react-use-gesture'
 import {themeEvent} from './../context/theme-event'
 
-const items = ['Linkedin', 'facebook', 'twitter', 'contact', 'Annuler']
+const items = [
+  {
+    'name': 'Linkedin',
+    'link': 'https://www.linkedin.com/company/on-first-digital'
+  },
+  {
+    'name': 'facebook',
+    'link': 'https://www.facebook.com/onfirstdigital'
+  },
+  {
+    'name':'twitter',
+    'link': 'https://twitter.com/OnfirstDigital'
+  },
+  {
+    'name':'contact',
+    'link': '/contact'
+  }]
 const height = items.length * 60 + 80
 
-const DownMenu = ({BooleanCloseEvent}) => {
+const DownMenu = ({BooleanCloseEvent, boolCloseMenu}) => {
   const draggingRef = useRef(false)
   const [{ y }, set] = useSpring(() => ({ y: height }))
   let myPos = 0
@@ -66,14 +82,18 @@ const DownMenu = ({BooleanCloseEvent}) => {
     <themeEvent.Consumer>
         {mssg => (
         <>
-          <div className="action-btn" onClick={() => controlTogglePanel()}/>
-          {BooleanCloseEvent && close()}
+          <div className="action-btn" onClick={() => {
+            mssg.OpenningPanel()
+            controlTogglePanel()}}/>
+          {boolCloseMenu && close()}
           <a.div
             className="sheet" {...bind()}
             style={{display, bottom: `calc(-100vh + ${height - 100}px)`, y }}
           >
-            {items.map(entry => (
-              <div key={entry} onClick={() => !draggingRef.current && close()} children={entry} />
+            {items.map((entry, i) => (
+              <div key={entry + i} onClick={() => !draggingRef.current && close()}>
+                <a href={entry.link} children={entry.name}></a>
+              </div>
             ))}
           </a.div>
         </>
