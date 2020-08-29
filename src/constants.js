@@ -100,7 +100,21 @@ const LOGO = [
     path + "rapelite.png",
     path + "Jbsportconsulting_logo.png",
     path + "pastille-bastille-day-logo.png",
-    path + "dewalgo-logo.png"
+    path + "dewalgo-logo.png",
+    path + "melvita.png",
+    path + "kenzo.png",
+    path + "ikks.png",
+    path + "undiz.png",
+    path + "loccitane.png",
+    path + "pierre-fabre.png",
+    path + "erborian.png",
+    path + "vilebrequin.png",
+    path + "samsung.png",
+    path + "sandro.png",
+    path + "maje.png",
+    path + "etam.png",
+    path + "loreal.png"
+
 ]
 
 const CONSTANT = {
@@ -117,7 +131,7 @@ const CONSTANT = {
 }
 
 const htmlParse = {
-    homepage : "<strong>Être</strong> toujours <strong>performants</strong>, c\'est notre conviction, avançons <strong>ensemble</strong>"
+    homepage: "<strong>Être</strong> toujours <strong>performants</strong>, c\'est notre conviction, avançons <strong>ensemble</strong>"
 }
 
 const NAV = [

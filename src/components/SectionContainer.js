@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import AnimationTypeWrapper from './AnimationTypeWrapper'
 
@@ -36,7 +36,7 @@ const SectionContainer = ({ srcImage, color, size, title, content, position, ali
         console.log('txt doc', txtHome, typeof txt)
     }, [txtHome])
 
-    const ContentHome = ({content}) => {
+    const ContentHome = ({ content }) => {
         return (
             <>
                 <div dangerouslySetInnerHTML={{ __html: content }}></div>
@@ -47,7 +47,7 @@ const SectionContainer = ({ srcImage, color, size, title, content, position, ali
     const ContentInfo = () => {
         return (
             <div className="txtAss">
-                <Section className={fullImage ? "sectionFullImage" : '' } style={{ "textAlign": align }} size="large">
+                <Section className={fullImage ? "sectionFullImage" : ''} style={{ "textAlign": align }} size="large">
                     <div>
                         {icon &&
                             <Icon size="large" className="i-home" color="black">
@@ -57,24 +57,24 @@ const SectionContainer = ({ srcImage, color, size, title, content, position, ali
                         {
                             fullImage && <img className="fullImage" src={srcImage} />
                         }
-                        <Heading style={fullImage ? {} : {"textAlign": align}} className={fullImage ? "fullTitle" : 'title--large is-size-3-mobile'} weight="bold" spaced={true} size={1}>
+                        <Heading style={fullImage ? {} : { "textAlign": align }} className={fullImage ? "fullTitle" : 'title--large is-size-3-mobile'} weight="bold" spaced={true} size={1}>
                             {title}
                             {fullImage &&
-                            <>
-                                <ContentHome
-                                    content={txtHome}
-                                />
-                                <Button
-                                id="contactUs"
-                                name="contactUs"
-                                className="is-info is-white is-inverted button is-large"
-                                onClick={() => {
-                                    FB.AppEvents.logEvent("Contact")
-                                }}
-                                >
-                                    <Link to="/contact">Contactez-nous</Link>
-                                </Button>
-                            </>
+                                <>
+                                    <ContentHome
+                                        content={txtHome}
+                                    />
+                                    <Button
+                                        id="contactUs"
+                                        name="contactUs"
+                                        className="is-info is-white is-inverted button is-large"
+                                        onClick={() => {
+                                            FB.AppEvents.logEvent("Contact")
+                                        }}
+                                    >
+                                        <Link to="/contact">Contactez-nous</Link>
+                                    </Button>
+                                </>
                             }
                         </Heading>
                         <Heading subtitle>
@@ -87,7 +87,7 @@ const SectionContainer = ({ srcImage, color, size, title, content, position, ali
     }
 
     const ElementImage = () => {
-        return(
+        return (
             <figure className="image imageW">
                 <img
                     src={srcImage}
@@ -112,7 +112,7 @@ const SectionContainer = ({ srcImage, color, size, title, content, position, ali
 
     return (
         <div>
-            <Section className={fullImage ? "sectionParentFullImage" : '' } size={size} style={{ padding: 0 }}>
+            <Section className={fullImage ? "sectionParentFullImage" : ''} size={size} style={{ padding: 0 }}>
                 <Hero color={color} gradient>
                     <Hero.Body>
                         <Container>

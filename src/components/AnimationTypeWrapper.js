@@ -1,5 +1,5 @@
 
-import React, {useEffect} from 'react';
+import React from 'react';
 
 //animation global
 import Zoom from 'react-reveal/Zoom'
@@ -12,25 +12,25 @@ const AnimationTypeWrapper = ({ type, children, ...rest }) => {
     switch (type) {
         case 'Zoom':
             console.log('zoom');
-            content = <Zoom {...rest}>
+            content = <Zoom ssrFadeout {...rest}>
                 {children}
             </Zoom>;
             break;
         case 'Slide':
             console.log('Slide');
-            content = <Slide {...rest}>
+            content = <Slide ssrFadeout {...rest}>
                 {children}
             </Slide>;
             break;
         case 'Fade':
             console.log('Fade');
-            content = <Fade {...rest}>
+            content = <Fade ssrFadeout {...rest}>
                 {children}
             </Fade>;
             break;
         case 'Bounce':
             console.log('Bounce');
-            content = <Bounce {...rest}>
+            content = <Bounce ssrFadeout {...rest}>
                 {children}
             </Bounce>;
             break;
