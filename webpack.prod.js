@@ -20,12 +20,14 @@ const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const prodftp = false;
 const colorTheme= '#11387A';
 let facebookID = "346366339715645"
-let envUrl
+let envUrl = process.env.URL_REFERENCE
 
-if (prodftp) {
+console.log('process.env.URL_REFERENCE', process.env.URL_REFERENCE)
+if (process.env.URL_REFERENCE === undefined) {
+    console.log('no ENV_REF');
     envUrl = 'https://www.onfirstdigital.com'
 } else {
-    envUrl = 'https://firstdigital.herokuapp.com'
+    envUrl = process.env.URL_REFERENCE
 }
 
 const paths = [
